@@ -1,0 +1,27 @@
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import Theme from './Theme'; // Adjust path if necessary
+import "./Header.css" 
+function Header() {
+  return (
+    <>
+      <div className="container">
+        <Navbar className="sticky-header">
+          <Container className="d-flex justify-content-between align-items-center">
+            <Navbar.Brand href="#home" style={{ textAlign: 'auto' }}>
+              React-Bootstrap
+            </Navbar.Brand>
+            <Nav className="ms-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#link">Link</Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
+      </div>
+      {/* Render the Theme component with background */}
+    </>
+  );
+}
+
+export default Header;

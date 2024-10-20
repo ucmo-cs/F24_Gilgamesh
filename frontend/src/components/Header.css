@@ -1,0 +1,27 @@
+.sticky-header {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color:  #585858;
+    width: 100% !important; /* Ensure full width */
+    margin: 0; /* Remove margin */
+    padding: 0.5rem 1rem; /* Adjust padding */
+}
+
+
+.container {
+    max-width: none !important;  /* No maximum width */
+    width: 100% !important;      /* Full width of the viewport */
+    padding: 10px !important;    /* Padding for spacing */
+    position: relative !important; /* Keeps the container above the background */
+    z-index: 1 !important;       /* Ensures it stays above other elements */
+    background: #585858 !important; /* Solid background color */
+    margin: 0 !important;        /* Remove any default margin */
+    top: 0 !important;           /* Align to the top of the parent element */
+    left: 0 !important;          /* Align to the left */
+    box-shadow: none !important; /* Remove any shadows if present */
+}
+
+

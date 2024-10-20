@@ -1,25 +1,24 @@
-/* Home.css */
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.home-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-    background-color: #f0f0f0; /* Light gray background */
-}
-
-h1 {
-    color: #ffffff; /* Dark gray text */
-    font-size: 2.5rem; /* Large font size */
-    text-align: center;
-    padding: 20px;
-    border: 2px solid #333; /* Dark gray border */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #fff; /* White background for the heading */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
+html, body {
+    height: 100%; /* Ensure the body takes full height */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .home-container {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+  }
+  
+  .box {
+    padding: 20px; /* Padding around the text */
+    background-color: #ffffff; /* White background for the box */
+    text-align: center; /* Center the text */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 600px; /* Limit the width of the box */
+    width: 100%; /* Full width of the box */
+    margin: 20px; /* Margin around the box */
+  }
+  

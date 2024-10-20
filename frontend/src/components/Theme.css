@@ -83,4 +83,9 @@
     color: #5f6566;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   }
-  
+  /* Example in Theme.css */
+.theme-container {
+    position: relative; /* Or absolute, depending on design */
+    height: auto; /* Ensure it doesn't take full height unnecessarily */
+    z-index: 1; /* Lower than Home */
+}

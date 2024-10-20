@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import Theme from './Theme'; // Adjust path if necessary
+
 import "./Header.css" 
 function Header() {
   return (
@@ -19,7 +19,7 @@ function Header() {
           </Container>
         </Navbar>
       </div>
-      {/* Render the Theme component with background */}
+      
     </>
   );
 }

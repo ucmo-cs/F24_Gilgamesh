@@ -1,18 +1,19 @@
-// App.js
 import Header from './components/Header';
-import './App.css';
 import Theme from './components/Theme'; 
+
+import Home from './page/Home'; // Ensure correct path
+import SignIn from './page/SignIn'; // Ensure correct path
+import Customer from './page/Customer'; // Ensure correct path
+import Admin from './page/Admin'; // Corrected the name from Customer to Admin
+import { Routes, Route } from 'react-router-dom'; // Import for routing
+import './App.css';
 
 function App() {
   return (
     <>
       <Header />
       <Theme />
-      
-      <div style={{ height: '1500px', background: '#f8f9fa', paddingTop: '60px' }}> {/* Placeholder content with padding */}
-        <h1>Welcome to My App!</h1>
-        <p>Scroll down to see the header stick at the top.</p>
-      </div>
+     
     </>
   );
 }

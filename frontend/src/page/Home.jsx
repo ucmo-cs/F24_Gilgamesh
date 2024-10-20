@@ -1,17 +1,21 @@
 import React from 'react';
-import Header from '../components/Header';
-import Theme from '../components/Theme';
+import './Home.css'; 
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
     <>
+    <div className="home-container"> {/* Add the class for styling */}
+      <h1>Welcome to F24_Gilgamesh Project</h1>
       
-      <div>
-        
-        <h1>Welcome to the Home Page</h1>
-      </div>
+      
+    </div>
+    
     </>
+
+    
   );
 };
 
 export default Home;
+

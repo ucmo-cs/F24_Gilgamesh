@@ -1,0 +1,52 @@
+
+
+.footer-text {
+    margin: 0.5rem 0; /* Reduced space for footer text */
+    font-size: 1rem; /* More subtle font size */
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center; /* Center the links */
+    gap: 30px; /* Increased spacing between links */
+    margin: 1rem 0; /* Space above and below links */
+  }
+  
+  .footer-links a {
+    text-decoration: none; /* Remove underline */
+    color: #ffffff; /* Link color */
+    transition: color 0.3s; /* Smooth color transition */
+  }
+  
+  .footer-links a:hover {
+    color: #dbf1f5; /* Change color on hover for contrast */
+  }
+  
+  .back-to-top {
+    background-color: #ff4e4e; /* Button background color */
+    color: #ffffff; /* Button text color */
+    padding: 0.5rem 1rem; /* Button padding */
+    border: none; /* No border */
+    border-radius: 25px; /* Rounded button */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+    margin-top: 1rem; /* Space above button */
+  }
+  
+  .back-to-top:hover {
+    background-color: #e04545; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .footer {
+      padding: 1.5rem 0; /* Less padding on smaller screens */
+    }
+    
+    .footer-links {
+      flex-direction: column; /* Stack links vertically on small screens */
+      gap: 10px; /* Space between stacked links */
+    }
+  }
+  

@@ -13,8 +13,8 @@ function Header() {
               Commerce Bank
             </Navbar.Brand>
             <Nav className="ms-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Sign-In</Nav.Link>
+              <Nav.Link href="/home">Home</Nav.Link>
+              <Nav.Link href="/SignIn">Sign-In</Nav.Link>
             </Nav>
           </Container>
         </Navbar>

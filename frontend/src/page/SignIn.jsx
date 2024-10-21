@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "./SignIn.css"
 
-import HeaderIn from '../components/HeaderIn'; // Changed NavBarUser to HeaderIn
-import Header from '../components/Header'; // Using Header for non-authenticated users
+import HeaderIn from '../components/HeaderIn';
+import Header from '../components/Header';
 
 const SignIn = () => {
   const [values, setValues] = useState({
@@ -48,6 +49,8 @@ const SignIn = () => {
   
   const greyColor = 'rgba(128, 128, 128, 0.8)';
   const hoverGreyColor = 'rgba(169, 169, 169, 1)';
+  const primaryColor = '#11552b'; // New primary color
+  const whiteColor = '#ffffff'; // White color for text
 
   return (
     <>
@@ -57,7 +60,7 @@ const SignIn = () => {
           className="modal-content rounded-4 shadow"
           style={{
             backgroundColor: 'rgba(0, 0, 0, 0.4)', // Set background to 0.4 opacity
-            border: '0.5px solid #007bff', // Change this to your desired border color
+            border: `0.5px solid ${primaryColor}`, // Change border color to the new primary color
             borderRadius: '0.5rem', // Adjust radius if needed
           }}
         >
@@ -101,19 +104,16 @@ const SignIn = () => {
                 />
                 <label htmlFor="floatingPassword" style={{ color: greyColor }}>Password</label>
               </div>
-              <div className="mb-3">
+              <div className="mb-3" style={{ color: whiteColor }}>
                 <input
                   type="checkbox"
                   name="rememberMe"
                   className="input"
                   onChange={handleInput}
                 />
-                <label className="label" htmlFor="rememberMe" style={{ color: greyColor }}>Keep me signed in</label>
+                <label className="label" htmlFor="rememberMe" style={{ color: whiteColor }}>Admin</label>
               </div>
-              <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign In</button>
-              <small className="text-body-secondary" style={{ color: greyColor }}>
-                Don't have an account? <Link to="/signup" style={{ color: '#007bff' }}>Sign up</Link>
-              </small>
+              <button className="w-100 mb-2 btn btn-lg rounded-3" style={{ backgroundColor: primaryColor, border: 'none' }} type="submit">Sign In</button>
             </form>
           </div>
         </div>

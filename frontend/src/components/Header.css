@@ -8,6 +8,8 @@
     width: 100% !important; /* Ensure full width */
     margin: 0; /* Remove margin */
     padding: 0.25rem 1rem; /* Reduced padding for a smaller header */
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
 }
 
 .navbar-logo {
@@ -21,4 +23,18 @@
     vertical-align: middle; /* Align text vertically with the logo */
     font-size: 1.2rem; /* Adjust font size if necessary */
     color: #ffffff; /* Ensure text color is visible */
+}
+
+/* Additional styles for nav items */
+.navbar-nav {
+    margin-left: auto; /* Push nav items to the right */
+}
+
+.nav-link {
+    color: #ffffff; /* Nav link color */
+    margin: 0 10px; /* Spacing between links */
+}
+
+.nav-link:hover {
+    color: #c0c0c0; /* Hover color for links */
 }

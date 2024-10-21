@@ -23,10 +23,7 @@ function App() {
           <Route path="/customer" element={<Customer />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
-     
         <Theme/>
-
-      
     </Router>
   );
 }

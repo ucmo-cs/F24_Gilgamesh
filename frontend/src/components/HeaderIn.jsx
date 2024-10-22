@@ -1,9 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import './Header.css';
+import './HeaderIn.css';
 
-function Header() {
+function HeaderIn() {
   return (
     <div className="container">
       <Navbar className="sticky-header">
@@ -22,4 +22,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderIn;

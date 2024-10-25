@@ -1,29 +1,31 @@
+     
+// App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import Header from './components/Header';
-import Theme from './components/Theme';
 import Footer from './components/Footer';
-
 import Home from './page/Home';
 import SignIn from './page/SignIn';
-import Customer from './page/Customer';
+import User from './page/UserPage';
 import Admin from './page/Admin';
-
+import Theme from "./components/Theme";
 import './App.css';
 
 function App() {
   return (
     <Router>
       <Header />
-      <Footer />
+      <div className="main-content">
         <Routes>
-          <Route path="/Home" element={<Home />} />
-          <Route path="/SignIn" element={<SignIn />} />
-          <Route path="/customer" element={<Customer />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/user" element={<User />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
-        <Theme/>
+      </div>
+      <Footer />
+      <Theme />
     </Router>
   );
 }

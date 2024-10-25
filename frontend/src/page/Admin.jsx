@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import Spreadsheet from '../components/Spreadsheet';
+
+import './Admin.css'; // Import your CSS file here
 
 const Admin = () => {
   return (
-    <div>
+    <div className="admin-container">
+      <div className="box">
+        <Spreadsheet />
+      </div>
       
     </div>
-  )
+  );
 }
 
-export default Admin
+export default Admin;

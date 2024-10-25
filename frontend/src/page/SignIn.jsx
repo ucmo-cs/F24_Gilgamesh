@@ -54,7 +54,7 @@ const SignIn = () => {
 
   return (
     <>
-      {navBar}
+      
       <div className="login-container d-flex align-items-center justify-content-center min-vh-100">
         <div 
           className="modal-content rounded-4 shadow"

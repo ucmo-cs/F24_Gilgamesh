@@ -5,20 +5,18 @@ import './Header.css';
 
 function Header() {
   return (
-    <div className="container">
-      <Navbar className="sticky-header">
-        <Container className="d-flex justify-content-between align-items-center">
-          <Navbar.Brand style={{ textAlign: 'auto' }}>
-            <img src="./commerce-bank.svg" className="navbar-logo" alt="Commerce Bank Logo" />
-            <span className="brand-name">Commerce Bank</span>
-          </Navbar.Brand>
-          <Nav className="ms-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="/SignIn">SignIn</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-    </div>
+    <Navbar className="header">
+      <Container className="d-flex justify-content-between align-items-center">
+        <Navbar.Brand style={{ textAlign: 'auto' }}>
+          <img src="./commerce-bank.svg" className="navbar-logo" alt="Commerce Bank Logo" />
+          <span className="brand-name">Commerce Bank</span>
+        </Navbar.Brand>
+        <Nav className="ms-auto">
+          <Nav.Link href="/home">Home</Nav.Link>
+          <Nav.Link href="/SignIn">Sign In</Nav.Link>
+        </Nav>
+      </Container>
+    </Navbar>
   );
 }
 

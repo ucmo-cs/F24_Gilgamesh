@@ -1,0 +1,24 @@
+.sticky-header {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #585858; /* Match footer color */
+    width: 100% !important; /* Ensure full width */
+    margin: 0; /* Remove margin */
+    padding: 0.25rem 1rem; /* Reduced padding for a smaller header */
+}
+
+.navbar-logo {
+    width: 40px; /* Adjust width to fit nicely */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between logo and text */
+    background-color: transparent; /* Ensure logo background is transparent */
+}
+
+.brand-name {
+    vertical-align: middle; /* Align text vertically with the logo */
+    font-size: 1.2rem; /* Adjust font size if necessary */
+    color: #ffffff; /* Ensure text color is visible */
+}

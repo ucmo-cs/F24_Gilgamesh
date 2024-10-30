@@ -1,0 +1,23 @@
+.admin-container {
+    display: flex; /* Flex container to align boxes vertically */
+    flex-direction: column; /* Stack the boxes vertically */
+    align-items: center; /* Center the boxes horizontally */
+    padding: 20px; /* Padding around the container */
+    background-color: #f8f9fa; /* Light background for the container */
+  }
+  
+  .box {
+    width: 100%; /* Full width of the container */
+    max-width: 600px; /* Limit the width for better readability */
+    margin: 15px 0; /* Space between boxes */
+    padding: 20px; /* Padding inside the box */
+    background-color: #ffffff; /* White background for the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  .admin-form {
+    flex-grow: 1; /* Allow the form to grow and fill the space */
+    display: flex; /* Use flexbox to manage layout */
+    flex-direction: column; /* Stack elements vertically */
+  }
+  

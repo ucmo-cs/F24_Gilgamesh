@@ -11,34 +11,29 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-@AllArgsConstructor
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+
 @Service
-
 public class LoanService {
-    private final LoanRepository loanRepository;
-    private final AccountRepository accountRepository;
+    @Autowired
+    private LoanRepository loanRepository;
 
-    @Transactional
-    public Loan create(Loan loan, String userId){
-
-        Account account = accountRepository.findByUserId(userId).orElse(null);
-
-        if(account!=null){
-            loan.setUserAccount(account);
-        }
-        // Ensure interest rate is set
-        if (loan.getInterestRate() == null) {
-            throw new IllegalArgumentException("Interest rate must not be null");
-        }
-
-        return loanRepository.save(loan);
-
-    }
-
-    @Transactional(readOnly = true)
-    public List<Loan> findAll(){
+    public List<Loan> findAll() {
         return loanRepository.findAll();
     }
 
+    public Loan findById(Long id) {
+        Optional<Loan> loan = loanRepository.findById(id);
+        return loan.orElse(null);
+    }
+    public Loan create(Loan loan, String userId) {
+        return loanRepository.save(loan);
+    }
 
+    public Loan save(Loan loan) {
+        return loanRepository.save(loan);
+    }
 }

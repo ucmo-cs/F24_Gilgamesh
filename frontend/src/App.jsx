@@ -9,7 +9,7 @@ import Home from './page/Home';
 import SignIn from './page/SignIn';
 import Customer from './page/Customer';
 import Admin from './page/Admin';
-
+import ResetPassword from './page/resetPassword';
 import './App.css';
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/customer" element={<Customer />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
-        <Theme/>
     </Router>
   );
 }

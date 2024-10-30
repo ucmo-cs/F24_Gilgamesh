@@ -1,6 +1,6 @@
 .footer {
   text-align: center;
-  padding: 1rem 0; /* Adjust padding for a smaller footer */
+  padding: 0rem 0; /* Adjust padding for a smaller footer */
   background-color: #6e6e6e; /* Opaque gray background */
   box-shadow: none !important;
   z-index: 1; 
@@ -12,23 +12,38 @@
 
 .footer-text {
   margin: 0.5rem 0;
-  font-size: 1rem;
-  color: #ffffff; /* White color for the copyright text */
+  font-size: 0.75rem; /* Font size for copyright text */
+  color: #efdcdc; /* White color for the copyright text */
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 1rem; /* Adjust as needed */
+  gap: 10px;
+  margin-bottom: 0rem; /* Adjust as needed */
 }
 
 .footer-links a {
-  color: #11552b; /* Different color for links */
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #0eb94f; /* Different color for links */
   text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: #ffffff; /* Optional: Change color on hover for links */
+  color: #63e065; /* Optional: Change color on hover for links */
 }
 
+.footer-contact {
+  margin-top: 10px; /* Optional: add some space above contact info */
+  font-size: 0.75rem; /* Adjust font size for contact info (smaller) */
+  color: #efdcdc; /* Match contact text color to the rest of the footer */
+}
+
+.footer-contact a {
+  color: #05b454; /* Bootstrap primary color for contact links */
+}
+
+.footer-contact a:hover {
+  text-decoration: underline; /* Optional: adds underline on hover */
+}

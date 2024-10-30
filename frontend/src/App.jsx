@@ -8,7 +8,7 @@ import Home from './page/Home';
 import SignIn from './page/SignIn';
 import User from './page/UserPage';
 import Admin from './page/Admin';
-import Theme from "./components/Theme";
+
 import './App.css';
 
 function App() {
@@ -22,10 +22,9 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/user" element={<User />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
-      </div>
-      <Footer />
-      <Theme />
+        <Theme/>
     </Router>
   );
 }

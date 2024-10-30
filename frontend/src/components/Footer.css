@@ -1,7 +1,7 @@
 /* Footer.css */
 .footer {
   text-align: center;
-  padding: 10px 0; /* Adjusted padding */
+  padding: 1rem 0; /* Adjust padding for a smaller footer */
   background-color: #6e6e6e; /* Opaque gray background */
   color: #ffffff; /* White color for text */
   box-shadow: none; 
@@ -13,22 +13,26 @@
 }
 
 .footer-text {
-  margin: 0.25rem 0;
+  margin: 0.5rem 0;
   font-size: 1rem;
+  color: #ffffff; /* White color for the copyright text */
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 0; /* Adjust as needed */
+  gap: 15px;
+  margin-bottom: 1rem; /* Adjust as needed */
 }
 
 .footer-links a {
-  color: #11552b; /* Different color for links */
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #0eb94f; /* Different color for links */
   text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: #ffffff; /* Change color on hover for links */
+  color: #ffffff; /* Optional: Change color on hover for links */
 }
+

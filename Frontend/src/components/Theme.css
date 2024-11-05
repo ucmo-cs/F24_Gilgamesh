@@ -43,7 +43,7 @@
     height: 20px;
     background: rgba(255, 255, 255, 0.2);
     animation: animate 25s linear infinite;
-    bottom: -150px;
+    bottom: -10px;
     border: 2px solid rgba(45, 146, 59, 0.9); /* Green border */
   }
   

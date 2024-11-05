@@ -32,3 +32,16 @@
 .footer-links a:hover {
   color: #ffffff; /* Change color on hover for links */
 }
+.footer-contact {
+  margin-top: 10px; /* Optional: add some space above contact info */
+  font-size: 0.75rem; /* Adjust font size for contact info (smaller) */
+  color: #efdcdc; /* Match contact text color to the rest of the footer */
+}
+
+.footer-contact a {
+  color: #05b454; /* Bootstrap primary color for contact links */
+}
+
+.footer-contact a:hover {
+  text-decoration: underline; /* Optional: adds underline on hover */
+}

@@ -1,0 +1,68 @@
+/* UserForm.css */
+
+/* Main container for the form */
+.form-container {
+    max-width: 600px; /* Maximum width for the form */
+    margin: 20px auto; /* Center the form on the page */
+    padding: 20px; /* Padding inside the container */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #ffffff; /* White background */
+    position: relative; /* Allows z-index to work */
+    z-index: 1000; /* Bring to front */
+}
+
+/* Flex layout for the form */
+.user-form {
+    display: flex;
+    flex-direction: column; /* Column layout for form items */
+}
+
+/* Label styling */
+.user-form .form-label {
+    font-weight: bold; /* Make label text bold */
+    margin-bottom: 0.5rem; /* Spacing below labels */
+    color: #333; /* Dark gray color for labels */
+}
+
+/* Input styling */
+.user-form .form-control {
+    border-radius: 4px; /* Slightly rounded borders for inputs */
+    border: 1px solid #ccc; /* Light gray border */
+    padding: 10px; /* Padding inside the input */
+    transition: border-color 0.2s; /* Smooth border color transition */
+}
+
+.user-form .form-control:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow on focus */
+}
+
+/* Button styling */
+.user-form button {
+    font-weight: bold; /* Bold text on the button */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover and click */
+    padding: 10px; /* Padding inside the button */
+    border-radius: 4px; /* Slightly rounded corners */
+}
+
+.user-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.user-form button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+    
+    .user-form button {
+        font-size: 0.9rem; /* Slightly smaller font size for buttons */
+    }
+}

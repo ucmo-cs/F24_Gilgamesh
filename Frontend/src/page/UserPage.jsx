@@ -9,17 +9,33 @@ import './UserPage.css'; // Import your CSS file here
 
 function UserPage() {
   const [show, setShow] = useState(false);
+  const [loanValue, setLoanValue] = useState(10000); // Initial loan value
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const changeLoanValue = () => {
+    // Change the loan value logic here (for example, randomly increasing or setting a new value)
+    const newValue = prompt("Enter new loan value:", loanValue);
+    if (newValue !== null) {
+      setLoanValue(Number(newValue)); // Update loan value
+    }
+  };
+
   return (
     <div>
-     
       <Container className="spreadsheet-container">
-      <header className="header">
-      <h1>User Page Header</h1>
+        <header className="header">
+          <h1>User Page Header</h1>
         </header>
+        
+        {/* Display current loan value */}
+        <Row className="mb-2 justify-content-center">
+          <Col xs lg="12" className="text-center">
+            <h3>Current Loan Value: ${loanValue}</h3>
+          </Col>
+        </Row>
+
         {/* Header Row */}
         <Row className="mb-2 justify-content-center">
           <Col xs lg="2" className="text-center">Header 1</Col>
@@ -44,6 +60,9 @@ function UserPage() {
             <Button variant="primary" onClick={handleShow}>
               Open User Form
             </Button>
+            <Button variant="secondary" onClick={changeLoanValue} className="ml-2">
+              Pay Loan
+            </Button>
           </Col>
         </Row>
       </Container>
@@ -56,11 +75,6 @@ function UserPage() {
         <Modal.Body className="d-flex flex-column" style={{ height: '60vh' }}>
           <UserForm />
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </div>
   );

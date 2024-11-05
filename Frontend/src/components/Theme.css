@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     height: 100%; /* Ensure body takes up full height */
-    overflow: hidden; /* Prevent scrollbars */
+    overflow: auto; /* Prevent scrollbars */
   }
   
   body {
@@ -43,7 +43,7 @@
     height: 20px;
     background: rgba(255, 255, 255, 0.2);
     animation: animate 25s linear infinite;
-    bottom: -150px;
+    bottom: -10px;
     border: 2px solid rgba(45, 146, 59, 0.9); /* Green border */
   }
   

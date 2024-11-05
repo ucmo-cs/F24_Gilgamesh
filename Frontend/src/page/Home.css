@@ -2,6 +2,7 @@
     height: 100%; /* Ensure the body takes full height */
     margin: 0; /* Remove default margin */
   }
+
   
   .home-container {
     display: flex; /* Enable flexbox */

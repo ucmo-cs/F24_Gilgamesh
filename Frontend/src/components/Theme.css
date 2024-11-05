@@ -3,7 +3,7 @@
   
  body {
     margin: 0;
-    padding: 0;
+    
     height: 100%; /* Ensure body takes up full height */
     overflow: auto; /* Prevent scrollbars */
   }

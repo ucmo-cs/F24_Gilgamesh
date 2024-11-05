@@ -43,7 +43,7 @@ public class Loan {
         this.loan_id = loan_id;
     }
 
-    public BigDecimal setLoanOriginAmount() {
+    public BigDecimal getLoanOriginAmount() {
         return loanOriginAmount;
     }
 

@@ -13,6 +13,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +31,7 @@ public class LoanService {
         Optional<Loan> loan = loanRepository.findById(id);
         return loan.orElse(null);
     }
+
     public Loan create(Loan loan, String userId) {
         return loanRepository.save(loan);
     }

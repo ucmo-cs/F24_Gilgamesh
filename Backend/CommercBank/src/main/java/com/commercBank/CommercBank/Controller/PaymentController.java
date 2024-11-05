@@ -55,10 +55,9 @@ public class PaymentController {
 
     }
     @PostMapping
-    public ResponseEntity<String> schedulePayment(@RequestParam BigDecimal amount, @RequestParam LocalDate date) {
+    public ResponseEntity<String> schedulePayment(@RequestParam Long loanId, @RequestParam BigDecimal amount, @RequestParam LocalDate date) {
         //logic to save to database
-        ScheduledPayment scheduledPayment = new ScheduledPayment();
-
+        loanService.saveScheduledPayment(loanId, amount, date);
         return ResponseEntity.ok("Payment of " + amount + " scheduled for " + date + " successfully");
     }
 

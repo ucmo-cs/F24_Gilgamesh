@@ -29,6 +29,8 @@ public class Loan {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false, nullable = false)
     private Timestamp created_at;
+    @Column(name = "scheduled_payment", nullable = false)
+    private BigDecimal scheduledPayment;
 
     @ManyToOne
     @JoinColumn(name = "user_account_id")
@@ -74,4 +76,12 @@ public class Loan {
     public void setUser_account(Account user_account) {
         this.userAccount = user_account;
     }
+
+    public BigDecimal getScheduledPayment() {
+        return scheduledPayment;
+    }
+    public void setScheduledPayment(BigDecimal scheduledPayment) {
+        this.scheduledPayment = scheduledPayment;
+    }
+
 }

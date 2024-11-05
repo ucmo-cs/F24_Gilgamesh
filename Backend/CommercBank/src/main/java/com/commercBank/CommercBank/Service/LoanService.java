@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -38,5 +40,13 @@ public class LoanService {
 
     public Loan save(Loan loan) {
         return loanRepository.save(loan);
+    }
+
+    public void saveScheduledPayment(Long loanId, BigDecimal amount, LocalDate date) {
+        Loan loan = loanRepository.findById(loanId).orElse(null);
+        if (loan != null) {
+            loan.setScheduledPayment(amount);
+            loanRepository.save(loan);
+        }
     }
 }

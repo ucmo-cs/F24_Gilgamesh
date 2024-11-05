@@ -13,7 +13,6 @@ function Footer() {
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms of Service</a>
         <a href="/signin">Sign In</a>
-        <a href="/reset-password" className="reset password link">Reset Password</a>
       </div>
     </footer>
   );

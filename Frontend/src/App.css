@@ -4,7 +4,6 @@ html, body {
     margin: 0; /* Remove default margin */
   }
   
-  
   body {
     display: flex; /* Use flexbox */
     flex-direction: column; /* Stack children vertically */

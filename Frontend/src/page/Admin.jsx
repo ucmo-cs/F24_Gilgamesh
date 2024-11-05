@@ -1,6 +1,5 @@
 import React from 'react';
 import Spreadsheet from '../components/Spreadsheet';
-
 import './Admin.css'; // Import your CSS file here
 
 const Admin = () => {
@@ -14,4 +13,4 @@ const Admin = () => {
   );
 }
 
-export default Admin;
+export default Admin

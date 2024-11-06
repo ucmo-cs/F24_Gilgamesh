@@ -9,5 +9,5 @@ import java.math.BigDecimal;
 public class LoanDto {
     private BigDecimal loanOriginAmount;
     private BigDecimal interestRate;
-
+    private String userId;
 }

@@ -5,7 +5,7 @@ body {
   
   .header {
     padding: 1rem; /* Space for the header */
-    background-color: #f8f9fa; /* Header background color */
+    background-color: #989393; /* Header background color */
     text-align: center; /* Center header text */
     font-size: 1.5rem; /* Larger text for the header */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */

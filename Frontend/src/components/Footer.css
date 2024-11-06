@@ -1,34 +1,29 @@
 /* Footer.css */
 .footer {
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
   text-align: center;
-  padding: 10px 0; /* Adjusted padding */
-  background-color: #6e6e6e; /* Opaque gray background */
-  color: #ffffff; /* White color for text */
-  box-shadow: none; 
-  z-index: 1; 
-  width: 100%; 
-  position: fixed; /* Stick to the bottom */
-  left: 0; /* Align to the left */
-  bottom: 0; /* Position at the bottom */
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer-text {
-  margin: 0.25rem 0;
-  font-size: 1rem;
+  margin: 0;
+  font-size: 14px;
 }
 
 .footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 0; /* Adjust as needed */
+  margin-top: 10px;
 }
 
 .footer-links a {
-  color: #11552b; /* Different color for links */
+  color: #f8f9fa;
+  margin: 0 15px;
   text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: #ffffff; /* Change color on hover for links */
+  text-decoration: underline;
 }

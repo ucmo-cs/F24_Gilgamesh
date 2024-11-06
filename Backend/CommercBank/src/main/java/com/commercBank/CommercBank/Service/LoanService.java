@@ -2,6 +2,7 @@ package com.commercBank.CommercBank.Service;
 
 import com.commercBank.CommercBank.Domain.Account;
 import com.commercBank.CommercBank.Domain.Loan;
+import com.commercBank.CommercBank.Domain.LoanPayment;
 import com.commercBank.CommercBank.Repository.AccountRepository;
 import com.commercBank.CommercBank.Repository.LoanRepository;
 import lombok.AllArgsConstructor;
@@ -21,9 +22,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class LoanService {
     @Autowired
     private LoanRepository loanRepository;
+
+    @Autowired
+    private AccountRepository accountRepository; //fetches account by id
 
     public List<Loan> findAll() {
         return loanRepository.findAll();
@@ -35,6 +40,20 @@ public class LoanService {
     }
 
     public Loan create(Loan loan, String userId) {
+        Optional<Account> accountOptional = Optional.ofNullable(accountRepository.findByUserId(userId));
+
+        Account account = accountOptional.orElseThrow(() ->
+                new RuntimeException("Account with userId: " + userId + " not found.")
+        );
+
+        //Account account = accountRepository.findByUserId(userId);
+        //if(account == null){
+            //throw new RuntimeException("Account with userId: " + userId + " not found.");
+        //}
+
+        //set account object to account entity
+        loan.setUser_account(account);
+
         return loanRepository.save(loan);
     }
 
@@ -42,11 +61,5 @@ public class LoanService {
         return loanRepository.save(loan);
     }
 
-    public void saveScheduledPayment(Long loanId, BigDecimal amount, LocalDate date) {
-        Loan loan = loanRepository.findById(loanId).orElse(null);
-        if (loan != null) {
-            loan.setScheduledPayment(amount);
-            loanRepository.save(loan);
-        }
-    }
+
 }

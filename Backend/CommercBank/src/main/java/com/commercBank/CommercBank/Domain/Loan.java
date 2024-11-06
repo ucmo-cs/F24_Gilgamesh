@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -22,15 +23,18 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "loan_id")
     private Long loan_id;
-    @Column(name = "loan_origin_amount", nullable = false)
+    @Column(name = "loanOriginAmount", nullable = false)
     private BigDecimal loanOriginAmount;
-    @Column(name = "interest_rate", nullable = false)
+    @Column(name = "interestRate", nullable = false)
     private BigDecimal interestRate;
     @CreationTimestamp
     @Column(name = "created_at", updatable = false, nullable = false)
     private Timestamp created_at;
-    @Column(name = "scheduled_payment", nullable = false)
-    private BigDecimal scheduledPayment;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
+    private Timestamp updatedAt;
+
 
     @ManyToOne
     @JoinColumn(name = "user_account_id")
@@ -49,16 +53,16 @@ public class Loan {
         return loanOriginAmount;
     }
 
-    public void setLoanOriginAmount(BigDecimal setLoanOriginAmount) {
-        this.loanOriginAmount = setLoanOriginAmount;
+    public void setLoanOriginAmount(BigDecimal LoanOriginAmount) {
+        this.loanOriginAmount =LoanOriginAmount;
     }
 
     public BigDecimal getInterestRate() {
         return interestRate;
     }
 
-    public void setInterestRate(BigDecimal interest_rate) {
-        this.interestRate = interest_rate;
+    public void setInterestRate(BigDecimal interestRate) {
+        this.interestRate = interestRate;
     }
 
     public Timestamp getCreated_at() {
@@ -69,19 +73,12 @@ public class Loan {
         this.created_at = created_at;
     }
 
-    public Account getUser_account() {
+    public Account getUserAccount() {
         return userAccount;
     }
 
-    public void setUser_account(Account user_account) {
-        this.userAccount = user_account;
-    }
-
-    public BigDecimal getScheduledPayment() {
-        return scheduledPayment;
-    }
-    public void setScheduledPayment(BigDecimal scheduledPayment) {
-        this.scheduledPayment = scheduledPayment;
+    public void setUser_account(Account userAccount) {
+        this.userAccount = userAccount;
     }
 
 }

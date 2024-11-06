@@ -15,9 +15,9 @@ public class AccountService {
     private final AccountRepository accountRepository;
 
     @Transactional
-    public Account create(Account acct) {
-
-        return accountRepository.save(acct);
+    public Account create(Account account) {
+        System.out.println("Creating account: " + account);
+        return accountRepository.save(account);
     }
 
     public Account findByUserId(String userId) {

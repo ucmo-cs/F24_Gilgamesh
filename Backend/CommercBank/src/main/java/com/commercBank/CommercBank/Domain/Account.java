@@ -22,7 +22,7 @@ public class Account {
     private long accountId;
 
     private int userType;
-    @Column(unique = true)
+    @Column(name = "userId", unique = true, nullable = false)
     private String userId;
     @Column(name = "user_name")
     private String userName;
@@ -30,10 +30,11 @@ public class Account {
     private String password; // Consider using @JsonIgnore if using in REST API
     private String email;
     private String phoneNumber;
+    @Column(name = "created_at")
     @CreationTimestamp
-    private Timestamp createdAt;
+    private Timestamp created_at;
 
-    @OneToMany(mappedBy = "userAccount")
+    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Loan>  loans = new ArrayList<>();
 
     public long getAccountId() {
@@ -94,10 +95,10 @@ public class Account {
     }
 
     public Timestamp getCreated_at() {
-        return createdAt;
+        return created_at;
     }
 
     public void setCreated_at(Timestamp created_at) {
-        this.createdAt = created_at;
+        this.created_at = created_at;
     }
 }

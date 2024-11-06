@@ -25,11 +25,14 @@ public class AccountController {
     public ResponseEntity<?> save(@RequestBody AccountDto accountDto) {
         System.out.println("Received account creation request: " + accountDto);
 
-        Account account = new ModelMapper().map(accountDto, Account.class);
-        account.setCreated_at(new Timestamp(System.currentTimeMillis()));
-        Account savedAccount = accountService.create(account); // may need to remove
+        // Log the accountDto for debugging
+        if (accountDto.getUserId() != null) {
+            System.out.println("UserId: " + accountDto.getUserId());
+        }
+            Account account = new ModelMapper().map(accountDto, Account.class);
+            account.setCreated_at(new Timestamp(System.currentTimeMillis()));
 
-        return new ResponseEntity<>(accountService.create(account), HttpStatus.CREATED);
-    }
-
+            Account savedAccount = accountService.create(account); // may need to remove
+            return new ResponseEntity<>(accountService.create(account), HttpStatus.CREATED);
+        }
 }

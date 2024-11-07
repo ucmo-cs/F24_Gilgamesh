@@ -16,7 +16,7 @@ function Spreadsheet() {
   return (
     <div>
       <header className="header">
-        <h1>Your Header</h1>
+        <h1>Current Loans</h1>
       </header>
       <Container className="spreadsheet-container d-flex flex-column" style={{ height: '100vh' }}>
         {/* Header Row */}

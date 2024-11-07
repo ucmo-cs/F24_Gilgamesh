@@ -1,67 +1,52 @@
-import React, { useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import AdminForm from '../components/AdminForm'; // Adjust the path as necessary
-import './Spreadsheet.css'; // Import your CSS file here
+import { useState } from 'react';
+import Collapse from 'react-bootstrap/Collapse';
+// import './Spreadsheet.css'; // Import your CSS file here
 
 function Spreadsheet() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const [open, setOpen] = useState(false);
   return (
-    <div>
-      <header className="header">
-        <h1>Current Loans</h1>
-      </header>
-      <Container className="spreadsheet-container d-flex flex-column" style={{ height: '100vh' }}>
-        {/* Header Row */}
-        <Row className="mb-2 justify-content-center">
-          <Col xs lg="2" className="text-center">Header 1</Col>
-          <Col xs lg="2" className="text-center">Header 2</Col>
-          <Col xs lg="2" className="text-center">Header 3</Col>
-          <Col xs lg="2" className="text-center">Header 4</Col>
-        </Row>
-
-        <Row className="flex-grow-1 justify-content-center align-items-center">
-          {Array.from({ length: 10 }, (_, rowIndex) => (
-            <Row key={rowIndex} className="mb-2 justify-content-center"> 
-              <Col xs lg="2" className="text-center">Data {rowIndex + 1} - 1</Col>
-              <Col xs lg="2" className="text-center">Data {rowIndex + 1} - 2</Col>
-              <Col xs lg="2" className="text-center">Data {rowIndex + 1} - 3</Col>
-              <Col xs lg="2" className="text-center">Data {rowIndex + 1} - 4</Col>
-            </Row>
-          ))}
-        </Row>
-
-        <Row className="mt-auto justify-content-center">
-          <Col className="text-center">
-            <Button variant="primary" onClick={handleShow}>
-              Open Admin Form
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-
-      {/* Modal for Admin Form */}
-      <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Admin Form</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="d-flex flex-column" style={{ height: '60vh' }}>
-          <AdminForm />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Customer Name</th>
+          <th>Date Taken Out</th>
+          <th>Amount Due</th>
+          <th>Original Amount</th>
+          <th>Interest Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Ma Balls</td>
+          <td>11/6/2024</td>
+          <td>$596,000</td>
+          <td>$1,000,000</td>
+          <td>3%</td>
+        </tr>
+        <tr>
+          <td colSpan={6}>
+          <div className="d-grid gap-2">
+            
+      <Button onClick={() => setOpen(!open) } aria-controls="example-collapse-text"
+        aria-expanded={open} variant="primary" size="lg" active>
+        Admin Form
+      </Button>
+      <Collapse in={open}>
+        <div id="example-collapse-text">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+          terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+          labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </Collapse>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </Table>
   );
 }
 

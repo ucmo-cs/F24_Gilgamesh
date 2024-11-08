@@ -1,0 +1,19 @@
+.terms-of-service {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+  }
+  
+  .terms-of-service h1 {
+    color: #333;
+  }
+  
+  .terms-of-service h2 {
+    color: #444;
+  }
+  
+  .terms-of-service p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  

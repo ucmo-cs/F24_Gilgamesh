@@ -42,10 +42,19 @@ body {
 }
 
 .footer-links a {
-  color: #11552b; /* Link color */
+  color: #f3f6f4; /* Link color */
   text-decoration: none;
 }
 
 .footer-links a:hover {
   color: #ffffff; /* Hover color for links */
+}
+.privacy-policy {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.terms-of-service {
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }

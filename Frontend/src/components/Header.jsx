@@ -11,9 +11,9 @@ function Header() {
           <span className="brand-name">Commerce Bank</span>
         </Navbar.Brand>
         <Nav className="ms-auto">
-          <Nav.Link href="/home">Home</Nav.Link>
-          <Nav.Link href="/SignIn">Sign In</Nav.Link>
-        </Nav>
+  <Nav.Link href="/home" className="nav-link-custom">Home</Nav.Link>
+  <Nav.Link href="/SignIn" className="nav-link-custom">Sign In</Nav.Link>
+</Nav>
       </Container>
     </Navbar>
   );

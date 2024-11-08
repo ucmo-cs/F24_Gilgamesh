@@ -9,6 +9,8 @@ import User from './page/UserPage';
 import Admin from './page/Admin';
 import Theme from './components/Theme';
 import ResetPassword from './page/resetPassword';
+import PrivacyPolicy from './page/PrivacyPolicy';
+import TermsOfService from './page/TermsOfService';
 import './App.css';
 
 function ScrollToTop() {
@@ -35,6 +37,8 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
         </Routes>
       </div>
       

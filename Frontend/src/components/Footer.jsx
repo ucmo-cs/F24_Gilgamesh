@@ -1,5 +1,5 @@
-// Footer.js
 import React from 'react';
+import { Link } from 'react-router-dom';  // Import Link from react-router-dom
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Footer.css'; // Import your custom CSS for footer styling
 
@@ -11,10 +11,11 @@ function Footer() {
           &copy; {new Date().getFullYear()} All rights reserved.
         </p>
         <div className="footer-links">
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
-          <a href="/signin">Sign In</a>
-          <a href="/reset-password" className="reset password link">Reset Password</a>
+          {/* Use Link for internal routing */}
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/terms-of-service">Terms of Service</Link>
+          <Link to="/signin">Sign In</Link>
+          <Link to="/reset-password" className="reset password link">Reset Password</Link>
         </div>
         <p>
           Customer Service: <a href="tel:+1234567890">+1 (222) 333-4567</a>

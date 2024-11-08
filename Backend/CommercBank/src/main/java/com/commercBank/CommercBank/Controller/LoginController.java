@@ -22,7 +22,7 @@ public class LoginController {
         String password = credentials.get("password");
         Account account = accountService.findByUserId(userId);
 
-        if (account != null && account.getPassword().equals(password)) {
+        if (account != null && account.getPassword().equals(password) && account.getEmail().equals(credentials.get("email"))) {
             return ResponseEntity.ok("Login successful");
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");

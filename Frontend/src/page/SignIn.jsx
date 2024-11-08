@@ -24,7 +24,7 @@ const SignIn = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    axios.post('http://localhost:8080/api/v1/users/auth', values)
+    axios.post('http://localhost:8080/login', values)
       .then(response => {
         const userData = response.data;
         if (values.rememberMe) {

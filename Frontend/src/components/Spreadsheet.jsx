@@ -2,11 +2,13 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import Collapse from 'react-bootstrap/Collapse';
-// import './Spreadsheet.css'; // Import your CSS file here
+import Container from 'react-bootstrap/Container';
+import './Spreadsheet.css'; // Import your CSS file here
 
 function Spreadsheet() {
   const [open, setOpen] = useState(false);
   return (
+    
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -21,7 +23,7 @@ function Spreadsheet() {
       <tbody>
         <tr>
           <td>1</td>
-          <td>Ma Balls</td>
+          <td>Joe</td>
           <td>11/6/2024</td>
           <td>$596,000</td>
           <td>$1,000,000</td>
@@ -31,10 +33,10 @@ function Spreadsheet() {
           <td colSpan={6}>
           <div className="d-grid gap-2">
             
-      <Button onClick={() => setOpen(!open) } aria-controls="example-collapse-text"
+      <Button className = "mb-2" onClick={() => setOpen(!open) } aria-controls="example-collapse-text"
         aria-expanded={open} variant="primary" size="lg" active>
         Admin Form
-      </Button>
+      </Button> {' '}
       <Collapse in={open}>
         <div id="example-collapse-text">
           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus

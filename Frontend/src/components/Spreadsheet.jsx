@@ -2,11 +2,17 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import Collapse from 'react-bootstrap/Collapse';
-import Container from 'react-bootstrap/Container';
 import './Spreadsheet.css'; // Import your CSS file here
 
 function Spreadsheet() {
   const [open, setOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
+
+  const handleRowClick = (rowIndex) => {
+    setSelectedRow(rowIndex); // Set the selected row index or data
+    console.log("Row clicked:", rowIndex); // You can handle your logic here
+  };
+
   return (
     
     <Table striped bordered hover>
@@ -21,7 +27,7 @@ function Spreadsheet() {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr onClick={() => handleRowClick(1)} style={{ cursor: 'pointer' }}>
           <td>1</td>
           <td>Joe</td>
           <td>11/6/2024</td>

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./SignIn.css"
 
-import HeaderIn from '../components/HeaderIn';
+//import HeaderIn from '../components/HeaderIn';
 import Header from '../components/Header';
 
 const SignIn = () => {
@@ -32,7 +32,7 @@ const SignIn = () => {
         } else {
           sessionStorage.setItem('userSession', JSON.stringify(userData));
         }
-        navigate('/UserHome');
+        navigate('/ser');
       })
       .catch(err => console.log(err));
   };
@@ -53,9 +53,9 @@ const SignIn = () => {
   const whiteColor = '#ffffff'; // White color for text
 
   return (
-    <>
+    
       
-      <div className="login-container d-flex align-items-center justify-content-center min-vh-100">
+      <div className="login-container d-flex align-items-center justify-content-center ">
         <div 
           className="modal-content rounded-4 shadow"
           style={{
@@ -104,21 +104,13 @@ const SignIn = () => {
                 />
                 <label htmlFor="floatingPassword" style={{ color: greyColor }}>Password</label>
               </div>
-              <div className="mb-3" style={{ color: whiteColor }}>
-                <input
-                  type="checkbox"
-                  name="rememberMe"
-                  className="input"
-                  onChange={handleInput}
-                />
-                <label className="label" htmlFor="rememberMe" style={{ color: whiteColor }}>Admin</label>
-              </div>
+              
               <button className="w-100 mb-2 btn btn-lg rounded-3" style={{ backgroundColor: primaryColor, border: 'none' }} type="submit">Sign In</button>
             </form>
           </div>
         </div>
       </div>
-    </>
+    
   );
 };
 

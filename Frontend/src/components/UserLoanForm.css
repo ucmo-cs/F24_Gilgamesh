@@ -1,7 +1,5 @@
-/* UserForm.css */
-
-/* Main container for the form */
-.form-container {
+/* Main container for the loan payment form */
+.loan-form-container {
     max-width: 600px; /* Maximum width for the form */
     margin: 20px auto; /* Center the form on the page */
     padding: 20px; /* Padding inside the container */
@@ -13,21 +11,21 @@
     z-index: 1000; /* Bring to front */
 }
 
-/* Flex layout for the form */
-.user-form {
+/* Flex layout for the loan payment form */
+.loan-payment-form {
     display: flex;
     flex-direction: column; /* Column layout for form items */
 }
 
 /* Label styling */
-.user-form .form-label {
+.form-label {
     font-weight: bold; /* Make label text bold */
     margin-bottom: 0.5rem; /* Spacing below labels */
-    color: #333; /* Dark gray color for labels */
+    color: #ffffff; /* Set the label text color to white */
 }
 
 /* Input styling */
-.user-form .form-control {
+.loan-payment-form .form-control {
     border-radius: 4px; /* Slightly rounded borders for inputs */
     border: 1px solid #28a745; /* Green border for inputs */
     padding: 10px; /* Padding inside the input */
@@ -35,13 +33,13 @@
     background-color: #f8f9fa; /* Light gray background */
 }
 
-.user-form .form-control:focus {
+.loan-payment-form .form-control:focus {
     border-color: #28a745; /* Green border on focus */
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Green shadow on focus */
 }
 
 /* Button styling */
-.user-form button {
+.loan-payment-form button {
     font-weight: bold; /* Bold text on the button */
     background-color: #28a745; /* Green background */
     color: white; /* White text */
@@ -51,22 +49,22 @@
     border: none; /* Remove border for the button */
 }
 
-.user-form button:hover {
+.loan-payment-form button:hover {
     background-color: #218838; /* Darker green on hover */
     transform: scale(1.05); /* Slightly enlarge the button on hover */
 }
 
-.user-form button:active {
+.loan-payment-form button:active {
     transform: scale(0.95); /* Slightly shrink the button on click */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .form-container {
+    .loan-form-container {
         padding: 15px; /* Reduce padding on smaller screens */
     }
 
-    .user-form button {
+    .loan-payment-form button {
         font-size: 0.9rem; /* Slightly smaller font size for buttons */
     }
 }

@@ -1,5 +1,23 @@
+.main{
+    height: 100vh;
+}
+
+/* Basic style for the input fields */
+.form-floating input:focus + label,
+.form-floating input:focus-visible + label {
+  font-size: 0.75rem; /* Smaller font size when focused */
+  color: rgba(255, 255, 255, 0.5); /* Make the label more transparent */
+}
+
+/* Make the label smaller when the input is focused */
+.form-floating input:focus,
+.form-floating input:focus-visible {
+  background-color: rgba(0, 0, 0, 0.2); /* Slight darkening of the input background when focused */
+  color: transparent; /* Text color in input when focused */
+  border-color: #11552b; /* Change border color to match theme */
+}
 .login-container {
-    min-height: 100vh; /* Full height */
+    height: 75vh;
     display: flex;
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */

@@ -7,7 +7,7 @@
     display: flex; /* Enable flexbox */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    height: 100vh; /* Full height of the viewport */
+    height: 76vh; /* Full height of the viewport */
   }
   
   .box {

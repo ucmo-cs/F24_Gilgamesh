@@ -1,30 +1,38 @@
 /* UserPage.css */
 
 /* Header styles */
-.header {
-  background-color: #f8f9fa; /* Light background */
-  padding: 20px; /* Padding around the header */
-  text-align: center; /* Center the header text */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+.header, .header h1, .header p {
+  background-color: transparent; /* Light background */
+  padding: 5px; /* Padding around the header */
+  text-align: top; /* Center the header text */
+  
+  color: #ffffff; 
+  
   position: relative; /* Allows z-index to work */
   z-index: 1000; /* Bring header to front */
 }
 
 /* Container styles */
 .spreadsheet-container {
-  background-color: #ffffff; /* White background for the container */
+  background-color: transparent; /* Transparent background */
   border-radius: 8px; /* Add rounded corners */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
   padding: 40px; /* Increase padding inside the container */
   display: flex; /* Use flexbox for layout */
   flex-direction: column; /* Stack children vertically */
-  flex: 1; /* Allow the container to grow or shrink */
-  position: relative; /* Allows z-index to work */
-  z-index: 500; /* Bring container to front but lower than header */
-  margin-top: 40px; /* Space below the header */
+  z-index: 500; /* Ensure it is above the header */
   margin-bottom: 80px; /* Space above the footer */
-  max-width: 800px; /* Increase max-width for larger popup */
+  max-width: 800px; /* Increase max-width for larger container */
   width: 90%; /* Set width to a percentage for responsiveness */
+  
+  /* Center the container horizontally and vertically */
+  position: absolute; /* Position relative to the nearest positioned ancestor */
+  top: 300px; /* Move the container 300px down from the top (adjust as needed) */
+  left: 50%; /* Move container to 50% of the screen width */
+  transform: translateX(-50%); /* Adjust by half of the container's width to center it */
+  
+  /* Add a green border */
+  border: 2px solid #28a745; /* Green border */
+  outline: none; /* Remove any default outline from the container */
 }
 
 /* Other styles remain unchanged */
@@ -33,6 +41,7 @@
 .mb-2 {
   margin-bottom: 1rem; /* Space between rows */
 }
+
 
 .text-center {
   font-weight: bold; /* Bold text for headers */
@@ -56,16 +65,24 @@ button {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .header {
-      font-size: 1.5rem; /* Smaller font size for mobile */
+    font-size: 1.5rem; /* Smaller font size for mobile */
   }
 
   .spreadsheet-container {
-      padding: 20px; /* Adjust padding on mobile */
-      margin-bottom: 60px; /* Adjust space for footer on mobile */
-      max-width: 90%; /* Allow more space on smaller screens */
+    padding: 20px; /* Adjust padding on mobile */
+    margin-bottom: 60px; /* Adjust space for footer on mobile */
+    max-width: 90%; /* Allow more space on smaller screens */
   }
 
-  .text-center {
-      font-size: 0.9rem; /* Smaller font size for text */
-  }
+  .not {
+  font-size: 0.9rem; /* Smaller font size for text */
+  border: 1px solid #ffffff; /* White border */
+  
+  color: #ffffff; /* White text color */
+  
+}
+
+
+  
+  
 }

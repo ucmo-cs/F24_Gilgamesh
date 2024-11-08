@@ -1,8 +1,11 @@
 .header {
-    background-color: #6e6e6e; /* Background color */
+    background-color: #fffdfd; /* Background color */
     padding: 0.25rem 1rem; /* Padding for the header */
     z-index: 1000; /* Ensures it stays above other content */
 }
+.navbar {
+    background-color: #6e6e6e !important; /* Force dark background */
+  }
 
 .navbar-logo {
     width: 40px; /* Adjust logo width */
@@ -12,14 +15,14 @@
 
 .brand-name {
     vertical-align: middle; /* Align text vertically with the logo */
-    font-size: 0.5rem; /* Font size */
+    font-size: 0.75rem; /* Font size */
     color: #ffffff; /* Text color */
 }
 
 .nav-link {
-    color: #048711; /* Nav link color */
+    color: #ffffff; /* Nav link color */
 }
 
 .nav-link:hover {
-    color: #c0c0c0; /* Hover color for links */
-}
+    color: #000000; /* Hover color for links */
+} 

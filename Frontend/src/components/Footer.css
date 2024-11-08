@@ -2,11 +2,20 @@
 .footer {
   background-color: #343a40;
   color: white;
-  padding: 20px;
   text-align: center;
-  position: relative;
+  position: fixed; /* Fix it at the bottom of the page */
   bottom: 0;
+  left: 0;
   width: 100%;
+  z-index: 1; /* Keeps the footer on top of other elements */
+  
+  border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+.footer-wrapper {
+  max-width: 1000px; /* Limit the width of the footer content */
+  margin: 0 auto; /* Center the footer content horizontally */
+ 
 }
 
 .footer-text {
@@ -25,5 +34,18 @@
 }
 
 .footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer p {
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.footer a {
+  color: #f8f9fa;
+}
+
+.footer a:hover {
   text-decoration: underline;
 }

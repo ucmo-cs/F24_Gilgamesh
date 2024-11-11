@@ -1,5 +1,6 @@
 package com.commercBank.CommercBank.Controller;
 
+import com.commercBank.CommercBank.Domain.Account;
 import com.commercBank.CommercBank.Domain.Loan;
 import com.commercBank.CommercBank.Service.AccountService;
 import com.commercBank.CommercBank.Service.LoanService;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
 
@@ -51,6 +53,23 @@ public class AdminController {
             return ResponseEntity.ok("Loan updated successfully");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Loan not found");
+    }
+
+    @PostMapping("/create-admin")
+    public ResponseEntity<String> createAdminAccount(@RequestBody Account account) {
+        Account adminAccount = new Account();
+        adminAccount.setUserName("admin");
+
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode("letMeInter123");
+        adminAccount.setPassword(encodedPassword);
+        adminAccount.setRole(Account.Role.ADMIN);
+
+
+        accountService.save(adminAccount);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("Admin account created successfully");
     }
 }
 

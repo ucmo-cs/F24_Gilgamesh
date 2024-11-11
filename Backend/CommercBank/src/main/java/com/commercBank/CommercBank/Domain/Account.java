@@ -6,13 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+import javax.management.relation.Role;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "account")  // Specify the table name if it's different from the entity name
@@ -22,7 +23,7 @@ public class Account {
     private long accountId;
 
     private int userType;
-    @Column(name = "userId", unique = true, nullable = false)
+    @Column(name = "user_Id", unique = true, nullable = false)
     private String userId;
     @Column(name = "user_name")
     private String userName;
@@ -30,12 +31,30 @@ public class Account {
     private String password; // Consider using @JsonIgnore if using in REST API
     private String email;
     private String phoneNumber;
+
+    @Version  // This is the version field for optimistic locking
+    private Long version;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+    public enum Role {
+        USER,
+        ADMIN
+    }
     @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp created_at;
 
     @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Loan>  loans = new ArrayList<>();
+
+    public Account() {
+        if (this.role == null) {
+            this.role = Role.USER;  // Default to USER if not set
+        }
+    }
+
 
     public long getAccountId() {
         return accountId;
@@ -101,4 +120,13 @@ public class Account {
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
 }

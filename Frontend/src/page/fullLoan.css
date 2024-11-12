@@ -1,0 +1,9 @@
+.background {
+    display: flex; /* Flex container to align boxes vertically */
+    flex-direction: column; /* Stack the boxes vertically */
+    align-items: center; /* Center the boxes horizontally */
+    justify-content: center; /* Center the content vertically */
+    height: 100vh; /* Full viewport height */
+    background-color: #ffffff; /* White background color */
+    padding: 20px; /* Padding around the container */
+}

@@ -9,7 +9,7 @@
   width: 100%;
   z-index: 1; /* Keeps the footer on top of other elements */
   
-  border-radius: 10px 10px 0 0; /* Rounded top corners */
+  border-radius: 10px 10px 10px 10px; /* Rounded top corners */
 }
 
 .footer-wrapper {

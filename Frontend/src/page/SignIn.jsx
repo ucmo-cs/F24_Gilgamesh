@@ -32,7 +32,7 @@ const SignIn = () => {
         } else {
           sessionStorage.setItem('userSession', JSON.stringify(userData));
         }
-        navigate('/ser');
+        navigate('/user');
       })
       .catch(err => console.log(err));
   };

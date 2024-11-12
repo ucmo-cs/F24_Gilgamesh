@@ -3,7 +3,7 @@ import './fullLoan.css';
 
 function fullLoan() {
     return (
-        <div className="background">
+        <div className="container">
             {/* Content goes here */}
             <h1>Welcome to the Full Loan Page!</h1>
         </div>

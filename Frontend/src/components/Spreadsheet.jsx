@@ -5,16 +5,15 @@ import Collapse from 'react-bootstrap/Collapse';
 import './Spreadsheet.css'; // Import your CSS file here
 
 function Spreadsheet() {
+  // State for controlling the collapse button
   const [open, setOpen] = useState(false);
-  const [selectedRow, setSelectedRow] = useState(null);
 
-  const handleRowClick = (rowIndex) => {
-    setSelectedRow(rowIndex); // Set the selected row index or data
-    console.log("Row clicked:", rowIndex); // You can handle your logic here
+  // Handle row click to open Google
+  const handleRowClick = () => {
+    window.location.href = "https://www.google.com"; // Redirects to Google
   };
 
   return (
-    
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -27,7 +26,8 @@ function Spreadsheet() {
         </tr>
       </thead>
       <tbody>
-        <tr onClick={() => handleRowClick(1)} style={{ cursor: 'pointer' }}>
+        {/* Row with onClick handler */}
+        <tr onClick={handleRowClick} className="clickable-row" style={{ cursor: 'pointer' }}>
           <td>1</td>
           <td>Joe</td>
           <td>11/6/2024</td>
@@ -37,20 +37,26 @@ function Spreadsheet() {
         </tr>
         <tr>
           <td colSpan={6}>
-          <div className="d-grid gap-2">
-            
-      <Button className = "mb-2" onClick={() => setOpen(!open) } aria-controls="example-collapse-text"
-        aria-expanded={open} variant="primary" size="lg" active>
-        Admin Form
-      </Button> {' '}
-      <Collapse in={open}>
-        <div id="example-collapse-text">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-          terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-          labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-      </Collapse>
-          </div>
+            <div className="d-grid gap-2">
+              <Button 
+                className="mb-2" 
+                onClick={() => setOpen(!open)} 
+                aria-controls="example-collapse-text"
+                aria-expanded={open} 
+                variant="primary" 
+                size="lg" 
+                active>
+                Admin Form
+              </Button>
+              {' '}
+              <Collapse in={open}>
+                <div id="example-collapse-text">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                  terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+                  labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+              </Collapse>
+            </div>
           </td>
         </tr>
       </tbody>

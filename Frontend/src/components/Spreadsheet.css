@@ -3,4 +3,13 @@
   .mb-2 { 
     z-index: 1000; /*Makes sure the button for the admin form is in front of the theme/background */
   }
+
+  .clickable-row {
+    position: relative;
+    z-index: 1000;
+  }
+
+  .clickable-row:hover {
+    z-index: 20;  /* Optionally, change z-index on hover to bring it above other rows */
+  }
   

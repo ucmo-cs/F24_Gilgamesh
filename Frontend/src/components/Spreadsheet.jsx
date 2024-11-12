@@ -10,7 +10,7 @@ function Spreadsheet() {
 
   // Handle row click to open Google
   const handleRowClick = () => {
-    window.location.href = "https://www.google.com"; // Redirects to Google
+    window.location.href = "./fullLoan"; // Redirects to Google
   };
 
   return (

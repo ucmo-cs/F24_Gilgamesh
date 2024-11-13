@@ -1,7 +1,8 @@
-
+# React Bootstrap chunk files and other node clutter
 Frontend/node_modules/.vite/deps/react-router-dom.js
 Frontend/node_modules/.vite/deps/react-dom_client.js.map
 *.js
+
 # Node modules directory
 /node_modules/
 
@@ -59,4 +60,3 @@ yarn-error.log*
 # Expo / React Native project files
 .expo/
 .expo-shared/
-

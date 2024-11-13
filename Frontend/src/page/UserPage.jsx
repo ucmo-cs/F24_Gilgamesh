@@ -4,6 +4,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Table from 'react-bootstrap/Table';
+import Collapse from 'react-bootstrap/Collapse';
+
 import UserForm from '../components/UserForm'; // Import your UserForm component
 import UserLoanForm from '../components/UserLoanForm'; // Import the UserLoanForm component
 import './UserPage.css'; // Import your CSS file
@@ -11,8 +14,8 @@ import './UserPage.css'; // Import your CSS file
 function UserPage() {
   const [show, setShow] = useState(false);  // For showing the UserForm modal
   const [show1, setShow1] = useState(false); // For showing the UserLoanForm modal
- 
   const [loanValue, setLoanValue] = useState(10000);  // Initial loan value
+  const [open, setOpen] = useState(false); // To toggle the admin form visibility
 
   // Handle opening and closing of User Form modal
   const handleClose = () => setShow(false);
@@ -21,6 +24,12 @@ function UserPage() {
   // Handle opening and closing of Loan Payment modal
   const handleClose1 = () => setShow1(false);
   const handleShow1 = () => setShow1(true);
+
+  // Handle row click to show the Loan Payment Form
+  const handleRowClick = (loanAmount) => {
+    setLoanValue(loanAmount); // Set the loan amount to the clicked row's amount
+    setShow1(true); // Open the Loan Payment modal
+  };
 
   return (
     <div>
@@ -36,25 +45,43 @@ function UserPage() {
           </Col>
         </Row>
 
-        {/* Header Row with Loan Information */}
-        <Row className="mb-2 justify-content-center">
-          <Col xs={2} lg={2} className="not text-center header-col">Loan Number</Col>
-          <Col xs={2} lg={2} className="not text-center header-col">Given</Col>
-          <Col xs={2} lg={2} className="not text-center header-col">Interest</Col>
-          <Col xs={2} lg={2} className="not text-center header-col">Paid</Col>
-          <Col xs={2} lg={2} className="not text-center header-col">Amount Left</Col>
-        </Row>
-
-        {/* Data Rows for Loan Information */}
-        {Array.from({ length: 2 }, (_, rowIndex) => (
-          <Row key={rowIndex} className="mb-2 justify-content-center table-row">
-            <Col xs={2} lg={2} className="not text-center">Data</Col>
-            <Col xs={2} lg={2} className="not text-center col-with-border">Data</Col>
-            <Col xs={2} lg={2} className="not text-center col-with-border">Data</Col>
-            <Col xs={2} lg={2} className="not text-center col-with-border">Data</Col>
-            <Col xs={2} lg={2} className="not text-center">Data</Col>
-          </Row>
-        ))}
+        {/* Table for Loan Information */}
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Customer Name</th>
+              <th>Date Taken Out</th>
+              <th>Amount Due</th>
+              <th>Original Amount</th>
+              <th>Interest Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Row with onClick handler */}
+            <tr onClick={() => handleRowClick(596000)} className="clickable-row" style={{ cursor: 'pointer' }}>
+              <td>1</td>
+              <td>Joe</td>
+              <td>11/6/2024</td>
+              <td>$596,000</td>
+              <td>$1,000,000</td>
+              <td>3%</td>
+            </tr>
+            {/* Additional rows can go here */}
+            {/* Toggleable row for Admin Form */}
+            <tr>
+              <td colSpan={6}>
+                <div className="d-grid gap-2">
+                  <Collapse in={open}>
+                    <div>
+                      {/* Admin Form can go here */}
+                    </div>
+                  </Collapse>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
 
         {/* Button Row */}
         <Row className="mt-auto justify-content-center">

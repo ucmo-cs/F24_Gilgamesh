@@ -8,7 +8,7 @@ const Admin = () => {
       <div className="box">
         <Spreadsheet />
       </div>
-      
+
     </div>
   );
 }

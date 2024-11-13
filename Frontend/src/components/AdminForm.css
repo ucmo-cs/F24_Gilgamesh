@@ -4,7 +4,7 @@ body {
 
 form {
   max-width: 600px; /* Limit the form width for better readability */
-  margin: 20px auto; /* Center the form on the page */
+  margin: auto; /* Center the form on the page */
   padding: 20px; /* Padding around the form */
   background-color: #898888; /* White background for the form */
   border-radius: 8px; /* Rounded corners */

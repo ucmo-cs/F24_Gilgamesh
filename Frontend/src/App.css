@@ -1,7 +1,7 @@
 /* App.css */
 html, body {
   height: 100%; /* Ensure full height for html and body */
-  margin: 0; /* Remove default margin */
+  margin: auto; /* Remove default margin */
   /* Prevent horizontal scrolling */
 }
 
@@ -21,7 +21,7 @@ body {
 .footer {
   text-align: center;
   padding: 1rem 0; /* Padding for the footer */
-  background-color: #6e6e6e; /* Opaque gray background */
+  background-color: #828080; /* Opaque gray background */
   box-shadow: none !important;
   z-index: 1; 
   width: 100%; 

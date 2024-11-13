@@ -8,7 +8,7 @@ function AdminForm() {
   return (
     <Form className="admin-form d-flex flex-column" style={{ height: '100%' }}>
       <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail">
+        <Form.Group as={Col} controlId="formGridEmail" >
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
         </Form.Group>

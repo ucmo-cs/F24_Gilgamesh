@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import Collapse from 'react-bootstrap/Collapse';
 import './Spreadsheet.css'; // Import your CSS file here
+import AdminForm from './AdminForm';
 
 function Spreadsheet() {
   // State for controlling the collapse button
@@ -50,10 +51,9 @@ function Spreadsheet() {
               </Button>
               {' '}
               <Collapse in={open}>
-                <div id="example-collapse-text">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                  terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-                  labore wes anderson cred nesciunt sapiente ea proident.
+                <div>
+                  <AdminForm>
+                  </AdminForm>
                 </div>
               </Collapse>
             </div>

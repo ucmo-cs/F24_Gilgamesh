@@ -16,6 +16,7 @@ import './App.css';
 
 function ScrollToTop() {
   const location = useLocation();
+  
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top on route change
@@ -40,7 +41,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/fullLoan" element={<fullLoan />} />
+          
         </Routes>
       </div>
       

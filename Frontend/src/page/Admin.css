@@ -17,7 +17,7 @@ body {
     flex-direction: column; /* Stack the boxes vertically */
     align-items: center; /* Center the boxes horizontally */
     padding: 220px; /* Padding around the container */
-    background-color: #f8f9fa; /* Light background for the container */
+    background-color: #000000; /* Light background for the container */
   }
   
   .box {

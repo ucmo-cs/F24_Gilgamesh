@@ -5,7 +5,7 @@ import './Header.css';
 function Header() {
   return (
     <Navbar className="header">
-      <Container className="d-flex justify-content-between align-items-center">
+      <Container fluid className="d-flex justify-content-between align-items-center">
         <Navbar.Brand style={{ textAlign: 'auto' }}>
           <img src="./commerce-bank.svg" className="navbar-logo" alt="Commerce Bank Logo" />
           <span className="brand-name">Commerce Bank</span>

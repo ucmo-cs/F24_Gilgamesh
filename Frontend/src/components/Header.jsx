@@ -11,8 +11,8 @@ function Header() {
           <span className="brand-name">Commerce Bank</span>
         </Navbar.Brand>
         <Nav className="ms-auto">
-  <Nav.Link href="/home" className="nav-link-custom">Home</Nav.Link>
-  <Nav.Link href="/SignIn" className="nav-link-custom">Sign In</Nav.Link>
+        <Nav.Link href="/home" style={{ color: 'white' }}>Home</Nav.Link> {/* Example color: Dodger Blue */}
+            <Nav.Link href="/SignIn" style={{ color: 'white' }}>Sign In</Nav.Link> {/* Example color: Tomato */}
 </Nav>
       </Container>
     </Navbar>

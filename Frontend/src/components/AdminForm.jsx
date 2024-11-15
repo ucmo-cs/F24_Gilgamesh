@@ -5,53 +5,47 @@ import Row from 'react-bootstrap/Row';
 import './AdminForm.css';
 
 function AdminForm() {
+
+  
   return (
     <Form className="admin-form d-flex flex-column" style={{ height: '100%' }}>
       <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail" >
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+        <Form.Group as={Col} controlId="formGridName" >
+          <Form.Label>Customer Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter Name" />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+        <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="email" placeholder="Enter Email" />
         </Form.Group>
       </Row>
 
-      <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
+      <Form.Group className="mb-3" controlId="formGridPhone">
+        <Form.Label>Phone Number</Form.Label>
+        <Form.Control placeholder="(xxx)-xxx-xxxx" />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor" />
+      <Form.Group className="mb-3" controlId="formGridDate">
+        <Form.Label>Date</Form.Label>
+        <Form.Control type="date"placeholder="month/day/year" />
       </Form.Group>
 
       <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control />
+        <Form.Group as={Col} controlId="formGridLoan">
+          <Form.Label>Loan Amount</Form.Label>
+          <Form.Control placeholder='$12345'/>
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>State</Form.Label>
-          <Form.Select defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
-          </Form.Select>
-        </Form.Group>
+        
 
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
+        <Form.Group as={Col} controlId="formGridRate">
+          <Form.Label>Interest Rate</Form.Label>
+          <Form.Control placeholder='%x.x'/>
         </Form.Group>
       </Row>
 
-      <Form.Group className="mb-3" id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+      
 
       <Button variant="primary" type="submit">
         Submit

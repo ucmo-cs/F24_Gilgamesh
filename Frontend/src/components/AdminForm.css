@@ -2,6 +2,10 @@ body {
   background-color: #f8f9fa; /* Light background for contrast */
 }
 
+.mb-3 {
+  z-index: 1000;
+}
+
 form {
   max-width: 600px; /* Limit the form width for better readability */
   margin: auto; /* Center the form on the page */
@@ -9,6 +13,7 @@ form {
   background-color: #898888; /* White background for the form */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  z-index: 10000;
 }
 
 
@@ -20,6 +25,7 @@ form {
   border-radius: 4px; /* Rounded input fields */
   border: 1px solid #ced4da; /* Light gray border */
   transition: border-color 0.3s; /* Smooth transition for border color */
+  
 }
 
 .form-control:focus {
@@ -45,4 +51,5 @@ form {
 
 .checkbox {
   margin-top: 1rem; /* Space above checkbox */
+  z-index: 10000;
 }

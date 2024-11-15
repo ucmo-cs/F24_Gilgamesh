@@ -62,7 +62,7 @@ h1 {
 }
 
 label {
-    color: rgba(255, 255, 255, 0.8); /* Light label color for better contrast */
+    color: rgba(0, 0, 0, 0.8); /* Light label color for better contrast */
 }
 
 input[type="checkbox"] {

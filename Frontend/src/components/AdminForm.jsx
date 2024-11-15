@@ -34,7 +34,7 @@ function AdminForm() {
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridLoan">
           <Form.Label>Loan Amount</Form.Label>
-          <Form.Control placeholder='$12345'/>
+          <Form.Control type='number'placeholder='$12345'/>
         </Form.Group>
 
         

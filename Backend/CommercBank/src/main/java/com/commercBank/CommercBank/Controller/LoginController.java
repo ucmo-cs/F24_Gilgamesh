@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -20,7 +21,25 @@ public class LoginController {
     private AccountService accountService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Map<String, String> credentials) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials) {
+        String userId = credentials.get("userId");
+        String password = credentials.get("password");
+        Account account = accountService.findByUserId(userId);
+
+        if (account != null && passwordEncoder.matches(password, account.getPassword())
+                && account.getEmail().equals(credentials.get("email"))) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Login successful");
+            response.put("role", String.valueOf(account.getRole()));
+            return ResponseEntity.ok(response);
+        } else {
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("message", "Invalid credentials");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+        }
+    }
+    //old just incase things break
+    /*public ResponseEntity<String> login(@RequestBody Map<String, String> credentials) {
         String userId = credentials.get("userId");
         String password = credentials.get("password");
         Account account = accountService.findByUserId(userId);
@@ -31,5 +50,5 @@ public class LoginController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
-    }
+    }*/
 }

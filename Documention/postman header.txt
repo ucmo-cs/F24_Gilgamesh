@@ -1,0 +1,34 @@
+http://localhost:8080/api/accounts/account
+{
+"userType": 2,
+    "userId": "testUser4",   // Ensure this is not null
+    "userName": "Test User4",
+    "password": "securePassword4",
+    "email": "test4@example.com",
+    "phoneNumber": "1234567804"
+}
+
+http://localhost:8080/loan
+{
+  "loanOriginAmount": 10000.00,
+  "interestRate": 5.0,
+  "userId": "testUser2"
+}
+
+http://localhost:8080/payment
+{
+    "loanId": 2,
+    "amount": 2000.00,
+    "date": "2024-12-01"
+}
+
+http://localhost:8080/admin/create-admin
+{}
+
+http://localhost:8080/login/login
+{
+    "userId": "testUser3",
+    "password": "securePassword3",
+    "email": "test3@example.com"
+}
+

@@ -65,7 +65,7 @@ function UserPage() {
               <td>11/6/2024</td>
               <td>$596,000</td>
               <td>$1,000,000</td>
-              <td>3%</td>
+              <td>5%</td>
             </tr>
             {/* Additional rows can go here */}
             {/* Toggleable row for Admin Form */}

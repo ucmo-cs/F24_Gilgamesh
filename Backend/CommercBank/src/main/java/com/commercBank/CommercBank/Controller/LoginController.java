@@ -27,7 +27,7 @@ public class LoginController {
         Account account = accountService.findByUserId(userId);
 
         if (account != null && passwordEncoder.matches(password, account.getPassword())
-                && account.getEmail().equals(credentials.get("email"))) {
+                ) {
             Map<String, String> response = new HashMap<>();
             response.put("message", "Login successful");
             response.put("role", String.valueOf(account.getRole()));

@@ -1,21 +1,23 @@
-.main{
+.main {
     height: 100vh;
 }
 
 /* Basic style for the input fields */
 .form-floating input:focus + label,
 .form-floating input:focus-visible + label {
-  font-size: 0.75rem; /* Smaller font size when focused */
-  color: rgba(255, 255, 255, 0.5); /* Make the label more transparent */
+    font-size: 0.75rem; /* Smaller font size when focused */
+    color: rgba(255, 255, 255, 0.7); /* Slightly more opaque label */
 }
 
 /* Make the label smaller when the input is focused */
 .form-floating input:focus,
 .form-floating input:focus-visible {
-  background-color: rgba(0, 0, 0, 0.2); /* Slight darkening of the input background when focused */
-  color: transparent; /* Text color in input when focused */
-  border-color: #11552b; /* Change border color to match theme */
+    background-color: rgba(255, 255, 255, 0.9); /* Light background when focused, remove darkening */
+    color: #333; /* Dark text when focused to make it legible */
+    border-color: #11552b; /* Change border color to match theme */
+    box-shadow: 0 0 5px rgba(17, 85, 43, 0.6); /* Optional: Add subtle shadow on focus for emphasis */
 }
+
 .login-container {
     height: 75vh;
     display: flex;
@@ -70,7 +72,7 @@ input[type="checkbox"] {
 }
 
 .btn-primary {
-    background-color: #ffffff; /* Change to white */
+    background-color: #ffffff; /* White background for button */
     color: #11552b; /* Text color to match the primary theme */
     border: none; /* Remove border */
 }

@@ -21,6 +21,7 @@ public class AccountService {
         String encodedPassword = passwordEncoder.encode(account.getPassword());
         account.setPassword(encodedPassword);  // Set the encoded password
 
+
         System.out.println("Creating account: " + account);
         return accountRepository.save(account);
     }
@@ -28,6 +29,7 @@ public class AccountService {
     public Account findByUserId(String userId) {
         return accountRepository.findByUserId(userId);
     }
+
 
     public Account save(Account account) {
         return accountRepository.save(account);

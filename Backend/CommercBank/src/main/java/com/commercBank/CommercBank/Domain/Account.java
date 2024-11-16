@@ -33,7 +33,7 @@ public class Account {
     private String phoneNumber;
 
     @Version  // This is the version field for optimistic locking
-    private Long version;
+    private Long version= 0L; // Initialize the version field to 0
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

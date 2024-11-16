@@ -31,16 +31,22 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        System.out.println("Custom SecurityFilterChain is being initialized!");
         http
+                .csrf(csrf -> csrf.disable())
+
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/accounts/account").permitAll() //Allow public access to `/create`
-                        .requestMatchers("/login").permitAll()   // Allow public access to `/login`
+                        .requestMatchers("/login/login").permitAll()   // Allow public access to `/login`
+                        .requestMatchers("/loan").permitAll()
+                        .requestMatchers("/payment").permitAll()
                         .requestMatchers("/create-admin").permitAll() // delete later
                         .requestMatchers("/admin/**").hasRole("ADMIN")  // Ensure only admin access to `/admin`
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())  // Enable basic auth
-                .csrf(csrf -> csrf.disable());         // Disable CSRF for simplicity in API testing
+                .anonymous(anonymous -> anonymous.disable())  // Disable anonymous authentication         // Disable CSRF for simplicity in API testing
+                .formLogin(form -> form.disable());   // Disable default form login
 
         return http.build();
     }

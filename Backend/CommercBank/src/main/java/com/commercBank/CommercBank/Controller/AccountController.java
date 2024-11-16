@@ -32,7 +32,6 @@ public class AccountController {
             Account account = new ModelMapper().map(accountDto, Account.class);
             account.setCreated_at(new Timestamp(System.currentTimeMillis()));
 
-            Account savedAccount = accountService.create(account); // may need to remove
             return new ResponseEntity<>(accountService.create(account), HttpStatus.CREATED);
         }
 }

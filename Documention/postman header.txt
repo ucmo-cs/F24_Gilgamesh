@@ -32,6 +32,7 @@ http://localhost:8080/login/login
     "email": "test3@example.com"
 }
 
+<<<<<<< Updated upstream
 
 http://localhost:8080/admin/create-admin
 {
@@ -41,3 +42,8 @@ http://localhost:8080/admin/create-admin
   "email": "admin6@example.com",
   "phoneNumber": "1234567806"
 }
+=======
+GET:  http://localhost:8080/loan/account/1 -- change the 1 to whatever account id you are pulling from
+
+nothing in the body
+>>>>>>> Stashed changes

@@ -1,3 +1,4 @@
+/* Main container */
 .main {
     height: 100vh;
 }
@@ -12,14 +13,15 @@
 /* Make the label smaller when the input is focused */
 .form-floating input:focus,
 .form-floating input:focus-visible {
-    background-color: rgba(255, 255, 255, 0.9); /* Light background when focused, remove darkening */
+    background-color: rgba(255, 255, 255, 0.9); /* Light background when focused */
     color: #333; /* Dark text when focused to make it legible */
     border-color: #11552b; /* Change border color to match theme */
     box-shadow: 0 0 5px rgba(17, 85, 43, 0.6); /* Optional: Add subtle shadow on focus for emphasis */
 }
 
+/* Container for login form */
 .login-container {
-    height: 75vh;
+    height: 90vh;
     display: flex;
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
@@ -27,6 +29,7 @@
     z-index: 10; /* Ensure this is higher than the overlay */
 }
 
+/* Modal styling */
 .modal-content {
     background-color: rgba(128, 128, 128, 0.9); /* Gray background for the modal */
     border-radius: 0.5rem; /* Rounded corners */
@@ -71,15 +74,25 @@ input[type="checkbox"] {
     margin-right: 0.5rem; /* Space before the checkbox label */
 }
 
+/* Green login button */
 .btn-primary {
-    background-color: #ffffff; /* White background for button */
-    color: #11552b; /* Text color to match the primary theme */
+    background-color: #28a745; /* Green background for button */
+    color: white; /* White text */
     border: none; /* Remove border */
+    padding: 10px 20px; /* Adjust padding for a nice button size */
+    border-radius: 5px; /* Rounded corners for the button */
+    font-size: 1rem; /* Button font size */
+    font-weight: bold; /* Bold text */
 }
 
 .btn-primary:hover {
-    background-color: rgba(255, 255, 255, 0.8); /* Lighter shade on hover */
-    color: #11552b; /* Maintain text color on hover */
+    background-color: #218838; /* Darker green on hover */
+    color: white; /* Maintain white text on hover */
+}
+
+.btn-primary:active {
+    background-color: #1e7e34; /* Even darker green on active click */
+    color: white; /* White text on click */
 }
 
 .text-body-secondary {

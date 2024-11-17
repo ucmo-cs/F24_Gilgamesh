@@ -14,7 +14,7 @@ import UserHeader from '../components/UserHeader';
 
 function UserPage() {
   const [show1, setShow1] = useState(false); // For showing the UserLoanForm modal
-  const [loanValue, setLoanValue] = useState(10000);  // Initial loan value
+  const [loanValue, setLoanValue] = useState(0);  // Total loan value (sum of loanOriginAmounts)
   const [parsedUser, setParsedUser] = useState(null); // User state
   const [loans, setLoans] = useState([]); // To store multiple loans data
   const [error, setError] = useState(null); // To handle any errors
@@ -68,6 +68,10 @@ function UserPage() {
         .then((response) => {
           console.log("Loan data fetched:", response.data); // Log the response data
           setLoans(response.data); // Store multiple loans data in state
+
+          // Calculate the total loan value (sum of all loanOriginAmount values)
+          const totalDue = response.data.reduce((acc, loan) => acc + loan.loanOriginAmount, 0);
+          setLoanValue(totalDue); // Set the total due loan amount
         })
         .catch((error) => {
           console.error("Error fetching loan data:", error);
@@ -79,17 +83,17 @@ function UserPage() {
   return (
     <>
       {localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />}
-      
+
       <div>
         <Container className="spreadsheet-container">
           <header className="header">
             <h1>Hello {parsedUser ? parsedUser.User : 'Loading...'}</h1> {/* Conditionally rendering user name */}
           </header>
 
-          {/* Display Loan Value */}
+          {/* Display Total Due Loan Value */}
           <Row className="mb-2 justify-content-center">
             <Col xs lg="12" className="text-center">
-              <h3>Total Due: ${loanValue}</h3>
+              <h3>Total Due: ${loanValue.toFixed(2)}</h3>
             </Col>
           </Row>
 
@@ -97,7 +101,6 @@ function UserPage() {
           <Table striped bordered hover>
             <thead>
               <tr>
-                
                 <th>Loan ID</th>
                 <th>Loan Origin Amount</th>
                 <th>Interest Rate</th>
@@ -107,14 +110,13 @@ function UserPage() {
             </thead>
             <tbody>
               {loans.length > 0 ? (
-                loans.map((loan, index) => (
-                  <tr 
-                    key={loan.loan_id} 
-                    onClick={() => handleRowClick(loan.loanOriginAmount)} 
-                    className="clickable-row" 
+                loans.map((loan) => (
+                  <tr
+                    key={loan.loan_id}
+                    onClick={() => handleRowClick(loan.loanOriginAmount)}
+                    className="clickable-row"
                     style={{ cursor: 'pointer' }}
                   >
-                    
                     <td>{loan.loan_id}</td>
                     <td>${loan.loanOriginAmount.toFixed(2)}</td>
                     <td>{loan.interestRate}%</td>
@@ -124,11 +126,11 @@ function UserPage() {
                 ))
               ) : error ? (
                 <tr>
-                  <td colSpan="6" className="text-center text-danger">{error}</td>
+                  <td colSpan="5" className="text-center text-danger">{error}</td>
                 </tr>
               ) : (
                 <tr>
-                  <td colSpan="6" className="text-center">Loading loan data...</td>
+                  <td colSpan="5" className="text-center">Loading loan data...</td>
                 </tr>
               )}
             </tbody>

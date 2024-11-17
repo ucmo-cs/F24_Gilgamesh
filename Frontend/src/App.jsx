@@ -15,6 +15,7 @@ import ResetPassword from './page/resetPassword';
 import PrivacyPolicy from './page/PrivacyPolicy';
 import TermsOfService from './page/TermsOfService';
 import fullLoan from './page/fullLoan';
+import UserSetting from './page/UserSetting';
 import './App.css';
 
 function ScrollToTop() {
@@ -42,6 +43,7 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/user" element={<User/>} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/setting" element={<UserSetting/>} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />

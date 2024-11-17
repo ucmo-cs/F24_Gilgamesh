@@ -28,11 +28,13 @@ public class LoginController {
 
         if (account != null && passwordEncoder.matches(password, account.getPassword())) {
             Map<String, String> response = new HashMap<>();
-            response.put("message", "Login successful");
+
 
             response.put("User", String.valueOf(account.getUserName()));
             response.put("role", String.valueOf(account.getRole()));
             response.put("account_id", String.valueOf(account.getAccountId()));
+            response.put("email", account.getEmail());
+            response.put("number", account.getPhoneNumber());
             return ResponseEntity.ok(response);
         } else {
             Map<String, String> errorResponse = new HashMap<>();

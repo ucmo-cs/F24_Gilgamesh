@@ -36,6 +36,7 @@ public class UserController {
     public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody Account account) {
         Account existingAccount = accountService.findByUserId(String.valueOf(id));
         if (existingAccount != null) {
+            existingAccount.setUserName(account.getUserName());
             existingAccount.setEmail(account.getEmail());
             existingAccount.setPhoneNumber(account.getPhoneNumber());
             accountService.save(existingAccount);

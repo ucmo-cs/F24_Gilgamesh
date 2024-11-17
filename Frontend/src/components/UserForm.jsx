@@ -23,10 +23,7 @@ function UserForm() {
         <Form.Control type="tel" placeholder="Enter phone number" />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formGridAddress">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="Enter address" />
-      </Form.Group>
+     
 
       <Button variant="primary" type="submit">
         Submit

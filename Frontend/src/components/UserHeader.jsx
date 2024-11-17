@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar, Dropdown } from 'react-bootstrap';
-import './Header.css';
+
+import './UserHeader.css';
 
 function UserHeader() {
   const [parsedUser, setParsedUser] = useState(null);
+  
 
   useEffect(() => {
     const user = sessionStorage.getItem('userSession');
     console.log('Stored user session:', user);  // Log the raw user data
-    
+
     if (user) {
       const parsed = JSON.parse(user);
       console.log('Parsed user data:', parsed);  // Log the parsed user object
@@ -16,8 +18,13 @@ function UserHeader() {
     }
   }, []);
 
+  // Handle logout functionality
+  const handleLogout = () => {
+    sessionStorage.clear();  // Clear the session data
+  };
+
   return (
-    <Navbar className="header">
+    <Navbar className="userheader">
       <Container fluid className="d-flex justify-content-between align-items-center">
         <Navbar.Brand style={{ textAlign: 'auto' }}>
           <img src="./commerce-bank.svg" className="navbar-logo" alt="Commerce Bank Logo" />
@@ -28,19 +35,18 @@ function UserHeader() {
 
           {/* Display the username if parsedUser exists */}
           {parsedUser ? (
-            // Use parsedUser.User instead of parsedUser.username
             parsedUser.User ? (
               // Dropdown for the user
-              <Dropdown align="end">
+              <Dropdown align="end" className="user-dropdown">
                 <Dropdown.Toggle variant="link" id="user-dropdown" style={{ color: 'white' }}>
                   {parsedUser.User} {/* Display the username */}
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
+                <Dropdown.Menu className="dropdown-menu">
                   {/* Dropdown items */}
                   <Dropdown.Item href="/user">View Profile</Dropdown.Item>
-                  <Dropdown.Item href="/settings">Settings</Dropdown.Item>
-                  <Dropdown.Item href="/logout">Logout</Dropdown.Item>
+                  <Dropdown.Item href="/setting">Settings</Dropdown.Item>
+                  <Dropdown.Item href="/home" onClick={handleLogout}>Logout</Dropdown.Item> 
                 </Dropdown.Menu>
               </Dropdown>
             ) : (

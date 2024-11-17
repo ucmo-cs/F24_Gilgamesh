@@ -35,9 +35,8 @@ public class Loan {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
-
     @ManyToOne
-    @JoinColumn(name = "user_account_id")
+    @JoinColumn(name = "user_account_id", nullable = false)
     @JsonIgnore
     private Account userAccount;
 

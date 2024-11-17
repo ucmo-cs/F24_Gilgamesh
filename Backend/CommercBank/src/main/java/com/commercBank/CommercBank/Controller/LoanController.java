@@ -23,6 +23,11 @@ public class LoanController {
     @Autowired
     private final LoanService loanService;
 
+    @GetMapping("/account/{accountId}")
+    public ResponseEntity<?> findByAccountId(@PathVariable Long accountId) {
+        return new ResponseEntity<>(loanService.findByAccountId(accountId), HttpStatus.OK);
+    }
+
     //@CrossOrigin
     private static final Logger logger = LoggerFactory.getLogger(LoanController.class);
     @PostMapping
@@ -48,8 +53,6 @@ public class LoanController {
         return new ResponseEntity<>(savedLoan, HttpStatus.CREATED);
 
     }
-
-
 
     @CrossOrigin
     @GetMapping("/loans")

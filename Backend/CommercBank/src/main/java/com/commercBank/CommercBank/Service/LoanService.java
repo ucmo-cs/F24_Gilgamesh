@@ -28,7 +28,12 @@ public class LoanService {
     private LoanRepository loanRepository;
 
     @Autowired
-    private AccountRepository accountRepository; //fetches account by id
+    private AccountRepository accountRepository;//fetches account by id
+
+    public List<Loan> findByAccountId(Long accountId) {
+        // Implementation of the new method
+        return loanRepository.findByUserAccount_AccountId(accountId);
+    }
 
     public List<Loan> findAll() {
         return loanRepository.findAll();
@@ -60,6 +65,5 @@ public class LoanService {
     public Loan save(Loan loan) {
         return loanRepository.save(loan);
     }
-
 
 }

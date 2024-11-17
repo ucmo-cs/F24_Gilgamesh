@@ -4,9 +4,11 @@
     z-index: 1000; /* Ensures it stays above other content */
     border-radius: 10px 10px 10px 10px; /* Rounded top corners */
 }
+
 .navbar {
     background-color: #898888 !important; /* Force dark background */
-  }
+    height: 60px; /* Adjust navbar height */
+}
 
 .navbar-logo {
     width: 40px; /* Adjust logo width */
@@ -22,8 +24,31 @@
 
 .nav-link {
     color: #f4eeee; /* Nav link color */
+    margin-right: 20px; /* Adds space between nav items */
 }
 
 .nav-link:hover {
     text-decoration: underline;
-} 
+    background-color: #555; /* Background color on hover */
+}
+
+.dropdown-menu {
+    background-color: #444; /* Darker background for dropdown */
+}
+
+.dropdown-item:hover {
+    background-color: #666; /* Hover effect for dropdown items */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    .brand-name {
+        font-size: 1.5rem;
+    }
+    .navbar-logo {
+        width: 30px; /* Smaller logo on smaller screens */
+    }
+}

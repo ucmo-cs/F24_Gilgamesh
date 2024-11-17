@@ -5,20 +5,20 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
-import Collapse from 'react-bootstrap/Collapse';
+import axios from 'axios';
 
-import UserForm from '../components/UserForm'; // Import your UserForm component
 import UserLoanForm from '../components/UserLoanForm'; // Import the UserLoanForm component
 import './UserPage.css'; // Import your CSS file
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 
 function UserPage() {
-  const [show, setShow] = useState(false);  // For showing the UserForm modal
   const [show1, setShow1] = useState(false); // For showing the UserLoanForm modal
   const [loanValue, setLoanValue] = useState(10000);  // Initial loan value
-  const [open, setOpen] = useState(false); // To toggle the admin form visibility
   const [parsedUser, setParsedUser] = useState(null); // User state
+  const [loans, setLoans] = useState([]); // To store multiple loans data
+  const [error, setError] = useState(null); // To handle any errors
+  const [userId, setUserId] = useState(null); // To store the user ID
 
   // Handle opening and closing of Loan Payment modal
   const handleClose1 = () => setShow1(false);
@@ -30,16 +30,51 @@ function UserPage() {
     setShow1(true); // Open the Loan Payment modal
   };
 
+  // Get user session from sessionStorage
   useEffect(() => {
     const user = sessionStorage.getItem('userSession');
-    console.log('Stored user session:', user);  // Log the raw user data
-
     if (user) {
       const parsed = JSON.parse(user);
-      console.log('Parsed user data:', parsed);  // Log the parsed user object
       setParsedUser(parsed);  // Set parsed user in state
+    } else {
+      console.log("No user session found.");
     }
   }, []);
+
+  useEffect(() => {
+    const userSession = sessionStorage.getItem('userSession');
+    if (userSession) {
+      const parsedUser = JSON.parse(userSession);
+      console.log("Parsed user data:", parsedUser);
+      if (parsedUser && parsedUser.account_id) {  // Checking for 'account_id'
+        setUserId(parsedUser.account_id);  // Use account_id if userId is missing
+        console.log("User ID set to account_id:", parsedUser.account_id);
+      } else {
+        console.error("User ID or account_id is missing in the session data.");
+      }
+    } else {
+      console.log("No user session available.");
+    }
+  }, []);
+
+  // Fetch loan data when userId is available
+  useEffect(() => {
+    if (userId) {
+      const url = `http://localhost:8080/loan/account/${userId}`;
+      console.log("Making request to URL:", url); // Log the URL being used
+
+      axios
+        .get(url)
+        .then((response) => {
+          console.log("Loan data fetched:", response.data); // Log the response data
+          setLoans(response.data); // Store multiple loans data in state
+        })
+        .catch((error) => {
+          console.error("Error fetching loan data:", error);
+          setError(error.message || 'An error occurred while fetching loan data');
+        });
+    }
+  }, [userId]);
 
   return (
     <>
@@ -48,7 +83,7 @@ function UserPage() {
       <div>
         <Container className="spreadsheet-container">
           <header className="header">
-            <h1>Hello {parsedUser ? parsedUser.User : 'Loading...'}</h1> {/* Added conditional rendering */}
+            <h1>Hello {parsedUser ? parsedUser.User : 'Loading...'}</h1> {/* Conditionally rendering user name */}
           </header>
 
           {/* Display Loan Value */}
@@ -62,23 +97,40 @@ function UserPage() {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>#</th>
-                <th>Customer Name</th>
-                <th>Date Taken Out</th>
-                <th>Amount Due</th>
-                <th>Original Amount</th>
+                
+                <th>Loan ID</th>
+                <th>Loan Origin Amount</th>
                 <th>Interest Rate</th>
+                <th>Date Created</th>
+                <th>Date Updated</th>
               </tr>
             </thead>
             <tbody>
-              <tr onClick={() => handleRowClick(596000)} className="clickable-row" style={{ cursor: 'pointer' }}>
-                <td>1</td>
-                <td>Joe</td>
-                <td>11/6/2024</td>
-                <td>$596,000</td>
-                <td>$1,000,000</td>
-                <td>5%</td>
-              </tr>
+              {loans.length > 0 ? (
+                loans.map((loan, index) => (
+                  <tr 
+                    key={loan.loan_id} 
+                    onClick={() => handleRowClick(loan.loanOriginAmount)} 
+                    className="clickable-row" 
+                    style={{ cursor: 'pointer' }}
+                  >
+                    
+                    <td>{loan.loan_id}</td>
+                    <td>${loan.loanOriginAmount.toFixed(2)}</td>
+                    <td>{loan.interestRate}%</td>
+                    <td>{new Date(loan.created_at).toLocaleDateString()}</td>
+                    <td>{new Date(loan.updatedAt).toLocaleDateString()}</td>
+                  </tr>
+                ))
+              ) : error ? (
+                <tr>
+                  <td colSpan="6" className="text-center text-danger">{error}</td>
+                </tr>
+              ) : (
+                <tr>
+                  <td colSpan="6" className="text-center">Loading loan data...</td>
+                </tr>
+              )}
             </tbody>
           </Table>
 

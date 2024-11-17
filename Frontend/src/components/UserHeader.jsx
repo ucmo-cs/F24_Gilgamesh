@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, Dropdown } from 'react-bootstrap';
 import './Header.css';
 
 function UserHeader() {
@@ -25,13 +25,24 @@ function UserHeader() {
         </Navbar.Brand>
         <Nav className="ms-auto">
           <Nav.Link href="/home" style={{ color: 'white' }}>Home</Nav.Link>
+
           {/* Display the username if parsedUser exists */}
           {parsedUser ? (
             // Use parsedUser.User instead of parsedUser.username
             parsedUser.User ? (
-              <Nav.Link href="/user" style={{ color: 'white' }}>
-                {parsedUser.User} {/* Accessing the 'User' property */}
-              </Nav.Link>
+              // Dropdown for the user
+              <Dropdown align="end">
+                <Dropdown.Toggle variant="link" id="user-dropdown" style={{ color: 'white' }}>
+                  {parsedUser.User} {/* Display the username */}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  {/* Dropdown items */}
+                  <Dropdown.Item href="/user">View Profile</Dropdown.Item>
+                  <Dropdown.Item href="/settings">Settings</Dropdown.Item>
+                  <Dropdown.Item href="/logout">Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             ) : (
               <Nav.Link href="/SignIn" style={{ color: 'white' }}>
                 No user found {/* If User property doesn't exist */}

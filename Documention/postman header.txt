@@ -32,3 +32,12 @@ http://localhost:8080/login/login
     "email": "test3@example.com"
 }
 
+
+http://localhost:8080/admin/create-admin
+{
+  "userId": "admin6",
+   "userType": 1, 
+  "userName": "Admin james6", 
+  "email": "admin6@example.com",
+  "phoneNumber": "1234567806"
+}

@@ -4,6 +4,8 @@ import com.commercBank.CommercBank.Domain.Account;
 import com.commercBank.CommercBank.Domain.Loan;
 import com.commercBank.CommercBank.Service.AccountService;
 import com.commercBank.CommercBank.Service.LoanService;
+import com.commercBank.CommercBank.dto.AccountDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
@@ -55,8 +58,42 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Loan not found");
     }
 
+    @CrossOrigin
     @PostMapping("/create-admin")
-    public ResponseEntity<String> createAdminAccount(@RequestBody Account account) {
+    public ResponseEntity<String> createAdminAccount() {
+        System.out.println("Creating admin account");
+
+        // Create a new AccountDto (this will hold the admin account data)
+        AccountDto accountDto = new AccountDto();
+        accountDto.setUserId("admin");  // Unique userId for the admin
+        accountDto.setUserName("admin");  // Admin's username
+        accountDto.setPassword("letMeInter123");  // Default admin password
+        accountDto.setRole(Account.Role.ADMIN);  // Set role to ADMIN
+
+        // Log accountDto for debugging
+        System.out.println("AccountDto: " + accountDto);
+
+        // Map the AccountDto to Account entity using ModelMapper
+        Account account = new ModelMapper().map(accountDto, Account.class);
+
+        // Set the created_at timestamp
+        account.setCreated_at(new Timestamp(System.currentTimeMillis()));
+
+        // Encrypt the password before saving the account
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(account.getPassword());
+        account.setPassword(encodedPassword);
+
+        // Save the account
+        accountService.save(account);
+
+        return new ResponseEntity<>("Admin account created successfully", HttpStatus.CREATED);
+    }
+
+
+
+
+    /*public ResponseEntity<String> createAdminAccount(@RequestBody Account account) {
         Account adminAccount = new Account();
         adminAccount.setUserName("admin");
 
@@ -70,6 +107,6 @@ public class AdminController {
         accountService.save(adminAccount);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Admin account created successfully");
-    }
+    }*/
 }
 

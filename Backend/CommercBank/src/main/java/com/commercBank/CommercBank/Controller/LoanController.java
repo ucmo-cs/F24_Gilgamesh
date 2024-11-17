@@ -49,6 +49,8 @@ public class LoanController {
 
     }
 
+
+
     @CrossOrigin
     @GetMapping("/loans")
     public ResponseEntity<?> findAll() {

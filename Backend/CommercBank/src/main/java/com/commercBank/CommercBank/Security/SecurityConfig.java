@@ -40,8 +40,10 @@ public class SecurityConfig {
                         .requestMatchers("/login/login").permitAll()   // Allow public access to `/login`
                         .requestMatchers("/loan").permitAll()
                         .requestMatchers("/payment").permitAll()
-                        .requestMatchers("/create-admin").permitAll() // delete later
-                        .requestMatchers("/admin/**").hasRole("ADMIN")  // Ensure only admin access to `/admin`
+                        .requestMatchers("/create-admin").permitAll()
+                        .requestMatchers("/admin/create-admin").permitAll() // delete later
+                        .requestMatchers("/admin/**").permitAll()
+                        //.requestMatchers("/admin/**").hasRole("ADMIN")  // Ensure only admin access to `/admin`
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())  // Enable basic auth

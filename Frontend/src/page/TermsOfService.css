@@ -1,19 +1,27 @@
 .terms-of-service {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f1f1f1;
-  }
-  
-  .terms-of-service h1 {
-    color: #fef4f4 ;
-  }
-  
-  .terms-of-service h2 {
-    color: #444;
-  }
-  
-  .terms-of-service p {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-  
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  max-width: 800px;  /* Optional: sets a max width for better readability */
+  margin: 0 auto;    /* This centers the container horizontally */
+  display: flex;
+  flex-direction: column; /* Ensures that the content is stacked vertically */
+  align-items: center;    /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically (if height is constrained) */
+}
+
+.terms-of-service h1 {
+  color: #fef4f4;
+  text-align: center; /* Centers the h1 text */
+}
+
+.terms-of-service h2 {
+  color: #444;
+  text-align: center; /* Centers the h2 text */
+}
+
+.terms-of-service p {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center; /* Centers the paragraph text */
+}

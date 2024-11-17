@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Table from 'react-bootstrap/Table';
+import { Container, Row, Col, Button, Modal, Table } from 'react-bootstrap';
 import axios from 'axios';
 
 import UserLoanForm from '../components/UserLoanForm'; // Import the UserLoanForm component
@@ -20,17 +15,14 @@ function UserPage() {
   const [error, setError] = useState(null); // To handle any errors
   const [userId, setUserId] = useState(null); // To store the user ID
 
-  // Handle opening and closing of Loan Payment modal
   const handleClose1 = () => setShow1(false);
   const handleShow1 = () => setShow1(true);
 
-  // Handle row click to show the Loan Payment Form
   const handleRowClick = (loanAmount) => {
     setLoanValue(loanAmount); // Set the loan amount to the clicked row's amount
     setShow1(true); // Open the Loan Payment modal
   };
 
-  // Get user session from sessionStorage
   useEffect(() => {
     const user = sessionStorage.getItem('userSession');
     if (user) {
@@ -45,31 +37,21 @@ function UserPage() {
     const userSession = sessionStorage.getItem('userSession');
     if (userSession) {
       const parsedUser = JSON.parse(userSession);
-      console.log("Parsed user data:", parsedUser);
-      if (parsedUser && parsedUser.account_id) {  // Checking for 'account_id'
+      if (parsedUser && parsedUser.account_id) {
         setUserId(parsedUser.account_id);  // Use account_id if userId is missing
-        console.log("User ID set to account_id:", parsedUser.account_id);
       } else {
         console.error("User ID or account_id is missing in the session data.");
       }
-    } else {
-      console.log("No user session available.");
     }
   }, []);
 
-  // Fetch loan data when userId is available
   useEffect(() => {
     if (userId) {
       const url = `http://localhost:8080/loan/account/${userId}`;
-      console.log("Making request to URL:", url); // Log the URL being used
-
       axios
         .get(url)
         .then((response) => {
-          console.log("Loan data fetched:", response.data); // Log the response data
           setLoans(response.data); // Store multiple loans data in state
-
-          // Calculate the total loan value (sum of all loanOriginAmount values)
           const totalDue = response.data.reduce((acc, loan) => acc + loan.loanOriginAmount, 0);
           setLoanValue(totalDue); // Set the total due loan amount
         })
@@ -146,15 +128,22 @@ function UserPage() {
           </Row>
         </Container>
 
-        {/* Modal for Loan Payment Form */}
-        <Modal show={show1} onHide={handleClose1} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-          <Modal.Header closeButton>
-            <Modal.Title>Loan Payment Form</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className="d-flex flex-column" style={{ height: '60vh' }}>
-            <UserLoanForm loanValue={loanValue} setLoanValue={setLoanValue} />
-          </Modal.Body>
-        </Modal>
+        <Modal
+  show={show1}
+  onHide={handleClose1}
+  aria-labelledby="contained-modal-title-vcenter"
+  centered
+>
+  <Modal.Header closeButton>
+    <Modal.Title>Loan Payment Form</Modal.Title>
+  </Modal.Header>
+  <Modal.Body
+    className="d-flex flex-column"
+    style={{ height: '30vh', padding: '10px' }} // Adjust height here
+  >
+    <UserLoanForm loanValue={loanValue} setLoanValue={setLoanValue} />
+  </Modal.Body>
+</Modal>
       </div>
     </>
   );

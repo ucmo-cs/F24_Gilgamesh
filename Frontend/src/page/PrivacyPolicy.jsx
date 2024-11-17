@@ -1,9 +1,16 @@
 import React from 'react';
 import './PrivacyPolicy.css'; 
+import Header from '../components/Header';
+import UserHeader from '../components/UserHeader';
+
+
 
 function PrivacyPolicy() {
+  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />;
   return (
-    <div style={{ padding: '20px' }}>
+    <>
+    {navBar} 
+      <div style={{ padding: '20px' }}>
       <h1>Privacy Policy</h1>
       <p>Welcome to our Privacy Policy page. Here we explain how we handle your personal information:</p>
       
@@ -18,6 +25,9 @@ function PrivacyPolicy() {
       
       <p>If you have any questions, feel free to contact us at support@example.com.</p>
     </div>
+    
+    </>
+    
   );
 }
 

@@ -1,83 +1,103 @@
-/* UserSetting.css */
 .user-settings-container {
-    margin-top: 2rem; /* Margin from the top of the page */
-    padding: 2rem;
-    max-width: 800px; /* Max width of the container */
-    margin-left: auto;
-    margin-right: auto;
-    background-color: transparent;
-    border-radius: 8px;
-    
-    position: relative; /* Positioning for the cancel button */
-    z-index: 2;
-    
-    /* Centering the container horizontally and vertically */
-    display: flex;
-    flex-direction: column; /* Stacks elements vertically */
-    align-items: center; /* Centers content horizontally */
-    justify-content: center; /* Centers content vertically */
-    height: 70vh; /* Full viewport height */
+  margin-top: 2rem; /* Margin from the top of the page */
+  padding: 1.5rem;  /* Reduced padding for a smaller container */
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  border-radius: 8px; /* Optional: Add rounded corners */
+  
+  position: relative; /* Positioning for the cancel button */
+  z-index: 2;
+  
+  /* Centering the container horizontally and vertically */
+  display: flex;
+  flex-direction: column; /* Stacks elements vertically */
+  align-items: center; /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically */
+  height: 50vh; /* Reduced height (50% of viewport height) */
+  width: 90%;   /* Use a smaller width for the container */
+  max-width: 500px; /* Limit the maximum width */
 }
 
+.user-form-container {
+  position: relative; /* This is necessary to position the 'X' button absolutely within the form container */
+  width: 100%; /* Ensures it takes up full width of the container */
+}
 
-  
-  .user-settings-title {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-  }
-  
-  .user-info-display {
-    text-align: center;
-    position: relative; /* Ensure the button is positioned above other elements */
-  }
-  
-  .user-info-display p {
-    font-size: 1.1rem;
-  }
-  
-  .user-info-display button {
-    margin-top: 1rem;
-    z-index: 2; /* Ensure it is above other content */
-    padding: 0.5rem 1rem; /* Slight padding to make the button look better */
-    background-color: #08ca69; /* Change to your desired color */
-    border: none;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .user-info-display button:hover {
-    background-color: #03851f; /* Darker blue on hover */
-  }
-  
-  .user-form-container {
-    text-align: center;
-  }
-  
-  .user-form-container button {
-    margin-top: 1rem;
-  }
-  
-  /* Style the X button */
-  .cancel-btn {
-    position: absolute; /* Position it absolutely in the top-right corner */
-    top: 10px;
-    right: 10px;
-    background: transparent; /* Remove background */
-    border: none;
-    color: #333; /* Color for the X */
-    font-size: 2rem; /* Large font size for the X */
-    cursor: pointer;
-    padding: 0;
-    z-index: 3; /* Ensure it's above other content */
-    transition: color 0.3s ease;
-  }
-  
-  .cancel-btn:hover {
-    color: #ff0000; /* Red color on hover */
-  }
-  
+.cancel-btn {
+  position: absolute;
+  top: 5px; /* Move the X button slightly up by reducing the top value */
+  right: 10px;
+  background: none; /* Remove background to make it transparent */
+  border: none; /* Remove any border */
+  font-size: 2rem; /* Make the "X" large enough */
+  color: #ff4d4d; /* Optional: Red color for the cancel button */
+  cursor: pointer; /* Change cursor to pointer to indicate clickability */
+  z-index: 10; /* Ensure it stays on top of other content */
+}
+
+.cancel-btn:hover {
+  color: #ff0000; /* Change color on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover for better interaction */
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.user-settings-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.user-info-display {
+  text-align: center;
+  position: relative; /* Ensure the button is positioned above other elements */
+}
+
+.user-info-display p {
+  font-size: 1.1rem;
+}
+
+.user-info-display button {
+  margin-top: 1rem;
+  z-index: 2; /* Ensure it is above other content */
+  padding: 0.5rem 1rem; /* Slight padding to make the button look better */
+  background-color: #08ca69; /* Change to your desired color */
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.user-info-display button:hover {
+  background-color: #03851f; /* Darker blue on hover */
+}
+
+.user-form-container {
+  text-align: center;
+}
+
+.user-form-container button {
+  margin-top: 1rem;
+}
+
+/* Style the X button */
+.cancel-btn {
+  position: absolute; /* Position it absolutely in the top-right corner */
+  top: -14px; /* Adjusted to move up slightly */
+  right: 10px;
+  background: transparent; /* Remove background */
+  border: none;
+  color: #333; /* Color for the X */
+  font-size: 2rem; /* Large font size for the X */
+  cursor: pointer;
+  padding: 0;
+  z-index: 3; /* Ensure it's above other content */
+  transition: color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  color: #ff0000; /* Red color on hover */
+}

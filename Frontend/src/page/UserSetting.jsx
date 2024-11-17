@@ -9,9 +9,7 @@ function UserSetting() {
   const [parsedUser, setParsedUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // Track whether the form is in edit mode
   const [userId, setUserId] = useState(null);  // Declare userId state to hold the user ID
-  const [loans, setLoans] = useState([]); // State for storing loan data
-  const [loanValue, setLoanValue] = useState(0); // State for total loan value
-  const [error, setError] = useState(null); // For error handling
+ 
 
   useEffect(() => {
     const userSession = sessionStorage.getItem('userSession');
@@ -38,28 +36,8 @@ function UserSetting() {
     setIsEditing(false); // Set edit mode to false when the user cancels editing
   };
 
-  // Fetch loan data when userId is available
-  useEffect(() => {
-    if (userId) {
-      const url = `http://localhost:8080/user/${userId}`;
-      console.log("Making request to URL:", url); // Log the URL being used
 
-      axios
-        .get(url)
-        .then((response) => {
-          console.log("Loan data fetched:", response.data); // Log the response data
-          setLoans(response.data); // Store multiple loans data in state
 
-          // Calculate the total loan value (sum of all loanOriginAmount values)
-          const totalDue = response.data.reduce((acc, loan) => acc + loan.loanOriginAmount, 0);
-          setLoanValue(totalDue); // Set the total due loan amount
-        })
-        .catch((error) => {
-          console.error("Error fetching loan data:", error);
-          setError(error.message || 'An error occurred while fetching loan data');
-        });
-    }
-  }, [userId]);
 
   return (
     <>
@@ -68,7 +46,7 @@ function UserSetting() {
       ) : (
         <Header /> // Show default Header if no session
       )}
-
+      
       <div className="user-settings-container">
         <h1 className="user-settings-title">User Settings</h1>
 
@@ -82,7 +60,7 @@ function UserSetting() {
             <button className="btn btn-primary" onClick={handleEditClick}>Edit Information</button>
           </div>
         ) : (
-          <div className="user-form-container">
+            <div className="user-form-container">
             <UserForm parsedUser={parsedUser} />
             {/* Cancel button as an X */}
             <button className="cancel-btn" onClick={handleCancelClick}>

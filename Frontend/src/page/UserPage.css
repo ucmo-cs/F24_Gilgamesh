@@ -66,8 +66,22 @@ button {
 }
 
 /* Modal styles */
-.modal-body {
-  padding: 20px; /* Padding inside the modal */
+
+.modal-content{
+  display: flex;            /* Enable flexbox layout */
+  flex-direction: column;   /* Stack the children vertically */
+  justify-content: center;  /* Center content vertically */
+  align-items: center;      /* Center content horizontally */
+  height: auto;
+  width: auto;              /* Ensure full width */
+  max-width: 500px;         /* Limit the maximum width of the modal */
+  margin: 0 auto;           /* Ensure the modal is centered horizontally */
+  border-radius: 10px; 
+}
+.modal-header {
+  text-align: center;           /* Center the title text */
+  border-bottom: none;          /* Optional: Remove the border below header */
+  padding-bottom: 20px;         /* Add some padding */
 }
 
 /* Stretching behavior */

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './ResetPassword.css'; // Import the CSS for reset password styling
+import Header from '../components/Header';
+import UserHeader from '../components/UserHeader';
 
 const ResetPassword = () => {
   const [username, setUsername] = useState('');
@@ -33,8 +35,11 @@ const ResetPassword = () => {
       setConfirmPassword('');
     }, 2000);
   };
-
+  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />;
   return (
+
+    <>
+    {navBar} 
     <div>
       <div className="theme-background"></div> {/* Background */}
       <div className="reset-password-container">
@@ -71,6 +76,8 @@ const ResetPassword = () => {
         {message && <p>{message}</p>}
       </div>
     </div>
+    </>
+    
   );
 };
 

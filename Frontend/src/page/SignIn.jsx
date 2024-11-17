@@ -1,20 +1,11 @@
-  //sessionStorage.setItem('userSession', JSON.stringify(userData));
-  //localStorage.setItem('userSession', JSON.stringify(userData));
-   // Check for existing user session
-  /*
-  useEffect(() => {
-    const storedUserSession =
-      localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
-    if (storedUserSession) {
-      navigate('/UserHome');
-    }
-  }, [navigate]);
-  */
+
 
 
   import React, { useState, useEffect } from 'react';
   import axios from 'axios';
   import { useNavigate } from 'react-router-dom';
+  import Header from '../components/Header';
+  import UserHeader from '../components/UserHeader';
   import './SignIn.css';
   
   function SignIn() {
@@ -47,8 +38,10 @@
   
           if (userData.role === 'ADMIN') {
             navigate('/admin'); // Navigate to admin page if role is ADMIN
+            sessionStorage.setItem('userSession', JSON.stringify(userData));
           } else if (userData.role === 'USER') {
             navigate('/user'); // Navigate to user page if role is USER
+            sessionStorage.setItem('userSession', JSON.stringify(userData));
           } else {
             // Handle the case where the role is not recognized
             console.error('Unknown role:', userData.role);
@@ -60,9 +53,25 @@
           setMessage('Login failed. Please check your credentials.');
         });
     };
+
+
+    //sesan 
+    const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />;
+
+    const [user, setUser] = useState(null);
+  useEffect(() => {
+    const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+    if (storedUserSession) {
+      setUser(JSON.parse(storedUserSession));
+    }
+  }, []);
   
     return (
+
+      <>
+      {navBar} 
       <div className="login-container">
+     
         <form onSubmit={handleSubmit} className="modal-content">
           <h1>Sign In</h1>
   
@@ -105,6 +114,9 @@
           {message && <p className="text-body-secondary">{message}</p>}
         </form>
       </div>
+      </>
+      
+     
     );
   }
   

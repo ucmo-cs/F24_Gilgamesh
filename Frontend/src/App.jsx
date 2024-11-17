@@ -1,7 +1,10 @@
 
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+
 import Header from './components/Header';
+import UserHeader from './components/UserHeader';
+
 import Footer from './components/Footer';
 import Home from './page/Home';
 import SignIn from './page/SignIn';
@@ -25,11 +28,12 @@ function ScrollToTop() {
   return null; // No UI, just side effect
 }
 
+
 function App() {
   return (
     <Router>
       <ScrollToTop /> {/* This will scroll to top on route change */}
-      <Header />
+      
       
       <div className="main-content">
         <Routes>

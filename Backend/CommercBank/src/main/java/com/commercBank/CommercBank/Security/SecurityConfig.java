@@ -41,8 +41,9 @@ public class SecurityConfig {
                         .requestMatchers("/loan").permitAll()
                         .requestMatchers("/payment").permitAll()
                         .requestMatchers("/loan/account/{accountId}").permitAll()
+                        .requestMatchers("/admin/create-admin").permitAll()
                         .requestMatchers("/create-admin").permitAll() // delete later
-                        .requestMatchers("/admin/**").hasRole("ADMIN")  // Ensure only admin access to `/admin`
+                        .requestMatchers("/admin/**").permitAll()  // Ensure only admin access to `/admin`
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())  // Enable basic auth

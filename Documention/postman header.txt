@@ -4,6 +4,7 @@ http://localhost:8080/api/accounts/account
     "userId": "testUser4",   // Ensure this is not null
     "userName": "Test User4",
     "password": "securePassword4",
+    "role": "USER",
     "email": "test4@example.com",
     "phoneNumber": "1234567804"
 }

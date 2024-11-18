@@ -106,7 +106,7 @@
           </div>
   
           {/* Submit Button */}
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn-btn-primary">
             Login
           </button>
   

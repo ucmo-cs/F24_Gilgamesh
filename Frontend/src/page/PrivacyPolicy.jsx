@@ -10,7 +10,8 @@ function PrivacyPolicy() {
   return (
     <>
     {navBar} 
-      <div style={{ padding: '20px' }}>
+    <div className="privacy-policy-container">
+    <div className="privacy-policy-box">
       <h1>Privacy Policy</h1>
       <p>Welcome to our Privacy Policy page. Here we explain how we handle your personal information:</p>
       
@@ -25,7 +26,7 @@ function PrivacyPolicy() {
       
       <p>If you have any questions, feel free to contact us at support@example.com.</p>
     </div>
-    
+    </div>
     </>
     
   );

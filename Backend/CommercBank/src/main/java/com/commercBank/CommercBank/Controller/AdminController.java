@@ -4,6 +4,7 @@ import com.commercBank.CommercBank.Domain.Account;
 import com.commercBank.CommercBank.Domain.Loan;
 import com.commercBank.CommercBank.Service.AccountService;
 import com.commercBank.CommercBank.Service.LoanService;
+import com.commercBank.CommercBank.Service.LoanPaymentService;
 import com.commercBank.CommercBank.dto.AccountDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/admin")
@@ -25,10 +27,26 @@ public class AdminController {
     @Autowired
     private LoanService loanService;
 
+    @Autowired
+    private LoanPaymentService loanPaymentService;
+
     @GetMapping("/loans")
     public ResponseEntity<List<Loan>> getAllLoans() {
         List<Loan> loans = loanService.findAll();
         return ResponseEntity.ok(loans);
+    }
+
+    @GetMapping("/user/{userId}/loan/{loanId}/details")
+    public ResponseEntity<?> getLoanDetails(@PathVariable String userId, @PathVariable Long loanId) {
+        Loan loan = loanService.findById(loanId);
+        if (loan != null && loan.getUserId().equals(userId)) {
+            return ResponseEntity.ok(Map.of(
+                    "userId", loan.getUserId(),
+                    "loanId", loan.getLoan_id(),
+                    "amountLeftToPay", loan.getAmountLeftToPay()
+            ));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Loan or User not found");
     }
 
     @GetMapping("/loan/{id}")

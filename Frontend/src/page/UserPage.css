@@ -1,6 +1,7 @@
 /* UserPage.css */
 .main-content{
   height: 92vh;
+  scrollbar-width: none;     /* Firefox */
 }
 /* Header styles */
 .header, .header h1, .header p {
@@ -17,30 +18,33 @@
 .spreadsheet-container {
   background-color: transparent; /* Transparent background */
   border-radius: 8px; /* Add rounded corners */
-  padding: 40px; /* Increase padding inside the container */
+  padding: 40px; /* Padding inside the container */
   display: flex; /* Use flexbox for layout */
   flex-direction: column; /* Stack children vertically */
-  z-index: 500; /* Ensure it is above the header */
+  z-index: 500; /* Ensure it is above other elements */
   margin-bottom: 80px; /* Space below the container */
-  max-width: 800px; /* Increase max-width for larger container */
-  width: 90%; /* Set width to a percentage for responsiveness */
+  max-width: 800px; /* Maximum width */
+  width: 90%; /* Width as a percentage for responsiveness */
   
   /* Center the container horizontally and vertically */
   position: absolute; /* Position relative to the nearest positioned ancestor */
-  top: 50%; /* Move the container to the center vertically */
-  left: 50%; /* Move container to 50% of the screen width */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Adjust both horizontally and vertically */
   
-  /* Add a green border */
+  /* Green border */
   border: 2px solid #28a745; /* Green border */
   outline: none; /* Remove any default outline from the container */
   
-  /* Ensure content inside is vertically and horizontally centered */
-  display: flex; /* Set as flexbox */
+  /* Ensure content inside is centered */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
-  padding-bottom: 40px; /* Padding for bottom to prevent content from touching the border */
+  
+  /* Prevent content overflow and clipping */
+  overflow: hidden; /* Ensure nothing overflows out of the container */
+  padding-bottom: 40px; /* Extra padding at the bottom to ensure no content touches the border */
 }
+
 
 /* Form content within the container */
 .spreadsheet-container .form-content {
@@ -67,17 +71,37 @@ button {
 
 /* Modal styles */
 
-.modal-content{
-  display: flex;            /* Enable flexbox layout */
-  flex-direction: column;   /* Stack the children vertically */
-  justify-content: center;  /* Center content vertically */
-  align-items: center;      /* Center content horizontally */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: auto;
-  width: auto;              /* Ensure full width */
-  max-width: 500px;         /* Limit the maximum width of the modal */
-  margin: 0 auto;           /* Ensure the modal is centered horizontally */
-  border-radius: 10px; 
+  width: 0%;
+  max-width: 500px;
+  min-width: 300px;
+  max-height: 80vh;
+  min-height: 200px;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;  /* Disable default scrolling */
+  
+  /* Allow scrolling without a visible scrollbar */
+  overflow-y: scroll; /* Enable vertical scrolling if needed */
+  
+  /* Hide the scrollbar (Webkit browsers) */
+  ::-webkit-scrollbar {
+    display: none;  /* Hides the scrollbar */
+  }
 }
+
+/* For other browsers, like Firefox */
+.modal-content {
+  scrollbar-width: none;  /* Hides the scrollbar in Firefox */
+}
+
+
 .modal-header {
   text-align: center;           /* Center the title text */
   border-bottom: none;          /* Optional: Remove the border below header */

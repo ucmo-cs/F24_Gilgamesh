@@ -76,7 +76,7 @@ input[type="checkbox"] {
 
 /* Green login button */
 .btn-btn-primary {
-    background-color: #28a745; /* Green background for button */
+    background-color: #0e4019; /* Green background for button */
     color: white; /* White text */
     border: none; /* Remove border */
     padding: 10px 40px; /* Adjust padding for a nice button size */
@@ -86,12 +86,12 @@ input[type="checkbox"] {
 }
 
 .btn-btn-primary:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #145823; /* Darker green on hover */
     color: white; /* Maintain white text on hover */
 }
 
 .btn-btn-primary:active {
-    background-color: #1e7e34; /* Even darker green on active click */
+    background-color: #0e4019; /* Even darker green on active click */
     color: white; /* White text on click */
 }
 

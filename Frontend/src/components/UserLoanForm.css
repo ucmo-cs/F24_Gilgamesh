@@ -5,7 +5,7 @@
     padding: 20px; /* Padding inside the container */
     border: 2px solid #28a745; /* Green border */
     border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    
     background-color: #ffffff; /* White background */
     position: relative; /* Allows z-index to work */
     z-index: 1000; /* Bring to front */

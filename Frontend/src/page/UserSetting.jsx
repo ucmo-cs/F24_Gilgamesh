@@ -3,14 +3,14 @@ import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import UserForm from "../components/UserForm";
 import { useState, useEffect } from 'react';
-import axios from 'axios'; // Make sure axios is imported
+import axios from 'axios'; // Ensure axios is imported
 
 function UserSetting() {
   const [parsedUser, setParsedUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // Track whether the form is in edit mode
   const [userId, setUserId] = useState(null);  // Declare userId state to hold the user ID
- 
 
+  // Fetch user session and data
   useEffect(() => {
     const userSession = sessionStorage.getItem('userSession');
     if (userSession) {
@@ -28,40 +28,51 @@ function UserSetting() {
     }
   }, []);
 
+  // Set edit mode to true when the user wants to edit
   const handleEditClick = () => {
-    setIsEditing(true); // Set edit mode to true when the user wants to edit
+    setIsEditing(true); 
   };
 
+  // Set edit mode to false when the user cancels editing
   const handleCancelClick = () => {
-    setIsEditing(false); // Set edit mode to false when the user cancels editing
+    setIsEditing(false); // Return to viewing mode
   };
 
+  // Conditionally render the navbar based on session
+  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />;
 
-
+  // Ensure parsedUser is loaded before rendering the form or user info
+  if (!parsedUser) {
+    return (
+      <>
+        {navBar}
+        <div className="user-settings-container">
+          <p>Loading user data...</p>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
-      {localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? (
-        <UserHeader /> // Show User Header if session exists
-      ) : (
-        <Header /> // Show default Header if no session
-      )}
-      
+      {navBar}
+
       <div className="user-settings-container">
-        <h1 className="user-settings-title">User Settings</h1>
+        {/* Conditionally render the title based on isEditing */}
+        {!isEditing && <h1 className="user-settings-title">Profile Information</h1>}
 
         {/* Display user info or UserForm based on isEditing */}
         {!isEditing ? (
           <div className="user-info-display">
-            <p><strong>Username:</strong> {parsedUser ? parsedUser.User : 'Loading...'}</p>
-            <p><strong>Email:</strong> {parsedUser ? parsedUser.email : 'Loading...'}</p>
-            <p><strong>Number:</strong> {parsedUser ? parsedUser.number : 'Loading...'}</p>
-            <p><strong>Role:</strong> {parsedUser ? parsedUser.role : 'Loading...'}</p>
+            <p><strong>Username:</strong> {parsedUser.User || 'Loading...'}</p>
+            <p><strong>Email:</strong> {parsedUser.email || 'Loading...'}</p>
+            <p><strong>Number:</strong> {parsedUser.number || 'Loading...'}</p>
+            <p><strong>Role:</strong> {parsedUser.role || 'Loading...'}</p>
             <button className="btn btn-primary" onClick={handleEditClick}>Edit Information</button>
           </div>
         ) : (
-            <div className="user-form-container">
-            <UserForm parsedUser={parsedUser} />
+          <div className="user-form-container">
+            <UserForm parsedUser={parsedUser} /> {/* Pass parsedUser to the form */}
             {/* Cancel button as an X */}
             <button className="cancel-btn" onClick={handleCancelClick}>
               × {/* This is the X character */}

@@ -44,8 +44,9 @@ function UserHeader() {
 
                 <Dropdown.Menu className="dropdown-menu">
                   {/* Dropdown items */}
-                  <Dropdown.Item href="/user">View Profile</Dropdown.Item>
-                  <Dropdown.Item href="/setting">Settings</Dropdown.Item>
+                  <Dropdown.Item href="/setting">Profile</Dropdown.Item>
+                  <Dropdown.Item href="/user">Payments</Dropdown.Item>
+                
                   <Dropdown.Item href="/home" onClick={handleLogout}>Logout</Dropdown.Item> 
                 </Dropdown.Menu>
               </Dropdown>

@@ -33,6 +33,10 @@ function UserPaymentForm() {
   };
 
   return (
+    <>
+    
+    
+    
     <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
       {!formSubmitted ? (
         <Form className="user-form d-flex flex-column" style={{ width: '100%', maxWidth: '500px' }} onSubmit={handleSubmit}>
@@ -99,6 +103,7 @@ function UserPaymentForm() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

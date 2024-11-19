@@ -9,7 +9,7 @@
   }
   
   body {
-    color: #ffffff; /* Text color */
+    color: #cd070700; /* Text color */
     font-family: "Nunito Sans", sans-serif;
     font-size: 19px;
     background: #0d0d0d; /* Background color */
@@ -33,10 +33,10 @@
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.356);
     animation: animate 25s linear infinite;
     bottom: -150px;
-    border: 2px solid rgba(45, 146, 59, 0.9); /* Green border */
+    border: 2px solid #0e4019; /* Green border */
   }
   
   /* Circle positions and animations */

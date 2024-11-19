@@ -44,6 +44,10 @@ http://localhost:8080/admin/create-admin
   "phoneNumber": "1234567806"
 }
 =======
+GET:  http://localhost:8080/admin/user/{userId}/loan/{loanId}/details
+
+nothing in body
+
 GET:  http://localhost:8080/loan/account/1 -- change the 1 to whatever account id you are pulling from
 
 nothing in the body

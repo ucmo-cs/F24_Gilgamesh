@@ -39,6 +39,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/accounts/account").permitAll() //Allow public access to `/create`
                         .requestMatchers("/login/login").permitAll()   // Allow public access to `/login`
                         .requestMatchers("/loan").permitAll()
+                        .requestMatchers("/admin/loans").permitAll()
                         .requestMatchers("/payment").permitAll()
                         .requestMatchers("/loan/account/{accountId}").permitAll()
                         .requestMatchers("/admin/create-admin").permitAll()

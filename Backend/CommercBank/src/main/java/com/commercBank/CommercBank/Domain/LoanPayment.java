@@ -16,12 +16,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "loan_payments")
 public class LoanPayment {
-
     @Id
     @Column(name = "payment_id")
     @GeneratedValue
     private Long paymentId;
-
     @ManyToOne
     @JoinColumn(name = "loan_id", nullable = false)
     private Loan loan; //links loan to the loan table

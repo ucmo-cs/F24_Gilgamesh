@@ -1,8 +1,8 @@
-/* App.css */
 html, body {
   height: 100%; /* Ensure full height for html and body */
   margin: auto; /* Remove default margin */
-  /* Prevent horizontal scrolling */
+  
+  scrollbar-width: none;     /* Firefox */
 }
 
 body {
@@ -10,13 +10,34 @@ body {
   flex-direction: column; /* Stack children vertically */
 }
 
+/* Main content */
 .main-content {
   flex: 1; /* Allow the main content to take available space */
-  overflow-y: auto; /* Enable vertical scrolling within content if needed */
-  overflow-x: hidden; 
-
+  overflow-y: auto; /* Make it scrollable vertically */
+ 
+  overflow-x: hidden; /* Hide horizontal scrollbar if it appears */
   min-height: calc(80vh); /* Adjust height to fill screen minus footer height */
+  
+  
 }
+
+/* For webkit browsers (Chrome, Safari, Edge) */
+.main-content::-webkit-scrollbar {
+  display: none; /* This hides the scrollbar */
+}
+
+/* Optional: If you want to hide scrolling only on smaller screens */
+@media (max-width: 768px) {
+  .main-content {
+    overflow: hidden; /* Disable scrolling on small screens */
+  }
+
+  .main-content::-webkit-scrollbar {
+    display: none; /* Ensure the scrollbar is still hidden */
+  }
+}
+
+  
 
 .footer {
   text-align: center;
@@ -58,4 +79,4 @@ body {
 .terms-of-service {
   padding: 20px;
   font-family: Arial, sans-serif;
-}
+} 

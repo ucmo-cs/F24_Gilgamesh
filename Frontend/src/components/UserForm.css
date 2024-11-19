@@ -11,6 +11,8 @@
     background-color: #ffffff; /* White background */
     position: relative; /* Allows z-index to work */
     z-index: 1000; /* Bring to front */
+    overflow: hidden; /* Prevent content from overflowing */
+    word-wrap: break-word; /* Ensure long words break to fit container */
 }
 
 /* Flex layout for the form */
@@ -21,21 +23,28 @@
 
 /* Label styling */
 .user-form .form-label {
-    font-weight: bold; /* Make label text bold */
     margin-bottom: 0.5rem; /* Spacing below labels */
-    color: #333; /* Dark gray color for labels */
+    color: #ffffff; /* White color for labels */
+    word-wrap: break-word; /* Ensures long words will break and wrap */
+    word-break: break-word; /* Break words at the edge of the container */
+    
 }
 
 /* Input styling */
 .user-form .form-control {
+    
+    
     border-radius: 4px; /* Slightly rounded borders for inputs */
     border: 1px solid #28a745; /* Green border for inputs */
     padding: 10px; /* Padding inside the input */
     transition: border-color 0.2s; /* Smooth border color transition */
     background-color: #f8f9fa; /* Light gray background */
+    width: 100%; /* Ensure input fields do not overflow the container */
+    box-sizing: border-box; /* Ensure padding does not affect width */
 }
 
 .user-form .form-control:focus {
+    
     border-color: #28a745; /* Green border on focus */
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Green shadow on focus */
 }
@@ -49,6 +58,9 @@
     padding: 10px; /* Padding inside the button */
     border-radius: 4px; /* Slightly rounded corners */
     border: none; /* Remove border for the button */
+    width: 100%; /* Make the button stretch to fit the container */
+    box-sizing: border-box; /* Ensure padding does not affect width */
+    overflow: hidden; /* Hide anything that overflows the label */
 }
 
 .user-form button:hover {

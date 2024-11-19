@@ -5,6 +5,12 @@
     border-radius: 10px 10px 10px 10px; /* Rounded top corners */
 }
 
+.brand-name {
+    color: white !important;
+}
+
+
+
 .navbar {
     background-color: #898888 !important; /* Force dark background */
 }
@@ -55,6 +61,7 @@
     background: none;  /* Remove background for cleaner design */
     display: flex;
     align-items: center;
+    
 }
 
 /* Add hover effect for the dropdown toggle */

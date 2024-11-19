@@ -13,7 +13,7 @@ body {
 /* Main content */
 .main-content {
   flex: 1; /* Allow the main content to take available space */
-  overflow-y: scroll; /* Make it scrollable vertically */
+  overflow-y: auto; /* Make it scrollable vertically */
  
   overflow-x: hidden; /* Hide horizontal scrollbar if it appears */
   min-height: calc(80vh); /* Adjust height to fill screen minus footer height */

@@ -1,6 +1,6 @@
 
   
-  .mb-2 { 
+  .mb-2.btn-primary { 
     z-index: 1000; /*Makes sure the button for the admin form is in front of the theme/background */
   }
 

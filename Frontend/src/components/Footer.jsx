@@ -14,7 +14,6 @@ function Footer() {
           {/* Use Link for internal routing */}
           <Link to="/privacy-policy">Privacy Policy</Link>
           <Link to="/terms-of-service">Terms of Service</Link>
-          <Link to="/signin">Sign In</Link>
           <Link to="/reset-password" className="reset password link">Reset Password</Link>
         </div>
         <p>

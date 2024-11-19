@@ -59,7 +59,7 @@ function UserSetting() {
 
       <div className="user-settings-container">
         {/* Conditionally render the title based on isEditing */}
-        {!isEditing && <h1 className="user-settings-title">User Settings</h1>}
+        {!isEditing && <h1 className="user-settings-title">Profile Information</h1>}
 
         {/* Display user info or UserForm based on isEditing */}
         {!isEditing ? (

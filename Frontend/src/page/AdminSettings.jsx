@@ -44,8 +44,8 @@ function AdminSetting() {
         <Header /> // Show default Header if no session
       )}
       
-      <div className="admin-settings-container">
-        {!isEditing && <h1 className="admin-settings-title">Admin Settings</h1>}
+      <div className="admin-setting-container">
+        {!isEditing && <h1 className="admin-setting-title">Admin Settings</h1>}
 
         {/* Display admin info or AdminForm based on isEditing */}
         {!isEditing ? (

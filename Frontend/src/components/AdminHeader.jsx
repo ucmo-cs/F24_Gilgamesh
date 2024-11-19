@@ -44,8 +44,8 @@ function AdminHeader() {
 
                 <Dropdown.Menu className="dropdown-menu">
                   {/* Dropdown items */}
-                  <Dropdown.Item href="/admin">View Profile</Dropdown.Item>
-                  <Dropdown.Item href="/settings">Settings</Dropdown.Item>
+                  <Dropdown.Item href="/admin">Payment</Dropdown.Item>
+                  <Dropdown.Item href="/settings">Profile</Dropdown.Item>
                   <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

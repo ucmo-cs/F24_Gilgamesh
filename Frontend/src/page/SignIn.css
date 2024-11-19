@@ -6,7 +6,7 @@
 /* Basic style for the input fields */
 .form-floating input:focus + label,
 .form-floating input:focus-visible + label {
-    font-size: 0.75rem; /* Smaller font size when focused */
+    font-size: 0.50rem; /* Smaller font size when focused */
     color: rgba(255, 255, 255, 0.7); /* Slightly more opaque label */
 }
 
@@ -31,7 +31,7 @@
 
 /* Modal styling */
 .modal-content {
-    background-color: rgba(128, 128, 128, 0.9); /* Gray background for the modal */
+    background-color: rgb(128, 128, 128); /* Gray background for the modal */
     border-radius: 0.5rem; /* Rounded corners */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
     max-width: 400px; /* Set a maximum width */
@@ -75,22 +75,22 @@ input[type="checkbox"] {
 }
 
 /* Green login button */
-.btn-primary {
+.btn-btn-primary {
     background-color: #28a745; /* Green background for button */
     color: white; /* White text */
     border: none; /* Remove border */
-    padding: 10px 20px; /* Adjust padding for a nice button size */
+    padding: 10px 40px; /* Adjust padding for a nice button size */
     border-radius: 5px; /* Rounded corners for the button */
     font-size: 1rem; /* Button font size */
     font-weight: bold; /* Bold text */
 }
 
-.btn-primary:hover {
+.btn-btn-primary:hover {
     background-color: #218838; /* Darker green on hover */
     color: white; /* Maintain white text on hover */
 }
 
-.btn-primary:active {
+.btn-btn-primary:active {
     background-color: #1e7e34; /* Even darker green on active click */
     color: white; /* White text on click */
 }

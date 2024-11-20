@@ -4,8 +4,7 @@
   import React, { useState, useEffect } from 'react';
   import axios from 'axios';
   import { useNavigate } from 'react-router-dom';
-  import Header from '../components/Header';
-  import UserHeader from '../components/UserHeader';
+ 
   import './SignIn.css';
   
   function SignIn() {
@@ -39,8 +38,11 @@
           if (userData.role === 'ADMIN') {
             navigate('/admin'); // Navigate to admin page if role is ADMIN
             sessionStorage.setItem('userSession', JSON.stringify(userData));
+  
           } else if (userData.role === 'USER') {
-            navigate('/user'); // Navigate to user page if role is USER
+            setRedirectTo('/user'); 
+            
+            
             sessionStorage.setItem('userSession', JSON.stringify(userData));
           } else {
             // Handle the case where the role is not recognized
@@ -67,9 +69,7 @@
   }, []);
   
     return (
-
       <>
-      
       <div className="login-container">
      
         <form onSubmit={handleSubmit} className="modal-content">

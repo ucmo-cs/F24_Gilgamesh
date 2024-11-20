@@ -58,6 +58,7 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
 
+
     @PostMapping("/loan")
     public ResponseEntity<String> createLoan(@RequestBody Loan loan) {
         loanService.save(loan);

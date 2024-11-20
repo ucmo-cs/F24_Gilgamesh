@@ -17,6 +17,7 @@ function UserHeader() {
       setParsedUser(parsed);  // Set parsed user in state
     }
   }, []);
+  
 
   // Handle logout functionality
   const handleLogout = () => {

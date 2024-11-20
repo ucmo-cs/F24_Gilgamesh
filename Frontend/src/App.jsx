@@ -50,14 +50,13 @@ function App() {
       }
     }
     return <Header />;
-    
   };
 
   return (
     <Router>
       <ScrollToTop /> {/* This will scroll to top on route change */}
       
-      {renderHeader()}  {/* Conditionally render the appropriate header */}
+      {renderHeader()}  
       
       <div className="main-content">
         <Routes>

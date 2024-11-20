@@ -2,51 +2,92 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { useState } from 'react'; // Import useState
 import './AdminForm.css';
 
 function AdminForm() {
-
+  // Step 1: Set up state to track form fields
+  const [userId, setUserId] = useState('');
+  const [interestRate, setInterestRate] = useState('');
+  const [loanOriginAmount, setLoanAmount] = useState('');
   
+
+  // Step 2: Handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Step 3: Create the data object to send to the server
+    const formData = {
+      userId,
+      interestRate,
+      loanOriginAmount,
+    };
+
+    // Step 4: Send the form data to the backend via a POST request
+    fetch('http://localhost:8080/loan', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // Indicate that we are sending JSON
+      },
+      body: JSON.stringify(formData), // Send the form data as JSON
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert('Form submitted successfully');
+          // Optionally reset the form or close the modal after submission
+          setUserId('');
+          setInterestRate('');
+          setLoanAmount('');
+        } else {
+          alert('Error submitting form');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('There was an error submitting the form');
+      });
+  };
+
   return (
-    <Form className="admin-form d-flex flex-column" style={{ height: '100%' }}>
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridName" >
-          <Form.Label>Customer Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter Name" />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter Email" />
-        </Form.Group>
-      </Row>
-
-      <Form.Group className="mb-3" controlId="formGridPhone">
-        <Form.Label>Phone Number</Form.Label>
-        <Form.Control placeholder="(xxx)-xxx-xxxx" />
+    <Form className="admin-form d-flex flex-column" style={{ height: '100%' }} onSubmit={handleSubmit}>
+      {/* User ID */}
+      <Form.Group className="mb-3" controlId="formGridName">
+        <Form.Label>User ID</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter User ID"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)} // Track the value of the field
+          required
+        />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formGridDate">
-        <Form.Label>Date</Form.Label>
-        <Form.Control type="date"placeholder="month/day/year" />
+      {/* Interest Rate */}
+      <Form.Group as={Col} controlId="formGridInterestRate">
+        <Form.Label>Interest Rate</Form.Label>
+        <Form.Control
+          type="number"
+          placeholder="Enter Interest Rate"
+          value={interestRate}
+          onChange={(e) => setInterestRate(e.target.value)} // Track the value of the field
+          required
+        />
       </Form.Group>
 
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridLoan">
-          <Form.Label>Loan Amount</Form.Label>
-          <Form.Control placeholder='$12345'/>
-        </Form.Group>
+      {/* Loan Amount */}
+      <Form.Group className="mb-3" controlId="formGridLoanAmount">
+        <Form.Label>Loan Amount</Form.Label>
+        <Form.Control
+          type="number"
+          placeholder="Enter Loan Amount"
+          value={loanOriginAmount}
+          onChange={(e) => setLoanAmount(e.target.value)} // Track the value of the field
+          required
+        />
+      </Form.Group>
 
-        
-
-        <Form.Group as={Col} controlId="formGridRate">
-          <Form.Label>Interest Rate</Form.Label>
-          <Form.Control placeholder='%x.x'/>
-        </Form.Group>
-      </Row>
-
-      
-
+      {/* Submit Button */}
       <Button variant="primary" type="submit">
         Submit
       </Button>

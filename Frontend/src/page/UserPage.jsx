@@ -4,8 +4,7 @@ import axios from 'axios';
 
 import UserLoanForm from '../components/UserLoanForm'; // Import the UserLoanForm component
 import './UserPage.css'; // Import your CSS file
-import Header from '../components/Header';
-import UserHeader from '../components/UserHeader';
+
 
 function UserPage() {
   const [show1, setShow1] = useState(false); // For showing the UserLoanForm modal
@@ -64,7 +63,7 @@ function UserPage() {
 
   return (
     <>
-      {localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />}
+     
 
       <div>
         <Container className="spreadsheet-container">

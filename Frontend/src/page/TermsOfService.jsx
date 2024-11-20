@@ -1,13 +1,12 @@
 import React from 'react';
 import './TermsOfService.css';
-import Header from '../components/Header';
-import UserHeader from '../components/UserHeader';
+
 
 function TermsOfService() {
-  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />;
+  
   return (
     <>
-      {navBar}
+     
       <div className="terms-container">
         <div className="terms-box">
           <h1>Terms of Service</h1>

@@ -1,6 +1,5 @@
 import './AdminSettings.css'; 
-import Header from '../components/Header';
-import AdminHeader from '../components/AdminHeader'; // Admin-specific header
+
 import AdminForm from "../components/AdminForm"; // Admin-specific form component
 import { useState, useEffect } from 'react';
 import axios from 'axios'; // Ensure axios is imported
@@ -38,11 +37,6 @@ function AdminSetting() {
 
   return (
     <>
-      {localStorage.getItem('adminSession') || sessionStorage.getItem('adminSession') ? (
-        <AdminHeader /> // Show Admin Header if session exists
-      ) : (
-        <Header /> // Show default Header if no session
-      )}
       
       <div className="admin-setting-container">
         {!isEditing && <h1 className="admin-setting-title">Admin Settings</h1>}

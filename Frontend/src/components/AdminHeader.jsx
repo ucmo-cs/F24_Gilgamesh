@@ -4,27 +4,28 @@ import { Container, Nav, Navbar, Dropdown } from 'react-bootstrap';
 import './AdminHeader.css';
 
 function AdminHeader() {
-  const [parsedAdmin, setParsedAdmin] = useState(null);
+ 
+  const [parsedUser, setParsedUser] = useState(null);
+  
 
   useEffect(() => {
-    const admin = sessionStorage.getItem('adminSession');
-    console.log('Stored admin session:', admin); // Log the raw admin data
+    const user = sessionStorage.getItem('userSession');
+    console.log('Stored user session:', user);  // Log the raw user data
 
-    if (admin) {
-      const parsed = JSON.parse(admin);
-      console.log('Parsed admin data:', parsed); // Log the parsed admin object
-      setParsedAdmin(parsed); // Set parsed admin in state
+    if (user) {
+      const parsed = JSON.parse(user);
+      console.log('Parsed user data:', parsed);  // Log the parsed user object
+      setParsedUser(parsed);  // Set parsed user in state
     }
   }, []);
 
   // Handle logout functionality
   const handleLogout = () => {
-    sessionStorage.clear(); // Clear the session data
-    window.location.href = '/SignIn'; // Redirect to sign-in page
+    sessionStorage.clear();  // Clear the session data
   };
 
   return (
-    <Navbar className="adminheader">
+    <Navbar className="userheader">
       <Container fluid className="d-flex justify-content-between align-items-center">
         <Navbar.Brand style={{ textAlign: 'auto' }}>
           <img src="./commerce-bank.svg" className="navbar-logo" alt="Commerce Bank Logo" />
@@ -32,31 +33,30 @@ function AdminHeader() {
         </Navbar.Brand>
         <Nav className="ms-auto">
           <Nav.Link href="/home" style={{ color: 'white' }}>Home</Nav.Link>
-
-          {/* Display the username if parsedAdmin exists */}
-          {parsedAdmin ? (
-            parsedAdmin.Admin ? (
-              // Dropdown for the admin
-              <Dropdown align="end" className="admin-dropdown">
-                <Dropdown.Toggle variant="link" id="admin-dropdown" style={{ color: 'white' }}>
-                  {parsedUser.Admin} {/* Display the admin username */}
+          {parsedUser ? (
+            parsedUser.User ? (
+              
+              <Dropdown align="end" className="user-dropdown">
+                <Dropdown.Toggle variant="link" id="user-dropdown" style={{ color: 'white' }}>
+                  {parsedUser.User} 
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className="dropdown-menu">
-                  {/* Dropdown items */}
-                  <Dropdown.Item href="/admin">Payment</Dropdown.Item>
+                  
                   <Dropdown.Item href="/settings">Profile</Dropdown.Item>
-                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                  <Dropdown.Item href="/admin">Management </Dropdown.Item>
+                
+                  <Dropdown.Item href="/home" onClick={handleLogout}>Logout</Dropdown.Item> 
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
               <Nav.Link href="/SignIn" style={{ color: 'white' }}>
-                No user found {/* If the 'Admin' property doesn't exist */}
+                No user found 
               </Nav.Link>
             )
           ) : (
             <Nav.Link href="/SignIn" style={{ color: 'white' }}>
-              Sign In {/* If no admin is found in sessionStorage */}
+              Sign In 
             </Nav.Link>
           )}
         </Nav>

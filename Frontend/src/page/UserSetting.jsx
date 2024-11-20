@@ -38,14 +38,12 @@ function UserSetting() {
     setIsEditing(false); // Return to viewing mode
   };
 
-  // Conditionally render the navbar based on session
-  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />;
+ 
 
   // Ensure parsedUser is loaded before rendering the form or user info
   if (!parsedUser) {
     return (
       <>
-        {navBar}
         <div className="user-settings-container">
           <p>Loading user data...</p>
         </div>
@@ -55,7 +53,6 @@ function UserSetting() {
 
   return (
     <>
-      {navBar}
 
       <div className="user-settings-container">
         {/* Conditionally render the title based on isEditing */}

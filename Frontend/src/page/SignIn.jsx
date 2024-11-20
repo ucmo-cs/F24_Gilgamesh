@@ -56,7 +56,7 @@
 
 
     //sesan 
-    const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />;
+    
 
     const [user, setUser] = useState(null);
   useEffect(() => {
@@ -69,7 +69,7 @@
     return (
 
       <>
-      {navBar} 
+      
       <div className="login-container">
      
         <form onSubmit={handleSubmit} className="modal-content">

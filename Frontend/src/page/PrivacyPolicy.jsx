@@ -1,15 +1,14 @@
 import React from 'react';
 import './PrivacyPolicy.css'; 
-import Header from '../components/Header';
-import UserHeader from '../components/UserHeader';
+
 
 
 
 function PrivacyPolicy() {
-  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <UserHeader /> : <Header />;
+ 
   return (
     <>
-    {navBar} 
+    
     <div className="privacy-policy-container">
     <div className="privacy-policy-box">
       <h1>Privacy Policy</h1>

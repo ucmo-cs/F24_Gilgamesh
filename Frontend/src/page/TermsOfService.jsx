@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TermsOfService.css';
-
+import Header from '../components/Header';
+import UserHeader from '../components/UserHeader';
+import AdminHeader from '../components/AdminHeader';
 
 function TermsOfService() {
-  
+  // State to store the user data
+  const [parsedUser, setParsedUser] = useState(null);
+
+  // useEffect to get the user data from session or local storage
+  useEffect(() => {
+    const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+    if (storedUserSession) {
+      setParsedUser(JSON.parse(storedUserSession)); // Set the user data if available
+    }
+  }, []);
+
+  // Render the appropriate header based on user role
+  const renderHeader = () => {
+    if (parsedUser) {
+      if (parsedUser.role === 'ADMIN') {
+        return <AdminHeader />;
+      } else if (parsedUser.role === 'USER') {
+        return <UserHeader />;
+      }
+    }
+    return <Header />;
+  };
+
   return (
     <>
-     
+      {renderHeader()} {/* This will now render the correct header */}
       <div className="terms-container">
         <div className="terms-box">
           <h1>Terms of Service</h1>
@@ -32,4 +56,3 @@ function TermsOfService() {
 }
 
 export default TermsOfService;
-

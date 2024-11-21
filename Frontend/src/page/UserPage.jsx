@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import UserLoanForm from '../components/UserLoanForm'; // Import the UserLoanForm component
 import './UserPage.css'; // Import your CSS file
+import Header from '../components/Header';
+import UserHeader from '../components/UserHeader';
+import AdminHeader from '../components/AdminHeader';
 
 
 function UserPage() {
@@ -60,9 +63,20 @@ function UserPage() {
         });
     }
   }, [userId]);
+  const renderHeader = () => {
+    if (parsedUser) {
+      if (parsedUser.role === 'ADMIN') {
+        return <AdminHeader />;
+      } if(parsedUser.role === 'USER') {
+        return <UserHeader />;
+      }
+    }
+    return <Header />;
+  };
 
   return (
     <>
+    {renderHeader()} 
      
 
       <div>

@@ -17,7 +17,7 @@ public class UserController {
     private AccountService accountService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Account> getUserById(@PathVariable Long id) {
+    public ResponseEntity<Account> getUserById(@PathVariable String id) {
         Account account = accountService.findByUserId(String.valueOf(id));
         if (account != null) {
             return ResponseEntity.ok(account);

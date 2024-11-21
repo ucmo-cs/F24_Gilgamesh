@@ -1,15 +1,17 @@
 import './AdminSettings.css'; 
-
 import AdminForm from "../components/AdminForm"; // Admin-specific form component
 import { useState, useEffect } from 'react';
 import axios from 'axios'; // Ensure axios is imported
+import Header from '../components/Header'; // Default header
+import UserHeader from '../components/UserHeader'; // User header
+import AdminHeader from '../components/AdminHeader'; // Admin header
 
 function AdminSetting() {
   const [parsedAdmin, setParsedAdmin] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // Track whether the form is in edit mode
   const [adminId, setAdminId] = useState(null);  // Declare adminId state to hold the admin ID
- 
 
+  // Check for admin session
   useEffect(() => {
     const adminSession = sessionStorage.getItem('adminSession'); // Updated to adminSession
     if (adminSession) {
@@ -27,6 +29,19 @@ function AdminSetting() {
     }
   }, []);
 
+  // Function to render the appropriate header based on the session
+  const renderHeader = () => {
+    if (parsedAdmin) {
+      return <AdminHeader />; // If the admin is logged in, show Admin Header
+    }
+    // If no admin session is found, check for user or default header
+    const userSession = sessionStorage.getItem('userSession') || localStorage.getItem('userSession');
+    if (userSession) {
+      return <UserHeader />; // If a user is logged in, show User Header
+    }
+    return <Header />; // Default header if no session exists
+  };
+
   const handleEditClick = () => {
     setIsEditing(true); // Set edit mode to true when the admin wants to edit
   };
@@ -37,6 +52,7 @@ function AdminSetting() {
 
   return (
     <>
+      {renderHeader()} {/* Render the appropriate header */}
       
       <div className="admin-setting-container">
         {!isEditing && <h1 className="admin-setting-title">Admin Settings</h1>}

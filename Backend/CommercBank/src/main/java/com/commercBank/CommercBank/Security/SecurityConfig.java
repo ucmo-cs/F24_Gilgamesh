@@ -41,9 +41,11 @@ public class SecurityConfig {
                         .requestMatchers("/loan").permitAll()
                         .requestMatchers("/admin/loans").permitAll()
                         .requestMatchers("/payment").permitAll()
+                        .requestMatchers("/user/{id}").permitAll()
                         .requestMatchers("/loan/account/{accountId}").permitAll()
                         .requestMatchers("/admin/create-admin").permitAll()
-                        .requestMatchers("/create-admin").permitAll() // delete later
+                        .requestMatchers("/create-admin").permitAll()// delete later
+                        .requestMatchers("/user/**").permitAll()
                         .requestMatchers("/admin/**").permitAll()  // Ensure only admin access to `/admin`
                         .anyRequest().authenticated()
                 )

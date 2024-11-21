@@ -1,39 +1,68 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Spreadsheet.css'; // Import your CSS file here
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import './Spreadsheet.css'; // Import your CSS file here
 import AdminForm from './AdminForm';
 
 function Spreadsheet() {
+
+  const adminUsername = sessionStorage.getItem('adminUsername');
+  const adminPassword = sessionStorage.getItem('adminPassword');
+  const authHeader = {
+    'Authorization': `Basic ${btoa(adminUsername + ':' + adminPassword)}`
+  };
+  
   const [showForm, setShowForm] = useState(false); // State to toggle the form visibility
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState([]); // For storing user data
+  const [data, setData] = useState([]); // For storing userIds
+  const [info, setInfo] = useState([]); // For storing userIds
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null);
 
-  // Fetch data from backend when the component mounts
   useEffect(() => {
-    const fetchData = () => {
-      fetch('http://localhost:8080/admin/loans')
-        .then(response => response.json())
-        .then(data => {
-          setData(data);
-          setLoading(false);
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-          setLoading(false);
-        });
-    };
+    // Fetch loan data from the backend
+    axios
+      .get('http://localhost:8080/admin/loans', { headers: authHeader }) // Include auth header
+      .then((response) => {
+        const loanData = response.data; // Assuming response.data is an array of loan objects
+        
+        // Extract userId from each loan and store in an array
+        const userIdsArray = loanData.map((loan) => loan.userId);
+        setData(userIdsArray); // Store the userIds array in state
+        setUser(loanData); // Store the full loan data if needed
+        setLoading(false); // Set loading to false
+      })
+      .catch((error) => {
+        console.error('Error fetching loan data:', error); // Log any errors
+        setError('Error fetching loan data. Please check credentials and CORS settings.');
+        setLoading(false);
+      });
+  }, [])
 
-    fetchData();
+ 
+  const uniqueUsername = [...new Set(data)];
 
-    // Set up polling to fetch new data every 10 seconds
-    const intervalId = setInterval(fetchData, 10000); // 10 seconds interval
-
-    return () => clearInterval(intervalId);
-  }, []);
+  const url = `http://localhost:8080/user/` + uniqueUsername; 
+  
+  useEffect(() => {
+    axios
+      .get(url,{ headers: authHeader })
+      .then((response) => {
+        const eo = response.data; 
+        console.log(eo)
+        setInfo(eo); 
+        setLoading(false); 
+      })
+      .catch((error) => {
+        console.error('Error fetching loan data:', error); 
+        setLoading(false); 
+      });
+  }, []); 
+  
 
   const handleRowClick = (loanId) => {
-    window.location.href = `./fullLoan?id=${loanId}`; // Pass the loan ID as a query parameter
+    window.location.href = `./fullLoan?id=${loanId}`; // Navigate to full loan details
   };
 
   return (
@@ -41,12 +70,9 @@ function Spreadsheet() {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Loan ID</th>
             <th>Customer Name</th>
-            <th>Date Taken Out</th>
-            <th>Amount Due</th>
-            <th>Original Amount</th>
-            <th>Interest Rate</th>
+            <th>Outstanding Loans</th>
+            <th>Total Due</th>
           </tr>
         </thead>
         <tbody>
@@ -62,12 +88,9 @@ function Spreadsheet() {
                 className="clickable-row"
                 style={{ cursor: 'pointer' }}
               >
-                <td>{loan.loan_id}</td>
                 <td>{loan.userId}</td>
-                <td>{loan.created_at}</td>
                 <td>${loan.amountLeftToPay}</td>
                 <td>${loan.loanOriginAmount}</td>
-                <td>{loan.interestRate}%</td>
               </tr>
             ))
           )}

@@ -32,9 +32,12 @@ const Admin = () => {
     <>
       {renderHeader()}
       <div className="admin-container">
-        <div className="box">
-          <Spreadsheet />
-        </div>
+        {/* Display welcome message only if parsedUser is available */}
+        {parsedUser && parsedUser.role === 'ADMIN' && (
+          <h1 className="admin-title">Welcome, {parsedUser.User}</h1>
+        )}
+
+        <Spreadsheet />
       </div>
     </>
   );

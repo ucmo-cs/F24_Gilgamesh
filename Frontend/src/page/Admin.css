@@ -3,32 +3,29 @@ body {
   padding: 0;
  /* width: 100vw;   Full viewport width */
   height: 100vh; /* Full viewport height */
-  overflow-y: auto; /* Ensure scroll if needed */
-}
-
-.container {
-  max-width: 1200px;  /* Adjust as needed */
-  margin: 0 auto;     /* Center the container */
-  padding: 20px;      /* Add some padding */
-}
-
-.admin-container {
-    display: flex; /* Flex container to align boxes vertically */
-    flex-direction: column; /* Stack the boxes vertically */
-    align-items: center; /* Center the boxes horizontally */
-    padding: 220px; /* Padding around the container */
-    background-color: #000000; /* Light background for the container */
-  }
   
-  .box {
-    width: 75vw; /* Full width of the container */
-    max-width: 6000px; /* Limit the width for better readability */
-    margin: 50px 0; /* Space between boxes */
-    padding: 20px; /* Padding inside the box */
-    background-color: #006847; /* White background for the box */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  }
+}
+
+
+
+  
+.admin-container {
+  width: 75vw; /* Full width of the container */
+
+  margin: 50px auto; /* Center the container horizontally with margin auto */
+  padding: 20px; /* Padding inside the box */
+  background-color: #006847ea; /* Green background for the box */
+  border-radius: 8px; /* Rounded corners */
+ 
+  
+  /* Flexbox to center content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
   .admin-form {
     flex-grow: 1; /* Allow the form to grow and fill the space */
     display: flex; /* Use flexbox to manage layout */

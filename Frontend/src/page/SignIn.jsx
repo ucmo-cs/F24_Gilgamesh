@@ -1,11 +1,9 @@
-import Header from '../components/Header';
-import UserHeader from '../components/UserHeader';
-import AdminHeader from '../components/AdminHeader';
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
- 
+import Header from '../components/Header';
+import UserHeader from '../components/UserHeader';
+import AdminHeader from '../components/AdminHeader';
 import './SignIn.css';
 
 function SignIn() {
@@ -37,11 +35,15 @@ function SignIn() {
         const userData = response.data;
 
         if (userData.role === 'ADMIN') {
+          // If the user is an ADMIN, save the credentials to sessionStorage
           sessionStorage.setItem('userSession', JSON.stringify(userData));
-          navigate('/admin'); 
+          sessionStorage.setItem('adminUsername', values.userId); // Save the username in sessionStorage
+          sessionStorage.setItem('adminPassword', values.password); // Save the password in sessionStorage
+          navigate('/admin'); // Redirect to the Admin page
         } else if (userData.role === 'USER') {
+          // For non-admin users
           sessionStorage.setItem('userSession', JSON.stringify(userData));
-          navigate('/user'); 
+          navigate('/user');
         } else {
           // Handle the case where the role is not recognized
           console.error('Unknown role:', userData.role);
@@ -69,7 +71,8 @@ function SignIn() {
     if (parsedUser) {
       if (parsedUser.role === 'ADMIN') {
         return <AdminHeader />; // Render AdminHeader if user is an admin
-      } if (parsedUser.role === 'USER') {
+      }
+      if (parsedUser.role === 'USER') {
         return <UserHeader />; // Render UserHeader if user is a regular user
       }
     }
@@ -79,7 +82,7 @@ function SignIn() {
   return (
     <>
       {renderHeader()} {/* Render the appropriate header based on the session */}
-      
+
       <div className="login-container">
         <form onSubmit={handleSubmit} className="modal-content">
           <h1>Sign In</h1>

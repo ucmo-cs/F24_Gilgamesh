@@ -30,9 +30,11 @@ public class AdminController {
     @Autowired
     private LoanPaymentService loanPaymentService;
 
+    @CrossOrigin
     @GetMapping("/loans")
     public ResponseEntity<List<Loan>> getAllLoans() {
         List<Loan> loans = loanService.findAll();
+
         return ResponseEntity.ok(loans);
     }
 
@@ -44,6 +46,7 @@ public class AdminController {
                     "userId", loan.getUserId(),
                     "loanId", loan.getLoan_id(),
                     "amountLeftToPay", loan.getAmountLeftToPay()
+
             ));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Loan or User not found");

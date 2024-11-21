@@ -8,13 +8,13 @@ const Home = () => {
   // State to store the parsed user data
   const [parsedUser, setParsedUser] = useState(null);
 
-  // useEffect hook to fetch the user data from sessionStorage or localStorage
+  
   useEffect(() => {
     const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
     if (storedUserSession) {
       setParsedUser(JSON.parse(storedUserSession)); // Set user data if it exists
     }
-  }, []); // Empty dependency array to run only once when the component mounts
+  }, []); 
 
   // Render the appropriate header based on user role
   const renderHeader = () => {

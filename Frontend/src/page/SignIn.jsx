@@ -37,8 +37,6 @@ function SignIn() {
         if (userData.role === 'ADMIN') {
           // If the user is an ADMIN, save the credentials to sessionStorage
           sessionStorage.setItem('userSession', JSON.stringify(userData));
-          sessionStorage.setItem('adminUsername', values.userId); // Save the username in sessionStorage
-          sessionStorage.setItem('adminPassword', values.password); // Save the password in sessionStorage
           navigate('/admin'); // Redirect to the Admin page
         } else if (userData.role === 'USER') {
           // For non-admin users

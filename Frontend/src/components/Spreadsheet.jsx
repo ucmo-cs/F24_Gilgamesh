@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import './Spreadsheet.css'; // Import your CSS file here
+import './Spreadsheet.css';
 import AdminForm from './AdminForm';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 function Spreadsheet() {
-  const [showForm, setShowForm] = useState(false); // State to toggle the form visibility
+  const [showForm, setShowForm] = useState(false);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // Initialize navigate
 
   // Fetch data from backend when the component mounts
   useEffect(() => {
@@ -26,14 +28,13 @@ function Spreadsheet() {
 
     fetchData();
 
-    // Set up polling to fetch new data every 10 seconds
-    const intervalId = setInterval(fetchData, 10000); // 10 seconds interval
-
+    const intervalId = setInterval(fetchData, 10000); // Fetch every 10 seconds
     return () => clearInterval(intervalId);
   }, []);
 
   const handleRowClick = (loan_id) => {
-    window.location.href = `./fullLoan?id=${loan_id}`; // Pass the loan ID as a query parameter
+    // Use navigate to go to the fullLoan page with the loan ID as a query param
+    navigate(`/fullLoan?id=${loan_id}`);
   };
 
   return (
@@ -58,7 +59,7 @@ function Spreadsheet() {
             data.map((loan) => (
               <tr
                 key={loan.loan_id}
-                onClick={() => handleRowClick(loan.loan_id)} // Make rows clickable
+                onClick={() => handleRowClick(loan.loan_id)} // Row click handler
                 className="clickable-row"
                 style={{ cursor: 'pointer' }}
               >
@@ -76,7 +77,7 @@ function Spreadsheet() {
               <div className="d-grid gap-2">
                 <Button
                   className="mb-2"
-                  onClick={() => setShowForm(!showForm)} // Toggle visibility of the AdminForm
+                  onClick={() => setShowForm(!showForm)} // Toggle AdminForm visibility
                   variant="primary"
                   size="lg"
                   active
@@ -89,7 +90,6 @@ function Spreadsheet() {
         </tbody>
       </Table>
 
-      {/* The pop-up (admin form) */}
       {showForm && (
         <div className="admin-form-popup">
           <div className="admin-form-container">

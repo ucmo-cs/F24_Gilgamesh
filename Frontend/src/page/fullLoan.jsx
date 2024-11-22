@@ -1,18 +1,17 @@
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-function fullLoan() {
+function FullLoan() {
   const location = useLocation();
-  const { userId } = location.state || {};  // Get userId from passed state (if available)
-
-  // Now you can use userId in your component, e.g., to fetch data for that user
-  console.log(userId);
+  const queryParams = new URLSearchParams(location.search);
+  const loanId = queryParams.get('id');
 
   return (
     <div>
-      <h1>Full Loan Page</h1>
-      {/* Your component content here */}
+      <h1>Full Loan Details for Loan ID: {loanId}</h1>
+      {/* Render the loan details here */}
     </div>
   );
 }
 
-export default fullLoan;
+export default FullLoan;

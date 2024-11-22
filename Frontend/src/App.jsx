@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 
 
 
+
 import Footer from './components/Footer';
 import Home from './page/Home';
 import SignIn from './page/SignIn';
@@ -15,7 +16,7 @@ import TermsOfService from './page/TermsOfService';
 
 import UserSetting from './page/UserSetting';
 import AdminSettings from './page/AdminSettings';
-import fullLoan from './page/fullLoan';
+import FullLoan from './page/fullLoan';
 import './App.css';
 
 function ScrollToTop() {
@@ -46,7 +47,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/fullLoan" element={<fullLoan/>} />
+          <Route path="/fullLoan" element={<FullLoan />} />
         </Routes>
       </div>
 

@@ -38,7 +38,7 @@ function Spreadsheet() {
 
   return (
     <div>
-      <Table striped bordered hover>
+      <Table striped bordered hover >
         <thead>
           <tr>
             <th>Loan ID</th>
@@ -71,39 +71,12 @@ function Spreadsheet() {
               </tr>
             ))
           )}
-          <tr>
-            <td colSpan={6}>
-              <div className="d-grid gap-2">
-                <Button
-                  className="mb-2"
-                  onClick={() => setShowForm(!showForm)} // Toggle visibility of the AdminForm
-                  variant="primary"
-                  size="lg"
-                  active
-                >
-                  Admin Form
-                </Button>
-              </div>
-            </td>
-          </tr>
+
         </tbody>
       </Table>
 
-      {/* The pop-up (admin form) */}
-      {showForm && (
-        <div className="admin-form-popup">
-          <div className="admin-form-container">
-            <AdminForm />
-            <Button
-              variant="secondary"
-              onClick={() => setShowForm(false)} // Close the form
-              className="close-btn"
-            >
-              Close
-            </Button>
-          </div>
-        </div>
-      )}
+     
+    
     </div>
   );
 }

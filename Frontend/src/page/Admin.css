@@ -1,34 +1,75 @@
 body {
   margin: 0;
   padding: 0;
- /* width: 100vw;   Full viewport width */
   height: 100vh; /* Full viewport height */
-  
+  background-color: #f0f0f0;
 }
 
-
-
-  
 .admin-container {
   width: 75vw; /* Full width of the container */
-
-  margin: 50px auto; /* Center the container horizontally with margin auto */
+  margin: 50px auto; /* Center the container horizontally */
   padding: 20px; /* Padding inside the box */
   background-color: #006847ea; /* Green background for the box */
   border-radius: 8px; /* Rounded corners */
- 
   
   /* Flexbox to center content */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  position: relative; /* To make sure the form can be absolutely positioned within this container */
+  z-index: 1; /* Base layer for the admin content */
 }
 
-  .admin-form {
-    flex-grow: 1; /* Allow the form to grow and fill the space */
-    display: flex; /* Use flexbox to manage layout */
-    flex-direction: column; /* Stack elements vertically */
-  } 
-  
+/* Styles for the overlay form */
+.overlay-form {
+  position: fixed; /* Make it fixed so it appears on top of the entire page */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full screen width */
+  height: 100vh; /* Full screen height */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999; /* High z-index to overlay on top of everything */
+  color: white; /* Text color */
+}
+
+.admin-form {
+  background-color: white; /* White background for the form */
+  border-radius: 8px; /* Rounded corners for the form */
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow around the form */
+}
+
+button {
+  position: relative; /* Ensure button is correctly positioned */
+  z-index: 3; /* Ensure it's above the form's background */
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #005d3a;
+  cursor: pointer;
+}
+
+/* Close button to close the form */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: darkred;
+}

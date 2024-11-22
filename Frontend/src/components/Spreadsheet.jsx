@@ -32,8 +32,8 @@ function Spreadsheet() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const handleRowClick = (loanId) => {
-    window.location.href = `./fullLoan?id=${loanId}`; // Pass the loan ID as a query parameter
+  const handleRowClick = (loan_id) => {
+    window.location.href = `./fullLoan?id=${loan_id}`; // Pass the loan ID as a query parameter
   };
 
   return (

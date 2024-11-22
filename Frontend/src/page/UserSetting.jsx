@@ -1,9 +1,11 @@
 import './UserSetting.css';
-import Header from '../components/Header';
-import UserHeader from '../components/UserHeader';
 import UserForm from "../components/UserForm";
 import { useState, useEffect } from 'react';
-import axios from 'axios'; // Ensure axios is imported
+import axios from 'axios'; 
+import Header from '../components/Header';
+import UserHeader from '../components/UserHeader';
+import AdminHeader from '../components/AdminHeader';
+
 
 function UserSetting() {
   const [parsedUser, setParsedUser] = useState(null);
@@ -37,9 +39,6 @@ function UserSetting() {
   const handleCancelClick = () => {
     setIsEditing(false); // Return to viewing mode
   };
-
- 
-
   // Ensure parsedUser is loaded before rendering the form or user info
   if (!parsedUser) {
     return (
@@ -50,9 +49,20 @@ function UserSetting() {
       </>
     );
   }
+    const renderHeader = () => {
+    if (parsedUser) {
+      if (parsedUser.role === 'ADMIN') {
+        return <AdminHeader />;
+      } if(parsedUser.role === 'USER') {
+        return <UserHeader />;
+      }
+    }
+    return <Header />;
+  };
 
   return (
     <>
+    {renderHeader()} 
 
       <div className="user-settings-container">
         {/* Conditionally render the title based on isEditing */}

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-import Header from './components/Header';
-import UserHeader from './components/UserHeader';
-import AdminHeader from './components/AdminHeader';
+
 
 import Footer from './components/Footer';
 import Home from './page/Home';
@@ -31,34 +29,10 @@ function ScrollToTop() {
 }
 
 function App() {
-  const [parsedUser, setParsedUser] = useState(null);
-
-  useEffect(() => {
-    const user = sessionStorage.getItem('userSession');
-    if (user) {
-      const parsed = JSON.parse(user);
-      setParsedUser(parsed);  // Set parsed user in state
-    }
-  }, []);
-
-  // Conditionally render the header based on user role
-  const renderHeader = () => {
-    if (parsedUser) {
-      if (parsedUser.role === 'ADMIN') {
-        return <AdminHeader />;
-      } if(parsedUser.role === 'USER') {
-        return <UserHeader />;
-      }
-    }
-    return <Header />;
-    
-  };
 
   return (
     <Router>
       <ScrollToTop /> {/* This will scroll to top on route change */}
-      
-      {renderHeader()}  {/* Conditionally render the appropriate header */}
       
       <div className="main-content">
         <Routes>

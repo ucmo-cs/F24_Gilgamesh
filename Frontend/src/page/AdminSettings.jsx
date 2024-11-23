@@ -1,74 +1,85 @@
-import './AdminSettings.css'; 
-import AdminForm from "../components/AdminForm"; // Admin-specific form component
+import './UserSetting.css';
+import UserForm from "../components/UserForm";
 import { useState, useEffect } from 'react';
-import axios from 'axios'; // Ensure axios is imported
-import Header from '../components/Header'; // Default header
-import UserHeader from '../components/UserHeader'; // User header
-import AdminHeader from '../components/AdminHeader'; // Admin header
+import axios from 'axios'; 
+import Header from '../components/Header';
+import UserHeader from '../components/UserHeader';
+import AdminHeader from '../components/AdminHeader';
 
-function AdminSetting() {
-  const [parsedAdmin, setParsedAdmin] = useState(null);
+
+function UserSetting() {
+  const [parsedUser, setParsedUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // Track whether the form is in edit mode
-  const [adminId, setAdminId] = useState(null);  // Declare adminId state to hold the admin ID
+  const [userId, setUserId] = useState(null);  // Declare userId state to hold the user ID
 
-  // Check for admin session
+  // Fetch user session and data
   useEffect(() => {
-    const adminSession = sessionStorage.getItem('adminSession'); // Updated to adminSession
-    if (adminSession) {
-      const parsed = JSON.parse(adminSession);
-      setParsedAdmin(parsed);
+    const userSession = sessionStorage.getItem('userSession');
+    if (userSession) {
+      const parsed = JSON.parse(userSession);
+      setParsedUser(parsed);
       
-      // Check if parsedAdmin has account_id and set the adminId
+      // Check if parsedUser has account_id and set the userId
       if (parsed && parsed.account_id) {
-        setAdminId(parsed.account_id); // Set adminId from account_id in session data
+        setUserId(parsed.account_id);  // Set userId from account_id in session data
       } else {
-        console.error("Admin ID or account_id is missing in the session data.");
+        console.error("User ID or account_id is missing in the session data.");
       }
     } else {
-      console.log("No admin session available.");
+      console.log("No user session available.");
     }
   }, []);
 
-  // Function to render the appropriate header based on the session
-  const renderHeader = () => {
-    if (parsedAdmin) {
-      return <AdminHeader />; // If the admin is logged in, show Admin Header
-    }
-    // If no admin session is found, check for user or default header
-    const userSession = sessionStorage.getItem('userSession') || localStorage.getItem('userSession');
-    if (userSession) {
-      return <UserHeader />; // If a user is logged in, show User Header
-    }
-    return <Header />; // Default header if no session exists
-  };
-
+  // Set edit mode to true when the user wants to edit
   const handleEditClick = () => {
-    setIsEditing(true); // Set edit mode to true when the admin wants to edit
+    setIsEditing(true); 
   };
 
+  // Set edit mode to false when the user cancels editing
   const handleCancelClick = () => {
-    setIsEditing(false); // Set edit mode to false when the admin cancels editing
+    setIsEditing(false); // Return to viewing mode
+  };
+  // Ensure parsedUser is loaded before rendering the form or user info
+  if (!parsedUser) {
+    return (
+      <>
+        <div className="user-settings-container">
+          <p>Loading user data...</p>
+        </div>
+      </>
+    );
+  }
+    const renderHeader = () => {
+    if (parsedUser) {
+      if (parsedUser.role === 'ADMIN') {
+        return <AdminHeader />;
+      } if(parsedUser.role === 'USER') {
+        return <UserHeader />;
+      }
+    }
+    return <Header />;
   };
 
   return (
     <>
-      {renderHeader()} {/* Render the appropriate header */}
-      
-      <div className="admin-setting-container">
-        {!isEditing && <h1 className="admin-setting-title">Admin Settings</h1>}
+    {renderHeader()} 
 
-        {/* Display admin info or AdminForm based on isEditing */}
+      <div className="user-settings-container">
+        {/* Conditionally render the title based on isEditing */}
+        {!isEditing && <h1 className="user-settings-title">Profile Information</h1>}
+
+        {/* Display user info or UserForm based on isEditing */}
         {!isEditing ? (
-          <div className="admin-info-display">
-            <p><strong>Admin Username:</strong> {parsedAdmin ? parsedAdmin.username : 'Loading...'}</p>
-            <p><strong>Email:</strong> {parsedAdmin ? parsedAdmin.email : 'Loading...'}</p>
-            <p><strong>Phone Number:</strong> {parsedAdmin ? parsedAdmin.phone : 'Loading...'}</p>
-            <p><strong>Role:</strong> {parsedAdmin ? parsedAdmin.role : 'Loading...'}</p>
+          <div className="user-info-display">
+            <p><strong>Username:</strong> {parsedUser.User || 'Loading...'}</p>
+            <p><strong>Email:</strong> {parsedUser.email || 'Loading...'}</p>
+            <p><strong>Number:</strong> {parsedUser.number || 'Loading...'}</p>
+            <p><strong>Role:</strong> {parsedUser.role || 'Loading...'}</p>
             <button className="btn btn-primary" onClick={handleEditClick}>Edit Information</button>
           </div>
         ) : (
-          <div className="admin-form-container">
-            <AdminForm parsedAdmin={parsedAdmin} />
+          <div className="user-form-container">
+            <UserForm parsedUser={parsedUser} /> {/* Pass parsedUser to the form */}
             {/* Cancel button as an X */}
             <button className="cancel-btn" onClick={handleCancelClick}>
               × {/* This is the X character */}
@@ -80,4 +91,4 @@ function AdminSetting() {
   );
 }
 
-export default AdminSetting;
+export default UserSetting;

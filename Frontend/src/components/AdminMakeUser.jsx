@@ -50,7 +50,7 @@ const AdminMakeUser = () => {
 
   return (
     <div className="admin-make-user-form">
-      <h2>Create New User</h2>
+      
       <Form onSubmit={handleSubmit}>
         {/* User ID and Username fields */}
         <div className="form-row">

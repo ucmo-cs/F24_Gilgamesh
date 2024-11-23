@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Spreadsheet.css'; // Import your CSS file here
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import AdminForm from './AdminForm';
+
+import AdminMakeUser from '../components/AdminMakeUser';
+import AdminMakeLoan from '../components/AdminMakeLoan';
 
 function Spreadsheet() {
-  const [showForm, setShowForm] = useState(false); // State to toggle the form visibility
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null);
-
+  
   const [user, setUser] = useState([]); // For storing loan data
   const [data, setData] = useState([]); // For storing userIds
   const [info, setInfo] = useState([]); // For storing user info based on userId
@@ -31,12 +29,9 @@ function Spreadsheet() {
         const userIdsArray = loanData.map((loan) => loan.userId);
         setData([...new Set(userIdsArray)]); // Store the userIds array in state
         setUser(loanData); // Store the full loan data if needed
-        setLoading(false); // Set loading to false
       })
       .catch((error) => {
         console.error('Error fetching loan data:', error); // Log any errors
-        setError('Error fetching loan data. Please check credentials and CORS settings.');
-        setLoading(false);
       });
   }, []);
 
@@ -71,23 +66,14 @@ function Spreadsheet() {
 
           // Save user info to localStorage
           localStorage.setItem('userInfo', JSON.stringify(allUserInfo));
-
-          setLoading(false);
         } catch (error) {
           console.error('Error fetching user info:', error);
-          setLoading(false);
         }
       };
 
       fetchUserInfo(); 
     }
   }, [data]);
-
-  // Handle row click to navigate to full loan details
-  const handleRowClick = (loanId) => {
-    window.location.href = `./fullLoan?id=${loanId}`; // Navigate to full loan details
-  };
-
   return (
     <div>
       <Table striped bordered hover>
@@ -100,11 +86,7 @@ function Spreadsheet() {
           </tr>
         </thead>
         <tbody>
-          {loading ? (
-            <tr>
-              <td colSpan="6">Loading...</td>
-            </tr>
-          ) : (
+          {admin.username.length > 0 ? (
             // Loop through the admin data to fill the table rows
             admin.username.map((username, index) => (
               <tr key={index}>
@@ -114,40 +96,13 @@ function Spreadsheet() {
                 <td>${admin.totalLoan[index]}</td>
               </tr>
             ))
+          ) : (
+            <tr>
+              <td colSpan="4">No data available</td>
+            </tr>
           )}
-          <tr>
-            <td colSpan={6}>
-              <div className="d-grid gap-2">
-                <Button
-                  className="mb-2"
-                  onClick={() => setShowForm(!showForm)} // Toggle visibility of the AdminForm
-                  variant="primary"
-                  size="lg"
-                  active
-                >
-                  Admin Form
-                </Button>
-              </div>
-            </td>
-          </tr>
         </tbody>
       </Table>
-
-      {/* The pop-up (admin form) */}
-      {showForm && (
-        <div className="admin-form-popup">
-          <div className="admin-form-container">
-            <AdminForm />
-            <Button
-              variant="secondary"
-              onClick={() => setShowForm(false)} // Close the form
-              className="close-btn"
-            >
-              Close
-            </Button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

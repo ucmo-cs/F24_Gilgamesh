@@ -2,36 +2,32 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Spreadsheet.css'; // Import your CSS file here
 import Table from 'react-bootstrap/Table';
-
-import AdminMakeUser from '../components/AdminMakeUser';
-import AdminMakeLoan from '../components/AdminMakeLoan';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate hook
 
 function Spreadsheet() {
-  
-  const [user, setUser] = useState([]); // For storing loan data
-  const [data, setData] = useState([]); // For storing userIds
-  const [info, setInfo] = useState([]); // For storing user info based on userId
+  const [user, setUser] = useState([]);
+  const [data, setData] = useState([]);
+  const [info, setInfo] = useState([]);
   const [admin, setAdmin] = useState({
     username: [],
     totalLoan: [],
     numberOfLoans: [],
     userId: []
-  }); // Initialize admin state properly
+  });
+
+  const navigate = useNavigate();  // Initialize navigate hook
 
   // Fetch loan data and user IDs on component mount
   useEffect(() => {
-    axios
-      .get('http://localhost:8080/admin/loans') // Include auth header
+    axios.get('http://localhost:8080/admin/loans')
       .then((response) => {
-        const loanData = response.data; // Assuming response.data is an array of loan objects
-
-        // Extract userId from each loan and store in an array
+        const loanData = response.data;
         const userIdsArray = loanData.map((loan) => loan.userId);
-        setData([...new Set(userIdsArray)]); // Store the userIds array in state
-        setUser(loanData); // Store the full loan data if needed
+        setData([...new Set(userIdsArray)]);
+        setUser(loanData);
       })
       .catch((error) => {
-        console.error('Error fetching loan data:', error); // Log any errors
+        console.error('Error fetching loan data:', error);
       });
   }, []);
 
@@ -40,46 +36,48 @@ function Spreadsheet() {
     if (data.length > 0) {
       const fetchUserInfo = async () => {
         try {
-          // Loop through each userId and fetch corresponding user data
           const userInfoPromises = data.map(userId =>
             axios.get(`http://localhost:8080/user/${userId}`).then((response) => response.data)
           );
 
-          // Wait for all user info to be fetched
           const allUserInfo = await Promise.all(userInfoPromises);
-          setInfo(allUserInfo); // Store all user info
+          setInfo(allUserInfo);
 
-          // Now, extract the required data from allUserInfo
-          const username = allUserInfo.map(user => user.userName); // Assuming `userName` is the field for username
-          const totalLoan = allUserInfo.map(user => 
-            user.loans.reduce((sum, loan) => sum + loan.loanOriginAmount, 0) // Calculate sum of all loans for each user
+          const username = allUserInfo.map(user => user.userName);
+          const totalLoan = allUserInfo.map(user =>
+            user.loans.reduce((sum, loan) => sum + loan.loanOriginAmount, 0)
           );
-          const numberOfLoans = allUserInfo.map(user => user.loans.length); // Count number of loans for each user
-          const userId = allUserInfo.map(user => user.userId); // Extract userId for each user
+          const numberOfLoans = allUserInfo.map(user => user.loans.length);
+          const userId = allUserInfo.map(user => user.userId);
 
           setAdmin({
             username,
             totalLoan,
             numberOfLoans,
-            userId // Add userId to admin state
-          }); // Storing extracted data in admin state
+            userId
+          });
 
-          // Save user info to localStorage
           localStorage.setItem('userInfo', JSON.stringify(allUserInfo));
         } catch (error) {
           console.error('Error fetching user info:', error);
         }
       };
 
-      fetchUserInfo(); 
+      fetchUserInfo();
     }
   }, [data]);
+
+  // Handle row click
+  const handleRowClick = (userId) => {
+    navigate(`/fullLoan/${userId}`);  // Navigate to FullLoan page with userId
+  };
+
   return (
     <div>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>User ID</th> {/* New column for User ID */}
+            <th>User ID</th>
             <th>Customer Name</th>
             <th>Outstanding Loans</th>
             <th>Total Due</th>
@@ -87,10 +85,13 @@ function Spreadsheet() {
         </thead>
         <tbody>
           {admin.username.length > 0 ? (
-            // Loop through the admin data to fill the table rows
             admin.username.map((username, index) => (
-              <tr key={index}>
-                <td>{admin.userId[index]}</td> {/* Displaying userId */}
+              <tr
+                key={index}
+                onClick={() => handleRowClick(admin.userId[index])}  // Handle click event
+                style={{ cursor: 'pointer' }}  // Change cursor to pointer on hover
+              >
+                <td>{admin.userId[index]}</td>
                 <td>{username}</td>
                 <td>{admin.numberOfLoans[index]}</td>
                 <td>${admin.totalLoan[index]}</td>

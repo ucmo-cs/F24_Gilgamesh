@@ -16,6 +16,8 @@ import TermsOfService from './page/TermsOfService';
 import UserSetting from './page/UserSetting';
 import AdminSettings from './page/AdminSettings';
 import './App.css';
+import FullLoan from './page/fullLoan';
+
 
 function ScrollToTop() {
   const location = useLocation();
@@ -45,6 +47,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/fullLoan/:userId" element={<FullLoan />} /> {/* Dynamic route for FullLoan page */}
         </Routes>
       </div>
 

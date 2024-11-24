@@ -13,6 +13,8 @@ const Admin = () => {
   const [parsedUser, setParsedUser] = useState(null);
   const [showModal, setShowModal] = useState(false); // State to handle modal visibility
   const [modalType, setModalType] = useState(''); // State to determine which modal to show
+  const [showForm, setShowForm] = useState(false); // State to toggle the form visibility
+  const [showFormUser, setShowFormUser] = useState(false); // State to toggle the form visibility
 
   useEffect(() => {
     // Get user data from sessionStorage or localStorage
@@ -59,31 +61,47 @@ const Admin = () => {
           <Row className="mt-auto justify-content-center">
             <Col className="text-center">
               {/* Button to trigger Make Loan Modal */}
-              <Button variant="primary" onClick={() => handleShowModal('makeLoan')} className="ms-2">
+              <Button variant="primary" onClick={() => setShowForm(!showForm)} className="ms-2">
                 Make Loan
               </Button>
               {/* Button to trigger Make User Modal */}
-              <Button variant="success" onClick={() => handleShowModal('makeUser')} className="ms-2">
+              <Button variant="success" onClick={() => setShowFormUser(!showFormUser)} className="ms-2">
                 Make User
               </Button>
             </Col>
           </Row>
 
-          {/* Modal for Make Loan and Make User */}
-          <Modal show={showModal} onHide={handleCloseModal}>
-            <Modal.Header closeButton>
-              <Modal.Title>{modalType === 'makeLoan' ? 'Create Loan' : 'Create User'}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {/* Conditionally render the correct component based on modalType */}
-              {modalType === 'makeLoan' ? (
+          
+          {/* The pop-up (admin form) */}
+          {showForm && (
+            <div className="admin-form-popup">
+              <div className="admin-form-container">
                 <AdminMakeLoan />
-              ) : (
+                <Button
+                  variant="secondary"
+                  onClick={() => setShowForm(false)} // Close the form
+                  className="close-btn"
+                >
+                  Close
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {showFormUser && (
+            <div className="adminUser-form-popup">
+              <div className="adminUser-form-container">
                 <AdminMakeUser />
-              )}
-            </Modal.Body>
-            
-          </Modal>
+                <Button
+                  variant="secondary"
+                  onClick={() => setShowFormUser(false)} // Close the form
+                  className="close-btn"
+                >
+                  Close
+                </Button>
+              </div>
+            </div>
+          )}
         </Container>
       </div>
     </>

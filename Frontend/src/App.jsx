@@ -17,6 +17,7 @@ import UserSetting from './page/UserSetting';
 import AdminSettings from './page/AdminSettings';
 import './App.css';
 import FullLoan from './page/fullLoan';
+import UserInfo from './page/UserInfo';
 
 
 function ScrollToTop() {
@@ -48,6 +49,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/fullLoan/:userId" element={<FullLoan />} /> {/* Dynamic route for FullLoan page */}
+          <Route path="/userInfo/:userId" element={<UserInfo />} />  {/* Route for UserInfo page */}
         </Routes>
       </div>
 

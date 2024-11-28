@@ -71,7 +71,12 @@ function Spreadsheet() {
     }
   }, [data]);
 
-  // Handle click on Outstanding Loans or Total Due
+  // Handle click on User ID or Customer Name to navigate to UserInfo page
+  const handleUserClick = (userId) => {
+    navigate(`/userInfo/${userId}`);  // Navigate to UserInfo page with userId
+  };
+
+  // Handle click on Outstanding Loans or Total Due to navigate to FullLoan page
   const handleClickableCellClick = (userId) => {
     navigate(`/fullLoan/${userId}`);  // Navigate to FullLoan page with userId
   };
@@ -88,6 +93,10 @@ function Spreadsheet() {
       setTooltipContent("Click to view outstanding loan details");
     } else if (columnType === 'total') {
       setTooltipContent("Click to view total due details");
+    } else if (columnType === 'userId') {
+      setTooltipContent("Click to view customer details");
+    } else if (columnType === 'username') {
+      setTooltipContent("Click to view customer details");
     }
     setOverlayVisible(true);
   };
@@ -113,20 +122,41 @@ function Spreadsheet() {
           {admin.username.length > 0 ? (
             admin.username.map((username, index) => (
               <tr key={index}>
-                <td>{admin.userId[index]}</td>
-                <td>{username}</td>
+                {/* User ID Column with Hover Tooltip */}
+                <td
+                  onClick={() => handleUserClick(admin.userId[index])}  // Navigate to UserInfo page
+                  onMouseEnter={() => handleColumnHover('userId', index)}  // Show tooltip
+                  onMouseLeave={handleMouseLeave}  // Hide tooltip
+                  style={{ cursor: 'pointer'}}
+                >
+                  {admin.userId[index]}
+                </td>
+
+                {/* Customer Name Column with Hover Tooltip */}
+                <td
+                  onClick={() => handleUserClick(admin.userId[index])}  // Navigate to UserInfo page
+                  onMouseEnter={() => handleColumnHover('username', index)}  // Show tooltip
+                  onMouseLeave={handleMouseLeave}  // Hide tooltip
+                  style={{ cursor: 'pointer'}}
+                >
+                  {username}
+                </td>
+
+                {/* Outstanding Loans Column */}
                 <td
                   onMouseEnter={() => handleColumnHover('loans', index)}  // Trigger tooltip for "Outstanding Loans"
                   onMouseLeave={handleMouseLeave}  // Hide tooltip
-                  onClick={() => handleClickableCellClick(admin.userId[index])}
+                  onClick={() => handleClickableCellClick(admin.userId[index])}  // Keep this clickable
                   style={{ cursor: 'pointer' }}
                 >
                   {admin.numberOfLoans[index]}
                 </td>
+
+                {/* Total Due Column */}
                 <td
                   onMouseEnter={() => handleColumnHover('total', index)}  // Trigger tooltip for "Total Due"
                   onMouseLeave={handleMouseLeave}  // Hide tooltip
-                  onClick={() => handleClickableCellClick(admin.userId[index])}
+                  onClick={() => handleClickableCellClick(admin.userId[index])}  // Keep this clickable
                   style={{ cursor: 'pointer' }}
                 >
                   ${admin.totalLoan[index]}

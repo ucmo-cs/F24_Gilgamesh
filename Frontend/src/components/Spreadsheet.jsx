@@ -92,7 +92,7 @@ function Spreadsheet() {
     if (columnType === 'loans') {
       setTooltipContent("Click to view outstanding loan details");
     } else if (columnType === 'total') {
-      setTooltipContent("Click to view total due details");
+      setTooltipContent("Click to view outstanding loan details");
     } else if (columnType === 'userId') {
       setTooltipContent("Click to view customer details");
     } else if (columnType === 'username') {

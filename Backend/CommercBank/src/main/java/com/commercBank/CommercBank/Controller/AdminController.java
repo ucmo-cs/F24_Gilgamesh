@@ -52,6 +52,17 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Loan or User not found");
     }
 
+    @GetMapping("/user/{userId}/loans")
+    public ResponseEntity<List<Loan>> getLoansByUserId(@PathVariable String userId) {
+        try {
+            // Fetch loans for a specific userId
+            List<Loan> loans = loanService.findByUserId(userId);
+            return ResponseEntity.ok(loans);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
     @GetMapping("/loan/{id}")
     public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
         Loan loan = loanService.findById(id);

@@ -1,3 +1,16 @@
+.overlay-tooltip {
+  position: fixed;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #333;
+  z-index: 10000;  /* Ensure tooltip is on top */
+  pointer-events: none;  /* Prevent tooltip from interfering with other UI elements */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
 
   
   .mb-2.btn-primary { 

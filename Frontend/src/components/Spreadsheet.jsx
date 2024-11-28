@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Spreadsheet.css'; // Import your CSS file here
 import Table from 'react-bootstrap/Table';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate hook
+import { useNavigate } from 'react-router-dom';
 
 function Spreadsheet() {
   const [user, setUser] = useState([]);
@@ -15,7 +15,11 @@ function Spreadsheet() {
     userId: []
   });
 
-  const navigate = useNavigate();  // Initialize navigate hook
+  const [overlayVisible, setOverlayVisible] = useState(false);  // State to control overlay visibility
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });  // Track mouse position
+  const [tooltipContent, setTooltipContent] = useState('');  // Store the tooltip content
+  const [hoveredColumn, setHoveredColumn] = useState(null);  // State to track the hovered column
+  const navigate = useNavigate();
 
   // Fetch loan data and user IDs on component mount
   useEffect(() => {
@@ -67,13 +71,35 @@ function Spreadsheet() {
     }
   }, [data]);
 
-  // Handle row click
-  const handleRowClick = (userId) => {
+  // Handle click on Outstanding Loans or Total Due
+  const handleClickableCellClick = (userId) => {
     navigate(`/fullLoan/${userId}`);  // Navigate to FullLoan page with userId
   };
 
+  // Handle mouse move to update mouse position
+  const handleMouseMove = (event) => {
+    setMousePos({ x: event.clientX, y: event.clientY });
+  };
+
+  // Trigger overlay visibility on hover for specific columns
+  const handleColumnHover = (columnType, index) => {
+    setHoveredColumn(index);
+    if (columnType === 'loans') {
+      setTooltipContent("Click to view outstanding loan details");
+    } else if (columnType === 'total') {
+      setTooltipContent("Click to view total due details");
+    }
+    setOverlayVisible(true);
+  };
+
+  // Hide overlay when mouse leaves column
+  const handleMouseLeave = () => {
+    setOverlayVisible(false);
+    setHoveredColumn(null);
+  };
+
   return (
-    <div>
+    <div onMouseMove={handleMouseMove}>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -86,15 +112,25 @@ function Spreadsheet() {
         <tbody>
           {admin.username.length > 0 ? (
             admin.username.map((username, index) => (
-              <tr
-                key={index}
-                onClick={() => handleRowClick(admin.userId[index])}  // Handle click event
-                style={{ cursor: 'pointer' }}  // Change cursor to pointer on hover
-              >
+              <tr key={index}>
                 <td>{admin.userId[index]}</td>
                 <td>{username}</td>
-                <td>{admin.numberOfLoans[index]}</td>
-                <td>${admin.totalLoan[index]}</td>
+                <td
+                  onMouseEnter={() => handleColumnHover('loans', index)}  // Trigger tooltip for "Outstanding Loans"
+                  onMouseLeave={handleMouseLeave}  // Hide tooltip
+                  onClick={() => handleClickableCellClick(admin.userId[index])}
+                  style={{ cursor: 'pointer' }}
+                >
+                  {admin.numberOfLoans[index]}
+                </td>
+                <td
+                  onMouseEnter={() => handleColumnHover('total', index)}  // Trigger tooltip for "Total Due"
+                  onMouseLeave={handleMouseLeave}  // Hide tooltip
+                  onClick={() => handleClickableCellClick(admin.userId[index])}
+                  style={{ cursor: 'pointer' }}
+                >
+                  ${admin.totalLoan[index]}
+                </td>
               </tr>
             ))
           ) : (
@@ -104,6 +140,19 @@ function Spreadsheet() {
           )}
         </tbody>
       </Table>
+
+      {/* Overlay for tooltip */}
+      {overlayVisible && hoveredColumn !== null && (
+        <div
+          className="overlay-tooltip"
+          style={{
+            left: mousePos.x + 15,  // Position to the right of the mouse
+            top: mousePos.y + 10,   // Slightly below the mouse
+          }}
+        >
+          {tooltipContent}
+        </div>
+      )}
     </div>
   );
 }

@@ -11,3 +11,5 @@ public interface LoanPaymentRepository extends JpaRepository <LoanPayment, Long>
     List<LoanPayment> findAllByLoan(Loan loan);
 
 }
+
+

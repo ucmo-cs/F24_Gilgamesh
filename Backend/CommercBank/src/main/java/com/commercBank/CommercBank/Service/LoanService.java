@@ -30,6 +30,18 @@ public class LoanService {
     @Autowired
     private AccountRepository accountRepository;//fetches account by id
 
+
+    public List<Loan> findByUserId(String userId) {
+        // Find account using userId
+        Account account = accountRepository.findByUserId(userId);
+        if (account == null) {
+            throw new RuntimeException("Account with userId: " + userId + " not found.");
+        }
+        // Fetch loans associated with the account
+        return loanRepository.findByUserAccount_AccountId(account.getAccountId());
+    }
+
+
     public List<Loan> findByAccountId(Long accountId) {
         // Implementation of the new method
         return loanRepository.findByUserAccount_AccountId(accountId);

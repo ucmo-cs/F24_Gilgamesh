@@ -136,7 +136,7 @@ const AdminMakeUser = () => {
         </div>
 
         {/* Submit Button */}
-        <Button variant="primary" type="submit">
+        <Button className="summit" variant="primary" type="submit">
           Create User
         </Button>
       </Form>

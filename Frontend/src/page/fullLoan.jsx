@@ -48,23 +48,6 @@ function FullLoan() {
       <AdminHeader />
       <div className="loan-container">
         <h1>Full Loan Details for User ID: {userId}</h1>
-
-        {/* Back button */}
-        <button onClick={handleBackClick} className="back-button">
-          Back
-        </button>
-
-        {/* Show user data */}
-        {userData ? (
-          <div>
-            <h2>{userData.userName}</h2>
-            <p>Total Loans: {loans.length}</p>
-            <p>Total Due: ${loans.reduce((sum, loan) => sum + loan.loanOriginAmount, 0)}</p>
-          </div>
-        ) : (
-          <p>Loading user data...</p>
-        )}
-
         {/* Show table of loans */}
         <h3>Loans:</h3>
         {loading ? (
@@ -97,6 +80,10 @@ function FullLoan() {
             </tbody>
           </Table>
         )}
+          {/* Back button */}
+          <button onClick={handleBackClick} className="back-button">
+          Back
+        </button>
       </div>
     </>
   );

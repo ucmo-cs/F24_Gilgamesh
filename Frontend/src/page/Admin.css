@@ -9,9 +9,9 @@ body {
 /* Admin container styling */
 .admin-container {
   width: 75vw; /* Full width of the container */
-  margin: 150px auto; /* Center the container horizontally with margin auto */
+  margin: 40px auto; /* Center the container horizontally with margin auto */
   padding: 20px; /* Padding inside the box */
-  background-color: #006847ea; /* Green background for the box */
+  background-color:  rgb(128, 128, 128); /* Green background for the box */
   border-radius: 8px; /* Rounded corners */
   position: relative; /* Ensure z-index works as expected */
   z-index: 1000; /* Bring to the front by giving it a higher z-index */
@@ -21,6 +21,37 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden; /* Hide overflow for the container */
+}
+
+/* Ensure the table doesn't overflow the container */
+.table-container {
+  width: 100%;
+  max-height: 400px; /* Set a max height for the table container */
+  overflow-y: auto; /* Enable vertical scrolling if table content exceeds the height */
+  overflow-x: auto; /* Enable horizontal scrolling if the table overflows horizontally */
+  margin-top: 20px; /* Add some space between the table and the form */
+}
+
+/* Table styling */
+table {
+  width: 100%; /* Make the table width 100% of its container */
+  border-collapse: collapse; /* Collapse table borders */
+  table-layout: fixed; /* Ensure columns have fixed width */
+}
+
+/* Table cell and border styling */
+th, td {
+  padding: 12px;
+  text-align: left; /* Align text to the left */
+  border: 1px solid #ddd; /* Add borders around cells */
+}
+
+/* Admin form styling */
+.admin-form {
+  flex-grow: 1; /* Allow the form to grow and fill the space */
+  display: flex; /* Use flexbox to manage layout */
+  flex-direction: column; /* Stack elements vertically */
 }
 
 /* Center the modal dialog within the page */
@@ -31,9 +62,9 @@ body {
   position: absolute; /* Absolute positioning for overlay effect */
   top: 20%; /* Position from the top of the parent */
   left: 25%; /* Position from the left of the parent */
-  transform: translate(-50%, -50%); /* Offset by 50% of its own width and height to center it */
   z-index: 1050; /* Ensure the modal is above other content */
 }
+
 /* Ensure the modal content has more space */
 .modal-content {
   flex: auto; /* Let it expand automatically */
@@ -57,17 +88,19 @@ body {
   margin-bottom: 20px; /* Increase space between fields */
 }
 
-button[type="submit"] {
-  padding: 15px 20px;
-  font-size: 18px; /* Increase button size */
+
+.ms-2{
+  background-color:#0e4019;
 }
 
-
-
-
-/* Admin form styling */
-.admin-form {
-  flex-grow: 1; /* Allow the form to grow and fill the space */
-  display: flex; /* Use flexbox to manage layout */
-  flex-direction: column; /* Stack elements vertically */
+/* form buttons*/
+.close-btn{
+  margin-top: 0;
+  background-color: rgb(49, 49, 49);
+}
+button[type="submit"] {
+  position: center;
+  background-color:#0e4019;
+  padding: 15px 20px;
+  font-size: 18px; /* Increase button size */
 }

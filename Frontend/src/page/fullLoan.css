@@ -1,11 +1,14 @@
+
+
 .loan-container {
     width: 75vw; /* Full width of the container */
-  margin: 150px auto; /* Center the container horizontally with margin auto */
+  margin: 40px auto; /* Center the container horizontally with margin auto */
   padding: 20px; /* Padding inside the box */
   background-color: #006847ea; /* Green background for the box */
   border-radius: 8px; /* Rounded corners */
   position: relative; /* Ensure z-index works as expected */
   z-index: 1000; /* Bring to the front by giving it a higher z-index */
+  flex-grow: 1;
 }
 
 .back-button {

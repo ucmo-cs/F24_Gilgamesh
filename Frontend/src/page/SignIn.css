@@ -1,59 +1,45 @@
 /* Main container */
 .main {
-    height: 100vh; /* Full viewport height */
     overflow: hidden; /* Prevent scrolling on main container */
 }
 
+
+
 /* Container for login form */
 .login-container {
-    min-height: 80vh; /* Allow for the container to grow if content exceeds */
-    display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    margin: 100px;
+    justify-self: center;
+    
     position: relative; /* or absolute depending on your layout */
     z-index: 10; /* Ensure this is higher than the overlay */
-    overflow: auto; /* Allow the form to scroll if it exceeds the available space */
-}
 
-/* Modal styling */
+    width: 100%; /* Make the container take full width of the parent */
+    max-width: 400px; /* Limit the maximum width of the login container */
+    
+    
+    padding: 20px; /* Add padding inside the container */
+  
+}
 .modal-content {
     background-color: rgb(128, 128, 128); /* Gray background for the modal */
     border-radius: 0.5rem; /* Rounded corners */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    max-width: 400px; /* Set a maximum width */
-    width: 90%; /* Allow some flexibility */
-    overflow: auto; /* Allow scrolling inside the modal if necessary */
+    
 }
 
+/* Heading */
 h1 {
-    color: #fff; /* Light text for better contrast on gray */
-    text-align: center; /* Center text */
-    width: 100%; /* Take full width to allow centering */
+    color: #fff; /* Light text for better contrast */
+    text-align: center; /* Align heading text to the left */
+    
 }
-
 /* Form control styling */
 .form-floating {
+    align-items: flex-start; /* Aligns the content of the form control to the left */
+    text-align: left; /* Aligns labels and inputs to the left */
     margin-bottom: 1rem; /* Space between the text fields */
+    width: 70%; /* Adjust width if needed */
 }
-
-/* Input focus styling */
-.form-floating input:focus + label,
-.form-floating input:focus-visible + label,
-.form-floating input:not(:placeholder-shown) + label {
-    font-size: 0.50rem; /* Smaller font size when focused or filled */
-    color: rgba(255, 255, 255, 0.7); /* Slightly more opaque label */
-    opacity: 0.5; /* Make label semi-transparent when input is filled */
-}
-
-/* Input focus styling */
-.form-floating input:focus,
-.form-floating input:focus-visible {
-    background-color: rgba(255, 255, 255, 0.9); /* Light background when focused */
-    color: #333; /* Dark text when focused to make it legible */
-    border-color: #11552b; /* Change border color to match theme */
-    box-shadow: 0 0 5px rgba(17, 85, 43, 0.6);
-}
-
 
 
 /* Green login button */
@@ -75,8 +61,4 @@ h1 {
 .btn-btn-primary:active {
     background-color: #0e4019; /* Even darker green on active click */
     color: white; /* White text on click */
-}
-
-.text-body-secondary {
-    color: rgba(255, 255, 255, 0.8); /* Light secondary text color */
 }

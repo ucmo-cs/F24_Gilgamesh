@@ -61,7 +61,7 @@ const Admin = () => {
           <Row className="mt-auto justify-content-center">
             <Col className="text-center">
               {/* Button to trigger Make Loan Modal */}
-              <Button variant="primary" onClick={() => setShowForm(!showForm)} className="ms-2">
+              <Button  variant="primary" onClick={() => setShowForm(!showForm)} className="ms-2">
                 Make Loan
               </Button>
               {/* Button to trigger Make User Modal */}

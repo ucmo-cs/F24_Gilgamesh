@@ -4,6 +4,9 @@ import axios from 'axios';
 import './fullLoan.css';
 import { Table } from 'react-bootstrap';
 
+import  '../components/AdminHeader.css';
+import AdminHeader from '../components/AdminHeader';
+
 function FullLoan() {
   const { userId } = useParams();  // Get the userId from the URL
   const [userData, setUserData] = useState(null);
@@ -34,8 +37,12 @@ function FullLoan() {
       });
   }, [userId]);
 
+  
+
   return (
-    <div className="loan-container">
+    <>
+      <AdminHeader/>
+      <div className="loan-container">
       <h1>Full Loan Details for User ID: {userId}</h1>
 
       {/* Show user data */}
@@ -82,6 +89,9 @@ function FullLoan() {
         </Table>
       )}
     </div>
+    
+    </>
+
   );
 }
 

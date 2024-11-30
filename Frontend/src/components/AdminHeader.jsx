@@ -28,7 +28,7 @@ function AdminHeader() {
     <Navbar className="userheader">
       <Container fluid className="d-flex justify-content-between align-items-center">
         <Navbar.Brand style={{ textAlign: 'auto' }}>
-          <img src="./commerce-bank.svg" className="navbar-logo" alt="Commerce Bank Logo" />
+          <img src="../commerce-bank.svg" className="navbar-logo" alt="Commerce Bank Logo" />
           <span className="brand-name">Commerce Bank</span>
         </Navbar.Brand>
         <Nav className="ms-auto">

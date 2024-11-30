@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './fullLoan.css';
 import { Table } from 'react-bootstrap';
 
-import  '../components/AdminHeader.css';
+import '../components/AdminHeader.css';
 import AdminHeader from '../components/AdminHeader';
 
 function FullLoan() {
@@ -12,6 +12,7 @@ function FullLoan() {
   const [userData, setUserData] = useState(null);
   const [loans, setLoans] = useState([]);
   const [loading, setLoading] = useState(true); // To track if the data is still loading
+  const navigate = useNavigate();  // Hook to allow navigation
 
   useEffect(() => {
     // Fetch user data based on userId (if needed)
@@ -37,61 +38,67 @@ function FullLoan() {
       });
   }, [userId]);
 
-  
+  // Handle back button click
+  const handleBackClick = () => {
+    navigate(-1);  // Navigate back to the previous page
+  };
 
   return (
     <>
-      <AdminHeader/>
+      <AdminHeader />
       <div className="loan-container">
-      <h1>Full Loan Details for User ID: {userId}</h1>
+        <h1>Full Loan Details for User ID: {userId}</h1>
 
-      {/* Show user data */}
-      {userData ? (
-        <div>
-          <h2>{userData.userName}</h2>
-          <p>Total Loans: {loans.length}</p>
-          <p>Total Due: ${loans.reduce((sum, loan) => sum + loan.loanOriginAmount, 0)}</p>
-        </div>
-      ) : (
-        <p>Loading user data...</p>
-      )}
+        {/* Back button */}
+        <button onClick={handleBackClick} className="back-button">
+          Back
+        </button>
 
-      {/* Show table of loans */}
-      <h3>Loans:</h3>
-      {loading ? (
-        <p>Loading loans...</p>
-      ) : (
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Loan ID</th>
-              <th>Amount Left to Pay</th>
-              <th>Original Amount</th>
-              <th>Interest Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            {loans.length === 0 ? (
+        {/* Show user data */}
+        {userData ? (
+          <div>
+            <h2>{userData.userName}</h2>
+            <p>Total Loans: {loans.length}</p>
+            <p>Total Due: ${loans.reduce((sum, loan) => sum + loan.loanOriginAmount, 0)}</p>
+          </div>
+        ) : (
+          <p>Loading user data...</p>
+        )}
+
+        {/* Show table of loans */}
+        <h3>Loans:</h3>
+        {loading ? (
+          <p>Loading loans...</p>
+        ) : (
+          <Table striped bordered hover>
+            <thead>
               <tr>
-                <td colSpan="4">No loans available for this user.</td>
+                <th>Loan ID</th>
+                <th>Amount Left to Pay</th>
+                <th>Original Amount</th>
+                <th>Interest Rate</th>
               </tr>
-            ) : (
-              loans.map((loan) => (
-                <tr key={loan.loan_id}>
-                  <td>{loan.loan_id}</td>
-                  <td>${loan.amountLeftToPay}</td>
-                  <td>${loan.loanOriginAmount}</td>
-                  <td>{loan.interestRate}%</td>
+            </thead>
+            <tbody>
+              {loans.length === 0 ? (
+                <tr>
+                  <td colSpan="4">No loans available for this user.</td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </Table>
-      )}
-    </div>
-    
+              ) : (
+                loans.map((loan) => (
+                  <tr key={loan.loan_id}>
+                    <td>{loan.loan_id}</td>
+                    <td>${loan.amountLeftToPay}</td>
+                    <td>${loan.loanOriginAmount}</td>
+                    <td>{loan.interestRate}%</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </Table>
+        )}
+      </div>
     </>
-
   );
 }
 

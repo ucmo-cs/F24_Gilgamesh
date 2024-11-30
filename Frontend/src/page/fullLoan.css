@@ -7,3 +7,18 @@
   position: relative; /* Ensure z-index works as expected */
   z-index: 1000; /* Bring to the front by giving it a higher z-index */
 }
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}

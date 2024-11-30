@@ -8,6 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @AllArgsConstructor
 @Service
@@ -33,6 +35,10 @@ public class AccountService {
 
     public Account save(Account account) {
         return accountRepository.save(account);
+    }
+
+    public List<Account> findAll() {
+        return accountRepository.findAll();  // Retrieves all users from the database
     }
 
 

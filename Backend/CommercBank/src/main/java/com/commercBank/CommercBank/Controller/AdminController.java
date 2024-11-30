@@ -63,6 +63,19 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/users")
+    public ResponseEntity<List<Account>> getAllUsers() {
+        try {
+            // Fetch all users from the account service
+            List<Account> users = accountService.findAll();
+
+            // Return a response with the users list
+            return ResponseEntity.ok(users);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
     @GetMapping("/loan/{id}")
     public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
         Loan loan = loanService.findById(id);

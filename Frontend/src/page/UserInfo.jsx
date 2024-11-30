@@ -5,30 +5,27 @@ import axios from 'axios';
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
-
+import { useParams } from 'react-router-dom';  // Import useParams to get userId from the URL
 
 function Userinfo() {
+  const { userId } = useParams();  // Get userId from the URL parameter
   const [parsedUser, setParsedUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // Track whether the form is in edit mode
-  const [userId, setUserId] = useState(null);  // Declare userId state to hold the user ID
 
-  // Fetch user session and data
+  // Fetch user data from the API using the userId
   useEffect(() => {
-    const userSession = sessionStorage.getItem('userSession');
-    if (userSession) {
-      const parsed = JSON.parse(userSession);
-      setParsedUser(parsed);
-      
-      // Check if parsedUser has account_id and set the userId
-      if (parsed && parsed.account_id) {
-        setUserId(parsed.account_id);  // Set userId from account_id in session data
-      } else {
-        console.error("User ID or account_id is missing in the session data.");
-      }
+    if (userId) {
+      axios.get(`http://localhost:8080/user/${userId}`)  // Replace with your actual API endpoint
+        .then((response) => {
+          setParsedUser(response.data);  // Set the user data from the API response
+        })
+        .catch((error) => {
+          console.error('Error fetching user data:', error);
+        });
     } else {
-      console.log("No user session available.");
+      console.log('No userId found.');
     }
-  }, []);
+  }, [userId]);
 
   // Set edit mode to true when the user wants to edit
   const handleEditClick = () => {
@@ -39,21 +36,21 @@ function Userinfo() {
   const handleCancelClick = () => {
     setIsEditing(false); // Return to viewing mode
   };
+
   // Ensure parsedUser is loaded before rendering the form or user info
   if (!parsedUser) {
     return (
-      <>
-        <div className="user-settings-container">
-          <p>Loading user data...</p>
-        </div>
-      </>
+      <div className="user-settings-container">
+        <p>Loading user data...</p>
+      </div>
     );
   }
-    const renderHeader = () => {
+
+  const renderHeader = () => {
     if (parsedUser) {
       if (parsedUser.role === 'ADMIN') {
         return <AdminHeader />;
-      } if(parsedUser.role === 'USER') {
+      } if (parsedUser.role === 'USER') {
         return <UserHeader />;
       }
     }
@@ -62,7 +59,7 @@ function Userinfo() {
 
   return (
     <>
-    {renderHeader()} 
+      {renderHeader()} 
 
       <div className="user-settings-container">
         {/* Conditionally render the title based on isEditing */}
@@ -71,10 +68,12 @@ function Userinfo() {
         {/* Display user info or UserForm based on isEditing */}
         {!isEditing ? (
           <div className="user-info-display">
-            <p><strong>Username:</strong> {parsedUser.User || 'Loading...'}</p>
+            <p><strong>Account ID:</strong> {parsedUser.userId || 'Loading...'}</p>
+            <p><strong>Username:</strong> {parsedUser.userName || 'Loading...'}</p>
             <p><strong>Email:</strong> {parsedUser.email || 'Loading...'}</p>
-            <p><strong>Number:</strong> {parsedUser.number || 'Loading...'}</p>
+            <p><strong>Number:</strong> {parsedUser.phoneNumber || 'Loading...'}</p>
             <p><strong>Role:</strong> {parsedUser.role || 'Loading...'}</p>
+            <p><strong>Date Created:</strong> {parsedUser.created_at || 'Loading...'}</p>
             <button className="btn btn-primary" onClick={handleEditClick}>Edit Information</button>
           </div>
         ) : (

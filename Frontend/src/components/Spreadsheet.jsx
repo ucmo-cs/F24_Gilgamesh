@@ -5,9 +5,8 @@ import Table from 'react-bootstrap/Table';
 import { useNavigate } from 'react-router-dom';
 
 function Spreadsheet() {
-  const [user, setUser] = useState([]);
-  const [data, setData] = useState([]);
-  const [info, setInfo] = useState([]);
+  const [users, setUsers] = useState([]);  // All users (excluding admins)
+  const [loans, setLoans] = useState([]);  // Loans data
   const [admin, setAdmin] = useState({
     username: [],
     totalLoan: [],
@@ -21,55 +20,69 @@ function Spreadsheet() {
   const [hoveredColumn, setHoveredColumn] = useState(null);  // State to track the hovered column
   const navigate = useNavigate();
 
-  // Fetch loan data and user IDs on component mount
+  // Fetch all users
+  useEffect(() => {
+    axios.get('http://localhost:8080/admin/users')  // Change this to the correct endpoint for users
+      .then((response) => {
+        // Filter out users with ROLE "ADMIN"
+        const filteredUsers = response.data.filter(user => user.role !== 'ADMIN');
+        setUsers(filteredUsers);  // Store only non-admin users
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
+  }, []);
+
+  // Fetch loan data
   useEffect(() => {
     axios.get('http://localhost:8080/admin/loans')
       .then((response) => {
-        const loanData = response.data;
-        const userIdsArray = loanData.map((loan) => loan.userId);
-        setData([...new Set(userIdsArray)]);
-        setUser(loanData);
+        setLoans(response.data);  // Store loans data
       })
       .catch((error) => {
         console.error('Error fetching loan data:', error);
       });
   }, []);
 
-  // Fetch additional user info based on unique userId
+  // Merge user data with loan data
   useEffect(() => {
-    if (data.length > 0) {
-      const fetchUserInfo = async () => {
-        try {
-          const userInfoPromises = data.map(userId =>
-            axios.get(`http://localhost:8080/user/${userId}`).then((response) => response.data)
-          );
-
-          const allUserInfo = await Promise.all(userInfoPromises);
-          setInfo(allUserInfo);
-
-          const username = allUserInfo.map(user => user.userName);
-          const totalLoan = allUserInfo.map(user =>
-            user.loans.reduce((sum, loan) => sum + loan.loanOriginAmount, 0)
-          );
-          const numberOfLoans = allUserInfo.map(user => user.loans.length);
-          const userId = allUserInfo.map(user => user.userId);
-
-          setAdmin({
-            username,
-            totalLoan,
-            numberOfLoans,
-            userId
-          });
-
-          localStorage.setItem('userInfo', JSON.stringify(allUserInfo));
-        } catch (error) {
-          console.error('Error fetching user info:', error);
+    if (users.length > 0 && loans.length > 0) {
+      const loanData = loans.reduce((acc, loan) => {
+        if (!acc[loan.userId]) {
+          acc[loan.userId] = { totalLoan: 0, numberOfLoans: 0 };
         }
-      };
+        acc[loan.userId].totalLoan += loan.loanOriginAmount;
+        acc[loan.userId].numberOfLoans += 1;
+        return acc;
+      }, {});
 
-      fetchUserInfo();
+      const username = [];
+      const totalLoan = [];
+      const numberOfLoans = [];
+      const userId = [];
+
+      users.forEach((user) => {
+        username.push(user.userName);
+        userId.push(user.userId);
+
+        // Check if the user has loans or not
+        if (loanData[user.userId]) {
+          totalLoan.push(loanData[user.userId].totalLoan);
+          numberOfLoans.push(loanData[user.userId].numberOfLoans);
+        } else {
+          totalLoan.push(0);  // No loans
+          numberOfLoans.push(0);  // No loans
+        }
+      });
+
+      setAdmin({
+        username,
+        totalLoan,
+        numberOfLoans,
+        userId
+      });
     }
-  }, [data]);
+  }, [users, loans]);
 
   // Handle click on User ID or Customer Name to navigate to UserInfo page
   const handleUserClick = (userId) => {
@@ -90,7 +103,7 @@ function Spreadsheet() {
   const handleColumnHover = (columnType, index) => {
     setHoveredColumn(index);
     if (columnType === 'loans') {
-      setTooltipContent("Click to view  loan details");
+      setTooltipContent("Click to view loan details");
     } else if (columnType === 'total') {
       setTooltipContent("Click to view loan details");
     } else if (columnType === 'userId') {
@@ -149,7 +162,7 @@ function Spreadsheet() {
                   onClick={() => handleClickableCellClick(admin.userId[index])}  // Keep this clickable
                   style={{ cursor: 'pointer' }}
                 >
-                  {admin.numberOfLoans[index]}
+                  {admin.numberOfLoans[index] > 0 ? admin.numberOfLoans[index] : 'No loans'}
                 </td>
 
                 {/* Total Due Column */}
@@ -159,7 +172,7 @@ function Spreadsheet() {
                   onClick={() => handleClickableCellClick(admin.userId[index])}  // Keep this clickable
                   style={{ cursor: 'pointer' }}
                 >
-                  ${admin.totalLoan[index]}
+                  ${admin.totalLoan[index] > 0 ? admin.totalLoan[index] : '0'}
                 </td>
               </tr>
             ))

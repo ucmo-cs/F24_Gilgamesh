@@ -5,6 +5,7 @@ import axios from 'axios';
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
+import Footer from '../components/Footer';
 
 
 function UserSetting() {
@@ -87,6 +88,7 @@ function UserSetting() {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 }

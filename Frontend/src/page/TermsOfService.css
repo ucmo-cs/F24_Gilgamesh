@@ -7,6 +7,8 @@
   background-color: #060000; /* Page background color */
   padding: 10px; /* Spacing around the container */
   margin-top: -60px; /* Reduce spacing between the header and the box */
+  
+  
 }
 
 /* Inner box styling */
@@ -19,6 +21,8 @@
   text-align: center; /* Center align text */
   color: #ffffff; /* Text color for contrast */
   font-family: Arial, sans-serif; /* Font family */
+  
+  z-index: 100;
 }
 
 /* Header styling */

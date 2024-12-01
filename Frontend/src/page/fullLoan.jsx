@@ -6,6 +6,7 @@ import { Table } from 'react-bootstrap';
 
 import '../components/AdminHeader.css';
 import AdminHeader from '../components/AdminHeader';
+import Footer from '../components/Footer';
 
 function FullLoan() {
   const { userId } = useParams();  // Get the userId from the URL
@@ -85,6 +86,7 @@ function FullLoan() {
           Back
         </button>
       </div>
+      <Footer />
     </>
   );
 }

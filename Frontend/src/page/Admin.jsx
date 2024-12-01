@@ -8,6 +8,7 @@ import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 
 import AdminMakeLoan from '../components/AdminMakeLoan';
 import AdminMakeUser from '../components/AdminMakeUser';
+import Footer from '../components/Footer';
 
 const Admin = () => {
   const [parsedUser, setParsedUser] = useState(null);
@@ -104,6 +105,7 @@ const Admin = () => {
           )}
         </Container>
       </div>
+      <Footer />
     </>
   );
 };

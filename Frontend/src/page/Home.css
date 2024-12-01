@@ -1,13 +1,16 @@
  body {
     height: 100%; /* Ensure the body takes full height */
-    margin: 0; /* Remove default margin */
+    
   }
   
   .home-container {
     display: flex; /* Enable flexbox */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    height: 76vh; /* Full height of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    z-index: 10;
+    margin-top:100px ;
+    margin-bottom: 100px;
   }
   
   .box {
@@ -19,6 +22,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     max-width: 600px; /* Limit the width of the box */
     width: 100%; /* Full width of the box */
-    margin: 20px; /* Margin around the box */
+    
   }
   

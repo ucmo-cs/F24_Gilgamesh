@@ -3,6 +3,7 @@ import './Home.css';
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
+import Footer from '../components/Footer';
 
 const Home = () => {
   // State to store the parsed user data
@@ -34,6 +35,7 @@ const Home = () => {
       <div className="home-container"> {/* Add the class for styling */}
         <h1>Welcome to F24_Gilgamesh Project</h1>
       </div>
+      <Footer/>
     </>
   );
 };

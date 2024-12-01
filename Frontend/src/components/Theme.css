@@ -14,6 +14,10 @@
     font-size: 19px;
     background: #0d0d0d; /* Background color */
   }
+  .area{
+    height: max-content;
+
+  }
   
 
   
@@ -78,6 +82,6 @@
   /* Example in Theme.css */
 .theme-container {
     position: relative; /* Or absolute, depending on design */
-    height: auto; /* Ensure it doesn't take full height unnecessarily */
+    height: 100vb; /* Ensure it doesn't take full height unnecessarily */
     z-index: 1; /* Lower than Home */
 }

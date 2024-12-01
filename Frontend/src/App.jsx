@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 
 
 
-import Footer from './components/Footer';
+import UserLoanPaymentPage from './page/UserloanPaymentPage';
 import Home from './page/Home';
 import SignIn from './page/SignIn';
 import User from './page/UserPage';
@@ -16,6 +16,7 @@ import TermsOfService from './page/TermsOfService';
 import UserSetting from './page/UserSetting';
 import AdminSettings from './page/AdminSettings';
 import './App.css';
+
 import FullLoan from './page/fullLoan';
 import UserInfo from './page/UserInfo';
 
@@ -56,12 +57,10 @@ function App() {
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/fullLoan/:userId" element={<FullLoan />} />
             <Route path="/userInfo/:userId" element={<UserInfo />} />
+            <Route path="/LoanPayment" element={<UserLoanPaymentPage />} />
           </Routes>  
-          <Footer/>
-        </div>
-        
-        
           
+        </div>
         
         <div className="right-sidebar">
           {/* Right sidebar content */}

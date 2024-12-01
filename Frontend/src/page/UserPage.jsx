@@ -1,29 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Modal, Table } from 'react-bootstrap';
+import { Container, Row, Col, Button, Table } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
-import UserLoanForm from '../components/UserLoanForm'; // Import the UserLoanForm component
+
 import './UserPage.css'; // Import your CSS file
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
-
+import Footer from '../components/Footer';
 
 function UserPage() {
-  const [show1, setShow1] = useState(false); // For showing the UserLoanForm modal
   const [loanValue, setLoanValue] = useState(0);  // Total loan value (sum of loanOriginAmounts)
   const [parsedUser, setParsedUser] = useState(null); // User state
   const [loans, setLoans] = useState([]); // To store multiple loans data
   const [error, setError] = useState(null); // To handle any errors
   const [userId, setUserId] = useState(null); // To store the user ID
 
-  const handleClose1 = () => setShow1(false);
-  const handleShow1 = () => setShow1(true);
-
-  const handleRowClick = (loanAmount) => {
-    setLoanValue(loanAmount); // Set the loan amount to the clicked row's amount
-    setShow1(true); // Open the Loan Payment modal
-  };
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
     const user = sessionStorage.getItem('userSession');
@@ -63,6 +57,7 @@ function UserPage() {
         });
     }
   }, [userId]);
+
   const renderHeader = () => {
     if (parsedUser) {
       if (parsedUser.role === 'ADMIN') {
@@ -74,10 +69,14 @@ function UserPage() {
     return <Header />;
   };
 
+  // Function to handle button click and navigate to the LoanPayment page
+  const handlePaymentRedirect = () => {
+    navigate('/LoanPayment'); // This will navigate to the LoanPayment page
+  };
+
   return (
     <>
-    {renderHeader()} 
-     
+      {renderHeader()} 
 
       <div>
         <Container className="spreadsheet-container">
@@ -106,12 +105,7 @@ function UserPage() {
             <tbody>
               {loans.length > 0 ? (
                 loans.map((loan) => (
-                  <tr
-                    key={loan.loan_id}
-                    onClick={() => handleRowClick(loan.loanOriginAmount)}
-                    className="clickable-row"
-                    style={{ cursor: 'pointer' }}
-                  >
+                  <tr key={loan.loan_id} style={{ cursor: 'pointer' }}>
                     <td>{loan.loan_id}</td>
                     <td>${loan.loanOriginAmount.toFixed(2)}</td>
                     <td>{loan.interestRate}%</td>
@@ -134,30 +128,14 @@ function UserPage() {
           {/* Button Row */}
           <Row className="mt-auto justify-content-center">
             <Col className="text-center">
-              <Button variant="secondary" onClick={handleShow1} className="ms-2">
+              <Button variant="secondary" onClick={handlePaymentRedirect} className="ms-2">
                 Pay Loan
               </Button>
             </Col>
           </Row>
         </Container>
-
-        <Modal
-  show={show1}
-  onHide={handleClose1}
-  aria-labelledby="contained-modal-title-vcenter"
-  centered
->
-  <Modal.Header closeButton>
-    <Modal.Title>Loan Payment Form</Modal.Title>
-  </Modal.Header>
-  <Modal.Body
-    className="d-flex flex-column"
-    style={{ height: '30vh', padding: '10px' }} // Adjust height here
-  >
-    <UserLoanForm loanValue={loanValue} setLoanValue={setLoanValue} />
-  </Modal.Body>
-</Modal>
       </div>
+      <Footer />
     </>
   );
 }

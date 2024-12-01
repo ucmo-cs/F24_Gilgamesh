@@ -1,0 +1,23 @@
+.centered-container {
+    background-color: gray;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    z-index: 100;
+    padding: 10px;
+    border-radius: 15px; /* Adjust the value for more or less rounded edges */
+    
+    /* Center the container horizontally and vertically */
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    justify-content: center; /* Align items vertically in the container */
+    align-items: center; /* Center items horizontally */
+
+    /* Limit the maximum width */
+    max-width: 800px; /* You can adjust this value to control how large it can grow */
+    width: 50%; /* Allow it to shrink if necessary */
+    margin-left: auto;
+    margin-right: auto; /* Center the container horizontally */
+
+    /* Optional: Add a fixed height or min-height if needed */
+    min-height: 200px; /* Optional, adjust based on your layout */
+}

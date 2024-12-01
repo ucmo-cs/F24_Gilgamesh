@@ -23,7 +23,10 @@
     font-size: 2rem; /* Font size */
     color: #0e4019; /* Text color */
 }
-
+button {
+    margin-top: 20px; /* Space above the button */
+  }
+  
 .nav-link {
     color: #f4eeee; /* Nav link color */
 }

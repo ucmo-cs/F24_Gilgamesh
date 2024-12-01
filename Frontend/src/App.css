@@ -5,13 +5,7 @@ html, body {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Flexbox layout for sides */
-.sides {
-  display: flex; /* Use flexbox to create a side-by-side layout */
-  min-height: 100vh; /* Full viewport height */
-  position: relative;
-  flex-direction: row; /* Side-by-side layout */
-}
+
 
 /* Main content */
 .main-content {
@@ -27,8 +21,6 @@ html, body {
   display: none; /* This hides the scrollbar */
 }
 
-
-
 /* Styling for sidebars */
 .left-sidebar, .right-sidebar {
   width: 50px; /* Set fixed width for sidebars */
@@ -39,21 +31,7 @@ html, body {
   top: 0;
 }
 
-/* Make sure footer doesn't get hidden or locked at the bottom */
-.footer {
-  position: relative; /* Ensure it's positioned normally in the flow */
-  width: 100%;
-  
-  bottom: 30px; /* Move it up by 30px */
-  text-align: center;
-  padding: 10px;
-  background-color: #898888;
-  color: rgb(254, 252, 252);
-  z-index: 10;
-  border-radius: 10px 10px 10px 10px; /* Rounded top corners */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  margin-top: -40px; /* Moves the footer 20px upwards */
-}
+
 /* Basic reset */
 html, body {
   height: 100%; /* Ensure full height for html and body */
@@ -85,42 +63,7 @@ html, body {
   display: none; /* This hides the scrollbar */
 }
 
-/* Styling for sidebars */
-.left-sidebar, .right-sidebar {
-  width: 50px; /* Set fixed width for sidebars */
-  padding: 20px;
-  box-sizing: border-box; /* Include padding in the width */
-  height: 100vh; /* Full height of the viewport */
-  position: sticky;
-  top: 0;
-}
-
-/* Footer styling */
-.footer {
-  
-  position: absolute; /* Position it absolutely within the layout */
-  
-  bottom: 4; /* Align it to the bottom of the viewport */
-  width: 85%; /* Ensure it stretches across 75% of the width */
-  text-align: center;
-  padding: 10px;
-  background-color: #898888;
-  color: rgb(254, 252, 252);
-  z-index: 10;
-  
-  border-radius: 10px 10px 10px 10px; /* Rounded top corners */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  
-  left: 50%; /* Position the footer 50% from the left */
-  transform: translateX(-50%); /* Adjust it back by 50% of its own width to center */
-  
-  margin-top: -60px; /* Adjust this to move the footer up */
-}
 
 
-/* For smaller screen sizes, ensure the footer isn't hidden or awkwardly placed */
-@media (max-width: 768px) {
-  .footer {
-    margin-top: -20px; /* Adjust for smaller screens */
-  }
-}
+
+

@@ -1,133 +1,72 @@
 /* UserPage.css */
-.main-content{
-  height: 92vh;
-  scrollbar-width: none;     /* Firefox */
+
+/* Main container that should take up the full height of the viewport */
+.main-content {
+  overflow: auto; /* Allow scrolling */
+  scrollbar-width: none; /* Hide scrollbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure footer stays at the bottom */
 }
+
 /* Header styles */
 .header, .header h1, .header p {
   background-color: transparent; /* Light background */
-  padding: 5px; /* Padding around the header */
+  padding: 5px;
   text-align: center; /* Center the header text */
-  color: #ffffff; 
-  position: relative; /* Allows z-index to work */
-  z-index: 1000; /* Bring header to front */
+  color: #ffffff;
+  position: relative;
+  z-index: 100; /* Bring header to front */
 }
 
-/* Container styles */
-
+/* Flex container for the spreadsheet form */
 .spreadsheet-container {
-  background-color: transparent; /* Transparent background */
-  border-radius: 8px; /* Add rounded corners */
-  padding: 40px; /* Padding inside the container */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Stack children vertically */
-  z-index: 500; /* Ensure it is above other elements */
-  margin-bottom: 80px; /* Space below the container */
-  max-width: 800px; /* Maximum width */
-  width: 90%; /* Width as a percentage for responsiveness */
-  
-  /* Center the container horizontally and vertically */
-  position: absolute; /* Position relative to the nearest positioned ancestor */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust both horizontally and vertically */
-  
-  /* Green border */
-  border: 2px solid #28a745; /* Green border */
-  outline: none; /* Remove any default outline from the container */
-  
-  /* Ensure content inside is centered */
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  
-  /* Prevent content overflow and clipping */
-  overflow: hidden; /* Ensure nothing overflows out of the container */
-  padding-bottom: 40px; /* Extra padding at the bottom to ensure no content touches the border */
+  margin-top: 20px; /* Space from top */
+  background-color: rgb(128, 128, 128); /* Background color */
+  border-radius: 8px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align form at the top */
+  align-items: center; /* Horizontally center */
+  width: 90%; /* Set width to 90% of the parent */
+  max-width: 800px; /* Max width of container */
+  position: relative;
+  margin-bottom: 80px; /* Space for the footer */
+  z-index: 100;
+  scrollbar-width: none; /* Hide scrollbar */
+}
+
+/* Modal Content Styling */
+.modal-dialog {
+  margin-left:100px ;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  margin: auto auto;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
 }
 
 
-/* Form content within the container */
+/* Form content inside the spreadsheet container */
 .spreadsheet-container .form-content {
-  display: flex; /* Ensure the form content is flexbox */
-  flex-direction: column; /* Stack form items vertically */
-  justify-content: center; /* Vertically center the content */
-  align-items: center; /* Horizontally center the content */
-  width: 100%; /* Ensure the content fills the available width */
-}
-
-/* Row styles */
-.mb-2 {
-  margin-bottom: 1rem; /* Space between rows */
-}
-
-.text-center {
-  font-weight: bold; /* Bold text for headers */
-}
-
-/* Button styles */
-button {
-  margin-top: 20px; /* Space above the button */
-}
-
-/* Modal styles */
-
-.modal-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: auto;
-  width: 0%;
-  max-width: 500px;
-  min-width: 300px;
-  max-height: 80vh;
-  min-height: 200px;
-  margin: 0 auto;
-  border-radius: 10px;
-  padding: 20px;
-  overflow: hidden;  /* Disable default scrolling */
-  
-  /* Allow scrolling without a visible scrollbar */
-  overflow-y: scroll; /* Enable vertical scrolling if needed */
-  
-  /* Hide the scrollbar (Webkit browsers) */
-  ::-webkit-scrollbar {
-    display: none;  /* Hides the scrollbar */
-  }
-}
-
-/* For other browsers, like Firefox */
-.modal-content {
-  scrollbar-width: none;  /* Hides the scrollbar in Firefox */
-}
-
-
-.modal-header {
-  text-align: center;           /* Center the title text */
-  border-bottom: none;          /* Optional: Remove the border below header */
-  padding-bottom: 20px;         /* Add some padding */
-}
-
-/* Stretching behavior */
-.flex-grow-1 {
-  flex-grow: 1; /* Allow this row to grow and fill available space */
+  width: 100%; /* Ensure the form uses full width */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .header {
-    font-size: 1.5rem; /* Smaller font size for mobile */
+    font-size: 1.5rem; /* Smaller font size on mobile */
   }
 
   .spreadsheet-container {
-    padding: 20px; /* Adjust padding on mobile */
-    margin-bottom: 60px; /* Adjust space for footer on mobile */
-    max-width: 90%; /* Allow more space on smaller screens */
-  }
-
-  .not {
-    font-size: 0.9rem; /* Smaller font size for text */
-    border: 1px solid #ffffff; /* White border */
-    color: #ffffff; /* White text color */
+    padding: 20px; /* Reduced padding on smaller screens */
+    max-height: calc(100vh - 120px); /* Adjust max height */
   }
 }

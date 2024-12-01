@@ -64,7 +64,7 @@ const ResetPassword = () => {
     <>
       {renderHeader()} {/* Dynamically render the correct header */}
       <div>
-        <div className="theme-background"></div> {/* Background */}
+        
         <div className="reset-password-container">
           <h2>Reset Your Password</h2>
           <form className="reset-password-form" onSubmit={handleReset}>

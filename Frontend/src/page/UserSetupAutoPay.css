@@ -1,0 +1,51 @@
+/* Centered container styles */
+.centered-container {
+    background-color: gray;
+    margin-top: 100px;
+    margin-bottom: 120px;
+    z-index: 100;
+    padding: 10px;
+    border-radius: 15px; /* Adjust the value for more or less rounded edges */
+    
+    margin-left: auto;
+    margin-right: auto; /* Center the container horizontally */
+    
+    /* Allow the container to grow and take available space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Make sure it takes full width */
+    max-width: 800px; /* Control the maximum width */
+    box-sizing: border-box; /* Prevent overflow issues due to padding */
+}
+
+/* User form styling */
+.user-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Ensure it adapts to content */
+    width: 100%; /* Take the full available width of its parent container */
+    max-width: 800px; /* Limit the width if needed */
+    padding: 20px; /* Add some space around the form */
+    box-sizing: border-box; /* Include padding and borders in element's total width/height */
+    height: auto; /* Allow the form to grow with content */
+    min-height: 200px; /* Minimum height to keep the form from becoming too small */
+    overflow-y: auto; /* Allow vertical scrolling if the content overflows */
+}
+
+/* Optional: Prevent vertical overflow */
+html, body {
+    height: 100%; /* Ensure full height for html and body */
+    margin: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Make sure the form doesn't overflow vertically */
+.centered-container, .user-form {
+    overflow: hidden;
+    position: relative;
+}

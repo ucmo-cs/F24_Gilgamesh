@@ -35,7 +35,10 @@ const Home = () => {
       <div className="home-container"> {/* Add the class for styling */}
         <h1>Welcome to F24_Gilgamesh Project</h1>
       </div>
+      <div className='test'>
       <Footer/>
+      </div>
+     
     </>
   );
 };

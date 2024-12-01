@@ -81,68 +81,78 @@ function UserPage() {
   return (
     <>
       {renderHeader()}
-
       <div>
-        <Container className="spreadsheet-container">
-          <header className="header">
-            <h1>Hello {parsedUser ? parsedUser.User : 'Loading...'}</h1> {/* Conditionally rendering user name */}
-          </header>
+      <Container className="spreadsheet-container">
+        <header className="header">
+          <h1>Hello {parsedUser ? parsedUser.User : 'Loading...'}</h1> {/* Conditionally rendering user name */}
+        </header>
 
-          {/* Display Total Due Loan Value */}
-          <Row className="mb-2 justify-content-center">
-            <Col xs lg="12" className="text-center">
-              <h3>Total Due: ${loanValue.toFixed(2)}</h3>
-            </Col>
-          </Row>
+        {/* Display Total Due Loan Value */}
+        <Row className="mb-2 justify-content-center">
+          <Col xs lg="12" className="text-center">
+            <h3>Total Due: ${loanValue.toFixed(2)}</h3>
+          </Col>
+        </Row>
 
-          {/* Table for Loan Information */}
-          <Table striped bordered hover>
-            <thead>
+        {/* Table for Loan Information */}
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Loan ID</th>
+              <th>Origin Amount</th>
+              <th>Amount Left</th>
+              <th>Interest Rate</th>
+              <th>Date Created</th>
+              <th>Next Payment</th> {/* Changed Date Updated to Next Payment */}
+              <th>Auto Pay Setup</th> {/* New Column for Auto Pay Setup */}
+            </tr>
+          </thead>
+          <tbody>
+            {loans.length > 0 ? (
+              loans.map((loan) => (
+                <tr
+                  key={loan.loan_id}
+                  style={{ cursor: 'pointer' }}
+                  onClick={handleLoanClick} // Clicking on the loan row also redirects to the LoanPayment page
+                >
+                  <td>{loan.loan_id}</td>
+                  <td>${loan.loanOriginAmount.toFixed(2)}</td>
+                  <td>${loan.loanOriginAmount.toFixed(2)}</td>
+                  <td>{loan.interestRate}%</td>
+                  <td>{new Date(loan.created_at).toLocaleDateString()}</td>
+                  <td>{new Date(loan.nextPayment).toLocaleDateString()}</td> {/* Display Next Payment */}
+                  <td>{loan.autoPay ? 'Yes' : 'No'}</td> {/* Display Auto Pay Setup */}
+                </tr>
+              ))
+            ) : error ? (
               <tr>
-                <th>Loan ID</th>
-                <th>Loan Origin Amount</th>
-                <th>Interest Rate</th>
-                <th>Date Created</th>
-                <th>Date Updated</th>
+                <td colSpan="6" className="text-center text-danger">{error}</td> {/* Adjust colspan to 6 */}
               </tr>
-            </thead>
-            <tbody>
-              {loans.length > 0 ? (
-                loans.map((loan) => (
-                  <tr 
-                    key={loan.loan_id} 
-                    style={{ cursor: 'pointer' }}
-                    onClick={handleLoanClick} // Clicking on the loan row also redirects to the LoanPayment page
-                  >
-                    <td>{loan.loan_id}</td>
-                    <td>${loan.loanOriginAmount.toFixed(2)}</td>
-                    <td>{loan.interestRate}%</td>
-                    <td>{new Date(loan.created_at).toLocaleDateString()}</td>
-                    <td>{new Date(loan.updatedAt).toLocaleDateString()}</td>
-                  </tr>
-                ))
-              ) : error ? (
-                <tr>
-                  <td colSpan="5" className="text-center text-danger">{error}</td>
-                </tr>
-              ) : (
-                <tr>
-                  <td colSpan="5" className="text-center">Loading loan data...</td>
-                </tr>
-              )}
-            </tbody>
-          </Table>
+            ) : (
+              <tr>
+                <td colSpan="6" className="text-center">Loading loan data...</td> {/* Adjust colspan to 6 */}
+              </tr>
+            )}
+          </tbody>
+        </Table>
 
-          {/* Button Row */}
-          <Row className="mt-auto justify-content-center">
-            <Col className="text-center">
-              <Button variant="secondary" onClick={handlePaymentRedirect} className="ms-2">
-                Pay Loan
-              </Button>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+        <Row className="mb-3 justify-content-center"> {/* Row to hold the buttons */}
+  <Col xs="auto" className="text-center">  {/* Use xs="auto" to make each button size to its content */}
+    <Button variant="secondary" onClick={handlePaymentRedirect} className="ms-2">
+      Pay Loan
+    </Button>
+  </Col>
+
+  <Col xs="auto" className="text-center">  {/* Another button with auto width */}
+    <Button variant="secondary" onClick={handlePaymentRedirect} className="ms-2">
+      Auto Pay Setup
+    </Button>
+  </Col>
+</Row>
+      </Container>
+      
+    </div>
+      
       <Footer />
     </>
   );

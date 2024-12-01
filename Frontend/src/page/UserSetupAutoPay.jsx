@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for routing
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './UserLoanPaymentPage.css'; 
+import './UserSetupAutoPay.css'; 
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
 import Footer from '../components/Footer';
-import axios from 'axios';  // Add this import statement
 
-
-function UserLoanPaymentPage() {
+function UserSetupAutoPay() {
   const [values, setValues] = useState({
     loanId: '', 
     amount: '',
@@ -45,21 +43,13 @@ function UserLoanPaymentPage() {
     }));
   };
 
-  
+  // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    // Make a POST request with the form values
-    axios
-      .post('http://localhost:8080/payment', values)
-      .then((response) => {
-        setFormSubmitted(true); // Mark form as submitted
-      console.log('Form Submitted:', values);
-      })
-      .catch((err) => {
-        console.error(err);
-        setMessage('Login failed. Please check your credentials.');
-      });
+    setFormSubmitted(true); // Mark form as submitted
+
+    // Optionally, you can log or show the submitted values
+    console.log('Form Submitted:', values);
   };
 
   // Function to handle back navigation
@@ -90,32 +80,7 @@ function UserLoanPaymentPage() {
 
         {!formSubmitted ? (
           <Form className="user-form" onSubmit={handleSubmit}>
-          <Row>
-          <Col sm={6}>
-            <Form.Group className="mb-3" controlId="formGridLoanNumber">
-              <Form.Label>Loan Number</Form.Label>
-              <Form.Control 
-                type="text" 
-                placeholder="Enter loan number" 
-                name="loanId" 
-                value={values.loanId} 
-                onChange={handleInput} 
-              />
-            </Form.Group>
-          </Col>
-          <Col sm={6}>
-            <Form.Group className="mb-3" controlId="formGridPaymentAmount">
-              <Form.Label>Payment Amount</Form.Label>
-              <Form.Control 
-                type="number" 
-                placeholder="Enter payment amount" 
-                name="amount" 
-                value={values.amount} 
-                onChange={handleInput} 
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+            {/* Row for Loan Number and Payment Amount */}
             <Row>
               <Col sm={6}>
                 <Form.Group className="mb-3" controlId="formGridLoanNumber">
@@ -190,4 +155,4 @@ function UserLoanPaymentPage() {
   );
 }
 
-export default UserLoanPaymentPage;
+export default UserSetupAutoPay;

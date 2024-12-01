@@ -1,3 +1,4 @@
+/* Reset styles for html and body */
 html, body {
   height: 100%; /* Ensure full height for html and body */
   margin: 0; /* Remove default margin */
@@ -5,20 +6,22 @@ html, body {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-
+/* Flexbox layout for sides */
+.sides {
+  display: flex; /* Create a flex container */
+  min-height: 100vh; /* Full height of the viewport */
+  position: relative;
+  flex-direction: row; /* Side-by-side layout */
+  flex-wrap: nowrap; /* Prevent content from wrapping */
+}
 
 /* Main content */
 .main-content {
-  height: 75vh;
   flex: 1; /* Allow the main content to take available space */
   padding: 20px; /* Add padding inside the main content */
- 
   box-sizing: border-box; /* Include padding in height/width calculation */
-}
-
-/* Hide the scrollbar in Webkit browsers (Chrome, Safari, Edge) */
-.main-content::-webkit-scrollbar {
-  display: none; /* This hides the scrollbar */
+  overflow-y: auto; /* Ensure vertical scrolling */
+  height: calc(100vh - 80px); /* Ensure the content takes full height minus top/bottom padding */
 }
 
 /* Styling for sidebars */
@@ -31,39 +34,17 @@ html, body {
   top: 0;
 }
 
-
-/* Basic reset */
-html, body {
-  height: 100%; /* Ensure full height for html and body */
-  margin: 0; /* Remove default margin */
-  font-family: Arial, sans-serif;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-/* Flexbox layout for sides */
-.sides {
-  display: flex; /* Use flexbox to create a side-by-side layout */
-  min-height: 100vh; /* Full viewport height */
-  position: relative;
-  flex-direction: row; /* Side-by-side layout */
-  flex-wrap: nowrap; /* Prevent content from wrapping to the next line */
-}
-
-/* Main content */
-.main-content {
-  flex: 1; /* Allow the main content to take available space */
-  padding: 20px; /* Add padding inside the main content */
-  box-sizing: border-box; /* Include padding in height/width calculation */
-  overflow-y: auto; /* Ensure scrolling is enabled */
-  height: calc(100vh - 80px); /* Allow for footer space */
-}
-
-/* Hide the scrollbar in Webkit browsers (Chrome, Safari, Edge) */
+/* Hide scrollbar in Webkit browsers (Chrome, Safari, Edge) */
 .main-content::-webkit-scrollbar {
-  display: none; /* This hides the scrollbar */
+  display: block; /* Ensure the scrollbar is visible */
+  width: 10px; /* Adjust width of the scrollbar */
 }
 
+.main-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Round corners for the scrollbar thumb */
+}
 
-
-
-
+.main-content::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* Background of the scrollbar track */
+}

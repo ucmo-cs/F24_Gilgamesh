@@ -12,6 +12,7 @@ import Theme from './components/Theme';
 import ResetPassword from './page/resetPassword';
 import PrivacyPolicy from './page/PrivacyPolicy';
 import TermsOfService from './page/TermsOfService';
+import UserSetupAutoPay from './page/UserSetupAutoPay';
 
 import UserSetting from './page/UserSetting';
 import AdminSettings from './page/AdminSettings';
@@ -58,6 +59,7 @@ function App() {
             <Route path="/fullLoan/:userId" element={<FullLoan />} />
             <Route path="/userInfo/:userId" element={<UserInfo />} />
             <Route path="/LoanPayment" element={<UserLoanPaymentPage />} />
+            <Route path="/AutoPay" element={<UserSetupAutoPay />} />
           </Routes>  
           
         </div>

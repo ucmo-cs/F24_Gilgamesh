@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';  // Import Button from react-bootstrap
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
@@ -81,51 +82,67 @@ function SignIn() {
   return (
     <>
       {renderHeader()} {/* Render the appropriate header based on the session */}
-
-      <div className="login-container">
-        <form onSubmit={handleSubmit} className="modal-content">
-          <h1>Sign In</h1>
-
-          {/* User ID Input */}
-          <div className="form-floating">
-            <input
-              type="text"
-              id="userId" // Ensure this ID matches with the name
-              name="userId" // Make sure the name matches the state key
-              value={values.userId} // Bind value from state
-              onChange={handleInput} // Update state on input change
-              placeholder="Username"
-              className="form-control"
-              required
+      <section className="text-center text-lg-start">
+      
+      <div className="card mb-3">
+        <div className="row g-0 d-flex align-items-center">
+          <div className="col-lg-4 d-none d-lg-flex left-side">
+          
+            <img 
+              src=".\commerce-bank.svg" 
+              
+              className="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" 
             />
-            <label htmlFor="userId">Username</label>
           </div>
-
-          {/* Password Input */}
-          <div className="form-floating">
-            <input
-              type="password"
-              id="password"
-              name="password" // Ensure name matches state key
-              value={values.password}
-              onChange={handleInput}
-              placeholder="Password"
-              className="form-control"
-              required
-            />
-            <label htmlFor="password">Password</label>
+          <div className="col-lg-8">
+          
+            <div className="card-body py-5 px-md-5">
+            <h1 class="h1" style={{color: 'white'}}>Sign In</h1>
+              <form onSubmit={handleSubmit}>
+                <label className="form-label" htmlFor="userId" style={{ color: 'white' }}>Username</label>
+                <div className="form-outline mb-4">
+                  <input
+                    type="text"
+                    id="userId"
+                    name="userId"
+                    className="form-control"
+                    value={values.userId}
+                    onChange={handleInput}
+                    placeholder="Username"
+                    required
+                  />
+                </div>
+    
+                <label className="form-label" htmlFor="password" style={{ color: 'white' }}>Password</label>
+                <div className="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    className="form-control"
+                    value={values.password}
+                    onChange={handleInput}
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+    
+                {/* Submit button */}
+                <Button variant="primary" type="submit" className="btn-block mb-4">
+                  Sign In
+                </Button>
+              </form>
+    
+              {/* Message display */}
+              {message && <p className="text-body-secondary">{message}</p>}
+            </div>
           </div>
-
-          {/* Submit Button */}
-          <button type="submit" className="btn-btn-primary">
-            Login
-          </button>
-
-          {/* Message Display */}
-          {message && <p className="text-body-secondary">{message}</p>}
-        </form>
+        </div>
       </div>
-      <Footer/>
+    </section>
+    
+    <Footer />
+    
     </>
   );
 }

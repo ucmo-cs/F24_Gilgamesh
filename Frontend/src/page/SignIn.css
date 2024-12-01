@@ -1,82 +1,73 @@
-/* Main container */
-.main {
-    overflow: hidden; /* Prevent scrolling on main container */
-}
-
-
-
-/* Container for login form */
-.login-container {
-    margin: 100px;
-    justify-self: center;
-    
-    position: relative; /* or absolute depending on your layout */
-    z-index: 10; /* Ensure this is higher than the overlay */
-
-    width: 100%; /* Make the container take full width of the parent */
-    max-width: 400px; /* Limit the maximum width of the login container */
-    
-    margin-left: auto;
-    margin-right: auto;
-   
-    height: fit-content;
-  
-}
-/* Ensure the modal backdrop and modal are positioned correctly */
-.modal-dialog {
-  display: flex;
-  justify-content: center; /* Horizontally center the modal */
-  align-items: center;     /* Vertically center the modal */
-  height: 100%;            /* Make the modal container fill the screen */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Style for the modal content */
-.modal-content {
-  background-color: rgb(128, 128, 128); /* Gray background for the modal */
-  border-radius: 0.5rem; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
-  width: 100%; /* Allow modal content to take full width of the container */
-  
-  margin: 0; /* Remove any margin */
-}
-
-/* Heading */
-h1 {
-    margin-bottom: 100px;
-    color: #fff; /* Light text for better contrast */
-    text-align: center; /* Align heading text to the left */
-    
-}
-/* Form control styling */
-.form-floating {
-    
-    text-align: left; /* Aligns labels and inputs to the left */
-    margin-bottom: 1rem; /* Space between the text fields */
-    width: 70%; /* Adjust width if needed */
+.card{
+    height: 70vh;
+    background: transparent;
+    border-color: transparent;
+    z-index: 100;
+    margin-top: 150px;
+    margin-bottom: 250px;
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
 }
+.card-body{
+    position: center;
+    align-items: center;
 
-
-/* Green login button */
-.btn-btn-primary {
-    background-color: #0e4019; /* Green background for button */
-    color: white; /* White text */
-    border: none; /* Remove border */
-    
-    border-radius: 5px; /* Rounded corners for the button */
-    font-size: 1rem; /* Button font size */
-    font-weight: bold; /* Bold text */
+}
+.h1{
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (if you want vertical centering within a container) */
+    margin: 0 auto; /* Centering the button horizontally when it's a block element */
+    margin-bottom: 10px;
+}
+.row {
+    background-color: rgb(128, 128, 128);
+    border-color: rgb(128, 128, 128) !important;
+    border-radius: 15px;
+    overflow: hidden; /* Ensures content inside doesn't overflow rounded corners */
+    padding: 10px; /* Optional padding */
 }
 
-.btn-btn-primary:hover {
-    background-color: #145823; /* Darker green on hover */
-    color: white; /* Maintain white text on hover */
+.form-control {
+    border-color: rgb(128, 128, 128) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
 
-.btn-btn-primary:active {
-    background-color: #0e4019; /* Even darker green on active click */
-    color: white; /* White text on click */
+/* Change border color and add shadow on hover */
+.form-control:hover {
+    border-color: green !important; /* Green border on hover */
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5); /* Green shadow on hover */
 }
+
+/* Change border color and add shadow on focus (for inputs, select, textarea) */
+.form-control:focus {
+    border-color: green !important; /* Green border on focus */
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5); /* Green shadow on focus */
+    outline: none; /* Remove default outline on focus */
+}
+
+/* Optional: For better user experience, make sure cursor is pointer when focused on form controls */
+.form-control:hover, .form-control:focus {
+    cursor: pointer;
+}
+
+.btn-block {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (if you want vertical centering within a container) */
+    margin: 0 auto; /* Centering the button horizontally when it's a block element */
+    border-color: rgb(128, 128, 128) !important;
+  }
+ 
+  .btn-block button:hover, .card a:hover, .card button:hover {
+    background-color: rgb(10, 10, 10); /* Green background on hover */
+    color: white; /* White text on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for the color change */
+}
+
+/* Optional: If you want the cursor to change when hovering */
+.btn-block button:hover, .card a:hover, .card button:hover {
+    cursor: pointer;
+}
+  

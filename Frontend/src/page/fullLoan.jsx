@@ -61,12 +61,13 @@ function FullLoan() {
                 <th>Amount Left to Pay</th>
                 <th>Original Amount</th>
                 <th>Interest Rate</th>
+                <th>Date Taken Out</th> {/* New column for Date Taken Out */}
               </tr>
             </thead>
             <tbody>
               {loans.length === 0 ? (
                 <tr>
-                  <td colSpan="4">No loans available for this user.</td>
+                  <td colSpan="5">No loans available for this user.</td> {/* Adjust colspan for new column */}
                 </tr>
               ) : (
                 loans.map((loan) => (
@@ -75,14 +76,15 @@ function FullLoan() {
                     <td>${loan.amountLeftToPay}</td>
                     <td>${loan.loanOriginAmount}</td>
                     <td>{loan.interestRate}%</td>
+                    <td>{loan.created_at ? new Date(loan.created_at).toLocaleDateString() : 'N/A'}</td> {/* Display created_at */}
                   </tr>
                 ))
               )}
             </tbody>
           </Table>
         )}
-          {/* Back button */}
-          <button onClick={handleBackClick} className="back-button">
+        {/* Back button */}
+        <button onClick={handleBackClick} className="back-button">
           Back
         </button>
       </div>

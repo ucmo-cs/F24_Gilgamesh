@@ -57,3 +57,43 @@ nothing in the body
 
 
 
+http://localhost:8080/reset/password-reset
+
+{
+  "userId": "testUser2",
+  "newPassword": "securePassword2"
+}
+
+
+
+http://localhost:8080/reset/phoneNumber-reset
+{
+  "userId": "testUser2",
+  "newPhoneNumber": "109-876-543"
+}
+
+
+http://localhost:8080/reset/email-reset
+{
+  "userId": "testUser2",
+  "newEmail": "test4@example.com"
+}
+
+
+
+http://localhost:8080/reset/ID-reset
+{
+  "oldUserID": "testUser2",
+  "newUserID": "testUser4"
+}
+
+
+http://localhost:8080/reset/username-reset
+{
+  "userId": "testUser4",
+  "newUsername": "Test User4"
+}
+
+
+
+

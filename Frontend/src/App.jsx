@@ -33,29 +33,47 @@ function ScrollToTop() {
 function App() {
 
   return (
-    <Router>
-      <ScrollToTop /> {/* This will scroll to top on route change */}
-      
-      <div className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/setting" element={<UserSetting />} />
-          <Route path="/settings" element={<AdminSettings />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/fullLoan/:userId" element={<FullLoan />} /> {/* Dynamic route for FullLoan page */}
-          <Route path="/userInfo/:userId" element={<UserInfo />} />  {/* Route for UserInfo page */}
-        </Routes>
-      </div>
+    <Router> {/* Wrap everything inside the Router */}
+      <div className="sides">
+        <div className="left-sidebar">
+          {/* Left sidebar content */}
+          Left Sidebar
+        </div>
 
-      <Footer />
-      <Theme />
-    </Router>
+        <div className="main-content">
+          <ScrollToTop /> {/* Keep ScrollToTop inside Router */}
+          
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/setting" element={<UserSetting />} />
+            <Route path="/settings" element={<AdminSettings />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/fullLoan/:userId" element={<FullLoan />} />
+            <Route path="/userInfo/:userId" element={<UserInfo />} />
+          </Routes>  
+          <Footer/>
+        </div>
+        
+        
+          
+        
+        <div className="right-sidebar">
+          {/* Right sidebar content */}
+          Right Sidebar
+        </div>
+        <Theme />
+      </div>
+      
+    </Router> 
+    
+
+    
   );
 }
 

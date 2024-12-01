@@ -1,82 +1,126 @@
 html, body {
   height: 100%; /* Ensure full height for html and body */
-  margin: auto; /* Remove default margin */
-  
-  scrollbar-width: none;     /* Firefox */
+  margin: 0; /* Remove default margin */
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-body {
-  display: flex; /* Use flexbox */
-  flex-direction: column; /* Stack children vertically */
+/* Flexbox layout for sides */
+.sides {
+  display: flex; /* Use flexbox to create a side-by-side layout */
+  min-height: 100vh; /* Full viewport height */
+  position: relative;
+  flex-direction: row; /* Side-by-side layout */
+}
+
+/* Main content */
+.main-content {
+  height: 75vh;
+  flex: 1; /* Allow the main content to take available space */
+  padding: 20px; /* Add padding inside the main content */
+ 
+  box-sizing: border-box; /* Include padding in height/width calculation */
+}
+
+/* Hide the scrollbar in Webkit browsers (Chrome, Safari, Edge) */
+.main-content::-webkit-scrollbar {
+  display: none; /* This hides the scrollbar */
+}
+
+
+
+/* Styling for sidebars */
+.left-sidebar, .right-sidebar {
+  width: 50px; /* Set fixed width for sidebars */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in the width */
+  height: 100vh; /* Full height of the viewport */
+  position: sticky;
+  top: 0;
+}
+
+/* Make sure footer doesn't get hidden or locked at the bottom */
+.footer {
+  position: relative; /* Ensure it's positioned normally in the flow */
+  width: 100%;
+  
+  bottom: 30px; /* Move it up by 30px */
+  text-align: center;
+  padding: 10px;
+  background-color: #898888;
+  color: rgb(254, 252, 252);
+  z-index: 10;
+  border-radius: 10px 10px 10px 10px; /* Rounded top corners */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: -40px; /* Moves the footer 20px upwards */
+}
+/* Basic reset */
+html, body {
+  height: 100%; /* Ensure full height for html and body */
+  margin: 0; /* Remove default margin */
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Flexbox layout for sides */
+.sides {
+  display: flex; /* Use flexbox to create a side-by-side layout */
+  min-height: 100vh; /* Full viewport height */
+  position: relative;
+  flex-direction: row; /* Side-by-side layout */
+  flex-wrap: nowrap; /* Prevent content from wrapping to the next line */
 }
 
 /* Main content */
 .main-content {
   flex: 1; /* Allow the main content to take available space */
-  overflow-y: auto; /* Make it scrollable vertically */
- 
-  overflow-x: hidden; /* Hide horizontal scrollbar if it appears */
-  min-height: calc(80vh); /* Adjust height to fill screen minus footer height */
-  
-  
+  padding: 20px; /* Add padding inside the main content */
+  box-sizing: border-box; /* Include padding in height/width calculation */
+  overflow-y: auto; /* Ensure scrolling is enabled */
+  height: calc(100vh - 80px); /* Allow for footer space */
 }
 
-/* For webkit browsers (Chrome, Safari, Edge) */
+/* Hide the scrollbar in Webkit browsers (Chrome, Safari, Edge) */
 .main-content::-webkit-scrollbar {
   display: none; /* This hides the scrollbar */
 }
 
-/* Optional: If you want to hide scrolling only on smaller screens */
-@media (max-width: 768px) {
-  .main-content {
-    overflow: hidden; /* Disable scrolling on small screens */
-  }
-
-  .main-content::-webkit-scrollbar {
-    display: none; /* Ensure the scrollbar is still hidden */
-  }
+/* Styling for sidebars */
+.left-sidebar, .right-sidebar {
+  width: 50px; /* Set fixed width for sidebars */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in the width */
+  height: 100vh; /* Full height of the viewport */
+  position: sticky;
+  top: 0;
 }
 
-  
-
+/* Footer styling */
 .footer {
+  
+  position: absolute; /* Position it absolutely within the layout */
+  
+  bottom: 4; /* Align it to the bottom of the viewport */
+  width: 85%; /* Ensure it stretches across 75% of the width */
   text-align: center;
-  padding: 1rem 0; /* Padding for the footer */
-  background-color: #828080; /* Opaque gray background */
-  box-shadow: none !important;
-  z-index: 1; 
-  width: 100%; 
-  position: relative; /* Allow it to flow naturally */
+  padding: 10px;
+  background-color: #898888;
+  color: rgb(254, 252, 252);
+  z-index: 10;
+  
+  border-radius: 10px 10px 10px 10px; /* Rounded top corners */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  
+  left: 50%; /* Position the footer 50% from the left */
+  transform: translateX(-50%); /* Adjust it back by 50% of its own width to center */
+  
+  margin-top: -60px; /* Adjust this to move the footer up */
 }
 
-.footer-text {
-  margin: 0.25rem 0;
-  font-size: 1rem;
-  color: #ffffff; /* White color for the copyright text */
-}
 
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 0; /* Adjust as needed */
+/* For smaller screen sizes, ensure the footer isn't hidden or awkwardly placed */
+@media (max-width: 768px) {
+  .footer {
+    margin-top: -20px; /* Adjust for smaller screens */
+  }
 }
-
-.footer-links a {
-  color: #f3f6f4; /* Link color */
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  color: #ffffff; /* Hover color for links */
-}
-.privacy-policy {
-  padding: 20px;
-  font-family: Arial, sans-serif;
- 
-}
-
-.terms-of-service {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-} 

@@ -72,6 +72,9 @@ function UserPage() {
   const handlePaymentRedirect = () => {
     navigate('/LoanPayment'); // This will navigate to the LoanPayment page
   };
+  const handleRedirect = () => {
+    navigate('/AutoPay'); // This will navigate to the LoanPayment page
+  };
 
   // Function to handle loan row click and navigate to the LoanPayment page
   const handleLoanClick = () => {
@@ -88,7 +91,7 @@ function UserPage() {
         </header>
 
         {/* Display Total Due Loan Value */}
-        <Row className="mb-2 justify-content-center">
+        <Row className="mb-2 justify-content-center" style={{color:'white'}}>
           <Col xs lg="12" className="text-center">
             <h3>Total Due: ${loanValue.toFixed(2)}</h3>
           </Col>
@@ -144,7 +147,7 @@ function UserPage() {
   </Col>
 
   <Col xs="auto" className="text-center">  {/* Another button with auto width */}
-    <Button variant="secondary" onClick={handlePaymentRedirect} className="ms-2">
+    <Button variant="secondary" onClick={handleRedirect} className="ms-2">
       Auto Pay Setup
     </Button>
   </Col>

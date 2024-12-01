@@ -11,13 +11,3 @@
     flex-grow: 1;
   }
   
-  .test {
-    position: fixed; /* Fixes the footer at the bottom of the viewport */
-    bottom: 0; /* Sticks to the bottom */
-    width: 95%;
-    justify-content: center; /* Centers the content horizontally */
-    align-items: center; /* Centers the content vertically */
-    margin-bottom: 10px;
-    z-index: 10;
-  }
-  

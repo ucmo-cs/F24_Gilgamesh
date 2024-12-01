@@ -93,7 +93,7 @@ function UserLoanPaymentPage() {
           <Row>
           <Col sm={6}>
             <Form.Group className="mb-3" controlId="formGridLoanNumber">
-              <Form.Label>Loan Number</Form.Label>
+              <Form.Label style={{color:'white'}} >Loan Number</Form.Label>
               <Form.Control 
                 type="text" 
                 placeholder="Enter loan number" 
@@ -105,7 +105,7 @@ function UserLoanPaymentPage() {
           </Col>
           <Col sm={6}>
             <Form.Group className="mb-3" controlId="formGridPaymentAmount">
-              <Form.Label>Payment Amount</Form.Label>
+              <Form.Label style={{color:'white'}}>Payment Amount</Form.Label>
               <Form.Control 
                 type="number" 
                 placeholder="Enter payment amount" 
@@ -119,7 +119,7 @@ function UserLoanPaymentPage() {
             <Row>
               <Col sm={6}>
                 <Form.Group className="mb-3" controlId="formGridLoanNumber">
-                  <Form.Label>Loan Number</Form.Label>
+                  <Form.Label style={{color:'white'}}>Loan Number</Form.Label>
                   <Form.Control 
                     type="text" 
                     placeholder="Enter loan number" 
@@ -131,7 +131,7 @@ function UserLoanPaymentPage() {
               </Col>
               <Col sm={6}>
                 <Form.Group className="mb-3" controlId="formGridPaymentAmount">
-                  <Form.Label>Payment Amount</Form.Label>
+                  <Form.Label style={{color:'white'}}>Payment Amount</Form.Label>
                   <Form.Control 
                     type="number" 
                     placeholder="Enter payment amount" 
@@ -147,7 +147,7 @@ function UserLoanPaymentPage() {
             <Row>
               <Col sm={6}>
                 <Form.Group className="mb-3" controlId="formGridPaymentDate">
-                  <Form.Label>Payment Date</Form.Label>
+                  <Form.Label style={{color:'white'}}>Payment Date</Form.Label>
                   <Form.Control 
                     type="date" 
                     name="date" 
@@ -158,7 +158,7 @@ function UserLoanPaymentPage() {
               </Col>
               <Col sm={6}>
                 <Form.Group className="mb-3" controlId="formGridPaymentMethod">
-                  <Form.Label>Payment Method</Form.Label>
+                  <Form.Label style={{color:'white'}}>Payment Method</Form.Label>
                   <Form.Control 
                     as="select" 
                     name="paymentMethod" 

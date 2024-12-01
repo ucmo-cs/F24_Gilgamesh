@@ -67,7 +67,7 @@ http://localhost:8080/reset/password-reset
 http://localhost:8080/reset/phoneNumber-reset
 {
   "userId": "testUser2",
-  "newPhoneNumber": "123-456-7804"
+  "newPhoneNumber": "109-876-543"
 }
 
 

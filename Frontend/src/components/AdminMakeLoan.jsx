@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import axios from 'axios'; // Import axios to make HTTP requests
+import { Form, Button, Row, Col } from 'react-bootstrap'; // Import Row and Col from react-bootstrap
+import axios from 'axios';
 import './AdminMakeLoan.css';
 
-
 const AdminMakeLoan = () => {
-  // Initial loanData state
   const [loanData, setLoanData] = useState({
     loanOriginAmount: '',
     interestRate: 5,
     userId: '', // User ID input field
   });
 
-  const [successMessage, setSuccessMessage] = useState(''); // For success message
-  const [errorMessage, setErrorMessage] = useState(''); // For error message
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  // Handle form field changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setLoanData({
@@ -24,29 +21,25 @@ const AdminMakeLoan = () => {
     });
   };
 
-  // Handle form submission (making a POST request)
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Send POST request to create a loan
     axios
-      .post('http://localhost:8080/loan', loanData) // Send loanData in the request body
+      .post('http://localhost:8080/loan', loanData)
       .then((response) => {
         console.log('Loan created:', response.data);
         setSuccessMessage('Loan created successfully!');
-        setErrorMessage(''); // Reset error message on success
+        setErrorMessage('');
       })
       .catch((error) => {
         console.error('Error creating loan:', error);
         setErrorMessage('Failed to create loan. Please try again.');
-        setSuccessMessage(''); // Reset success message on error
+        setSuccessMessage('');
       });
   };
 
   return (
     <div className="admin-make-loan-form">
-      
-      {/* Loan creation form */}
       <Form onSubmit={handleSubmit}>
         {/* User ID field */}
         <Form.Group controlId="formUserId">
@@ -74,6 +67,38 @@ const AdminMakeLoan = () => {
           />
         </Form.Group>
 
+        {/* Row for Email and Phone Number */}
+        <Row>
+          <Col md={6}>
+            {/* Email field */}
+            <Form.Group controlId="formEmail">
+              <Form.Label>User Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter user email"
+                required
+              />
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            {/* Phone Number field */}
+            <Form.Group controlId="formPhoneNumber">
+              <Form.Label>User Phone Number</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter user phone number"
+                required
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+
+        {/* Date field */}
+        <Form.Group controlId="formDate">
+          <Form.Label>Date</Form.Label>
+          <Form.Control type="date" required />
+        </Form.Group>
+
         {/* Interest Rate field */}
         <Form.Group controlId="formInterestRate">
           <Form.Label>Interest Rate (%)</Form.Label>
@@ -92,8 +117,9 @@ const AdminMakeLoan = () => {
           Create Loan
         </Button>
       </Form>
-       {/* Display success or error message */}
-       {successMessage && (
+
+      {/* Display success or error message */}
+      {successMessage && (
         <div className="alert alert-success" role="alert">
           {successMessage}
         </div>

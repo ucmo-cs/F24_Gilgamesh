@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
 import './SignIn.css';
+import Footer from '../components/Footer';
 
 function SignIn() {
   // Initial state for form inputs
@@ -124,6 +125,7 @@ function SignIn() {
           {message && <p className="text-body-secondary">{message}</p>}
         </form>
       </div>
+      <Footer/>
     </>
   );
 }

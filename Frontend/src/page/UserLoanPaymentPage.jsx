@@ -75,8 +75,8 @@ function UserLoanPaymentPage() {
       {renderHeader()}
       <div className="centered-container">
         {/* Back Button */}
-        <Button variant="secondary" onClick={handleBack} className="mb-3">
-          Back to User Page
+        <Button variant="secondary" onClick={handleBack} className="mb-2">
+          Back 
         </Button>
 
         {!formSubmitted ? (

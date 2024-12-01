@@ -1,29 +1,21 @@
 .user-settings-container {
   margin-top: 10rem;
-  padding: 1.5rem;
   margin-left: auto;
   margin-right: auto;
-  background-color: transparent;
+  background-color: rgb(128, 128, 128);
   border-radius: 8px;
   border-color: #28a745;
-  position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 43vh;
+  justify-content: flex-start;  /* Ensures the content stays top aligned */
   width: 54%;
   max-width: 500px;
   border: 1px solid #28a745;
-  
-  padding: 0%;
-}
-
-.user-form-container {
-  position: relative;
-  width: 100%;
-  
+  padding: 20px;
+  min-height: 350px; /* Increased for proper spacing */
+  margin-bottom: 160px;
 }
 
 .user-settings-title {
@@ -60,15 +52,13 @@
   background-color: #03851f;
 }
 
+/* Form container style */
 .user-form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Stack form elements */
+  align-items: center;
   text-align: center;
-  
-  
-  
-}
-
-.user-form-container button {
-  margin-top: 1rem;
 }
 
 .cancel-btn {

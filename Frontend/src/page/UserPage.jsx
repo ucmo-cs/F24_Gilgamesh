@@ -3,7 +3,6 @@ import { Container, Row, Col, Button, Table } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
-
 import './UserPage.css'; // Import your CSS file
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
@@ -74,9 +73,14 @@ function UserPage() {
     navigate('/LoanPayment'); // This will navigate to the LoanPayment page
   };
 
+  // Function to handle loan row click and navigate to the LoanPayment page
+  const handleLoanClick = () => {
+    navigate('/LoanPayment'); // This will navigate to the LoanPayment page
+  };
+
   return (
     <>
-      {renderHeader()} 
+      {renderHeader()}
 
       <div>
         <Container className="spreadsheet-container">
@@ -105,7 +109,11 @@ function UserPage() {
             <tbody>
               {loans.length > 0 ? (
                 loans.map((loan) => (
-                  <tr key={loan.loan_id} style={{ cursor: 'pointer' }}>
+                  <tr 
+                    key={loan.loan_id} 
+                    style={{ cursor: 'pointer' }}
+                    onClick={handleLoanClick} // Clicking on the loan row also redirects to the LoanPayment page
+                  >
                     <td>{loan.loan_id}</td>
                     <td>${loan.loanOriginAmount.toFixed(2)}</td>
                     <td>{loan.interestRate}%</td>

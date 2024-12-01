@@ -16,29 +16,47 @@
     width: 100%; /* Make the container take full width of the parent */
     max-width: 400px; /* Limit the maximum width of the login container */
     
-    
-    padding: 20px; /* Add padding inside the container */
+    margin-left: auto;
+    margin-right: auto;
+   
+    height: fit-content;
   
 }
+/* Ensure the modal backdrop and modal are positioned correctly */
+.modal-dialog {
+  display: flex;
+  justify-content: center; /* Horizontally center the modal */
+  align-items: center;     /* Vertically center the modal */
+  height: 100%;            /* Make the modal container fill the screen */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Style for the modal content */
 .modal-content {
-    background-color: rgb(128, 128, 128); /* Gray background for the modal */
-    border-radius: 0.5rem; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    
+  background-color: rgb(128, 128, 128); /* Gray background for the modal */
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  width: 100%; /* Allow modal content to take full width of the container */
+  
+  margin: 0; /* Remove any margin */
 }
 
 /* Heading */
 h1 {
+    margin-bottom: 100px;
     color: #fff; /* Light text for better contrast */
     text-align: center; /* Align heading text to the left */
     
 }
 /* Form control styling */
 .form-floating {
-    align-items: flex-start; /* Aligns the content of the form control to the left */
+    
     text-align: left; /* Aligns labels and inputs to the left */
     margin-bottom: 1rem; /* Space between the text fields */
     width: 70%; /* Adjust width if needed */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -47,7 +65,7 @@ h1 {
     background-color: #0e4019; /* Green background for button */
     color: white; /* White text */
     border: none; /* Remove border */
-    padding: 10px 40px; /* Adjust padding for a nice button size */
+    
     border-radius: 5px; /* Rounded corners for the button */
     font-size: 1rem; /* Button font size */
     font-weight: bold; /* Bold text */

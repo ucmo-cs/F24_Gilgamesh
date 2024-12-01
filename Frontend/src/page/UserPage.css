@@ -10,7 +10,7 @@
 }
 
 /* Header styles */
-.header, .header h1, .header p {
+.header, .header  .header p {
   background-color: transparent; /* Light background */
   padding: 5px;
   text-align: center; /* Center the header text */
@@ -18,10 +18,13 @@
   position: relative;
   z-index: 100; /* Bring header to front */
 }
+h1{
+  margin-bottom: 0;
+}
 
 /* Flex container for the spreadsheet form */
 .spreadsheet-container {
-  margin-top: 20px; /* Space from top */
+  margin-top: 50px; /* Space from top */
   background-color: rgb(128, 128, 128); /* Background color */
   border-radius: 8px;
   padding: 40px;

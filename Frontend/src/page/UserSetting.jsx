@@ -5,7 +5,7 @@ import axios from 'axios';
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
-
+import Footer from '../components/Footer';
 
 function UserSetting() {
   const [parsedUser, setParsedUser] = useState(null);
@@ -39,17 +39,17 @@ function UserSetting() {
   const handleCancelClick = () => {
     setIsEditing(false); // Return to viewing mode
   };
+
   // Ensure parsedUser is loaded before rendering the form or user info
   if (!parsedUser) {
     return (
-      <>
-        <div className="user-settings-container">
-          <p>Loading user data...</p>
-        </div>
-      </>
+      <div className="user-settings-container">
+        <p>Loading user data...</p>
+      </div>
     );
   }
-    const renderHeader = () => {
+
+  const renderHeader = () => {
     if (parsedUser) {
       if (parsedUser.role === 'ADMIN') {
         return <AdminHeader />;
@@ -62,7 +62,7 @@ function UserSetting() {
 
   return (
     <>
-    {renderHeader()} 
+      {renderHeader()} 
 
       <div className="user-settings-container">
         {/* Conditionally render the title based on isEditing */}
@@ -87,6 +87,8 @@ function UserSetting() {
           </div>
         )}
       </div>
+
+      <Footer/>
     </>
   );
 }

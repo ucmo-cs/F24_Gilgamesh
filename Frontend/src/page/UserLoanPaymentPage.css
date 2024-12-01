@@ -18,6 +18,14 @@
     max-width: 800px; /* Control the maximum width */
     box-sizing: border-box; /* Prevent overflow issues due to padding */
 }
+.mb-2 {
+    margin-left: 20px;
+    position: absolute; /* This allows you to control positioning */
+    top: 0; /* Position at the top */
+    left: 0; /* Position at the left */
+    z-index: 2;
+}
+
 
 /* User form styling */
 .user-form .form-control {
@@ -57,3 +65,4 @@ html, body {
     border-radius: 8px; /* Rounded corners for the button */
     margin-top: 20px; /* Add space above the button */
   }
+  

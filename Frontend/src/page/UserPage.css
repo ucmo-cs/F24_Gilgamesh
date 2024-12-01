@@ -2,7 +2,7 @@
 
 /* Main container that should take up the full height of the viewport */
 .main-content {
-  overflow: auto; /* Allow scrolling */
+  
   scrollbar-width: none; /* Hide scrollbar */
   display: flex;
   flex-direction: column;

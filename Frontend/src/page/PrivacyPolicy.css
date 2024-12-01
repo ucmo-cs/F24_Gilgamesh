@@ -5,9 +5,10 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh; /* Ensure the container takes the full viewport height */
-  background-color: #060000; /* Page background color */
+  background-color: #06000000; /* Page background color */
   padding: 10px; /* Spacing around the container */
   margin-top: -60px; /* Reduce spacing between the header and the box */
+  z-index: 5;
 }
 
 /* Inner box styling */

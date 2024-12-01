@@ -1,68 +1,64 @@
-/* Centered container styles */
-.centered-container {
-    background-color: gray;
-    margin-top: 100px;
-    margin-bottom: 120px;
-    z-index: 100;
-    padding: 10px;
-    border-radius: 15px; /* Adjust the value for more or less rounded edges */
-    margin-left: auto;
-    margin-right: auto; /* Center the container horizontally */
-    
-    /* Allow the container to grow and take available space */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* Make sure it takes full width */
-    max-width: 800px; /* Control the maximum width */
-    box-sizing: border-box; /* Prevent overflow issues due to padding */
-}
+
+
+
+
 .mb-2 {
     margin-left: 20px;
-    position: absolute; /* This allows you to control positioning */
+   
     top: 0; /* Position at the top */
     left: 0; /* Position at the left */
     z-index: 2;
 }
-
-
-/* User form styling */
-.user-form .form-control {
-    width: 100%; /* Make form controls take full width of their container */
-    max-width: 400px; /* Set a maximum width for input fields */
-    margin-bottom: 15px; /* Space between input fields */
-    padding: 10px; /* Space inside input fields */
-    font-size: 16px; /* Adjust font size for better readability */
-    border-radius: 8px; /* Rounded corners for input fields */
-  }
-
-/* Ensure inputs are the same size */
-.user-form input {
-    width: 100%; /* Make the input fields take the full width of the form */
-    max-width: 400px; /* Optionally limit the input width for better layout */
-    padding: 10px; /* Add some padding inside input fields */
-    margin-bottom: 10px; /* Space between input fields */
-    border: 1px solid #ccc; /* Light border for inputs */
-    border-radius: 5px; /* Slightly rounded corners */
-    box-sizing: border-box; /* Ensure padding and border are included in width */
-}
-
-/* Optional: Prevent vertical overflow */
-html, body {
-    height: 100%; /* Ensure full height for html and body */
-    margin: 0;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-
-/* Button Styling */
-.user-form button {
-    width: 100%; /* Make the button full width */
-    max-width: 400px; /* Limit the button's width */
-    padding: 10px; /* Add space inside the button */
-    font-size: 16px; /* Adjust font size */
-    border-radius: 8px; /* Rounded corners for the button */
-    margin-top: 20px; /* Add space above the button */
+/* Centered container for the form */
+.centered-container {
+    z-index: 100;
+    background-color: gray;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    padding: 30px; /* More padding to give breathing room */
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px; /* Keeps the max width */
+    box-sizing: border-box;
+    height: auto;
+    
+   
   }
   
+  /* Form container */
+  .user-form {
+    width: 100%;
+    padding: 15px; /* Padding inside the form */
+    max-width: 100%; /* Ensures form container doesn't exceed screen size */
+    box-sizing: border-box;
+    position: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  /* Input fields */
+  .form-control {
+    width: 100%;  /* Full width */
+    padding: 12px;  /* Increased padding */
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-bottom: 15px;  /* Adds space between input fields */
+  }
+  
+
+
+
+
+  .row {
+    align-items: center;
+    justify-content: center;
+  }

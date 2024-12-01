@@ -198,12 +198,6 @@ function UserPage() {
               Pay Loan
             </Button>
           </Col>
-
-          <Col xs="auto" className="text-center">  {/* Another button with auto width */}
-            <Button variant="secondary" onClick={handleRedirect} className="ms-2">
-              Auto Pay Setup
-            </Button>
-          </Col>
         </Row>
       </Container>
     </div>

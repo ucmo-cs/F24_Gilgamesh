@@ -47,6 +47,9 @@ public class SecurityConfig {
                         .requestMatchers("/create-admin").permitAll()// delete later
                         .requestMatchers("/user/**").permitAll()
                         .requestMatchers("/admin/**").permitAll()  // Ensure only admin access to `/admin`
+                        .requestMatchers("/reset/password-reset").permitAll()
+                        .requestMatchers("/reset/**").permitAll()
+                        .requestMatchers("/reset/ID-reset").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())  // Enable basic auth

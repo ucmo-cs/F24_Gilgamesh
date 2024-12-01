@@ -91,6 +91,10 @@ th, td {
 
 .ms-2{
   background-color:#0e4019;
+  border: #0e4019;
+}
+.ms-2:hover{
+  background-color: black;
 }
 
 /* form buttons*/

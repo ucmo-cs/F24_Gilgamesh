@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios'; // Import axios to make HTTP requests
+import './AdminMakeLoan.css';
+
 
 const AdminMakeLoan = () => {
   // Initial loanData state
@@ -86,7 +88,7 @@ const AdminMakeLoan = () => {
         </Form.Group>
 
         {/* Submit Button */}
-        <Button variant="primary" type="submit">
+        <Button className="createLoan" variant="primary" type="submit">
           Create Loan
         </Button>
       </Form>

@@ -1,4 +1,4 @@
-import './UserSetting.css';
+import './AdminSettings.css';
 import UserForm from "../components/UserForm";
 import { useState, useEffect } from 'react';
 import axios from 'axios'; 
@@ -72,8 +72,8 @@ function UserSetting() {
         {!isEditing ? (
           <div className="user-info-display">
             <p><strong>Username:</strong> {parsedUser.User || 'Loading...'}</p>
-            <p><strong>Email:</strong> {parsedUser.email || 'Loading...'}</p>
-            <p><strong>Number:</strong> {parsedUser.number || 'Loading...'}</p>
+            <p><strong>Email:</strong> {parsedUser.email || 'Null'}</p>
+            <p><strong>Number:</strong> {parsedUser.number || 'Null'}</p>
             <p><strong>Role:</strong> {parsedUser.role || 'Loading...'}</p>
             <button className="btn btn-primary" onClick={handleEditClick}>Edit Information</button>
           </div>

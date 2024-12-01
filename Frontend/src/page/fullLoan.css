@@ -1,27 +1,51 @@
-
-
+/* Styling for loan-container */
 .loan-container {
-    width: 75vw; /* Full width of the container */
+  width: 75vw; /* Full width of the container */
   margin: 40px auto; /* Center the container horizontally with margin auto */
   padding: 20px; /* Padding inside the box */
-  background-color: #006847ea; /* Green background for the box */
+  background-color: rgb(128, 128, 128); /* Gray background */
   border-radius: 8px; /* Rounded corners */
   position: relative; /* Ensure z-index works as expected */
   z-index: 1000; /* Bring to the front by giving it a higher z-index */
   flex-grow: 1;
+
+  /* Center content within the container using Flexbox */
+  display: flex;
+  flex-direction: column; /* Stack the items vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: flex-start; /* Align content at the top, but allow container to grow */
+  
+  /* Allow the container to grow based on its content */
+  min-height: 200px; /* Minimum height to ensure space for content */
+  max-height: 80vh; /* Optional: Limit the container height if you want it to be capped */
+  margin-bottom: 0;
+  /* Hide the scrollbar while allowing scrolling */
+  overflow: hidden; /* Prevent the scrollbar from showing */
 }
 
+
+.loan-container::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in WebKit browsers like Chrome and Safari */
+}
+
+/* Optional: If you want to ensure vertical scrolling works */
+.loan-container {
+  overflow-y: auto; /* Allows vertical scrolling if content overflows */
+}
+/* Styling for back button */
 .back-button {
-  background-color: #007bff;
+  background-color: #0e4019;
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-left: auto; /* Center button horizontally */
+  margin-right: auto; /* Center button horizontally */
 }
 
 .back-button:hover {
-  background-color: #0056b3;
+  background-color: #000000;
 }

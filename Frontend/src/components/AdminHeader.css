@@ -1,3 +1,4 @@
+/* Styling for the user header */
 .userheader {
     background-color: #ffffff; /* Background color */
     padding: 0.25rem 1rem; /* Padding for the header */
@@ -5,9 +6,11 @@
     border-radius: 10px 10px 10px 10px; /* Rounded top corners */
 }
 
+/* Styling for the brand name */
 .brand-name {
     color: white !important;
 }
+
 .navbar {
     background-color: #898888 !important; /* Force dark background */
 }
@@ -32,11 +35,7 @@
     text-decoration: underline; /* Underline the nav link on hover */
 }
 
-.user-dropdown {
-    margin-top: -2px;  /* Adjust this margin to raise the dropdown */
-    z-index: 1050; /* Ensure it's above other elements */
-}
-
+/* Navbar styling */
 .navbar .nav-link, .navbar .dropdown-toggle {
     display: flex;
     align-items: center;
@@ -44,11 +43,13 @@
     padding-bottom: 0.25rem;
 }
 
+/* User dropdown container */
 .user-dropdown {
-    align-items: center; 
-    margin-top: -18px;
+    position: relative; /* Make sure the dropdown is positioned correctly relative to the navbar */
+    z-index: 1050; /* Ensure it's above other elements */
 }
 
+/* Dropdown toggle button styling */
 .user-dropdown .dropdown-toggle {
     font-size: 1.2rem;  /* Make the dropdown title bigger */
     color: white;  /* Text color */
@@ -58,7 +59,7 @@
     background: none;  /* Remove background for cleaner design */
     display: flex;
     align-items: center;
-    
+    z-index: 1050; /* Ensure it's above other elements */
 }
 
 /* Add hover effect for the dropdown toggle */
@@ -66,10 +67,23 @@
     text-decoration: underline;  /* Underline the text when hovered */
 }
 
+/* Remove the default dropdown arrow */
 .user-dropdown .dropdown-toggle::after {
-    display: none;  /* Remove the dropdown arrow */
+    display: none;
 }
 
+/* Dropdown menu styling */
 .dropdown-menu {
-    margin-top: 0px;  /* Ensures dropdown menu aligns evenly with the toggle */
+    position: absolute; /* Position it absolutely relative to the parent */
+    top: 100%; /* Place it just below the toggle button */
+    left: 0;
+    z-index: 1060; /* Ensure it appears above other content */
+    margin-top: 0;  /* Align the dropdown evenly */
+    border-radius: 8px; /* Optional: rounded corners for the dropdown */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: soft shadow to make the dropdown stand out */
+}
+
+/* Optional: Ensure the dropdown stays above the navbar */
+.user-dropdown .dropdown-menu.show {
+    z-index: 1060; /* Ensure the menu is displayed above other elements */
 }

@@ -47,7 +47,7 @@ function FullLoan() {
     <>
       <AdminHeader />
       <div className="loan-container">
-        <h1>Full Loan Details for User ID: {userId}</h1>
+        <h1> Loan Details For {userId}</h1>
         {/* Show table of loans */}
         <h3>Loans:</h3>
         {loading ? (

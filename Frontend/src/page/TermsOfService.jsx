@@ -3,6 +3,7 @@ import './TermsOfService.css';
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
+import Footer from  '../components/Footer';
 
 function TermsOfService() {
   // State to store the user data
@@ -51,6 +52,7 @@ function TermsOfService() {
           <p>If you have any questions, please reach out to us at support@example.com.</p>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

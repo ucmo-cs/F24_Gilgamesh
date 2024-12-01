@@ -3,6 +3,7 @@ import './ResetPassword.css'; // Import the CSS for reset password styling
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
+import Footer from  '../components/Footer';
 
 const ResetPassword = () => {
   const [username, setUsername] = useState('');
@@ -11,6 +12,7 @@ const ResetPassword = () => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [parsedUser, setParsedUser] = useState(null); // State to store parsed user data
+  
 
   // useEffect hook to fetch user session data
   useEffect(() => {
@@ -97,6 +99,7 @@ const ResetPassword = () => {
           {message && <p>{message}</p>}
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

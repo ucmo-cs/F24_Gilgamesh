@@ -3,6 +3,7 @@ import './PrivacyPolicy.css';
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
+import Footer from  '../components/Footer';
 
 function PrivacyPolicy() {
   // State to store parsed user data
@@ -48,6 +49,7 @@ function PrivacyPolicy() {
           <p>If you have any questions, feel free to contact us at support@example.com.</p>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

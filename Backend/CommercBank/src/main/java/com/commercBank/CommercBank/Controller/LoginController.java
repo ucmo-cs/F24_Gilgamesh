@@ -35,6 +35,8 @@ public class LoginController {
             response.put("account_id", String.valueOf(account.getAccountId()));
             response.put("email", account.getEmail());
             response.put("number", account.getPhoneNumber());
+            response.put("Rounting", String.valueOf(account.getRoutingNumber()));
+            response.put("BankAccount", String.valueOf(account.getBankAccountNumber()));
             return ResponseEntity.ok(response);
         } else {
             Map<String, String> errorResponse = new HashMap<>();

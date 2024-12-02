@@ -97,5 +97,18 @@ http://localhost:8080/reset/username-reset
 }
 
 
+http://localhost:8080/reset/routingNumber-reset
+{
+    "userId": "testUser23",
+    "newRoutingNumber": "123456789"
+}
+
+
+http://localhost:8080/reset/bankAccountNumber-reset
+{
+    "userId": "testUser23",
+    "newBankAccountNumber": "987654321"
+}
+
 
 

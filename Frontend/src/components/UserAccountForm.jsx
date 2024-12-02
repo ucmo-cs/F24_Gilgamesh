@@ -43,7 +43,7 @@ function UserAccountForm({ handleSubmit }) {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button  style={{width:"50%"}} variant="primary" type="submit">
         Submit
       </Button>
     </Form>

@@ -22,7 +22,7 @@ function UserForm() {
         <Form.Control type="tel" placeholder="Enter phone number" />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button style={{width:"50%"}}className='submit' variant="primary" type="submit">
         Submit
       </Button>
     </Form>

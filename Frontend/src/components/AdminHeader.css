@@ -12,7 +12,7 @@
 }
 
 .navbar {
-    background-color: #898888 !important; /* Force dark background */
+    background-color: rgb(128, 128, 128) !important; /* Force dark background */
 }
 
 .navbar-logo {

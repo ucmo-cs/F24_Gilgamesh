@@ -1,6 +1,6 @@
 /* General body styling */
 body {
-  margin: 40;
+  margin: 20;
   padding: 0;
   height: 100vh; /* Full viewport height */
   position: relative; /* Allow child elements to be positioned relative to the body */
@@ -8,13 +8,13 @@ body {
 
 /* Admin container styling */
 .admin-container {
-  width: 75vw; /* Full width of the container */
-  margin: 120px auto; /* Center the container horizontally with margin auto */
+  width: 45vw; /* Full width of the container */
+  margin: 50px auto; /* Center the container horizontally with margin auto */
   padding: 20px; /* Padding inside the box */
   background-color:  rgb(128, 128, 128); /* Green background for the box */
   border-radius: 8px; /* Rounded corners */
   position: relative; /* Ensure z-index works as expected */
-  z-index: 1000; /* Bring to the front by giving it a higher z-index */
+  z-index: 100; /* Bring to the front by giving it a higher z-index */
   
   /* Flexbox to center content */
   height: 70vb;
@@ -40,12 +40,15 @@ table {
   width: 100%; /* Make the table width 100% of its container */
   border-collapse: collapse; /* Collapse table borders */
   table-layout: fixed; /* Ensure columns have fixed width */
+  border-radius: 10px; /* Rounded corners for the outer corners */
+  overflow: hidden; /* Hide overflow for the table */
+  border: 1px solid #c2232300; /* Border around the table */
 }
 
 /* Table cell and border styling */
 th, td {
   padding: 12px;
-  text-align: left; /* Align text to the left */
+  text-align: center; /* Align text to the left */
   border: 1px solid #ddd; /* Add borders around cells */
 }
 

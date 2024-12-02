@@ -14,7 +14,7 @@ body, html {
 
 /* Footer style */
 .footer {
-  background-color: #898888;
+  background-color: rgb(128, 128, 128);
   color: rgb(254, 252, 252);
   text-align: center;
   padding: 10px 0; /* Padding for spacing inside the footer */

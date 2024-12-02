@@ -1,12 +1,14 @@
 http://localhost:8080/api/accounts/account
 {
-"userType": 2,
-    "userId": "testUser4",   // Ensure this is not null
-    "userName": "Test User4",
-    "password": "securePassword4",
-    "role": "USER",
-    "email": "test4@example.com",
-    "phoneNumber": "1234567804"
+    "userType": 2,
+    "userId":"testUser23",   // Ensure this is not null
+    "userName":"Test User",
+    "password":"securePassword23",
+    "email": "test23@example.com",
+    "phoneNumber":"168346076",
+    "role":"USER",
+    "bankAccountNumber":"123456789",
+    "routingNumber":"987654321"
 }
 
 http://localhost:8080/loan

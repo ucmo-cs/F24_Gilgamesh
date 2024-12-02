@@ -29,9 +29,25 @@ public class AccountController {
         if (accountDto.getUserId() != null) {
             System.out.println("UserId: " + accountDto.getUserId());
         }
-            Account account = new ModelMapper().map(accountDto, Account.class);
-            account.setCreated_at(new Timestamp(System.currentTimeMillis()));
 
-            return new ResponseEntity<>(accountService.create(account), HttpStatus.CREATED);
+        // Map the AccountDto to Account entity
+        Account account = new ModelMapper().map(accountDto, Account.class);
+
+        // Set the current timestamp as account creation time
+        account.setCreated_at(new Timestamp(System.currentTimeMillis()));
+
+        // Ensure the bank details are set properly (this is optional if they are already in the DTO)
+        if (accountDto.getBankAccountNumber() != null) {
+            account.setBankAccountNumber(accountDto.getBankAccountNumber());
         }
+        if (accountDto.getRoutingNumber() != null) {
+            account.setRoutingNumber(accountDto.getRoutingNumber());
+        }
+
+        // Save the account with bank details and other fields
+        Account createdAccount = accountService.create(account);
+
+        // Return the created account response
+        return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
+    }
 }

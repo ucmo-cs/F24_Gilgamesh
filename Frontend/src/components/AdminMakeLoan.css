@@ -10,6 +10,7 @@
   position: relative;
   text-align: center;
 }
+
 .div{
   max-width: 50%;
 }
@@ -29,5 +30,3 @@
 .createLoan:hover {
   background-color: #000000;
 }
-
-  

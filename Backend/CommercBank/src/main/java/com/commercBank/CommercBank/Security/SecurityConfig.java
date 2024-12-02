@@ -36,7 +36,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/accounts/account").permitAll() //Allow public access to `/create`
+                        .requestMatchers("/api/accounts/account").permitAll()//Allow public access to `/create`
+                        .requestMatchers("/api/accounts/**").permitAll()
                         .requestMatchers("/login/login").permitAll()   // Allow public access to `/login`
                         .requestMatchers("/loan").permitAll()
                         .requestMatchers("/admin/loans").permitAll()

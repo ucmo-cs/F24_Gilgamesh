@@ -1,3 +1,13 @@
+/* General label styling */
+.form-label {
+  color: #000000; /* Default color for labels */
+  font-weight: bold;
+}
+
+/* Allow overriding label colors */
+.label-custom-color {
+  color: #000000; /* Default green color for labels, change as needed */
+}
 
   .clickable-row:hover {
     z-index: 20;  /* Optionally, change z-index on hover to bring it above other rows */
@@ -32,13 +42,18 @@
   display: block;
   margin: 20px auto; /* Center the button horizontally */
   background-color: #0e4019;
-
+  border: none;
 }
+.summit:hover {
+  background-color: #000000; /* Darker shade on hover */
+}
+
 /* Optional styling for the close button */
 .close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
+  
 }
 
   

@@ -129,4 +129,35 @@ public class Account {
         this.role = role;
     }
 
+    // Getter and Setter for bank account number
+    @Column(name = "bank_account_number", nullable = true)
+    private String bankAccountNumber;
+
+    public String getBankAccountNumber() {
+        return bankAccountNumber;
+    }
+
+    public void setBankAccountNumber(String bankAccountNumber) {
+        if (bankAccountNumber != null && bankAccountNumber.matches("\\d+")) {
+            this.bankAccountNumber = bankAccountNumber;
+        } else {
+            throw new IllegalArgumentException("Bank account number must contain only digits.");
+        }
+    }
+
+    // Getter and Setter for routing number
+    @Column(name = "routing_number", nullable = true)
+    private String routingNumber;
+
+    public String getRoutingNumber() {
+        return routingNumber;
+    }
+
+    public void setRoutingNumber(String routingNumber) {
+        if (routingNumber != null && routingNumber.matches("\\d+")) {
+            this.routingNumber = routingNumber;
+        } else {
+            throw new IllegalArgumentException("Routing number must contain only digits.");
+        }
+    }
 }

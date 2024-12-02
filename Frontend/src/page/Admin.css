@@ -1,6 +1,6 @@
 /* General body styling */
 body {
-  margin: 0;
+  margin: 40;
   padding: 0;
   height: 100vh; /* Full viewport height */
   position: relative; /* Allow child elements to be positioned relative to the body */
@@ -9,7 +9,7 @@ body {
 /* Admin container styling */
 .admin-container {
   width: 75vw; /* Full width of the container */
-  margin: 40px auto; /* Center the container horizontally with margin auto */
+  margin: 120px auto; /* Center the container horizontally with margin auto */
   padding: 20px; /* Padding inside the box */
   background-color:  rgb(128, 128, 128); /* Green background for the box */
   border-radius: 8px; /* Rounded corners */
@@ -17,11 +17,13 @@ body {
   z-index: 1000; /* Bring to the front by giving it a higher z-index */
   
   /* Flexbox to center content */
-  display: flex;
+  height: 70vb;
+  
   flex-direction: column;
   align-items: center;
+  text-align: center;
   justify-content: center;
-  overflow: hidden; /* Hide overflow for the container */
+  
 }
 
 /* Ensure the table doesn't overflow the container */

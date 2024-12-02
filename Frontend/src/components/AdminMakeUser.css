@@ -1,6 +1,6 @@
 /* General label styling */
 .form-label {
-  color: #000000; /* Default color for labels */
+  color: #ffffff; /* Default color for labels */
   font-weight: bold;
 }
 
@@ -25,6 +25,7 @@
   justify-content: center;
   align-items: center; /* Centers the form */
   z-index: 1050; /* Ensures the form appears above other content */
+  height: 85vh;
 }
 
 /* The container for the admin form */

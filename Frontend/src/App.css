@@ -21,6 +21,7 @@ html, body {
   padding: 20px; /* Add padding inside the main content */
   box-sizing: border-box; /* Include padding in height/width calculation */
   overflow-y: auto; /* Ensure vertical scrolling */
+  
   height: calc(100vh - 80px); /* Ensure the content takes full height minus top/bottom padding */
 }
 

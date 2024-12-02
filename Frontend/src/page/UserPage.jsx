@@ -10,201 +10,166 @@ import AdminHeader from '../components/AdminHeader';
 import Footer from '../components/Footer';
 
 function UserPage() {
-  const [loanValue, setLoanValue] = useState(0);  // Total loan value (sum of loanOriginAmounts)
-  const [parsedUser, setParsedUser] = useState(null); // User state
-  const [loans, setLoans] = useState([]); // To store multiple loans data
-  const [error, setError] = useState(null); // To handle any errors
-  const [userId, setUserId] = useState(null); // To store the user ID
-  const [totalMonthlyPayment, setTotalMonthlyPayment] = useState(0); // To store total monthly payment
-
-
   const navigate = useNavigate(); // Initialize useNavigate hook
 
-  useEffect(() => {
-    const user = sessionStorage.getItem('userSession');
-    if (user) {
-      const parsed = JSON.parse(user);
-      setParsedUser(parsed);  // Set parsed user in state
-    } else {
-      console.log("No user session found.");
-    }
-  }, []);
+  // State for user data, loans, and loan related info
+  const [user, setUser] = useState(null); // User state
+  const [loans, setLoans] = useState([]); // To store multiple loans data
+  const [loanValue, setLoanValue] = useState(0); // Total loan value (sum of loanOriginAmounts)
+  const [totalMonthlyPayment, setTotalMonthlyPayment] = useState(0); // To store total monthly payment
+  const [error, setError] = useState(null); // To handle any errors
+  const [userId, setUserId] = useState(null); // To store the user ID
 
+  // Fetch user from session storage
   useEffect(() => {
     const userSession = sessionStorage.getItem('userSession');
     if (userSession) {
       const parsedUser = JSON.parse(userSession);
-      if (parsedUser && parsedUser.account_id) {
-        setUserId(parsedUser.account_id);  // Use account_id if userId is missing
-      } else {
-        console.error("User ID or account_id is missing in the session data.");
-      }
+      setUser(parsedUser);
+      setUserId(parsedUser.account_id); // Set userId from parsed user data
+    } else {
+      console.log("No user session found.");
     }
-  }, []);
+  }, []); // Runs once when the component is mounted
 
+  // Fetch loan data when userId is available
   useEffect(() => {
     if (userId) {
       const url = `http://localhost:8080/loan/account/${userId}`;
       axios
         .get(url)
         .then((response) => {
-          setLoans(response.data); // Store multiple loans data in state
+          setLoans(response.data); // Store loans data
           const totalDue = response.data.reduce((acc, loan) => acc + loan.loanOriginAmount, 0);
-          setLoanValue(totalDue); // Set the total due loan amount
+          setLoanValue(totalDue); // Set total loan value
+          const totalPayment = calculateTotalMonthlyPayment(response.data);
+          setTotalMonthlyPayment(totalPayment); // Set total monthly payment
         })
         .catch((error) => {
           console.error("Error fetching loan data:", error);
           setError(error.message || 'An error occurred while fetching loan data');
         });
     }
-  }, [userId]);
+  }, [userId]); // Runs when userId changes
 
+  // Render the header based on user role
   const renderHeader = () => {
-    if (parsedUser) {
-      if (parsedUser.role === 'ADMIN') {
+    if (user) {
+      if (user.role === 'ADMIN') {
         return <AdminHeader />;
-      } if(parsedUser.role === 'USER') {
+      } if (user.role === 'USER') {
         return <UserHeader />;
       }
     }
     return <Header />;
   };
 
-  // Function to handle button click and navigate to the LoanPayment page
-  const handlePaymentRedirect = () => {
-    navigate('/LoanPayment'); // This will navigate to the LoanPayment page
-  };
-
-  const handleRedirect = () => {
-    navigate('/AutoPay'); // This will navigate to the LoanPayment page
-  };
-
-  // Function to handle loan row click and navigate to the LoanPayment page
-  const handleLoanClick = () => {
-    navigate('/LoanPayment'); // This will navigate to the LoanPayment page
-  };
-
-  // Function to calculate the next payment date (1 month from the loan's start date)
+  // Calculate next payment date (1 month from loan start date)
   function calculateNextPaymentDate(startDate) {
-    const start = new Date(startDate); // Convert the loan's creation date to a Date object
-    start.setMonth(start.getMonth() + 1); // Add one month to the start date for the next payment
+    const start = new Date(startDate);
+    start.setMonth(start.getMonth() + 1);
     return start;
   }
 
-  // Function to calculate the monthly payment using the mortgage formula
+  // Calculate monthly payment using mortgage formula
   function calculateMonthlyPayment(principal, annualRate, years) {
-    const monthlyRate = annualRate / 12 / 100; // Convert annual rate to monthly rate and percentage to decimal
-    const totalPayments = years * 12; // Total number of payments (months)
+    const monthlyRate = annualRate / 12 / 100;
+    const totalPayments = years * 12;
     const monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / (Math.pow(1 + monthlyRate, totalPayments) - 1);
-    return monthlyPayment.toFixed(2); // Return the monthly payment rounded to 2 decimal places
+    return monthlyPayment.toFixed(2);
   }
+
+  // Calculate total monthly payment for all loans
   function calculateTotalMonthlyPayment(loans) {
     return loans.reduce((total, loan) => {
-      const nextPaymentAmount = calculateMonthlyPayment(loan.loanOriginAmount, loan.interestRate, 30);  // Assuming 30 years term
-      return total + parseFloat(nextPaymentAmount); // Add to total
+      const nextPaymentAmount = calculateMonthlyPayment(loan.loanOriginAmount, loan.interestRate, 30);
+      return total + parseFloat(nextPaymentAmount);
     }, 0);
   }
-  useEffect(() => {
-    if (userId) {
-      const url = `http://localhost:8080/loan/account/${userId}`;
-      axios
-        .get(url)
-        .then((response) => {
-          setLoans(response.data);
-          const totalDue = response.data.reduce((acc, loan) => acc + loan.loanOriginAmount, 0);
-          setLoanValue(totalDue);  // Set total loan value
-  
-          // Calculate total monthly payment using the new function
-          const totalPayment = calculateTotalMonthlyPayment(response.data);
-          setTotalMonthlyPayment(totalPayment);  // Set total monthly payment
-        })
-        .catch((error) => {
-          console.error("Error fetching loan data:", error);
-          setError(error.message || 'An error occurred while fetching loan data');
-        });
-    }
-  }, [userId]);
-  
+
+  // Function to handle loan row click and navigate to LoanPayment page
+  const handleLoanClick = (loanId) => {
+    navigate('/LoanPayment', { state: { loanId } });
+  };
+
+  // Function to handle button click and navigate to LoanPayment page
+  const handlePaymentRedirect = () => {
+    navigate('/LoanPayment');
+  };
+
   return (
     <>
       {renderHeader()}
       <div>
-      <Container className="spreadsheet-container">
-        <header className="header">
-          <h1>Hello {parsedUser ? parsedUser.User : 'Loading...'}</h1> {/* Conditionally rendering user name */}
-        </header>
+        <Container className="spreadsheet-container">
+          <header className="header">
+            <h1>Hello {user ? user.User : 'Loading...'}</h1>
+          </header>
 
-        {/* Display Total Due Loan Value */}
-        <Row className="mb-3 justify-content-center" style={{ color: 'white', display: 'flex', alignItems: 'center' }}>
-          <Col xs="auto" className="total text-center">
-            <h3>Total Due: ${loanValue.toFixed(2)}</h3>
-          </Col>
-          <Col xs="auto" className="total text-center">
-            <h3>Monthly Due: ${totalMonthlyPayment.toFixed(2)}</h3>
-          </Col>
-        </Row>
+          {/* Display Total Due Loan Value */}
+          <Row className="mb-3 justify-content-center" style={{ color: 'white', display: 'flex', alignItems: 'center' }}>
+            <Col xs="auto" className="total text-center">
+              <h3>Total Due: ${loanValue.toFixed(2)}</h3>
+            </Col>
+            <Col xs="auto" className="total text-center">
+              <h3>Monthly Due: ${totalMonthlyPayment.toFixed(2)}</h3>
+            </Col>
+          </Row>
 
-
-        {/* Table for Loan Information */}
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Loan ID</th>
-              <th>Origin Amount</th>
-              <th>Amount Left</th>
-              <th>Interest Rate</th>
-              <th>Date Created</th>
-              <th>Payment Date</th> {/* Column for next payment date */}
-              <th>Payment Amount</th> {/* Column for next payment amount */}
-            </tr>
-          </thead>
-          <tbody>
-            {loans.length > 0 ? (
-              loans.map((loan) => {
-                const nextPaymentDate = calculateNextPaymentDate(loan.created_at); // Calculate next payment date
-                const nextPaymentAmount = calculateMonthlyPayment(loan.loanOriginAmount, loan.interestRate, 30); 
-
-                return (
-                  <tr
-                    key={loan.loan_id}
-                    style={{ cursor: 'pointer' }}
-                    onClick={handleLoanClick} // Clicking on the loan row also redirects to the LoanPayment page
-                  >
-                    <td>{loan.loan_id}</td>
-                    <td>${loan.loanOriginAmount.toFixed(2)}</td>
-                    <td>${loan.loanOriginAmount.toFixed(2)}</td>
-                    <td>{loan.interestRate}%</td>
-                    <td>{new Date(loan.created_at).toLocaleDateString()}</td>
-                    <td>{nextPaymentDate.toLocaleDateString()}</td> {/* Display Next Payment Date */}
-                    <td>${nextPaymentAmount}</td> {/* Display Next Payment Amount */}
-                  </tr>
-                );
-              })
-            ) : error ? (
+          {/* Table for Loan Information */}
+          <Table style={{ borderRadius: '10px', overflow: 'hidden' }} striped bordered hover>
+            <thead>
               <tr>
-                <td colSpan="7" className="text-center text-danger">{error}</td> {/* Adjust colspan to 7 */}
+                <th style={{ textAlign: 'center' }}>Loan ID</th>
+                <th style={{ textAlign: 'center' }}>Origin Amount</th>
+                <th style={{ textAlign: 'center' }}>Amount Left</th>
+                <th style={{ textAlign: 'center' }}>Interest Rate</th>
+                <th style={{ textAlign: 'center' }}>Date Created</th>
+                <th style={{ textAlign: 'center' }}>Payment Date</th>
+                <th style={{ textAlign: 'center' }}>Payment Amount</th>
               </tr>
-            ) : (
-              <tr>
-                <td colSpan="7" className="text-center">Loading loan data...</td> {/* Adjust colspan to 7 */}
-              </tr>
-            )}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {loans.length > 0 ? (
+                loans.map((loan) => {
+                  const nextPaymentDate = calculateNextPaymentDate(loan.created_at);
+                  const nextPaymentAmount = calculateMonthlyPayment(loan.loanOriginAmount, loan.interestRate, 30);
+                  return (
+                    <tr key={loan.loan_id} style={{ cursor: 'pointer' }} onClick={() => handleLoanClick(loan.loan_id)}>
+                      <td style={{ textAlign: 'center' }}>{loan.loan_id}</td>
+                      <td style={{ textAlign: 'center' }}>${loan.loanOriginAmount.toFixed(2)}</td>
+                      <td style={{ textAlign: 'center' }}>${loan.loanOriginAmount.toFixed(2)}</td>
+                      <td style={{ textAlign: 'center' }}>{loan.interestRate}%</td>
+                      <td style={{ textAlign: 'center' }}>{new Date(loan.created_at).toLocaleDateString()}</td>
+                      <td style={{ textAlign: 'center' }}>{nextPaymentDate.toLocaleDateString()}</td>
+                      <td style={{ textAlign: 'center' }}>${nextPaymentAmount}</td>
+                    </tr>
+                  );
+                })
+              ) : error ? (
+                <tr>
+                  <td colSpan="7" className="text-center text-danger">{error}</td>
+                </tr>
+              ) : (
+                <tr>
+                  <td colSpan="7" className="text-center">Loading loan data...</td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
 
-        <Row className="mb-3 justify-content-center"> {/* Row to hold the buttons */}
-          <Col xs="auto" className="text-center">  {/* Use xs="auto" to make each button size to its content */}
-            <Button variant="secondary" onClick={handlePaymentRedirect} className="ms-2">
-              Pay Loan
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-    <Footer />
+          <Row className="mb-3 justify-content-center">
+            <Col xs="auto" className="text-center">
+              <Button variant="secondary" onClick={handlePaymentRedirect} className="ms-2">
+                Pay Loan
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <Footer />
     </>
   );
 }
 
 export default UserPage;
-

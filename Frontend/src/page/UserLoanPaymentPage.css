@@ -1,5 +1,13 @@
 
-
+.mt-1{
+ 
+  width: auto; /* Adjust width if needed, or set to a specific value */
+  margin: 30px auto; /* Horizontally centers the element */
+  display: flex; /* Flexbox for alignment */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  text-align: center; /* Ensures text within is centered */
+}
 
 
 .mb-2 {
@@ -8,13 +16,23 @@
     top: 0; /* Position at the top */
     left: 0; /* Position at the left */
     z-index: 2;
+    margin-right: 400px;
 }
+.submit-payment {
+  width: auto; /* Adjust width if needed, or set to a specific value */
+  margin: 0 auto; /* Horizontally centers the element */
+  display: flex; /* Flexbox for alignment */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  text-align: center; /* Ensures text within is centered */
+}
+
 /* Centered container for the form */
 .centered-container {
     z-index: 100;
     background-color: gray;
-    margin-top: 50px;
-    margin-bottom: 60px;
+    margin-top: 100px;
+    margin-bottom: 100px;
     padding: 30px; /* More padding to give breathing room */
     border-radius: 15px;
     margin-left: auto;
@@ -23,7 +41,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    
     max-width: 800px; /* Keeps the max width */
     box-sizing: border-box;
     height: auto;

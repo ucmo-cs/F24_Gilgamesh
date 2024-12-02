@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom'; // Import useLocation
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './UserLoanPaymentPage.css';
 import Header from '../components/Header';
@@ -11,7 +11,7 @@ import axios from 'axios';
 
 function UserLoanPaymentPage() {
   const [values, setValues] = useState({
-    loanId: '',
+    loanId: '',    // Default to empty, will be filled later
     amount: '',
     date: '',
     paymentMethod: 'Credit Card', // Default to 'Credit Card'
@@ -20,8 +20,10 @@ function UserLoanPaymentPage() {
   const [parsedUser, setParsedUser] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [useDefaultAccount, setUseDefaultAccount] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();  // To access the passed state from navigate
 
   useEffect(() => {
     const userSession = sessionStorage.getItem('userSession');
@@ -33,6 +35,16 @@ function UserLoanPaymentPage() {
       console.log('No user session found.');
     }
   }, []);
+
+  // Use location.state to fill the loanId if passed
+  useEffect(() => {
+    if (location.state && location.state.loanId) {
+      setValues((prevValues) => ({
+        ...prevValues,
+        loanId: location.state.loanId,  // Set loanId from passed state
+      }));
+    }
+  }, [location.state]);
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -72,6 +84,11 @@ function UserLoanPaymentPage() {
     return <Header />;
   };
 
+  const handleDefaultAccount = () => {
+    setUseDefaultAccount(true);
+    console.log("Using default bank account for payment.");
+  };
+
   return (
     <>
       {renderHeader()}
@@ -90,7 +107,7 @@ function UserLoanPaymentPage() {
                     type="text"
                     placeholder="Enter loan number"
                     name="loanId"
-                    value={values.loanId}
+                    value={values.loanId}  // Pre-fill loanId if it's passed
                     onChange={handleInput}
                   />
                 </Form.Group>
@@ -99,7 +116,7 @@ function UserLoanPaymentPage() {
                 <Form.Group className="mb-3" controlId="formGridPaymentAmount">
                   <Form.Label style={{ color: 'white' }}>Payment Amount</Form.Label>
                   <Form.Control
-                    type="number"
+                    type=''
                     placeholder="Enter payment amount"
                     name="amount"
                     value={values.amount}
@@ -193,34 +210,45 @@ function UserLoanPaymentPage() {
               </div>
             )}
 
-            {values.paymentMethod === 'Bank Transfer' && (
-              <Row>
-                <Col sm={6}>
-                  <Form.Group className="mb-3" controlId="formGridBankName">
-                    <Form.Label style={{ color: 'white' }}>Bank Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter your bank name"
-                      name="bankName"
-                      onChange={handleInput}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col sm={6}>
-                  <Form.Group className="mb-3" controlId="formGridAccountNumber">
-                    <Form.Label style={{ color: 'white' }}>Account Number</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter your account number"
-                      name="accountNumber"
-                      onChange={handleInput}
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
+            {values.paymentMethod === 'Bank Transfer' && !useDefaultAccount && (
+              <div>
+                <Row>
+                  <Col sm={6}>
+                    <Form.Group className="mb-3" controlId="formGridBankName">
+                      <Form.Label style={{ color: 'white' }}>Routing Number</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter your Routing Number"
+                        name="bankName"
+                        onChange={handleInput}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col sm={6}>
+                    <Form.Group className="mb-3" controlId="formGridAccountNumber">
+                      <Form.Label style={{ color: 'white' }}>Account Number</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter your account number"
+                        name="accountNumber"
+                        onChange={handleInput}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                {/* Default Account Button */}
+                <Button
+                  variant="info"
+                  onClick={handleDefaultAccount}
+                  className="mt-1"
+                >
+                  Use Default Account
+                </Button>
+              </div>
             )}
 
-            <Button variant="primary" type="submit">
+            <Button className="submit-payment" variant="primary" type="submit">
               Submit Payment
             </Button>
           </Form>
@@ -237,4 +265,3 @@ function UserLoanPaymentPage() {
 }
 
 export default UserLoanPaymentPage;
-

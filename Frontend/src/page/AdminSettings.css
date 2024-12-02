@@ -1,56 +1,51 @@
-.user-settings-container {
+.admin-settings-container {
   margin-top: 10rem;
-  padding: 1.5rem;
+  margin-bottom: 10rem;
   margin-left: auto;
   margin-right: auto;
-  background-color: transparent;
-  border-radius: 8px;
-  border-color: #28a745;
-  position: relative;
+  
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 43vh;
-  width: 54%;
-  max-width: 500px;
-  border: 1px solid #28a745;
   
-  padding: 0%;
-  height: fit-content;
-  overflow: hidden;
+  height: 50vh; /* Let the container adjust based on its content */
+  max-width: 400px;
+  width: 70%; /* Ensure the container takes up the full available width */
+  background-color: rgb(128, 128, 128);
+  overflow: visible; /* Prevent the content from being hidden if it overflows */
+  padding: 20px; /* Optional padding for better spacing */
+  
+  border-radius: 15px; /* Rounded corners with a radius of 15px */
 }
 
-.user-form-container {
-  position: relative;
-  
-  overflow: hidden;
-  
-}
 
-.user-settings-title {
+
+/* Renamed user-settings-title to admin-settings-title */
+.admin-settings-title {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 1.5rem;
   color: white;
 }
 
-.user-info-display {
+/* Renamed user-info-display to admin-info-display */
+.admin-info-display {
   text-align: center;
   position: relative;
   color: white;
 }
 
-.user-info-display p {
+.admin-info-display p {
   font-size: 1.1rem;
 }
 
-.user-info-display button {
+/* Renamed button to admin-info-display button */
+.admin-info-display button {
   margin-top: 1rem;
   z-index: 2;
   padding: 0.5rem 1rem;
-  background-color: #08ca69;
+  background-color: #0e4019;
   border: none;
   color: white;
   font-size: 1.1rem;
@@ -59,22 +54,19 @@
   transition: background-color 0.3s ease;
 }
 
-.user-info-display button:hover {
-  background-color: #03851f;
+.admin-info-display button:hover {
+  background-color: #000000;
 }
 
-.user-form-container {
+/* Renamed user-form-container to admin-form-container */
+.admin-form-container {
   text-align: center;
-  
-  
-  
 }
 
-.user-form-container button {
-  margin-top: 1rem;
-}
 
-.cancel-btn {
+
+/* Renamed cancel-btn to admin-cancel-btn */
+.admin-cancel-btn {
   position: absolute;
   top: -14px;
   right: 10px;
@@ -88,6 +80,6 @@
   transition: color 0.3s ease;
 }
 
-.cancel-btn:hover {
+.admin-cancel-btn:hover {
   color: #f7f7f7;
 }

@@ -48,6 +48,7 @@
     overflow: hidden; /* Hide anything that overflows the label */
 }
 
+
 /* Button hover effect */
 .user-form button:hover {
     background-color: #218838; /* Darker green on hover */

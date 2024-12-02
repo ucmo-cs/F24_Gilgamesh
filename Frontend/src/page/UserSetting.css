@@ -1,14 +1,14 @@
 
 /* Parent container for side-by-side layout */
 .user-settings-wrapper {
-  margin-top: 10px;
+  margin-top: 100px;
   margin-bottom: 150px;
-  background-color:  transparent;
+  background-color:  rgb(128, 128, 128) ;
   z-index: 100;
   display: flex;
  
   
-  max-width: 1000px; /* You can adjust the max-width as necessary */
+  max-width: 700px; /* You can adjust the max-width as necessary */
   width: 100%;
   justify-content: center; /* Center content horizontally */
   align-items: flex-start; /* Align items to the top */
@@ -24,14 +24,16 @@
 
 /* Individual user settings container */
 .user-settings-container {
-  
+  margin-top: 0 !important;
   background-color: rgb(128, 128, 128) !important; /* Force background color */
+  border: transparent !important;
  
   flex-direction: column;
   align-items: center;
   width: 48%; /* Adjust width to fit two containers side by side */
   max-width: 500px;
-  min-height: 50vh;
+  min-height: 21vh;
+  max-height: 450px;
   
   
 }

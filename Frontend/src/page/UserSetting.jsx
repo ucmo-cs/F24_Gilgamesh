@@ -1,5 +1,6 @@
 import './UserSetting.css';
 import UserForm from "../components/UserForm";
+import UserAccountForm from "../components/UserAccountForm"; // Import the new Account Form
 import { useState, useEffect } from 'react';
 import axios from 'axios'; 
 import Header from '../components/Header';
@@ -11,7 +12,8 @@ function UserSetting() {
   const [parsedUser, setParsedUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // Track whether the form is in edit mode
   const [userId, setUserId] = useState(null);  // Declare userId state to hold the user ID
-
+  const [isAccountEditing, setIsAccountEditing] = useState(false); // Track account info editing state
+  
   // Fetch user session and data
   useEffect(() => {
     const userSession = sessionStorage.getItem('userSession');
@@ -30,7 +32,7 @@ function UserSetting() {
     }
   }, []);
 
-  // Set edit mode to true when the user wants to edit
+  // Set edit mode to true when the user wants to edit profile info
   const handleEditClick = () => {
     setIsEditing(true); 
   };
@@ -38,6 +40,25 @@ function UserSetting() {
   // Set edit mode to false when the user cancels editing
   const handleCancelClick = () => {
     setIsEditing(false); // Return to viewing mode
+  };
+
+  // Set edit mode to true for account info
+  const handleAccountEditClick = () => {
+    setIsAccountEditing(true); 
+  };
+
+  // Set edit mode to false for account info
+  const handleAccountCancelClick = () => {
+    setIsAccountEditing(false); // Return to viewing mode
+  };
+
+  // Handle the submitted account info and make API request
+  const handleAccountSubmit = (accountInfo) => {
+    // Here you would typically send this data to the server to update the user's account info
+    console.log('Account Info Submitted:', accountInfo);
+
+    // Mock successful update response
+    setIsAccountEditing(false);
   };
 
   // Ensure parsedUser is loaded before rendering the form or user info
@@ -63,32 +84,48 @@ function UserSetting() {
   return (
     <>
       {renderHeader()} 
+      
+      <div className="user-settings-wrapper">
+        {/* User Profile Info Section */}
+        <div className="user-settings-container">
+          {!isEditing && <h1 className="user-settings-title">Profile Information</h1>}
+          
+          {!isEditing ? (
+            <div className="user-info-display">
+              <p><strong>Username:</strong> {parsedUser.User || 'Loading...'}</p>
+              <p><strong>Email:</strong> {parsedUser.email || 'Loading...'}</p>
+              <p><strong>Number:</strong> {parsedUser.number || 'Loading...'}</p>
+              <p><strong>Role:</strong> {parsedUser.role || 'Loading...'}</p>
+              <button className="btn btn-primary" onClick={handleEditClick}>Edit Information</button>
+            </div>
+          ) : (
+            <div className="user-form-container">
+              <UserForm parsedUser={parsedUser} /> {/* Pass parsedUser to the form */}
+              <button className="cancel-btn" onClick={handleCancelClick}>×</button>
+            </div>
+          )}
+        </div>
 
-      <div className="user-settings-container">
-        {/* Conditionally render the title based on isEditing */}
-        {!isEditing && <h1 className="user-settings-title">Profile Information</h1>}
-
-        {/* Display user info or UserForm based on isEditing */}
-        {!isEditing ? (
-          <div className="user-info-display">
-            <p><strong>Username:</strong> {parsedUser.User || 'Loading...'}</p>
-            <p><strong>Email:</strong> {parsedUser.email || 'Loading...'}</p>
-            <p><strong>Number:</strong> {parsedUser.number || 'Loading...'}</p>
-            <p><strong>Role:</strong> {parsedUser.role || 'Loading...'}</p>
-            <button className="btn btn-primary" onClick={handleEditClick}>Edit Information</button>
-          </div>
-        ) : (
-          <div className="user-form-container">
-            <UserForm parsedUser={parsedUser} /> {/* Pass parsedUser to the form */}
-            {/* Cancel button as an X */}
-            <button className="cancel-btn" onClick={handleCancelClick}>
-              × {/* This is the X character */}
-            </button>
-          </div>
-        )}
+        {/* Account Info Section */}
+        <div className="user-settings-container">
+          {!isAccountEditing && <h1 className="user-settings-title">Account Information</h1>}
+          
+          {!isAccountEditing ? (
+            <div className="user-info-display">
+              <p><strong>Routing Number:</strong> {parsedUser.routingNumber || 'Loading...'}</p>
+              <p><strong>Bank Number:</strong> {parsedUser.bankNumber || 'Loading...'}</p>
+              <button className="btn btn-secondary" onClick={handleAccountEditClick}>Edit Account Info</button>
+            </div>
+          ) : (
+            <div className="user-form-container">
+              <UserAccountForm handleSubmit={handleAccountSubmit} /> {/* Pass the submit handler */}
+              <button className="cancel-btn" onClick={handleAccountCancelClick}>×</button>
+            </div>
+          )}
+        </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 }

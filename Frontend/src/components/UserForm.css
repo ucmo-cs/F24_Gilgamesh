@@ -37,7 +37,7 @@
 /* Button styling */
 .user-form button {
     font-weight: bold; /* Bold text on the button */
-    background-color: #28a745; /* Green background */
+    background-color: #0e4019    ; /* Green background */
     color: white; /* White text */
     transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover and click */
     padding: 12px 20px; /* Padding inside the button */
@@ -51,7 +51,8 @@
 
 /* Button hover effect */
 .user-form button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: black;
+    ; /* Darker green on hover */
     transform: scale(1.05); /* Slightly enlarge the button on hover */
 }
 

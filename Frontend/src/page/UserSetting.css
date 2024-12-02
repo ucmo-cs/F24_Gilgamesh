@@ -16,9 +16,6 @@
   margin-right: auto; /* Center container horizontally */
   
   border-radius: 15px 15px 15px 15px; /* Rounds top-left and bottom-right */
-  
-  
-
 }
 
 
@@ -34,7 +31,6 @@
   max-width: 500px;
   min-height: 21vh;
   max-height: 450px;
-  
   
 }
 
@@ -78,7 +74,7 @@
 
 /* Edit button hover effect */
 .user-info-display button:hover {
-  background-color: #03851f;
+  background-color: #000000;
 }
 
 /* Cancel button style (close X) */
@@ -100,3 +96,56 @@
 .cancel-btn:hover {
   color: #f7f7f7;
 }
+/* General Button Styling */
+.user-form button {
+  font-weight: bold; /* Bold text on the button */
+  background-color: #0e4019; /* Default green background (#0e4019) */
+  color: white; /* White text */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover and click */
+  padding: 12px 20px; /* Padding inside the button */
+  border-radius: 4px; /* Slightly rounded corners */
+  border: none; /* Remove border */
+  width: 100%; /* Make the button stretch across the container */
+  box-sizing: border-box; /* Ensure padding does not affect width */
+  cursor: pointer; /* Pointer cursor on hover */
+  overflow: hidden; /* Hide anything that overflows the label */
+}
+
+/* Button hover effect */
+.user-form button:hover {
+  background-color: black; /* Turn black on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Button active (click) effect */
+.user-form button:active {
+  background-color: black; /* Stay black when clicked */
+  transform: scale(0.98); /* Slightly shrink the button to simulate pressing */
+}
+
+/* Specific Button for 'Edit Information' */
+.user-settings-container .btn-primary {
+  background-color: #0e4019; /* Green for primary button */
+}
+
+.user-settings-container .btn-primary:hover {
+  background-color: black; /* Black on hover */
+}
+
+.user-settings-container .btn-primary:active {
+  background-color: black; /* Black when clicked */
+}
+
+/* Specific Button for 'Edit Account Info' */
+.user-settings-container .btn-secondary {
+  background-color: #0e4019; /* Green for secondary button */
+}
+
+.user-settings-container .btn-secondary:hover {
+  background-color: black; /* Black on hover */
+}
+
+.user-settings-container .btn-secondary:active {
+  background-color: black; /* Black when clicked */
+}
+

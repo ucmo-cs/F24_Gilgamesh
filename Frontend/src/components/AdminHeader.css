@@ -87,3 +87,21 @@
 .user-dropdown .dropdown-menu.show {
     z-index: 1060; /* Ensure the menu is displayed above other elements */
 }
+/* Remove default blue highlight on active dropdown item */
+.dropdown-menu .dropdown-item:active {
+    background-color: transparent; /* Ensure no background is applied on active state */
+    color: white !important; /* Maintain the white text color when active */
+  }
+  
+  /* Optional: Remove focus outline for dropdown items */
+  .dropdown-menu .dropdown-item:focus {
+    outline: none; /* Remove the blue outline on focus */
+    background-color: transparent; /* Ensure no background is applied on focus */
+  }
+  
+  /* Optional: You can also prevent link color change on hover */
+  .dropdown-menu .dropdown-item:hover {
+    background-color: black; /* Customize hover background color */
+    color: white !important; /* Ensure text remains white on hover */
+  }
+  

@@ -47,14 +47,9 @@ function Userinfo() {
   }
 
   const renderHeader = () => {
-    if (parsedUser) {
-      if (parsedUser.role === 'ADMIN') {
+    
         return <AdminHeader />;
-      } if (parsedUser.role === 'USER') {
-        return <UserHeader />;
-      }
-    }
-    return <Header />;
+      
   };
 
   return (

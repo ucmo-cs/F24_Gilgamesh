@@ -1,7 +1,6 @@
 /* General body styling */
 body {
   margin: 20;
-  padding: 0;
   height: 100vh; /* Full viewport height */
   position: relative; /* Allow child elements to be positioned relative to the body */
 }
@@ -17,7 +16,7 @@ body {
   z-index: 100; /* Bring to the front by giving it a higher z-index */
   
   /* Flexbox to center content */
-  height: 70vb;
+  height: auto;
   
   flex-direction: column;
   align-items: center;
@@ -42,14 +41,14 @@ table {
   table-layout: fixed; /* Ensure columns have fixed width */
   border-radius: 10px; /* Rounded corners for the outer corners */
   overflow: hidden; /* Hide overflow for the table */
-  border: 1px solid #c2232300; /* Border around the table */
+  border: 1px solid rgb(128, 128, 128);; /* Border around the table */
 }
 
 /* Table cell and border styling */
 th, td {
   padding: 12px;
   text-align: center; /* Align text to the left */
-  border: 1px solid #ddd; /* Add borders around cells */
+  border: 1px solid rgba(128, 128, 128, 0.245); /* Add borders around cells */
 }
 
 /* Admin form styling */

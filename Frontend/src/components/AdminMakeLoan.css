@@ -21,7 +21,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional shadow for modal effect */
   width: 70%; /* Adjust the width as needed */
   max-width: 600px; /* Optional: Set a max-width */
-  position: relative;
+  position: absolute;
   text-align: center;
 }
 

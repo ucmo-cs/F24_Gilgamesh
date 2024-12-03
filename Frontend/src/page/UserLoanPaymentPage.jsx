@@ -14,7 +14,7 @@ function UserLoanPaymentPage() {
     loanId: '',    // Default to empty, will be filled later
     amount: '',
     date: '',
-    paymentMethod: 'Credit Card', // Default to 'Credit Card'
+    
   });
 
   const [parsedUser, setParsedUser] = useState(null);

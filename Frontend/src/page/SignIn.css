@@ -1,0 +1,81 @@
+.card{
+    height: 70vh;
+    background: transparent;
+    border-color: transparent;
+    z-index: 100;
+    margin-top: 150px;
+    margin-bottom: 250px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-body{
+    position: center;
+    align-items: center;
+
+}
+.h1{
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (if you want vertical centering within a container) */
+    margin: 0 auto; /* Centering the button horizontally when it's a block element */
+    margin-bottom: 10px;
+}
+.row {
+    background-color: rgb(128, 128, 128);
+    border-color: rgb(128, 128, 128) !important;
+    border-radius: 15px;
+    overflow: hidden; /* Ensures content inside doesn't overflow rounded corners */
+    padding: 10px; /* Optional padding */
+}
+
+.form-control {
+    border-color: rgb(128, 128, 128) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Change border color and add shadow on hover */
+.form-control:hover {
+    border-color: green !important; /* Green border on hover */
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5); /* Green shadow on hover */
+}
+
+/* Change border color and add shadow on focus (for inputs, select, textarea) */
+.form-control:focus {
+    border-color:rgba(0, 128, 0, 0.5)!important; /* Green border on focus */
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5); /* Green shadow on focus */
+    outline: none; /* Remove default outline on focus */
+}
+
+/* Optional: For better user experience, make sure cursor is pointer when focused on form controls */
+.form-control:hover, .form-control:focus {
+    cursor: pointer;
+}
+
+.btn-block {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (if you want vertical centering within a container) */
+    margin: 0 auto; /* Centering the button horizontally when it's a block element */
+    border-color: rgb(128, 128, 128) !important;
+        
+  }
+ 
+  .btn-block button:hover, .card a:hover, .card button:hover {
+    background-color: rgb(10, 10, 10); /* Green background on hover */
+    color: white; /* White text on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for the color change */
+}
+
+/* Optional: If you want the cursor to change when hovering */
+.btn-block button:hover, .card a:hover, .card button:hover {
+    cursor: pointer;
+}
+
+ .btn-green:active {
+    background-color: rgba(0, 128, 0, 0.5) !important;  /* Even darker green on click */
+    transform: scale(0.95);      /* Slightly shrink on click */
+  }
+  
+
+  

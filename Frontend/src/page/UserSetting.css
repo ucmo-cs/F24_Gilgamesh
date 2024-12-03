@@ -1,8 +1,8 @@
 
 /* Parent container for side-by-side layout */
 .user-settings-wrapper {
-  margin-top: 100px;
-  margin-bottom: 150px;
+  margin-top: 200px;
+  margin-bottom: 250px;
   background-color:  rgb(128, 128, 128) ;
   z-index: 100;
   display: flex;
@@ -52,6 +52,14 @@
   position: relative;
   color: white;
 }
+.ad-info-display{
+  margin-top: 90px;
+  height: 100vh; /* Allow container to grow with content */
+  overflow: hidden; /* Prevent any content from overflowing the container */
+  text-align: center;
+  position: relative;
+  color: white;
+}
 
 /* User info text style */
 .user-info-display p {
@@ -79,13 +87,21 @@
 
 /* Cancel button style (close X) */
 .cancel-btn {
-  position: absolute;
-  top: -14px;
+  top: 100px; /* Move the button up by adjusting this value (can be negative) */
   right: 10px;
-<<<<<<< HEAD
-=======
   
->>>>>>> parent of bd2d399 (css)
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+  transition: color 0.3s ease;
+}
+.cancel-btn2 {
+  transform: translateY(-350px); 
+  
   background: transparent;
   border: none;
   color: #333;
@@ -100,6 +116,7 @@
 .cancel-btn:hover {
   color: #f7f7f7;
 }
+
 /* General Button Styling */
 .user-form button {
   font-weight: bold; /* Bold text on the button */
@@ -142,6 +159,8 @@
 
 /* Specific Button for 'Edit Account Info' */
 .user-settings-container .btn-secondary {
+  padding: 0.5rem 1rem;
+  margin-top: 54px;
   background-color: #0e4019; /* Green for secondary button */
 }
 
@@ -153,17 +172,15 @@
   background-color: black; /* Black when clicked */
 }
 
-<<<<<<< HEAD
-=======
-.users-cancel-btn {
-  position: absolute;
-  
+.cancel-btn {
+ 
+  transform: translateY(-450px); 
   background: transparent;
   border: none;
   color: #333;
   font-size: 2rem;
   cursor: pointer;
-  padding: 0;
+  
   z-index: 3;
   transition: color 0.3s ease;
 }
@@ -254,4 +271,3 @@ button {
     font-size: 1.2rem; /* Adjust total loan/amount display font size for mobile */
   }
 }
->>>>>>> parent of bd2d399 (css)

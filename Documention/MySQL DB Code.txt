@@ -1,0 +1,71 @@
+this is a list just to get everything up and running if you would like me to jump into a chat with you and explain each line of code and what it does im more than happy to.
+
+step 1. run below command. if you dont know how to create a DB in MySQL reach out to me noah and ill help you set it up.
+
+CREATE DATABASE  IF NOT EXISTS `Account_tracker`;
+USE `Account_tracker`;
+
+
+step 2. run below command next
+
+CREATE TABLE account (
+    account_id BIGINT NOT NULL AUTO_INCREMENT,  -- Use accountId as the primary key
+    user_Type INT,
+    user_Id VARCHAR(255) NOT NULL UNIQUE,
+    user_Name VARCHAR(255),
+    password VARCHAR(255),
+    email VARCHAR(45),
+    phone_number VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (account_id)  -- This should match the entity
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
+step 3. run below command if drop column command will not run skip and run the next line.
+
+ALTER TABLE account DROP COLUMN role;
+ALTER TABLE account ADD COLUMN role VARCHAR(255) NOT NULL;
+
+
+step 4. run below command
+
+CREATE TABLE loan (
+  loan_id BIGINT NOT NULL AUTO_INCREMENT,  -- This will be the primary key
+  user_account_id BIGINT,              -- Foreign key referencing account
+  loan_origin_amount DECIMAL(15, 2) DEFAULT 0.00,
+  interest_rate DECIMAL(5, 2) DEFAULT 0.00,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (loan_id),                     -- Primary key for loan table
+  FOREIGN KEY (user_account_id) REFERENCES account(account_id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+step 5 run below command
+
+CREATE TABLE loan_payments (
+    payment_id  BIGINT NOT NULL AUTO_INCREMENT,  -- Primary key for loan payments
+    loan_id BIGINT NOT NULL,                    -- Foreign key referencing loan table
+    payment_amount  DECIMAL(15, 2) NOT NULL,     -- The amount paid in this payment
+    scheduled_payment DECIMAL(15, 2) NOT NULL,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- When the payment was made
+    next_due_date  TIMESTAMP,                   -- Date of the next payment
+    payment_status ENUM('PENDING', 'COMPLETED') DEFAULT 'PENDING', -- Payment status
+    PRIMARY KEY (payment_id),
+    FOREIGN KEY (loan_id) REFERENCES loan(loan_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+TROUBLE SHOOTING if you have issue with MySQL reach out to me you if you need to reload tables you will have to drop the tables starting at the bottom to the top as there are
+primary keys you have to worry about. those drop codes are like this
+
+drop 1. DROP TABLE IF EXISTS loan_payments;
+
+drop 2.DROP TABLE IF EXISTS loan;
+
+drop 3.DROP TABLE IF EXISTS account;
+
+
+then start back from step 1.

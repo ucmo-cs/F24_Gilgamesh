@@ -2,7 +2,7 @@ import './UserSetting.css';
 import UserForm from "../components/UserForm";
 import UserAccountForm from "../components/UserAccountForm"; // Import the new Account Form
 import { useState, useEffect } from 'react';
-import axios from 'axios'; 
+
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
@@ -111,20 +111,15 @@ function UserSetting() {
           {!isAccountEditing && <h1 className="user-settings-title">Account Information</h1>}
           
           {!isAccountEditing ? (
-            <div className="user-info-display">
-<<<<<<< HEAD
-              <p><strong>Routing Number:</strong> {parsedUser.routingNumber || 'Loading...'}</p>
-              <p><strong>Bank Number:</strong> {parsedUser.bankNumber || 'Loading...'}</p>
-=======
+            <div className="ad-info-display">
               <p><strong>Routing Number:</strong> {parsedUser.Rounting || 'Loading...'}</p>
               <p><strong>Bank Number:</strong> {parsedUser.BankAccount || 'Loading...'}</p>
->>>>>>> parent of bd2d399 (css)
               <button className="btn btn-secondary" onClick={handleAccountEditClick}>Edit Account Info</button>
             </div>
           ) : (
             <div className="user-form-container">
               <UserAccountForm handleSubmit={handleAccountSubmit} /> {/* Pass the submit handler */}
-              <button className="cancel-btn" onClick={handleAccountCancelClick}>×</button>
+              <button className="cancel-btn2" onClick={handleAccountCancelClick}>×</button>
             </div>
           )}
         </div>

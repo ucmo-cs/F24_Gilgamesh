@@ -57,7 +57,7 @@ nothing in the body
 
 
 
-
+Post
 
 http://localhost:8080/reset/password-reset
 
@@ -96,6 +96,19 @@ http://localhost:8080/reset/username-reset
   "newUsername": "Test User4"
 }
 
+
+http://localhost:8080/reset/routingNumber-reset
+{
+    "userId": "testUser23",
+    "newRoutingNumber": "123456789"
+}
+
+
+http://localhost:8080/reset/bankAccountNumber-reset
+{
+    "userId": "testUser23",
+    "newBankAccountNumber": "987654321"
+}
 
 
 

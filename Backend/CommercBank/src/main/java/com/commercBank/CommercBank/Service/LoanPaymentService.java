@@ -41,10 +41,14 @@ public class LoanPaymentService {
         payment.setNextDueDate(scheduledDate.plusMonths(1).atStartOfDay()); //sets payment to next month
         payment.setPaymentStatus(LoanPayment.PaymentStatus.PENDING); //can change when its gone though
 
-        if(loanPaymentRepository.findAllByLoan(loan).isEmpty()){
+        /*if(loanPaymentRepository.findAllByLoan(loan).isEmpty()){
             BigDecimal calculatedScheduledPayment = calculateScheduledPayment(loan);
             payment.setScheduledPayment(calculatedScheduledPayment);
-        }
+        }*/
+
+        BigDecimal calculatedScheduledPayment = calculateScheduledPayment(loan);
+        payment.setScheduledPayment(calculatedScheduledPayment);
+
         return loanPaymentRepository.save(payment);
     }
 

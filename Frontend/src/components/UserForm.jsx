@@ -20,8 +20,8 @@ function UserForm() {
       setParsedUser(parsed);
       
       // Check if parsedUser has account_id and set the userId
-      if (parsed && parsed.account_id) {
-        setUserId(parsed.account_id);  // Set userId from account_id in session data
+      if (parsed && parsed.Username) {
+        setUserId(parsed.Username);  // Set userId from account_id in session data
       } else {
         console.error("User ID or account_id is missing in the session data.");
       }
@@ -34,37 +34,51 @@ function UserForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Create an object to hold the form data (excluding routing and bank account numbers)
+    // Don't proceed if all fields are empty
+    if (!newEmail && !newPhoneNumber && !newPassword) {
+      alert("Please enter at least one field (Email, Phone Number, or Password).");
+      return;
+    }
+
+    // Create an object to hold the form data
     const accountInfo = {
+      userId,
       newEmail,
       newPhoneNumber,
       newPassword,
     };
 
-    // Process each field and make the appropriate API request
+    let successMessages = []; // Initialize an array to store success messages
+
     try {
-      if (accountInfo.newEmail) {
+      // Make API requests only for fields that are not empty
+      if (newEmail) {
         await axios.post('http://localhost:8080/reset/email-reset', {
           userId: userId,
-          newEmail: accountInfo.newEmail,
+          newEmail: newEmail,
         });
-        alert("Email updated successfully!");
+        successMessages.push("Email updated successfully!"); // Add success message to the array
       }
 
-      if (accountInfo.newPhoneNumber) {
+      if (newPhoneNumber) {
         await axios.post('http://localhost:8080/reset/phoneNumber-reset', {
           userId: userId,
-          newPhoneNumber: accountInfo.newPhoneNumber,
+          newPhoneNumber: newPhoneNumber,
         });
-        alert("Phone number updated successfully!");
+        successMessages.push("Phone number updated successfully!"); // Add success message to the array
       }
 
-      if (accountInfo.newPassword) {
+      if (newPassword) {
         await axios.post('http://localhost:8080/reset/password-reset', {
           userId: userId,
-          newPassword: accountInfo.newPassword,
+          newPassword: newPassword,
         });
-        alert("Password updated successfully!");
+        successMessages.push("Password updated successfully!"); // Add success message to the array
+      }
+
+      // Show all success messages in one alert
+      if (successMessages.length > 0) {
+        alert(successMessages.join("\n")); // Join messages with a newline
       }
     } catch (error) {
       console.error('Error updating account info:', error);

@@ -1,7 +1,5 @@
 /* Main container for the form */
 .form-container {
-    position: relative; /* Needed for absolute positioning */
-  overflow: hidden;  /* Prevent overflow of the child elements */
     max-width: 600px; /* Maximum width for the form */
     width: 100%; /* Ensure it takes full width up to the max-width */
     margin: 0 auto; /* Center the form on the page */
@@ -99,17 +97,3 @@
         padding: 12px 20px; /* Keep the button's padding consistent */
     }
 }
-.alert {
-    position: fixed; /* Or 'absolute' if you want it relative to a parent container */
-    
-    
-    
-    transform: translatey(280%); 
-    z-index: 9999; /* Ensures the alert appears above other elements */
-    border-color: #0e4019;
-    align-items: center;
-    color: white; /* Example of alert text color */
-    background: #0e4019;
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Rounded corners */
-  }

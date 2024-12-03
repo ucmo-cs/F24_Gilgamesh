@@ -3,8 +3,7 @@ html, body {
   height: 100%; /* Ensure full height for html and body */
   margin: 0; /* Remove default margin */
   font-family: Arial, sans-serif;
-
-  overflow: hidden;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Flexbox layout for sides */

@@ -22,6 +22,16 @@ import FullLoan from './page/fullLoan';
 import UserInfo from './page/UserInfo';
 
 
+function ScrollToTop() {
+  const location = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on route change
+  }, [location]);
+
+  return null; // No UI, just side effect
+}
+
 function App() {
 
   return (
@@ -33,7 +43,7 @@ function App() {
         </div>
 
         <div className="main-content">
-          
+          <ScrollToTop /> {/* Keep ScrollToTop inside Router */}
           
           <Routes>
             <Route path="/" element={<Home />} />

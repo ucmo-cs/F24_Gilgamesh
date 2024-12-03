@@ -17,7 +17,6 @@ import java.util.Map;
 // that takes a user ID and a new password from the
 // request body. It checks if the user exists, updates
 // the password if they do, and returns an appropriate response.
-
 @RestController
 @RequestMapping("/reset")
 public class ResetController {

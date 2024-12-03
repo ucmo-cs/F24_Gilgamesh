@@ -7,7 +7,8 @@ import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
 import Footer from '../components/Footer';
 
-function AdminSettings() {
+
+function UserSetting() {
   const [parsedUser, setParsedUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // Track whether the form is in edit mode
   const [userId, setUserId] = useState(null);  // Declare userId state to hold the user ID
@@ -39,24 +40,21 @@ function AdminSettings() {
   const handleCancelClick = () => {
     setIsEditing(false); // Return to viewing mode
   };
-
   // Ensure parsedUser is loaded before rendering the form or user info
   if (!parsedUser) {
     return (
       <>
-        <div className="admin-settings-container">
+        <div className="user-settings-container">
           <p>Loading user data...</p>
         </div>
       </>
     );
   }
-
-  const renderHeader = () => {
+    const renderHeader = () => {
     if (parsedUser) {
       if (parsedUser.role === 'ADMIN') {
         return <AdminHeader />;
-      }
-      if (parsedUser.role === 'USER') {
+      } if(parsedUser.role === 'USER') {
         return <UserHeader />;
       }
     }
@@ -65,15 +63,15 @@ function AdminSettings() {
 
   return (
     <>
-      {renderHeader()} 
+    {renderHeader()} 
 
-      <div className="admin-settings-container">
+      <div className="user-settings-container">
         {/* Conditionally render the title based on isEditing */}
-        {!isEditing && <h1 className="admin-settings-title">Profile Information</h1>}
+        {!isEditing && <h1 className="user-settings-title">Profile Information</h1>}
 
         {/* Display user info or UserForm based on isEditing */}
         {!isEditing ? (
-          <div className="admin-info-display">
+          <div className="user-info-display">
             <p><strong>Username:</strong> {parsedUser.User || 'Loading...'}</p>
             <p><strong>Email:</strong> {parsedUser.email || 'Null'}</p>
             <p><strong>Number:</strong> {parsedUser.number || 'Null'}</p>
@@ -81,19 +79,18 @@ function AdminSettings() {
             <button className="btn btn-primary" onClick={handleEditClick}>Edit Information</button>
           </div>
         ) : (
-          <div className="admin-form-container">
+          <div className="user-form-container">
             <UserForm parsedUser={parsedUser} /> {/* Pass parsedUser to the form */}
             {/* Cancel button as an X */}
-            <button className="admin-cancel-btn" onClick={handleCancelClick}>
+            <button className="cancel-btn" onClick={handleCancelClick}>
               × {/* This is the X character */}
             </button>
           </div>
         )}
       </div>
-
       <Footer />
     </>
   );
 }
 
-export default AdminSettings;
+export default UserSetting;

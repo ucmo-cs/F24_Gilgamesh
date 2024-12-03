@@ -1,0 +1,45 @@
+/* The overlay for the pop-up, filling the entire screen */
+.admin-form-popup {
+  position: fixed; /* Fixes the pop-up in place */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centers the form */
+  z-index: 1050; /* Ensures the form appears above other content */
+  height: 85vh;
+}
+
+/* The container for the admin form */
+.admin-form-container {
+  background-color: rgb(128, 128, 128);
+  padding: auto;
+  border-radius: 8px; /* Optional rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional shadow for modal effect */
+  width: 70%; /* Adjust the width as needed */
+  max-width: 600px; /* Optional: Set a max-width */
+  position: absolute;
+  text-align: center;
+}
+
+.div{
+  max-width: 50%;
+}
+.createLoan {
+  display: block; /* Makes the button behave like a block-level element */
+  margin: 20px auto; /* Centers horizontally */
+  margin-bottom: 0;
+  padding: 10px 20px;
+  background-color: #01050a; /* Example background color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.createLoan:hover {
+  background-color: #000000;
+}

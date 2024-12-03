@@ -1,14 +1,16 @@
 
 /* Parent container for side-by-side layout */
-.user-settings-wrapper {
-    margin-top: 100px;
-    margin-bottom: 150px;
+.user-info-wrapper {
+    margin-top: 200px;
+    margin-bottom: 250px;
     background-color:  rgb(128, 128, 128) ;
     z-index: 100;
     display: flex;
    
     
-    max-width: 700px; /* You can adjust the max-width as necessary */
+    max-width: 800px; /* You can adjust the max-width as necessary */
+    max-height: 800px;
+    height: 100%;
     width: 100%;
     justify-content: center; /* Center content horizontally */
     align-items: flex-start; /* Align items to the top */

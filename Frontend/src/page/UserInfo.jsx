@@ -78,7 +78,7 @@ function UserInfo() {
     <>
       {renderHeader()} 
 
-      <div className="user-settings-wrapper">
+      <div className="user-info-wrapper">
         {/* User Profile Info Section */}
         <div className="user-settings-container">
           {!isEditing && <h1 className="user-settings-title">Profile Information</h1>}
@@ -108,7 +108,7 @@ function UserInfo() {
           {!isAccountEditing ? (
             <div className="user-info-display">
               <p><strong>Routing Number:</strong> {parsedUser.routingNumber || 'Loading...'}</p>
-              <p><strong>Bank Number:</strong> {parsedUser.bankNumber || 'Loading...'}</p>
+              <p><strong>Bank Number:</strong> {parsedUser.bankAccountNumber || 'Loading...'}</p>
               <button className="btn btn-secondary" onClick={handleAccountEditClick}>Edit Account Info</button>
             </div>
           ) : (

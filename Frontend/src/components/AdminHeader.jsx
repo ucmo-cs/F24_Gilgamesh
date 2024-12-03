@@ -6,7 +6,6 @@ import './AdminHeader.css';
 function AdminHeader() {
  
   const [parsedUser, setParsedUser] = useState(null);
-  
 
   useEffect(() => {
     const user = sessionStorage.getItem('userSession');
@@ -25,38 +24,35 @@ function AdminHeader() {
   };
 
   return (
-    <Navbar className="userheader">
-      <Container fluid className="d-flex justify-content-between align-items-center">
+    <Navbar className="admin-navbar">
+      <Container fluid className="navbar-container d-flex justify-content-between align-items-center">
         <Navbar.Brand style={{ textAlign: 'auto' }}>
           <img src="../commerce-bank.svg" className="navbar-logo" alt="Commerce Bank Logo" />
-          <span className="brand-name">Commerce Bank</span>
+          <span className="navbar-brand-name">Commerce Bank</span>
         </Navbar.Brand>
-        <Nav className="ms-auto">
-          <Nav.Link href="/home" style={{ color: 'white' }}>Home</Nav.Link>
+        <Nav className="navbar-nav ms-auto">
+          <Nav.Link href="/home" className="navbar-link">Home</Nav.Link>
           {parsedUser ? (
             parsedUser.User ? (
-              
               <Dropdown align="end" className="user-dropdown">
-                <Dropdown.Toggle variant="link" id="user-dropdown" style={{ color: 'white' }}>
-                  {parsedUser.User} 
+                <Dropdown.Toggle variant="link" id="user-dropdown" className="dropdown-toggle">
+                  {parsedUser.User}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className="dropdown-menu">
-                  
                   <Dropdown.Item href="/settings">Profile</Dropdown.Item>
-                  <Dropdown.Item href="/admin">Management </Dropdown.Item>
-                
-                  <Dropdown.Item href="/home" onClick={handleLogout}>Logout</Dropdown.Item> 
+                  <Dropdown.Item href="/admin">Management</Dropdown.Item>
+                  <Dropdown.Item href="/home" onClick={handleLogout}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
-              <Nav.Link href="/SignIn" style={{ color: 'white' }}>
-                No user found 
+              <Nav.Link href="/SignIn" className="navbar-link">
+                No user found
               </Nav.Link>
             )
           ) : (
-            <Nav.Link href="/SignIn" style={{ color: 'white' }}>
-              Sign In 
+            <Nav.Link href="/SignIn" className="navbar-link">
+              Sign In
             </Nav.Link>
           )}
         </Nav>

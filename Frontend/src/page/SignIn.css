@@ -42,7 +42,7 @@
 
 /* Change border color and add shadow on focus (for inputs, select, textarea) */
 .form-control:focus {
-    border-color: green !important; /* Green border on focus */
+    border-color:rgba(0, 128, 0, 0.5)!important; /* Green border on focus */
     box-shadow: 0 0 5px rgba(0, 128, 0, 0.5); /* Green shadow on focus */
     outline: none; /* Remove default outline on focus */
 }
@@ -58,6 +58,7 @@
     align-items: center; /* Center vertically (if you want vertical centering within a container) */
     margin: 0 auto; /* Centering the button horizontally when it's a block element */
     border-color: rgb(128, 128, 128) !important;
+        
   }
  
   .btn-block button:hover, .card a:hover, .card button:hover {
@@ -70,4 +71,11 @@
 .btn-block button:hover, .card a:hover, .card button:hover {
     cursor: pointer;
 }
+
+ .btn-green:active {
+    background-color: rgba(0, 128, 0, 0.5) !important;  /* Even darker green on click */
+    transform: scale(0.95);      /* Slightly shrink on click */
+  }
+  
+
   

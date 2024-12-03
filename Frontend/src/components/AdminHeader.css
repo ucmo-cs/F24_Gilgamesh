@@ -1,5 +1,5 @@
-/* Styling for the user header */
-.userheader {
+/* Styling for the admin header */
+.admin-navbar {
     background-color: #ffffff; /* Background color */
     padding: 0.25rem 1rem; /* Padding for the header */
     z-index: 1000; /* Ensures it stays above other content */
@@ -7,24 +7,26 @@
 }
 
 /* Styling for the brand name */
-.brand-name {
-    color: white !important;
-}
-
-.navbar {
-    background-color: rgb(128, 128, 128) !important; /* Force dark background */
-}
-
 .navbar-logo {
     width: 40px; /* Adjust logo width */
     height: auto; /* Maintain aspect ratio */
     margin-right: 10px; /* Space between logo and text */
 }
 
-.brand-name {
+.navbar-brand-name {
     vertical-align: middle; /* Align text vertically with the logo */
     font-size: 2rem; /* Font size */
-    color: #0e4019; /* Text color */
+    color: white; /* Text color */
+}
+
+/* Navbar container styles */
+.navbar-container {
+    width: 100%;
+}
+
+/* Navbar background and link color */
+.navbar {
+    background-color: rgb(128, 128, 128) !important; /* Force dark background */
 }
 
 .nav-link {
@@ -35,7 +37,7 @@
     text-decoration: underline; /* Underline the nav link on hover */
 }
 
-/* Navbar styling */
+/* Navbar styling for link and dropdown toggle */
 .navbar .nav-link, .navbar .dropdown-toggle {
     display: flex;
     align-items: center;
@@ -62,7 +64,7 @@
     z-index: 1050; /* Ensure it's above other elements */
 }
 
-/* Add hover effect for the dropdown toggle */
+/* Hover effect for the dropdown toggle */
 .user-dropdown .dropdown-toggle:hover {
     text-decoration: underline;  /* Underline the text when hovered */
 }
@@ -83,25 +85,25 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: soft shadow to make the dropdown stand out */
 }
 
-/* Optional: Ensure the dropdown stays above the navbar */
+/* Ensure the dropdown stays above the navbar */
 .user-dropdown .dropdown-menu.show {
     z-index: 1060; /* Ensure the menu is displayed above other elements */
 }
+
 /* Remove default blue highlight on active dropdown item */
 .dropdown-menu .dropdown-item:active {
     background-color: transparent; /* Ensure no background is applied on active state */
     color: white !important; /* Maintain the white text color when active */
-  }
-  
-  /* Optional: Remove focus outline for dropdown items */
-  .dropdown-menu .dropdown-item:focus {
+}
+
+/* Optional: Remove focus outline for dropdown items */
+.dropdown-menu .dropdown-item:focus {
     outline: none; /* Remove the blue outline on focus */
     background-color: transparent; /* Ensure no background is applied on focus */
-  }
-  
-  /* Optional: You can also prevent link color change on hover */
-  .dropdown-menu .dropdown-item:hover {
+}
+
+/* Optional: Prevent link color change on hover */
+.dropdown-menu .dropdown-item:hover {
     background-color: black; /* Customize hover background color */
     color: white !important; /* Ensure text remains white on hover */
-  }
-  
+}

@@ -5,7 +5,7 @@
     border-radius: 10px 10px 10px 10px; /* Rounded top corners */
 }
 .navbar {
-    background-color: #898888 !important; /* Force dark background */
+    background-color: rgb(128, 128, 128) !important; /* Force dark background */
   }
 
 .navbar-logo {

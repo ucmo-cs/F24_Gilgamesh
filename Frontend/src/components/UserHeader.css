@@ -1,5 +1,5 @@
 .userheader {
-    background-color: #ffffff; /* Background color */
+    background-color: #ffffff ; /* Background color */
     padding: 0.25rem 1rem; /* Padding for the header */
     z-index: 1000; /* Ensures it stays above other content */
     border-radius: 10px 10px 10px 10px; /* Rounded top corners */
@@ -9,7 +9,7 @@
     color: white !important;
 }
 .navbar {
-    background-color: #898888 !important; /* Force dark background */
+    background-color:rgb(128, 128, 128) !important; /* Force dark background */
 }
 
 .navbar-logo {

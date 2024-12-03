@@ -1,8 +1,8 @@
 
 /* Parent container for side-by-side layout */
 .user-settings-wrapper {
-  margin-top: 100px;
-  margin-bottom: 150px;
+  margin-top: 200px;
+  margin-bottom: 250px;
   background-color:  rgb(128, 128, 128) ;
   z-index: 100;
   display: flex;
@@ -52,6 +52,14 @@
   position: relative;
   color: white;
 }
+.ad-info-display{
+  margin-top: 90px;
+  height: 100vh; /* Allow container to grow with content */
+  overflow: hidden; /* Prevent any content from overflowing the container */
+  text-align: center;
+  position: relative;
+  color: white;
+}
 
 /* User info text style */
 .user-info-display p {
@@ -91,11 +99,24 @@
   z-index: 3;
   transition: color 0.3s ease;
 }
+.cancel-btn2 {
+  transform: translateY(-350px); 
+  
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+  transition: color 0.3s ease;
+}
 
 /* Cancel button hover effect */
 .cancel-btn:hover {
   color: #f7f7f7;
 }
+
 /* General Button Styling */
 .user-form button {
   font-weight: bold; /* Bold text on the button */
@@ -138,6 +159,8 @@
 
 /* Specific Button for 'Edit Account Info' */
 .user-settings-container .btn-secondary {
+  padding: 0.5rem 1rem;
+  margin-top: 54px;
   background-color: #0e4019; /* Green for secondary button */
 }
 
@@ -149,19 +172,102 @@
   background-color: black; /* Black when clicked */
 }
 
-.users-cancel-btn {
-  position: absolute;
-  
+.cancel-btn {
+ 
+  transform: translateY(-450px); 
   background: transparent;
   border: none;
   color: #333;
   font-size: 2rem;
   cursor: pointer;
-  padding: 0;
+  
   z-index: 3;
   transition: color 0.3s ease;
 }
 
 .users-cancel-btn:hover {
   color: #f7f7f7;
+}
+/* Table styling for better number fitting */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 14px;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+/* Adjust table header for responsive behavior */
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Table Data Cell Styling */
+td {
+  background-color: #fff;
+  color: #333;
+  overflow: hidden; /* Hide text overflow */
+  text-overflow: ellipsis;
+}
+
+/* Number formatting and ensuring they fit properly */
+td {
+  font-size: 14px;
+  max-width: 150px;
+  text-overflow: ellipsis;
+}
+
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(7),
+td:nth-child(8) {
+  width: 120px; /* Ensure numeric columns have enough space */
+}
+
+/* Ensure proper width distribution for the columns */
+th, td {
+  min-width: 100px; /* Minimum width for better readability */
+  max-width: 150px; /* Limit width for numeric data */
+}
+
+/* Adjust Payoff Date column */
+td:nth-child(8), th:nth-child(8) {
+  width: 120px; /* Adjust width for Payoff Date column */
+  max-width: 120px; /* Ensure Payoff Date column width is consistent */
+}
+
+/* Footer and button styling */
+button {
+  margin-top: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.5rem; /* Smaller font size on mobile */
+  }
+
+  .spreadsheet-container {
+    padding: 20px; /* Reduced padding on smaller screens */
+    max-height: calc(100vh - 120px); /* Adjust max height */
+  }
+
+  table {
+    width: 100%;
+    font-size: 12px; /* Smaller font for smaller screens */
+  }
+
+  td, th {
+    padding: 8px 10px; /* Adjust padding for better fit */
+  }
+
+  .total h3 {
+    font-size: 1.2rem; /* Adjust total loan/amount display font size for mobile */
+  }
 }

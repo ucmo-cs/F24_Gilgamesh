@@ -127,10 +127,13 @@ function SignIn() {
                   />
                 </div>
     
-                {/* Submit button */}
-                <Button variant="primary" type="submit" className="btn-block mb-4">
-                  Sign In
-                </Button>
+                <Button
+  variant="primary"
+  type="submit"
+  className="btn-block mb-4 btn-green"  // Add the custom class "btn-green"
+>
+  Sign In
+</Button>
               </form>
     
               {/* Message display */}

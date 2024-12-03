@@ -76,7 +76,7 @@ const Admin = () => {
           {/* The pop-up (admin form) */}
           {showForm && (
             <div className="admin-form-popup">
-              <div className="admin-form-container">
+              <div className="adminLoan-form-container">
                 <AdminMakeLoan />
                 <Button
                   variant="secondary"

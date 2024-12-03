@@ -9,8 +9,6 @@
    
     
     max-width: 800px; /* You can adjust the max-width as necessary */
-    max-height: 800px;
-    height: 100%;
     width: 100%;
     justify-content: center; /* Center content horizontally */
     align-items: flex-start; /* Align items to the top */

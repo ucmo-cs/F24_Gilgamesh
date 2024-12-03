@@ -102,7 +102,7 @@ function UserInfo() {
         </div>
 
         {/* Account Info Section */}
-        <div className="user-settings-container">
+        <div className="user-info-container">
           {!isAccountEditing && <h1 className="user-settings-title">Account Information</h1>}
 
           {!isAccountEditing ? (

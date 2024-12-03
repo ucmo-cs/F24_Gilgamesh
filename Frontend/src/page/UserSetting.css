@@ -44,7 +44,7 @@
 }
 
 /* User info display area */
-.user-info-display {
+.user-settings-display {
   margin-top: 50px;
   height: 100vh; /* Allow container to grow with content */
   overflow: hidden; /* Prevent any content from overflowing the container */
@@ -62,7 +62,7 @@
 }
 
 /* User info text style */
-.user-info-display p {
+.user-settings-display p {
   font-size: 1.1rem;
 }
 

@@ -91,7 +91,7 @@ function UserSetting() {
           {!isEditing && <h1 className="user-settings-title">Profile Information</h1>}
           
           {!isEditing ? (
-            <div className="user-info-display">
+            <div className="user-settings-display">
               <p><strong>Username:</strong> {parsedUser.User || 'Loading...'}</p>
               <p><strong>Email:</strong> {parsedUser.email || 'Loading...'}</p>
               <p><strong>Number:</strong> {parsedUser.number || 'Loading...'}</p>

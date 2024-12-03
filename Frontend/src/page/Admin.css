@@ -5,6 +5,19 @@ body {
   position: relative; /* Allow child elements to be positioned relative to the body */
 }
 
+.adminLoan-form-container {
+  background-color: rgb(128, 128, 128);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: translateY(-110px);
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 /* Admin container styling */
 .admin-container {
   width: 45vw; /* Full width of the container */

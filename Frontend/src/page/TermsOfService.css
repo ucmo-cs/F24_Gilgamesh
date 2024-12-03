@@ -12,7 +12,7 @@
 
 /* Inner box styling */
 .terms-box {
-  background-color: #525151; /* Box background color */
+  background-color:rgb(128, 128, 128); /* Box background color */
   padding: 20px 40px; /* Inner spacing */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */

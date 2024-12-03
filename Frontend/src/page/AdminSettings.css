@@ -83,3 +83,14 @@
 .admin-cancel-btn:hover {
   color: #f7f7f7;
 }
+.admin-form-container {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 450px; /* Ensure the container takes full viewport height */
+  width: 400px; /* Ensure it takes full width */
+  transform: translateY(-110px);
+  padding: 20px; /* Optional padding to create space around the content */
+  box-sizing: border-box; /* Ensure padding is included in the width/height calculations */
+  
+}

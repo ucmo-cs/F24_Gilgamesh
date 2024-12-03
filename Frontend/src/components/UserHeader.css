@@ -1,5 +1,5 @@
 .userheader {
-    background-color: #ffffff; /* Background color */
+    background-color: #ffffff ; /* Background color */
     padding: 0.25rem 1rem; /* Padding for the header */
     z-index: 1000; /* Ensures it stays above other content */
     border-radius: 10px 10px 10px 10px; /* Rounded top corners */

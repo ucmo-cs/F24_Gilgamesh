@@ -1,0 +1,114 @@
+http://localhost:8080/api/accounts/account
+{
+    "userType": 2,
+    "userId":"testUser23",   // Ensure this is not null
+    "userName":"Test User",
+    "password":"securePassword23",
+    "email": "test23@example.com",
+    "phoneNumber":"168346076",
+    "role":"USER",
+    "bankAccountNumber":"123456789",
+    "routingNumber":"987654321"
+}
+
+http://localhost:8080/loan
+{
+  "loanOriginAmount": 10000.00,
+  "interestRate": 5.0,
+  "userId": "testUser2"
+}
+
+http://localhost:8080/payment
+{
+    "loanId": 2,
+    "amount": 2000.00,
+    "date": "2024-12-01"
+}
+
+http://localhost:8080/admin/create-admin
+{}
+
+http://localhost:8080/login/login
+{
+    "userId": "testUser3",
+    "password": "securePassword3",
+    "email": "test3@example.com"
+}
+
+<<<<<<< Updated upstream
+
+http://localhost:8080/admin/create-admin
+{
+  "userId": "admin6",
+   "userType": 1, 
+  "userName": "Admin james6", 
+  "email": "admin6@example.com",
+  "phoneNumber": "1234567806"
+}
+=======
+GET:  http://localhost:8080/admin/user/{userId}/loan/{loanId}/details
+
+nothing in body
+
+GET:  http://localhost:8080/loan/account/1 -- change the 1 to whatever account id you are pulling from
+
+nothing in the body
+>>>>>>> Stashed changes
+
+
+
+Post
+
+http://localhost:8080/reset/password-reset
+
+{
+  "userId": "testUser2",
+  "newPassword": "securePassword2"
+}
+
+
+
+http://localhost:8080/reset/phoneNumber-reset
+{
+  "userId": "testUser2",
+  "newPhoneNumber": "109-876-543"
+}
+
+
+http://localhost:8080/reset/email-reset
+{
+  "userId": "testUser2",
+  "newEmail": "test4@example.com"
+}
+
+
+
+http://localhost:8080/reset/ID-reset
+{
+  "oldUserID": "testUser2",
+  "newUserID": "testUser4"
+}
+
+
+http://localhost:8080/reset/username-reset
+{
+  "userId": "testUser4",
+  "newUsername": "Test User4"
+}
+
+
+http://localhost:8080/reset/routingNumber-reset
+{
+    "userId": "testUser23",
+    "newRoutingNumber": "123456789"
+}
+
+
+http://localhost:8080/reset/bankAccountNumber-reset
+{
+    "userId": "testUser23",
+    "newBankAccountNumber": "987654321"
+}
+
+
+

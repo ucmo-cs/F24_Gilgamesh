@@ -1,0 +1,273 @@
+
+/* Parent container for side-by-side layout */
+.user-settings-wrapper {
+  margin-top: 200px;
+  margin-bottom: 250px;
+  background-color:  rgb(128, 128, 128) ;
+  z-index: 100;
+  display: flex;
+ 
+  
+  max-width: 700px; /* You can adjust the max-width as necessary */
+  width: 100%;
+  justify-content: center; /* Center content horizontally */
+  align-items: flex-start; /* Align items to the top */
+  margin-left: auto; /* Center container horizontally */
+  margin-right: auto; /* Center container horizontally */
+  
+  border-radius: 15px 15px 15px 15px; /* Rounds top-left and bottom-right */
+}
+
+
+/* Individual user settings container */
+.user-settings-container {
+  margin-top: 0 !important;
+  background-color: rgb(128, 128, 128) !important; /* Force background color */
+  border: transparent !important;
+ 
+  flex-direction: column;
+  align-items: center;
+  width: 48%; /* Adjust width to fit two containers side by side */
+  max-width: 500px;
+  min-height: 21vh;
+  max-height: 450px;
+  
+}
+
+/* Title for user settings */
+.user-settings-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+/* User info display area */
+.user-info-display {
+  margin-top: 50px;
+  height: 100vh; /* Allow container to grow with content */
+  overflow: hidden; /* Prevent any content from overflowing the container */
+  text-align: center;
+  position: relative;
+  color: white;
+}
+.ad-info-display{
+  margin-top: 90px;
+  height: 100vh; /* Allow container to grow with content */
+  overflow: hidden; /* Prevent any content from overflowing the container */
+  text-align: center;
+  position: relative;
+  color: white;
+}
+
+/* User info text style */
+.user-info-display p {
+  font-size: 1.1rem;
+}
+
+/* Edit button style */
+.user-info-display button {
+  margin-top: 1rem;
+  z-index: 2;
+  padding: 0.5rem 1rem;
+  background-color: #0e4019;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Edit button hover effect */
+.user-info-display button:hover {
+  background-color: #000000;
+}
+
+/* Cancel button style (close X) */
+.cancel-btn {
+  top: 100px; /* Move the button up by adjusting this value (can be negative) */
+  right: 10px;
+  
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+  transition: color 0.3s ease;
+}
+.cancel-btn2 {
+  transform: translateY(-350px); 
+  
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+  transition: color 0.3s ease;
+}
+
+/* Cancel button hover effect */
+.cancel-btn:hover {
+  color: #f7f7f7;
+}
+
+/* General Button Styling */
+.user-form button {
+  font-weight: bold; /* Bold text on the button */
+  background-color: #0e4019; /* Default green background (#0e4019) */
+  color: white; /* White text */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover and click */
+  padding: 12px 20px; /* Padding inside the button */
+  border-radius: 4px; /* Slightly rounded corners */
+  border: none; /* Remove border */
+  width: 100%; /* Make the button stretch across the container */
+  box-sizing: border-box; /* Ensure padding does not affect width */
+  cursor: pointer; /* Pointer cursor on hover */
+  overflow: hidden; /* Hide anything that overflows the label */
+}
+
+/* Button hover effect */
+.user-form button:hover {
+  background-color: black; /* Turn black on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Button active (click) effect */
+.user-form button:active {
+  background-color: black; /* Stay black when clicked */
+  transform: scale(0.98); /* Slightly shrink the button to simulate pressing */
+}
+
+/* Specific Button for 'Edit Information' */
+.user-settings-container .btn-primary {
+  background-color: #0e4019; /* Green for primary button */
+}
+
+.user-settings-container .btn-primary:hover {
+  background-color: black; /* Black on hover */
+}
+
+.user-settings-container .btn-primary:active {
+  background-color: black; /* Black when clicked */
+}
+
+/* Specific Button for 'Edit Account Info' */
+.user-settings-container .btn-secondary {
+  padding: 0.5rem 1rem;
+  margin-top: 54px;
+  background-color: #0e4019; /* Green for secondary button */
+}
+
+.user-settings-container .btn-secondary:hover {
+  background-color: black; /* Black on hover */
+}
+
+.user-settings-container .btn-secondary:active {
+  background-color: black; /* Black when clicked */
+}
+
+.cancel-btn {
+ 
+  transform: translateY(-450px); 
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 2rem;
+  cursor: pointer;
+  
+  z-index: 3;
+  transition: color 0.3s ease;
+}
+
+.users-cancel-btn:hover {
+  color: #f7f7f7;
+}
+/* Table styling for better number fitting */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 14px;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+/* Adjust table header for responsive behavior */
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Table Data Cell Styling */
+td {
+  background-color: #fff;
+  color: #333;
+  overflow: hidden; /* Hide text overflow */
+  text-overflow: ellipsis;
+}
+
+/* Number formatting and ensuring they fit properly */
+td {
+  font-size: 14px;
+  max-width: 150px;
+  text-overflow: ellipsis;
+}
+
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(7),
+td:nth-child(8) {
+  width: 120px; /* Ensure numeric columns have enough space */
+}
+
+/* Ensure proper width distribution for the columns */
+th, td {
+  min-width: 100px; /* Minimum width for better readability */
+  max-width: 150px; /* Limit width for numeric data */
+}
+
+/* Adjust Payoff Date column */
+td:nth-child(8), th:nth-child(8) {
+  width: 120px; /* Adjust width for Payoff Date column */
+  max-width: 120px; /* Ensure Payoff Date column width is consistent */
+}
+
+/* Footer and button styling */
+button {
+  margin-top: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.5rem; /* Smaller font size on mobile */
+  }
+
+  .spreadsheet-container {
+    padding: 20px; /* Reduced padding on smaller screens */
+    max-height: calc(100vh - 120px); /* Adjust max height */
+  }
+
+  table {
+    width: 100%;
+    font-size: 12px; /* Smaller font for smaller screens */
+  }
+
+  td, th {
+    padding: 8px 10px; /* Adjust padding for better fit */
+  }
+
+  .total h3 {
+    font-size: 1.2rem; /* Adjust total loan/amount display font size for mobile */
+  }
+}

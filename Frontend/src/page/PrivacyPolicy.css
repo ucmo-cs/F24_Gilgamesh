@@ -1,0 +1,46 @@
+
+/* Outer container to center the box */
+.privacy-policy-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the container takes the full viewport height */
+  background-color: #06000000; /* Page background color */
+  padding: 10px; /* Spacing around the container */
+  margin-top: -60px; /* Reduce spacing between the header and the box */
+  z-index: 5;
+}
+
+/* Inner box styling */
+.privacy-policy-box {
+  background-color: rgb(128, 128, 128); /* Box background color */
+  padding: 20px 40px; /* Inner spacing */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgb(0, 0, 0); /* Shadow for depth */
+  max-width: 475px; /* Maximum box width */
+  text-align: center; /* Center align text */
+  color: #ffffff; /* Text color for contrast */
+  font-family: Arial, sans-serif; /* Font family */
+}
+
+/* Header styling */
+.privacy-policy-box h1 {
+  font-size: 20px; /* Main header font size */
+  color: #ffffff; /* White color for the header */
+  margin-bottom: 15px; /* Spacing below the header */
+}
+
+/* Subheader styling */
+.privacy-policy-box h2 {
+  font-size: 16px; /* Subheader font size */
+  color: #dddddd; /* Light gray for subheaders */
+  margin-bottom: 10px; /* Spacing below subheaders */
+}
+
+/* Paragraph styling */
+.privacy-policy-box p {
+  font-size: 14px; /* Paragraph font size */
+  line-height: 1.6; /* Line spacing for readability */
+  color: #cccccc; /* Slightly lighter gray for body text */
+  margin-bottom: 10px; /* Spacing between paragraphs */
+}

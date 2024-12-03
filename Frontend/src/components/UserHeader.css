@@ -1,0 +1,96 @@
+.userheader {
+    background-color: #ffffff ; /* Background color */
+    padding: 0.25rem 1rem; /* Padding for the header */
+    z-index: 1000; /* Ensures it stays above other content */
+    border-radius: 10px 10px 10px 10px; /* Rounded top corners */
+}
+
+.brand-name {
+    color: white !important;
+}
+.navbar {
+    background-color:rgb(128, 128, 128) !important; /* Force dark background */
+}
+
+.navbar-logo {
+    width: 40px; /* Adjust logo width */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.brand-name {
+    vertical-align: middle; /* Align text vertically with the logo */
+    font-size: 2rem; /* Font size */
+    color: #0e4019; /* Text color */
+}
+button {
+    margin-top: 20px; /* Space above the button */
+  }
+  
+.nav-link {
+    color: #f4eeee; /* Nav link color */
+}
+
+.nav-link:hover {
+    text-decoration: underline; /* Underline the nav link on hover */
+}
+
+.user-dropdown {
+    margin-top: -2px;  /* Adjust this margin to raise the dropdown */
+    z-index: 1050; /* Ensure it's above other elements */
+}
+
+.navbar .nav-link, .navbar .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.user-dropdown {
+    align-items: center; 
+    margin-top: -18px;
+}
+
+.user-dropdown .dropdown-toggle {
+    font-size: 1.2rem;  /* Make the dropdown title bigger */
+    color: white;  /* Text color */
+    padding: 0.5rem 1rem;  /* Padding to space out the text */
+    text-decoration: none;  /* Remove the underline */
+    border: none;  /* Remove default border */
+    background: none;  /* Remove background for cleaner design */
+    display: flex;
+    align-items: center;
+    
+}
+
+/* Add hover effect for the dropdown toggle */
+.user-dropdown .dropdown-toggle:hover {
+    text-decoration: underline;  /* Underline the text when hovered */
+}
+
+.user-dropdown .dropdown-toggle::after {
+    display: none;  /* Remove the dropdown arrow */
+}
+
+.dropdown-menu {
+    margin-top: 0px;  /* Ensures dropdown menu aligns evenly with the toggle */
+}
+/* Remove default blue highlight on active dropdown item */
+.dropdown-menu .dropdown-item:active {
+    background-color: transparent; /* Ensure no background is applied on active state */
+    color: white !important; /* Maintain the white text color when active */
+  }
+  
+  /* Optional: Remove focus outline for dropdown items */
+  .dropdown-menu .dropdown-item:focus {
+    outline: none; /* Remove the blue outline on focus */
+    background-color: transparent; /* Ensure no background is applied on focus */
+  }
+  
+  /* Optional: You can also prevent link color change on hover */
+  .dropdown-menu .dropdown-item:hover {
+    background-color: black; /* Customize hover background color */
+    color: white !important; /* Ensure text remains white on hover */
+  }
+  

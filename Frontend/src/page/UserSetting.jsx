@@ -112,8 +112,13 @@ function UserSetting() {
           
           {!isAccountEditing ? (
             <div className="user-info-display">
+<<<<<<< HEAD
               <p><strong>Routing Number:</strong> {parsedUser.routingNumber || 'Loading...'}</p>
               <p><strong>Bank Number:</strong> {parsedUser.bankNumber || 'Loading...'}</p>
+=======
+              <p><strong>Routing Number:</strong> {parsedUser.Rounting || 'Loading...'}</p>
+              <p><strong>Bank Number:</strong> {parsedUser.BankAccount || 'Loading...'}</p>
+>>>>>>> parent of bd2d399 (css)
               <button className="btn btn-secondary" onClick={handleAccountEditClick}>Edit Account Info</button>
             </div>
           ) : (

@@ -1,34 +1,37 @@
 /* Styling for loan-container */
 .loan-container {
   width: 75vw; /* Full width of the container */
-  height: auto; /* Automatically adjust the height based on content */
-  margin: 0 auto; /* Center the container horizontally */
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin: 40px auto; /* Center the container horizontally with margin auto */
   padding: 20px; /* Padding inside the box */
   background-color: rgb(128, 128, 128); /* Gray background */
   border-radius: 8px; /* Rounded corners */
+  position: relative; /* Ensure z-index works as expected */
   z-index: 1000; /* Bring to the front by giving it a higher z-index */
+  flex-grow: 1;
 
-  /* Flexbox styles to arrange content */
+  /* Center content within the container using Flexbox */
   display: flex;
   flex-direction: column; /* Stack the items vertically */
   align-items: center; /* Center horizontally */
-  text-align: center; /* Align text to the center */
   justify-content: flex-start; /* Align content at the top, but allow container to grow */
-
-  /* Allow the container to grow based on its content */
-  min-height: 500px; /* Set a sensible min-height for starting space */
-  max-height: none; /* Remove the height cap so the container can grow as needed */
   
-  overflow: auto; /* Allow scrolling when needed */
+  /* Allow the container to grow based on its content */
+  min-height: 200px; /* Minimum height to ensure space for content */
+  max-height: 80vh; /* Optional: Limit the container height if you want it to be capped */
+  margin-bottom: 0;
+  /* Hide the scrollbar while allowing scrolling */
+  overflow: hidden; /* Prevent the scrollbar from showing */
 }
 
-/* Hide scrollbar in WebKit browsers like Chrome and Safari */
+
 .loan-container::-webkit-scrollbar {
-  display: none; /* Hides scrollbar */
+  display: none; /* Hides scrollbar in WebKit browsers like Chrome and Safari */
 }
 
+/* Optional: If you want to ensure vertical scrolling works */
+.loan-container {
+  overflow-y: auto; /* Allows vertical scrolling if content overflows */
+}
 /* Styling for back button */
 .back-button {
   background-color: #0e4019;

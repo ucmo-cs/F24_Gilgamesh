@@ -97,27 +97,6 @@ function UserPage() {
     navigate('/LoanPayment');
   };
 
-  // Simple function to calculate payoff date based on loan amount, interest rate, and payment amount
-  function calculatePayoffDate(loanAmount, interestRate, monthlyPayment) {
-    let balance = loanAmount;
-    let months = 0;
-    let monthlyInterestRate = interestRate / 100 / 12;
-
-    // While the balance is greater than 0, keep calculating the balance and increment months
-    while (balance > 0) {
-      const interest = balance * monthlyInterestRate;
-      balance = balance + interest - monthlyPayment;
-      months++;
-      if (balance < 0) break; // Prevent balance from becoming negative
-    }
-
-    // Estimate the payoff date by adding the months to the current date
-    const payoffDate = new Date();
-    payoffDate.setMonth(payoffDate.getMonth() + months);
-    
-    return payoffDate;
-  }
-
   return (
     <>
       {renderHeader()}
@@ -142,13 +121,12 @@ function UserPage() {
             <thead>
               <tr>
                 <th style={{ textAlign: 'center' }}>Loan ID</th>
-                <th style={{ textAlign: 'center' }}>Principal </th>
-                <th style={{ textAlign: 'center' }}>Balance</th>
-                <th style={{ textAlign: 'center' }}>APR</th>
-                <th style={{ textAlign: 'center' }}>Issued</th>
-                <th style={{ textAlign: 'center' }}>Pay Date</th>
-                <th style={{ textAlign: 'center' }}>Pmt Amt</th>
-                <th style={{ textAlign: 'center' }}>Final Pmt</th> {/* New column header for Payoff Date */}
+                <th style={{ textAlign: 'center' }}>Origin Amount</th>
+                <th style={{ textAlign: 'center' }}>Amount Left</th>
+                <th style={{ textAlign: 'center' }}>Interest Rate</th>
+                <th style={{ textAlign: 'center' }}>Date Created</th>
+                <th style={{ textAlign: 'center' }}>Payment Date</th>
+                <th style={{ textAlign: 'center' }}>Payment Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -156,8 +134,6 @@ function UserPage() {
                 loans.map((loan) => {
                   const nextPaymentDate = calculateNextPaymentDate(loan.created_at);
                   const nextPaymentAmount = calculateMonthlyPayment(loan.loanOriginAmount, loan.interestRate, 30);
-                  const payoffDate = calculatePayoffDate(loan.loanOriginAmount, loan.interestRate, nextPaymentAmount);
-
                   return (
                     <tr key={loan.loan_id} style={{ cursor: 'pointer' }} onClick={() => handleLoanClick(loan.loan_id)}>
                       <td style={{ textAlign: 'center' }}>{loan.loan_id}</td>
@@ -167,17 +143,16 @@ function UserPage() {
                       <td style={{ textAlign: 'center' }}>{new Date(loan.created_at).toLocaleDateString()}</td>
                       <td style={{ textAlign: 'center' }}>{nextPaymentDate.toLocaleDateString()}</td>
                       <td style={{ textAlign: 'center' }}>${nextPaymentAmount}</td>
-                      <td style={{ textAlign: 'center' }}>{payoffDate.toLocaleDateString()}</td> {/* Display payoff date */}
                     </tr>
                   );
                 })
               ) : error ? (
                 <tr>
-                  <td colSpan="8" className="text-center text-danger">{error}</td>
+                  <td colSpan="7" className="text-center text-danger">{error}</td>
                 </tr>
               ) : (
                 <tr>
-                  <td colSpan="8" className="text-center">Loading loan data...</td>
+                  <td colSpan="7" className="text-center">Loading loan data...</td>
                 </tr>
               )}
             </tbody>

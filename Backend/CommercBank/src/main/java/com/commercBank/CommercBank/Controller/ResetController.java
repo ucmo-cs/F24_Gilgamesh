@@ -125,45 +125,6 @@ public class ResetController {
         }
     }
 
-    @PostMapping("/bankAccountNumber-reset")
-    public ResponseEntity<Map<String, String>> resetBankAccountNumber(@RequestBody Map<String, String> credentials) {
-        String userId = credentials.get("userId");
-        String newBankAccountNumber = credentials.get("newBankAccountNumber");
-        Account account = accountService.findByUserId(userId);
-
-        if (account != null) {
-            account.setBankAccountNumber(newBankAccountNumber);
-            accountService.save(account);
-
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Bank account number reset successful");
-            return ResponseEntity.ok(response);
-        } else {
-            Map<String, String> errorResponse = new HashMap<>();
-            errorResponse.put("message", "User not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
-        }
-    }
-
-    @PostMapping("/routingNumber-reset")
-    public ResponseEntity<Map<String, String>> resetRoutingNumber(@RequestBody Map<String, String> credentials) {
-        String userId = credentials.get("userId");
-        String newRoutingNumber = credentials.get("newRoutingNumber");
-        Account account = accountService.findByUserId(userId);
-
-        if (account != null) {
-            account.setRoutingNumber(newRoutingNumber);
-            accountService.save(account);
-
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Routing number reset successful");
-            return ResponseEntity.ok(response);
-        } else {
-            Map<String, String> errorResponse = new HashMap<>();
-            errorResponse.put("message", "User not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
-        }
-    }
 
 
 }

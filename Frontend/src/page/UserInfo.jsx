@@ -80,8 +80,8 @@ function UserInfo() {
 
       <div className="user-info-wrapper">
         {/* User Profile Info Section */}
-        <div className="user-settings-container">
-          {!isEditing && <h1 className="user-settings-title">Profile Information</h1>}
+        <div className="userInfo-settings-container">
+          {!isEditing && <h1 className="userInfo-settings-title">Profile Information</h1>}
 
           {!isEditing ? (
             <div className="user-info-display">
@@ -91,30 +91,30 @@ function UserInfo() {
               <p><strong>Number:</strong> {parsedUser.phoneNumber || 'Loading...'}</p>
               <p><strong>Role:</strong> {parsedUser.role || 'Loading...'}</p>
               <p><strong>Date Created:</strong> {parsedUser.created_at || 'Loading...'}</p>
-              <button className="btn btn-primary" onClick={handleEditClick}>Edit Information</button>
+              <button className="btn6 btn-primary" onClick={handleEditClick}>Edit Information</button>
             </div>
           ) : (
-            <div className="user-form-container">
+            <div className="userInfo-form-container">
               <UserForm parsedUser={parsedUser} /> {/* Pass parsedUser to the form */}
-              <button className="cancel-btn" onClick={handleCancelClick}>×</button>
+              <button className="cancel-btn12" onClick={handleCancelClick}>×</button>
             </div>
           )}
         </div>
 
         {/* Account Info Section */}
         <div className="user-info-container">
-          {!isAccountEditing && <h1 className="user-settings-title">Account Information</h1>}
+          {!isAccountEditing && <h1 className="userInfo-settings-title">Account Information</h1>}
 
           {!isAccountEditing ? (
             <div className="user-info-display">
               <p><strong>Routing Number:</strong> {parsedUser.routingNumber || 'Loading...'}</p>
               <p><strong>Bank Number:</strong> {parsedUser.bankAccountNumber || 'Loading...'}</p>
-              <button className="btn btn-secondary" onClick={handleAccountEditClick}>Edit Account Info</button>
+              <button className="btn5 btn-secondary" onClick={handleAccountEditClick}>Edit Account Info</button>
             </div>
           ) : (
-            <div className="user-form-container">
+            <div className="userInfo-form-container">
               <UserAccountForm handleSubmit={handleAccountSubmit} /> {/* Pass the submit handler */}
-              <button className="cancel-btn" onClick={handleAccountCancelClick}>×</button>
+              <button className="cancel-btn15" onClick={handleAccountCancelClick}>×</button>
             </div>
           )}
         </div>

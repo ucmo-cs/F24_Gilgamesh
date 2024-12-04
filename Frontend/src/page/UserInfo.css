@@ -82,20 +82,7 @@
   }
   
   /* Cancel button style (close X) */
-  .cancel-btn {
-    position: absolute;
-    top: -14px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    color: #333;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 0;
-    z-index: 3;
-    transition: color 0.3s ease;
-  }
-  
+
   /* Cancel button hover effect */
   .cancel-btn:hover {
     color: #f7f7f7;

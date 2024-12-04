@@ -55,7 +55,7 @@ const Admin = () => {
       <div className="admin-container">
         {/* Display welcome message only if parsedUser is available */}
         {parsedUser && parsedUser.role === 'ADMIN' && (
-          <h1 className="admin-title">Welcome, {parsedUser.User}</h1>
+          <h1 className="admin-title">Welcome, {parsedUser.role}</h1>
         )}
         <Container>
           <Spreadsheet />

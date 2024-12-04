@@ -36,7 +36,7 @@ function AdminHeader() {
             parsedUser.User ? (
               <Dropdown align="end" className="user-dropdown">
                 <Dropdown.Toggle variant="link" id="user-dropdown" className="dropdown-toggle">
-                  {parsedUser.User}
+                  {parsedUser.role}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className="dropdown-menu">

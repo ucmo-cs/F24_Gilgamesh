@@ -44,6 +44,7 @@ public class SecurityConfig {
                         .requestMatchers("/payment").permitAll()
                         .requestMatchers("/payment/**").permitAll()
                         .requestMatchers("/payment/reduce").permitAll()
+                        .requestMatchers("/payment/reduce").permitAll()
                         .requestMatchers("/user/{id}").permitAll()
                         .requestMatchers("/loan/account/{accountId}").permitAll()
                         .requestMatchers("/loan/createLoan").permitAll()

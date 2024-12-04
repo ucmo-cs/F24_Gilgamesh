@@ -74,4 +74,45 @@ public class LoanPaymentService {
         return monthlyPayment;
     }
 
+    public Loan reduceLoanAmount(Long loanId, BigDecimal amount) {
+        if (amount == null) {
+            throw new IllegalArgumentException("Amount cannot be null");
+        }
+
+        Loan loan = loanRepository.findById(loanId)
+                .orElseThrow(() -> new RuntimeException("Loan not found"));
+
+        BigDecimal currentBalance = loan.getCurrentBalance();
+        if (currentBalance == null) {
+            throw new RuntimeException("Current balance is not set for loan with ID: " + loanId);
+        }
+
+        if (amount.compareTo(currentBalance) > 0) {
+            throw new RuntimeException("Amount exceeds current balance");
+        }
+        loan.setCurrentBalance(currentBalance.subtract(amount));
+        Loan updatedLoan = loanRepository.save(loan);
+
+        // Create a new LoanPayment record
+        LoanPayment payment = new LoanPayment();
+        payment.setLoan(loan);
+        payment.setPaymentAmount(amount);
+        payment.setPaymentDate(LocalDateTime.now());
+        payment.setPaymentStatus(LoanPayment.PaymentStatus.COMPLETED);
+
+        // Calculate and set the next due date
+        LocalDateTime currentDate = LocalDateTime.now();
+        LocalDateTime nextDueDate = LocalDateTime.of(currentDate.getYear(), currentDate.getMonth().plus(1), 1, 0, 0);
+        payment.setNextDueDate(nextDueDate);
+        
+
+        BigDecimal scheduledPayment = calculateScheduledPayment(loan);
+        payment.setScheduledPayment(scheduledPayment);
+
+// Save the LoanPayment record
+        loanPaymentRepository.save(payment);
+
+        return updatedLoan;
+    }
+
 }

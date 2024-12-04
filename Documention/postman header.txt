@@ -11,14 +11,14 @@ http://localhost:8080/api/accounts/account
     "routingNumber":"987654321"
 }
 
-http://localhost:8080/loan
+http://localhost:8080/loan/createLoan
 {
   "loanOriginAmount": 10000.00,
   "interestRate": 5.0,
   "userId": "testUser2"
 }
 
-http://localhost:8080/payment
+http://localhost:8080/payment/reduce
 {
     "loanId": 2,
     "amount": 2000.00,

@@ -107,12 +107,12 @@ function UserInfo() {
 
           {!isEditing ? (
             <div className="user-info-display">
-              <p><strong>Account ID:</strong> {parsedUser.userId || 'Loading...'}</p>
-              <p><strong>Username:</strong> {parsedUser.userName || 'Loading...'}</p>
-              <p><strong>Email:</strong> {parsedUser.email || 'Loading...'}</p>
-              <p><strong>Number:</strong> {parsedUser.phoneNumber || 'Loading...'}</p>
-              <p><strong>Role:</strong> {parsedUser.role || 'Loading...'}</p>
-              <p><strong>Date Created:</strong> {parsedUser.created_at || 'Loading...'}</p>
+              <p><strong>Account ID:</strong> {parsedUser.userId || 'NULL'}</p>
+              <p><strong>Username:</strong> {parsedUser.userName || 'NULL'}</p>
+              <p><strong>Email:</strong> {parsedUser.email || 'NULL'}</p>
+              <p><strong>Number:</strong> {parsedUser.phoneNumber || 'NULL'}</p>
+              <p><strong>Role:</strong> {parsedUser.role || 'NULL'}</p>
+              <p><strong>Date Created:</strong> {parsedUser.created_at || 'NULL'}</p>
               <button className="btn6 btn-primary" onClick={handleEditClick}>Edit Information</button>
             </div>
           ) : (
@@ -129,8 +129,8 @@ function UserInfo() {
 
           {!isAccountEditing ? (
             <div className="user-info-display">
-              <p><strong>Routing Number:</strong> {parsedUser.routingNumber || 'Loading...'}</p>
-              <p><strong>Bank Number:</strong> {parsedUser.bankAccountNumber || 'Loading...'}</p>
+              <p><strong>Routing Number:</strong> {parsedUser.routingNumber || 'NULL'}</p>
+              <p><strong>Bank Number:</strong> {parsedUser.bankAccountNumber || 'NULL'}</p>
               <button className="btn5 btn-secondary" onClick={handleAccountEditClick}>Edit Account Info</button>
             </div>
           ) : (

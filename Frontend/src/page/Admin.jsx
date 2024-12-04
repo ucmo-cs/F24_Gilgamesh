@@ -81,7 +81,7 @@ const Admin = () => {
                 <Button
                   variant="secondary"
                   onClick={() => setShowForm(false)} // Close the form
-                  className="close-btn"
+                  className="close-btn4"
                 >
                   Close
                 </Button>
@@ -96,7 +96,7 @@ const Admin = () => {
                 <Button
                   variant="secondary"
                   onClick={() => setShowFormUser(false)} // Close the form
-                  className="close-btn"
+                  className="close-btn5"
                 >
                   Close
                 </Button>

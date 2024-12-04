@@ -25,6 +25,73 @@
   text-align: center;
 }
 
+/* Style the container to limit the form width */
+.admin-make-loan-form {
+  max-width: 500px; /* Limit the form's width */
+  margin: 0 auto; /* Center the form */
+  padding: 15px; /* Add some padding for better spacing */
+}
+
+/* Reduce the padding and margin of the form elements */
+form .form-group {
+  margin-bottom: 10px; /* Reduce space between form groups */
+}
+
+form .form-group label {
+  font-size: 0.9rem; /* Make labels slightly smaller */
+  margin-bottom: 5px; /* Reduce space between label and input */
+}
+
+form .form-control {
+  height: 30px; /* Make input fields smaller */
+  font-size: 0.9rem; /* Make the text in the input smaller */
+  padding: 5px 10px; /* Adjust input padding to make it smaller */
+}
+
+form .form-control[type="number"],
+form .form-control[type="text"],
+form .form-control[type="email"],
+form .form-control[type="date"] {
+  width: 100%; /* Make inputs take full width */
+}
+
+/* Adjust the button size */
+form .btn {
+  padding: 6px 12px; /* Reduce padding for a smaller button */
+  font-size: 0.9rem; /* Make the text in the button smaller */
+  width: 100%; /* Make button take full width */
+  margin-top: 10px; /* Add space above the button */
+}
+
+/* Reduce space in rows for Email and Phone number */
+form .row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+/* Adjust column spacing for smaller screens */
+form .col-md-6 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+  .admin-make-loan-form {
+    max-width: 100%; /* Allow form to take up full width on smaller screens */
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  form .form-control {
+    font-size: 0.8rem; /* Smaller font on smaller screens */
+  }
+
+  form .btn {
+    font-size: 0.8rem; /* Smaller button text */
+  }
+}
+
+
 .div{
   max-width: 50%;
 }

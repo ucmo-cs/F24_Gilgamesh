@@ -51,6 +51,8 @@
   .user-info-display {
     margin-top: 50px;
     height: 100vh; /* Allow container to grow with content */
+    max-height: fit-content;
+    padding-bottom: 1rem;
     overflow: hidden; /* Prevent any content from overflowing the container */
     text-align: center;
     position: relative;

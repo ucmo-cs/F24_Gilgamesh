@@ -13,7 +13,29 @@ function UserInfo() {
   const [parsedUser, setParsedUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);  // Track profile editing state
   const [isAccountEditing, setIsAccountEditing] = useState(false);  // Track account info editing state
-
+  
+  useEffect(() => { 
+    const userSession = sessionStorage.getItem('userSession');
+    
+    if (userSession) {
+      const parsed = JSON.parse(userSession);
+      
+      // Remove the 'User' property from parsed object if it exists
+      delete parsed.User;
+      
+      // Set 'User' to the value of 'userId' from URL
+      parsed.User = userId;  // Set the userId (from URL) as the 'User' property
+      
+      // Optionally update sessionStorage if you want to keep the modified data
+      sessionStorage.setItem('userSession', JSON.stringify(parsed));
+      console.log("Updated session: ", JSON.stringify(parsed));
+      
+      // Store the modified parsed object in state (with the 'User' property set to userId)
+      setParsedUser(parsed);
+    } else {
+      console.log("No user session available.");
+    }
+  }, [userId]);
   // Fetch user data from the API using the userId
   useEffect(() => {
     if (userId) {

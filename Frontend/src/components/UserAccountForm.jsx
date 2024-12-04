@@ -17,8 +17,8 @@ function UserAccountForm() {
       const parsed = JSON.parse(userSession); // Parse the session data
 
       // Check if parsed user session contains account_id and set the userId
-      if (parsed && parsed.Username) {
-        setUserId(parsed.Username); // Set userId from account_id in session data
+      if (parsed && parsed.User) {
+        setUserId(parsed.User); // Set userId from account_id in session data
       } else {
         console.error('User ID or account_id is missing in the session data.');
       }

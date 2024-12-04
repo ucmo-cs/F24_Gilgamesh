@@ -95,8 +95,9 @@ public class Loan {
     }
 
     // Mocked method to get the amount left to pay. Replace this with actual logic.
-    public BigDecimal getAmountLeftToPay() {
+    /*public BigDecimal getAmountLeftToPay() {
         BigDecimal totalPaid = new BigDecimal("0.00"); // This should come from your database or payment service
         return loanOriginAmount.subtract(totalPaid);
     }
+     */
 }

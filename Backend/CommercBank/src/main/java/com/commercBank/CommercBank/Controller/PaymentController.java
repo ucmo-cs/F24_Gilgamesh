@@ -102,6 +102,22 @@ public class PaymentController {
 
         LOGGER.info("Payment processed for Loan ID: " + loan.getLoan_id() + ", Amount: " + paymentAmount);
     }
+
+    @PostMapping("/reduce")
+    public ResponseEntity<Loan> reduceLoanAmount(@RequestBody LoanPaymentDto paymentDTO) {
+
+        System.out.println("Received DTO: LoanId = " + paymentDTO.getLoanId() + ", Amount = " + paymentDTO.getAmount());
+
+        try {
+            Long loanId = paymentDTO.getLoanId(); // Extract loanId from the DTO
+            Loan updatedLoan = loanPaymentService.reduceLoanAmount(loanId, paymentDTO.getAmount());
+            return ResponseEntity.ok(updatedLoan);
+        } catch (RuntimeException e) {
+            e.printStackTrace(); // Prints the stack trace to the console for debugging
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     private double getScheduledPayment(){
         return 500.0; //fixed payment amount
     }

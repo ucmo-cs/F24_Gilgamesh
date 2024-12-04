@@ -24,20 +24,20 @@ public class LoanPayment {
     @JoinColumn(name = "loan_id", nullable = false)
     private Loan loan; //links loan to the loan table
 
-    @Column(name = "paymentAmount", nullable = false)
+    @Column(name = "payment_amount", nullable = false)
     private BigDecimal paymentAmount; // payment amount
 
-    @Column(name = "paymentDate", nullable = false)
+    @Column(name = "payment_date", nullable = false)
     private LocalDateTime PaymentDate; // date when payment was made
 
     @Column(name = "scheduled_payment", nullable = false)
     private BigDecimal scheduledPayment;
 
-    @Column(name = "nextDueDate")
+    @Column(name = "next_due_date")
     private LocalDateTime nextDueDate; //date of next due date
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "paymentStatus", nullable = false)
+    @Column(name = "payment_status", nullable = false)
     private PaymentStatus paymentStatus; // payment status (pending/complete)
 
     public enum PaymentStatus {

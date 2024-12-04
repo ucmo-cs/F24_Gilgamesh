@@ -2,6 +2,7 @@ package com.commercBank.CommercBank.Controller;
 import com.commercBank.CommercBank.Domain.Loan;
 import com.commercBank.CommercBank.dto.LoanDto;
 import com.commercBank.CommercBank.Service.LoanService;
+import com.commercBank.CommercBank.dto.LoanPaymentDto;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -30,7 +31,8 @@ public class LoanController {
 
     //@CrossOrigin
     private static final Logger logger = LoggerFactory.getLogger(LoanController.class);
-    @PostMapping
+
+    @PostMapping("createLoan")
     public ResponseEntity<Loan> createLoan(@RequestBody LoanDto loanDto) {
         //debug
         logger.info("Creating Loan with Origin Amount: {}", loanDto.getLoanOriginAmount());
@@ -53,6 +55,8 @@ public class LoanController {
         return new ResponseEntity<>(savedLoan, HttpStatus.CREATED);
 
     }
+
+
 
     @CrossOrigin
     @GetMapping("/loans")

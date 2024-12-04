@@ -23,9 +23,11 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "loan_id")
     private Long loan_id;
-    @Column(name = "loanOriginAmount", nullable = false)
+    @Column(name = "loan_origin_amount", nullable = false)
     private BigDecimal loanOriginAmount;
-    @Column(name = "interestRate", nullable = false)
+    @Column(nullable = false)
+    private BigDecimal currentBalance;
+    @Column(name = "interest_rate", nullable = false)
     private BigDecimal interestRate;
     @CreationTimestamp
     @Column(name = "created_at", updatable = false, nullable = false)
@@ -82,6 +84,14 @@ public class Loan {
 
     public String getUserId() {
         return userAccount != null ? userAccount.getUserId() : null;
+    }
+
+    public BigDecimal getCurrentBalance() {
+        return currentBalance;
+    }
+
+    public void setCurrentBalance(BigDecimal currentBalance) {
+        this.currentBalance = currentBalance;
     }
 
     // Mocked method to get the amount left to pay. Replace this with actual logic.

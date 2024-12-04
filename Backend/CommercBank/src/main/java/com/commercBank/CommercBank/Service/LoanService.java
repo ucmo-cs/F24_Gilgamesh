@@ -63,13 +63,12 @@ public class LoanService {
                 new RuntimeException("Account with userId: " + userId + " not found.")
         );
 
-        //Account account = accountRepository.findByUserId(userId);
-        //if(account == null){
-            //throw new RuntimeException("Account with userId: " + userId + " not found.");
-        //}
-
-        //set account object to account entity
         loan.setUser_account(account);
+
+        // Set currentBalance to loanOriginAmount if not explicitly set
+        if (loan.getCurrentBalance() == null) {
+            loan.setCurrentBalance(loan.getLoanOriginAmount());
+        }
 
         return loanRepository.save(loan);
     }
@@ -77,5 +76,7 @@ public class LoanService {
     public Loan save(Loan loan) {
         return loanRepository.save(loan);
     }
+
+
 
 }

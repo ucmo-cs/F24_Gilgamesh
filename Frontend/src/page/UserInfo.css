@@ -8,7 +8,7 @@
     display: flex;
    
     
-    max-width: 800px; /* You can adjust the max-width as necessary */
+    max-width: 1000px; /* You can adjust the max-width as necessary */
     width: 100%;
     justify-content: center; /* Center content horizontally */
     align-items: flex-start; /* Align items to the top */
@@ -20,10 +20,25 @@
     
   
   }
+
+  .user-info-container{
+    margin-top: 0 !important;
+    background-color: rgb(128, 128, 128) !important; /* Force background color */
+    border: transparent !important;
+   
+    flex-direction: column;
+    align-items: center;
+    width: 48%; /* Adjust width to fit two containers side by side */
+    max-width: 500px;
+    min-height: 21vh;
+    max-height: 450px;
+    
+  }
+  
   
   
   /* Individual user settings container */
-  .user-settings-container {
+  .userInfo-settings-container {
     margin-top: 0 !important;
     background-color: rgb(128, 128, 128) !important; /* Force background color */
     border: transparent !important;
@@ -86,7 +101,19 @@
   /* Cancel button style (close X) */
 
   /* Cancel button hover effect */
-  .cancel-btn:hover {
+  .cancel-btn15:hover {
     color: #f7f7f7;
+  }
+
+  .cancel-btn15 {
+    position: relative;
+    top: -300px;
+    right: -350px;
+  }
+
+  .cancel-btn12 {
+    position: relative;
+    top: -390px;
+    right: -350px;
   }
   

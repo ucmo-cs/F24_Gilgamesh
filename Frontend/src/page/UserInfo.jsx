@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
 import { useParams, useNavigate } from 'react-router-dom';  // Import useNavigate to navigate programmatically
+import Footer from '../components/Footer';
 
 function UserInfo() {
   const { userId } = useParams();  // Get userId from the URL parameter
@@ -158,6 +159,7 @@ function UserInfo() {
           )}
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

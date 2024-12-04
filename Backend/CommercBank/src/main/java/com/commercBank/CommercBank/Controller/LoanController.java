@@ -32,7 +32,7 @@ public class LoanController {
     //@CrossOrigin
     private static final Logger logger = LoggerFactory.getLogger(LoanController.class);
 
-    @PostMapping("createLoan")
+    @PostMapping("/createLoan")
     public ResponseEntity<Loan> createLoan(@RequestBody LoanDto loanDto) {
         //debug
         logger.info("Creating Loan with Origin Amount: {}", loanDto.getLoanOriginAmount());

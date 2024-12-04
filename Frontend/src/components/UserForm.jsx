@@ -19,12 +19,20 @@ function UserForm() {
       const parsed = JSON.parse(userSession);
       setParsedUser(parsed);
       
-      // Check if parsedUser has account_id and set the userId
-      if (parsed && parsed.User) {
-        setUserId(parsed.User);  // Set userId from account_id in session data
-      } else {
+      if(parsed && parsed.role == "ADMIN"){
+        if (parsed && parsed.User  ) {
+          setUserId(parsed.User);  // Set userId from account_id in session data
+        }else {
+          console.error("User ID or account_id is missing in the session data.");
+        }
+      }else{
+         // Check if parsedUser has account_id and set the userId
+     if (parsed && parsed.Username  ) {
+      setUserId(parsed.Username);
+      }else {
         console.error("User ID or account_id is missing in the session data.");
       }
+      } 
     } else {
       console.log("No user session available.");
     }

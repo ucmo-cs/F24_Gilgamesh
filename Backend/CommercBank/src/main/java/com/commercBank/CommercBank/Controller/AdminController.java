@@ -44,8 +44,8 @@ public class AdminController {
         if (loan != null && loan.getUserId().equals(userId)) {
             return ResponseEntity.ok(Map.of(
                     "userId", loan.getUserId(),
-                    "loanId", loan.getLoan_id(),
-                    "amountLeftToPay", loan.getAmountLeftToPay()
+                    "loanId", loan.getLoan_id()
+                    //"amountLeftToPay", loan.getAmountLeftToPay()
 
             ));
         }

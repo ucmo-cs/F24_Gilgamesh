@@ -72,7 +72,11 @@
     margin-bottom: 15px;  /* Adds space between input fields */
   }
   
-
+ .alert-success{
+  margin-bottom: 60rem;
+  margin-left: 45px;
+  max-height: 800px;
+ }
 
 
 

@@ -100,7 +100,7 @@
   transition: color 0.3s ease;
 }
 .cancel-btn2 {
-  transform: translateY(-350px); 
+  transform: translateY(-309px); 
   
   background: transparent;
   border: none;
@@ -146,7 +146,9 @@
 
 /* Specific Button for 'Edit Information' */
 .user-settings-container .btn-primary {
+  padding-top: 5px;
   background-color: #0e4019; /* Green for primary button */
+  border-color: #0e4019;
 }
 
 .user-settings-container .btn-primary:hover {
@@ -174,7 +176,7 @@
 
 .cancel-btn {
  
-  transform: translateY(-450px); 
+  transform: translateY(-400px); 
   background: transparent;
   border: none;
   color: #333;

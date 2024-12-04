@@ -54,8 +54,8 @@
   }
   
   /* Title for user settings */
-  .user-settings-title {
-    font-size: 2rem;
+  .userInfo-settings-title {
+    font-size: 2rem;  
     text-align: center;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
@@ -64,6 +64,7 @@
   
   /* User info display area */
   .user-info-display {
+    
     margin-top: 50px;
     height: 100vh; /* Allow container to grow with content */
     max-height: fit-content;
@@ -99,21 +100,32 @@
   }
   
   /* Cancel button style (close X) */
-
+  .cancel-btn12{
+    transform: translateY(-380px);
+    background: transparent;
+    border: none;
+    color: #333;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    z-index: 3;
+    transition: color 0.3s ease;
+  }
+  .cancel-btn15{
+    transform: translateY(-300px);
+    background: transparent;
+    border: none;
+    color: #333;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    z-index: 3;
+    transition: color 0.3s ease;
+  }
   /* Cancel button hover effect */
   .cancel-btn15:hover {
     color: #f7f7f7;
   }
-
-  .cancel-btn15 {
-    position: relative;
-    top: -300px;
-    right: -350px;
+  .cancel-btn12:hover {
+    color: #f7f7f7;
   }
-
-  .cancel-btn12 {
-    position: relative;
-    top: -390px;
-    right: -350px;
-  }
-  

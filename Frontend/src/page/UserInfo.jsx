@@ -6,10 +6,11 @@ import axios from 'axios';
 import Header from '../components/Header';
 import UserHeader from '../components/UserHeader';
 import AdminHeader from '../components/AdminHeader';
-import { useParams } from 'react-router-dom';  // Import useParams to get userId from the URL
+import { useParams, useNavigate } from 'react-router-dom';  // Import useNavigate to navigate programmatically
 
 function UserInfo() {
   const { userId } = useParams();  // Get userId from the URL parameter
+  const navigate = useNavigate();  // Initialize the useNavigate hook for programmatic navigation
   const [parsedUser, setParsedUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);  // Track profile editing state
   const [isAccountEditing, setIsAccountEditing] = useState(false);  // Track account info editing state
@@ -36,6 +37,7 @@ function UserInfo() {
       console.log("No user session available.");
     }
   }, [userId]);
+
   // Fetch user data from the API using the userId
   useEffect(() => {
     if (userId) {
@@ -58,7 +60,25 @@ function UserInfo() {
 
   // Set edit mode to false when the user cancels profile editing
   const handleCancelClick = () => {
-    setIsEditing(false); // Return to viewing mode
+    // When the cancel button is clicked, restore the 'User' value in session storage
+    const userSession = sessionStorage.getItem('userSession');
+    if (userSession) {
+      const parsed = JSON.parse(userSession);
+      parsed.User = userId;  // Restore the 'User' value from userId (URL parameter)
+      
+      // Update sessionStorage with the restored 'User' value
+      sessionStorage.setItem('userSession', JSON.stringify(parsed));
+      console.log("Restored session: ", JSON.stringify(parsed));
+
+      // Update the state with the modified session data
+      setParsedUser(parsed);
+    }
+
+    // Reset editing mode
+    setIsEditing(false);  // Return to viewing mode
+
+    // Navigate back to /admin route
+    navigate('/admin');
   };
 
   // Set edit mode to true for account info
@@ -90,10 +110,7 @@ function UserInfo() {
   }
 
   const renderHeader = () => {
-    
-        return <AdminHeader />;
-      
-    
+    return <AdminHeader />;
   };
 
   return (
@@ -107,12 +124,12 @@ function UserInfo() {
 
           {!isEditing ? (
             <div className="user-info-display">
-              <p><strong>Account ID:</strong> {parsedUser.userId || 'Loading...'}</p>
-              <p><strong>Username:</strong> {parsedUser.userName || 'Loading...'}</p>
-              <p><strong>Email:</strong> {parsedUser.email || 'Loading...'}</p>
-              <p><strong>Number:</strong> {parsedUser.phoneNumber || 'Loading...'}</p>
-              <p><strong>Role:</strong> {parsedUser.role || 'Loading...'}</p>
-              <p><strong>Date Created:</strong> {parsedUser.created_at || 'Loading...'}</p>
+              <p><strong>Account ID:</strong> {parsedUser.userId || 'NULL'}</p>
+              <p><strong>Username:</strong> {parsedUser.userName || 'NULL'}</p>
+              <p><strong>Email:</strong> {parsedUser.email || 'NULL'}</p>
+              <p><strong>Number:</strong> {parsedUser.phoneNumber || 'NULL'}</p>
+              <p><strong>Role:</strong> {parsedUser.role || 'NULL'}</p>
+              <p><strong>Date Created:</strong> {parsedUser.created_at || 'NULL'}</p>
               <button className="btn6 btn-primary" onClick={handleEditClick}>Edit Information</button>
             </div>
           ) : (
@@ -129,8 +146,8 @@ function UserInfo() {
 
           {!isAccountEditing ? (
             <div className="user-info-display">
-              <p><strong>Routing Number:</strong> {parsedUser.routingNumber || 'Loading...'}</p>
-              <p><strong>Bank Number:</strong> {parsedUser.bankAccountNumber || 'Loading...'}</p>
+              <p><strong>Routing Number:</strong> {parsedUser.routingNumber || 'NULL'}</p>
+              <p><strong>Bank Number:</strong> {parsedUser.bankAccountNumber || 'NULL'}</p>
               <button className="btn5 btn-secondary" onClick={handleAccountEditClick}>Edit Account Info</button>
             </div>
           ) : (
